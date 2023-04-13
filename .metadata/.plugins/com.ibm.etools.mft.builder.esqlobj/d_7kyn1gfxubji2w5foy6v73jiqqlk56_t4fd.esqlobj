@@ -1,0 +1,4 @@
+CREATE PROCEDURE rethrowSOAException(INOUT ex REFERENCE)
+	BEGIN
+		CALL throwSOAException(ex.Number, ex.Insert[1].Text, ex.Insert[2].Text);
+	END;

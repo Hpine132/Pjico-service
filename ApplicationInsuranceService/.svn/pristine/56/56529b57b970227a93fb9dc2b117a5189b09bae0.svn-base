@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?><mappingRoot xmlns="http://www.ibm.com/2008/ccl/Mapping" domainID="com.ibm.msl.mapping.xml" domainIDExtension="mb" mainMap="true" targetNamespace="Version1.InquiryInsuranceHealthcare.Mappings" version="8.0.5.0" xmlns:map="Version1.InquiryInsuranceHealthcare.Mappings">
+    <input path="mbsharedlib://ESBMessageLib/service/vn/applicationinsurance/applicationinsuranceService.xsd"/>
+    <output path="mbsharedlib://ESBMessageLib/service/vn/applicationinsurance/applicationinsuranceService.xsd"/>
+    <namespaces>
+        <namespace kind="supplement" prefix="io7" uri="http://www.pjico.com.vn/entity/vn/com/isurance/1"/>
+        <namespace kind="supplement" prefix="io6" uri="http://www.pjico.com.vn/entity/vn/com/account/1"/>
+        <namespace kind="supplement" prefix="in" uri="http://www.pjico.com.vn/entity/vn/applicationinsurance/applicationinsuranceservice/1"/>
+        <namespace kind="supplement" prefix="io" uri="http://www.pjico.com.vn/entity/vn/com/1"/>
+        <namespace kind="supplement" prefix="in2" uri="http://www.pjico.com.vn/entity/vn/tax/1"/>
+        <namespace kind="supplement" prefix="io3" uri="http://www.pjico.com.vn/common/envelope/commonheader/1"/>
+        <namespace kind="supplement" prefix="io2" uri="http://www.pjico.com.vn/entity/vn/com/party/1"/>
+        <namespace kind="supplement" prefix="io5" uri="http://www.pjico.com.vn/common/envelope/soaenvelope/1"/>
+        <namespace kind="supplement" prefix="io4" uri="http://www.pjico.com.vn/common/envelope/serviceenvelope/1"/>
+        <namespace kind="supplement" prefix="out" uri="http://www.pjico.com.vn/entity/vn/compensation/compensationservice/1"/>
+    </namespaces>
+    <generation engine="xquery"/>
+    <mappingDeclaration name="FunctionCodeNotMap">
+        <input namespace="http://www.pjico.com.vn/entity/vn/applicationinsurance/applicationinsuranceservice/1" path="mb:msg(InquiryInsuranceHealthcareReq,assembly,XMLNSC,Properties)" var="MessageAssembly"/>
+        <output namespace="http://www.pjico.com.vn/entity/vn/applicationinsurance/applicationinsuranceservice/1" path="mb:msg(InquiryInsuranceHealthcareRes,assembly,XMLNSC,Properties)" var="MessageAssembly3"/>
+        <move>
+            <input path="$MessageAssembly/Properties"/>
+            <output path="$MessageAssembly3/Properties"/>
+            <override>
+                <assign value="{ESBMessageLib}">
+                    <output path="$MessageAssembly3/Properties/MessageSet"/>
+                </assign>
+            </override>
+        </move>
+        <local>
+            <input path="$MessageAssembly/InquiryInsuranceHealthcareReq/Header"/>
+            <output path="$MessageAssembly3/InquiryInsuranceHealthcareRes/Header"/>
+            <move automap="true">
+                <input path="Common"/>
+                <output path="Common"/>
+            </move>
+            <move automap="true">
+                <input path="Client"/>
+                <output path="Client"/>
+            </move>
+        </local>
+        <assign value="1">
+            <output path="$MessageAssembly3/InquiryInsuranceHealthcareRes/ResponseStatus/Status"/>
+        </assign>
+        <assign value="009">
+            <output path="$MessageAssembly3/InquiryInsuranceHealthcareRes/ResponseStatus/GlobalErrorCode"/>
+        </assign>
+        <assign value="Function Code Not Map">
+            <output path="$MessageAssembly3/InquiryInsuranceHealthcareRes/ResponseStatus/GlobalErrorDescription"/>
+        </assign>
+    </mappingDeclaration>
+</mappingRoot>

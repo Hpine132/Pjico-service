@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ComIbmCompute.msgnode="ComIbmCompute.msgnode" xmlns:ComIbmFlowOrder.msgnode="ComIbmFlowOrder.msgnode" xmlns:ComIbmLabel.msgnode="ComIbmLabel.msgnode" xmlns:ComIbmMSLMapping.msgnode="ComIbmMSLMapping.msgnode" xmlns:ComIbmRoute.msgnode="ComIbmRoute.msgnode" xmlns:ComIbmWSRequest.msgnode="ComIbmWSRequest.msgnode" xmlns:ErrorHandlers_HTTPXml_Subflows_HandleHTTPXml.subflow="ErrorHandlers/HTTPXml/Subflows/HandleHTTPXml.subflow" xmlns:Log_Subflows_publishBackendLogEnd.subflow="Log/Subflows/publishBackendLogEnd.subflow"
+    xmlns:Log_Subflows_publishBackendLogStart.subflow="Log/Subflows/publishBackendLogStart.subflow" xmlns:Version1_ProvideRequiredCarInsurance_Subflows_Gettoken.subflow="Version1/ProvideRequiredCarInsurance/Subflows/Gettoken.subflow" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:eflow="http://www.ibm.com/wbi/2005/eflow" xmlns:utility="http://www.ibm.com/wbi/2005/eflow_utility" nsURI="Version1/ProvideRequiredCarInsurance/Subflows/ProvideRequiredCarInsurance.subflow" nsPrefix="Version1_ProvideRequiredCarInsurance_Subflows_ProvideRequiredCarInsurance.subflow">
+  <eClassifiers xmi:type="eflow:FCMComposite" name="FCMComposite_1" useDefaults="true" udpSupport="true" nodeLayoutStyle="RECTANGLE">
+    <eSuperTypes href="http://www.ibm.com/wbi/2005/eflow#//FCMBlock"/>
+    <translation xmi:type="utility:TranslatableString" key="ProvideRequiredCarInsurance" bundleName="Version1/ProvideRequiredCarInsurance/Subflows/ProvideRequiredCarInsurance" pluginId="ApplicationInsuranceService"/>
+    <colorGraphic16 xmi:type="utility:GIFFileGraphic" resourceName="platform:/plugin/ApplicationInsuranceService/icons/full/obj16/ProvideRequiredCarInsurance.gif"/>
+    <colorGraphic32 xmi:type="utility:GIFFileGraphic" resourceName="platform:/plugin/ApplicationInsuranceService/icons/full/obj30/ProvideRequiredCarInsurance.gif"/>
+    <composition>
+      <nodes xmi:type="eflow:FCMSink" xmi:id="OutTerminal.Output" location="1872,246">
+        <translation xmi:type="utility:TranslatableString" key="OutTerminal.Output" bundleName="Version1/ProvideRequiredCarInsurance/Subflows/ProvideRequiredCarInsurance" pluginId="ApplicationInsuranceService"/>
+      </nodes>
+      <nodes xmi:type="ComIbmLabel.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_1" location="9,221" labelName="ProvideRequiredCarInsurance_1">
+        <translation xmi:type="utility:ConstantString" string="ProvideRequiredCarInsuranceBANCAS"/>
+      </nodes>
+      <nodes xmi:type="ComIbmRoute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_2" location="192,220">
+        <outTerminals terminalNodeID="BANCAS" dynamic="true" label="BANCAS"/>
+        <outTerminals terminalNodeID="PREMIA" dynamic="true" label="PREMIA"/>
+        <translation xmi:type="utility:ConstantString" string="CheckFuncCode"/>
+        <filterTable filterPattern="$Root/XMLNSC/cus:ProvideRequiredCarInsuranceReq/cus:BodyReq/cus:FunctionCode='APPIN-PROREQCARINS-BANCAS'" routingOutputTerminal="BANCAS"/>
+        <filterTable filterPattern="$Root/XMLNSC/cus:ProvideRequiredCarInsuranceReq/cus:BodyReq/cus:FunctionCode='APPIN-PROREQCARINS-WS-PREMIA'" routingOutputTerminal="PREMIA"/>
+        <nsMappingTable nsPrefix="cus" namespace="http://www.pjico.com.vn/entity/vn/applicationinsurance/applicationinsuranceservice/1"/>
+        <nsMappingTable nsPrefix="com" namespace="http://www.pjico.com.vn/common/envelope/commonheader/1"/>
+      </nodes>
+      <nodes xmi:type="ComIbmMSLMapping.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_7" location="874,39" mappingExpression="msl://{Version1.ProvideRequiredCarInsuranceBANCAS.Mappings}#FunctionCodeNotMap">
+        <translation xmi:type="utility:ConstantString" string="FunctionCodeNotMap"/>
+      </nodes>
+      <nodes xmi:type="Log_Subflows_publishBackendLogEnd.subflow:FCMComposite_1" xmi:id="FCMComposite_1_9" location="1411,149">
+        <translation xmi:type="utility:ConstantString" string="publishBackendLogEnd"/>
+      </nodes>
+      <nodes xmi:type="Log_Subflows_publishBackendLogStart.subflow:FCMComposite_1" xmi:id="FCMComposite_1_10" location="834,144">
+        <translation xmi:type="utility:ConstantString" string="publishBackendLogStart"/>
+      </nodes>
+      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_11" location="575,232" computeExpression="esql://routine/Version1.ProvideRequiredCarInsurance.ESQLs#BuildRequest.Main" computeMode="destinationAndMessage">
+        <translation xmi:type="utility:ConstantString" string="BuildReqPREMIA"/>
+      </nodes>
+      <nodes xmi:type="ComIbmWSRequest.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_12" location="767,233" URLSpecifier="http://host">
+        <translation xmi:type="utility:ConstantString" string="HTTP Request1"/>
+      </nodes>
+      <nodes xmi:type="ComIbmFlowOrder.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_16" location="1157,233">
+        <translation xmi:type="utility:ConstantString" string="Flow Order1"/>
+      </nodes>
+      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_17" location="1407,240" computeExpression="esql://routine/Version1.ProvideRequiredCarInsurance.ESQLs#BuildResponse.Main">
+        <translation xmi:type="utility:ConstantString" string="BuildResPREMIA"/>
+      </nodes>
+      <nodes xmi:type="ComIbmMSLMapping.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_18" location="1604,243" mappingExpression="msl://{Version1.ProvideRequiredCarInsurance.Mappings}#MappingPREMIA">
+        <translation xmi:type="utility:ConstantString" string="MappingResponsePREMIA"/>
+      </nodes>
+      <nodes xmi:type="Version1_ProvideRequiredCarInsurance_Subflows_Gettoken.subflow:FCMComposite_1" xmi:id="FCMComposite_1_19" location="384,232">
+        <translation xmi:type="utility:ConstantString" string="Gettoken"/>
+      </nodes>
+      <nodes xmi:type="ErrorHandlers_HTTPXml_Subflows_HandleHTTPXml.subflow:FCMComposite_1" xmi:id="FCMComposite_1_13" location="962,232">
+        <translation xmi:type="utility:ConstantString" string="HandleHTTPXml"/>
+      </nodes>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_1" targetNode="FCMComposite_1_2" sourceNode="FCMComposite_1_1" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_15" targetNode="FCMComposite_1_12" sourceNode="FCMComposite_1_11" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_22" targetNode="FCMComposite_1_17" sourceNode="FCMComposite_1_16" sourceTerminalName="OutTerminal.second" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_16" targetNode="FCMComposite_1_10" sourceNode="FCMComposite_1_11" sourceTerminalName="OutTerminal.out1" targetTerminalName="InTerminal.Input"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_21" targetNode="FCMComposite_1_9" sourceNode="FCMComposite_1_16" sourceTerminalName="OutTerminal.first" targetTerminalName="InTerminal.Input"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_26" targetNode="OutTerminal.Output" sourceNode="FCMComposite_1_18" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_27" targetNode="FCMComposite_1_18" sourceNode="FCMComposite_1_17" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_28" targetNode="FCMComposite_1_11" sourceNode="FCMComposite_1_19" sourceTerminalName="OutTerminal.Output" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_29" targetNode="FCMComposite_1_19" sourceNode="FCMComposite_1_2" sourceTerminalName="PREMIA" targetTerminalName="InTerminal.Input"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_2" targetNode="FCMComposite_1_16" sourceNode="FCMComposite_1_13" sourceTerminalName="OutTerminal.Output" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_8" targetNode="FCMComposite_1_13" sourceNode="FCMComposite_1_12" sourceTerminalName="OutTerminal.failure" targetTerminalName="InTerminal.Input"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_12" targetNode="FCMComposite_1_13" sourceNode="FCMComposite_1_12" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.Input2"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_13" targetNode="FCMComposite_1_13" sourceNode="FCMComposite_1_12" sourceTerminalName="OutTerminal.error" targetTerminalName="InTerminal.Input1"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_3" targetNode="FCMComposite_1_7" sourceNode="FCMComposite_1_2" sourceTerminalName="OutTerminal.default" targetTerminalName="InTerminal.in">
+        <bendPoints>162,-182,-520,-1</bendPoints>
+      </connections>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_4" targetNode="OutTerminal.Output" sourceNode="FCMComposite_1_7" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in">
+        <bendPoints>651,4,-341,-203</bendPoints>
+      </connections>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_5" targetNode="FCMComposite_1_18" sourceNode="FCMComposite_1_11" sourceTerminalName="OutTerminal.out2" targetTerminalName="InTerminal.in">
+        <bendPoints>296,101,-733,90</bendPoints>
+        <bendPoints>519,99,-510,88</bendPoints>
+        <bendPoints>740,94,-289,83</bendPoints>
+      </connections>
+    </composition>
+    <propertyOrganizer/>
+    <stickyBoard/>
+  </eClassifiers>
+</ecore:EPackage>

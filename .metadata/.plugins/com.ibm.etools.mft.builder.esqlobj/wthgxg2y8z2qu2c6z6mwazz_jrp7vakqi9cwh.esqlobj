@@ -1,0 +1,4 @@
+CREATE PROCEDURE validateInputRegex(IN input CHAR, IN regex CHAR)
+RETURNS boolean
+LANGUAGE JAVA
+EXTERNAL NAME "utils.soa.SOASecurity.validateInput";

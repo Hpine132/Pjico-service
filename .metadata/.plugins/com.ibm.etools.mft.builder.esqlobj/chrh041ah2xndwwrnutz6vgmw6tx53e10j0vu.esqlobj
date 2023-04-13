@@ -1,0 +1,13 @@
+CREATE PROCEDURE throwGeneralException(INOUT rootEx REFERENCE)
+	BEGIN
+		DECLARE ex REFERENCE TO rootEx;
+		CALL moveToFinalException(ex);
+		
+		CASE ex.Catalog
+		-- Rethrow SOAEXCEPTION
+		WHEN 'SOAEXCEPTION' THEN
+			CALL rethrowSOAException(ex);
+		ELSE
+			CALL throwSOAException(001, CAST(ex.Number AS CHARACTER), ex.Text);
+		END CASE;
+	END;

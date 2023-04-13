@@ -1,0 +1,272 @@
+BROKER SCHEMA Version1.ProvideInsuranceBancas.ESQLS
+
+DECLARE ProvideRequiredCarBancasUrl EXTERNAL CHARACTER '';
+DECLARE ProvideRequiredCarBancasTimeOut EXTERNAL CHARACTER '';
+
+CREATE COMPUTE MODULE RequiredCarRequest
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		-- CALL CopyMessageHeaders();
+		-- CALL CopyEntireMessage();
+		
+		SET OutputRoot.Properties =InputRoot.Properties;
+		SET OutputRoot.HTTPRequestHeader."Content-Type"= 'application/json';
+        DECLARE bodyReqRef REFERENCE TO InputRoot.XMLNSC.ns:ProvideInsuranceBancasReq.ns:BodyReq;
+        
+        --Validate Req
+        DECLARE bankCode char bodyReqRef.ns:PolicyInfo.BankCode;
+        DECLARE bankBranch char bodyReqRef.ns:PolicyInfo.BankBranch;
+        DECLARE party char bodyReqRef.ns:Party.ns32:PartyInfo.ns32:PartyType;
+        DECLARE idNo char bodyReqRef.ns:Party.ns32:PersonalPartyInfo.ns32:IDInfo.com:IDNo;
+        DECLARE effectiveDate char bodyReqRef.ns:PolicyInfo.EffectiveDate;
+        DECLARE expiredDate char bodyReqRef.ns:PolicyInfo.ExpiredDate;
+        DECLARE issueDt char bodyReqRef.ns:PolicyInfo.IssueDt;
+        DECLARE type char bodyReqRef.ns:VehicleInfo.Type;
+        
+        DECLARE DataProvideInsuranceBancas REFERENCE TO OutputRoot.JSON.DataProvideInsuranceBancas;
+        
+        CALL Service.Utils.ESQLs.InputValidate(1, 'BankCode', bankCode, true, true, 999, DataProvideInsuranceBancas);
+        CALL Service.Utils.ESQLs.InputValidate(2, 'BankBranch', bankBranch, true, true, 999, DataProvideInsuranceBancas);
+        CALL Service.Utils.ESQLs.InputValidate(3, 'PartyType', party, true, true, 999, DataProvideInsuranceBancas);
+        CALL Service.Utils.ESQLs.InputValidate(4, 'IDNo', idNo, true, true, 999, DataProvideInsuranceBancas);
+        CALL Service.Utils.ESQLs.InputValidate(5, 'EffectiveDate', effectiveDate, true, true, 999, DataProvideInsuranceBancas);
+        CALL Service.Utils.ESQLs.InputValidate(6, 'ExpiredDate', expiredDate, true, true, 999, DataProvideInsuranceBancas);
+        CALL Service.Utils.ESQLs.InputValidate(7, 'IssueDt', issueDt, true, true, 999, DataProvideInsuranceBancas);
+        CALL Service.Utils.ESQLs.InputValidate(8, 'Type', type, true, true, 999, DataProvideInsuranceBancas);
+        
+        DECLARE  ErrorDesc CHARACTER;
+		SET ErrorDesc = Service.Utils.ESQLs.validateRequest(DataProvideInsuranceBancas);
+		DELETE FIELD OutputRoot.JSON.DataProvideInsuranceBancas; 
+		IF ErrorDesc <> 'OK' THEN
+			SET OutputRoot.XMLNSC.ns:ProvideInsuranceBancasRes.commonheader:Header = InputRoot.XMLNSC.ns:ProvideInsuranceBancasReq.commonheader:Header;
+--			SET OutputRoot.XMLNSC.ns:ProvideInsuranceBancasRes.commonheader:Header = Environment.Variables.SOAVariables.*:SOAEnvelope.*:ServiceBody.*[1].*:Header;
+			SET OutputRoot.XMLNSC.ns:ProvideInsuranceBancasRes.commonheader:ResponseStatus.commonheader:Status = '1';
+			SET OutputRoot.XMLNSC.ns:ProvideInsuranceBancasRes.commonheader:ResponseStatus.commonheader:GlobalErrorCode = '002';
+			SET OutputRoot.XMLNSC.ns:ProvideInsuranceBancasRes.commonheader:ResponseStatus.commonheader:GlobalErrorDescription = 'Invalid input data';
+			SET OutputRoot.XMLNSC.ns:ProvideInsuranceBancasRes.commonheader:ResponseStatus.commonheader:ErrorInfo[1].commonheader:SourceAppID = 'ESB';
+			SET OutputRoot.XMLNSC.ns:ProvideInsuranceBancasRes.commonheader:ResponseStatus.commonheader:ErrorInfo[1].commonheader:ErrorCode = '002';
+			SET OutputRoot.XMLNSC.ns:ProvideInsuranceBancasRes.commonheader:ResponseStatus.commonheader:ErrorInfo[1].commonheader:ErrorDesc = ErrorDesc;
+
+			PROPAGATE TO TERMINAL 'out2' FINALIZE NONE DELETE NONE;
+		ELSE
+        
+        --Build Req
+        --ID & password
+		SET OutputRoot.JSON.Data.partnerId = COALESCE(bodyReqRef.ns:PartnerId, '');
+		SET OutputRoot.JSON.Data.methodId = COALESCE(bodyReqRef.ns:MethodId, '');
+		SET OutputRoot.JSON.Data.dealerId = COALESCE(bodyReqRef.ns:DealerId, '');
+		SET OutputRoot.JSON.Data.passWord = COALESCE(bodyReqRef.ns:PassWord, '');
+		
+		--PolicyInfo & PartyInfo
+		SET OutputRoot.JSON.Data.data.bank_code = COALESCE(bodyReqRef.ns:PolicyInfo.BankCode, '');
+		SET OutputRoot.JSON.Data.data.bank_branch = COALESCE(bodyReqRef.ns:PolicyInfo.BankBranch, '');
+		SET OutputRoot.JSON.Data.data.category_code = COALESCE(bodyReqRef.ns:PolicyInfo.CategoryCode, '');
+		SET OutputRoot.JSON.Data.data.cust_type = COALESCE(bodyReqRef.ns:Party.ns32:PartyInfo.ns32:PartyType, '');
+		SET OutputRoot.JSON.Data.data.cust_name = COALESCE(bodyReqRef.ns:Party.ns32:PartyName, '');
+		SET OutputRoot.JSON.Data.data.cust_dob = COALESCE(bodyReqRef.ns:Party.ns32:PersonalPartyInfo.ns32:BirthDt, '');
+		SET OutputRoot.JSON.Data.data.cust_gender = COALESCE(bodyReqRef.ns:Party.ns32:PersonalPartyInfo.ns32:Gender, '');
+		SET OutputRoot.JSON.Data.data.cust_phone = COALESCE(bodyReqRef.ns:Party.ns32:PartyInfo.ns32:ContactInfo.com:PhoneInfo[<].com:PhoneNo, '');
+		SET OutputRoot.JSON.Data.data.cust_email = COALESCE(bodyReqRef.ns:Party.ns32:PartyInfo.ns32:ContactInfo.com:MailInfo[<].com:EmailAdress,'');
+		SET OutputRoot.JSON.Data.data.cust_id = COALESCE(bodyReqRef.ns:Party.ns32:PersonalPartyInfo.ns32:IDInfo.com:IDNo, '');
+		SET OutputRoot.JSON.Data.data.cust_id_issue_place = COALESCE(bodyReqRef.ns:Party.ns32:PersonalPartyInfo.ns32:IDInfo.com:IDIssueBy, '');
+		SET OutputRoot.JSON.Data.data.cust_id_issue_dt = COALESCE(bodyReqRef.ns:Party.ns32:PersonalPartyInfo.ns32:IDInfo.com:IDIssueDate, '');
+		SET OutputRoot.JSON.Data.data.cust_address = COALESCE(bodyReqRef.ns:Party.ns32:PersonalPartyInfo.ns32:ContactInfo.com:AddressInfo.com:Address, '');
+			
+        --LoanInfo
+		SET OutputRoot.JSON.Data.data.loan_code = COALESCE(bodyReqRef.ns:PolicyInfo.LoanCode, '');
+		SET OutputRoot.JSON.Data.data.effective_date = COALESCE(bodyReqRef.ns:PolicyInfo.EffectiveDate, '');
+		SET OutputRoot.JSON.Data.data.expired_date = COALESCE(bodyReqRef.ns:PolicyInfo.ExpiredDate, '');
+		SET OutputRoot.JSON.Data.data.issue_date = COALESCE(bodyReqRef.ns:PolicyInfo.IssueDt, '');
+		SET OutputRoot.JSON.Data.data.premium = COALESCE(bodyReqRef.ns:FeeInfo.acc:Premium, '');
+		SET OutputRoot.JSON.Data.data.vat = COALESCE(bodyReqRef.ns:FeeInfo.acc:VAT, '');
+		SET OutputRoot.JSON.Data.data.amount = COALESCE(bodyReqRef.ns:FeeInfo.acc:Amount, '');
+		
+		--VehicleInfo
+		SET OutputRoot.JSON.Data.data.license_plate = COALESCE(bodyReqRef.ns:VehicleInfo.LicensePlate, '');
+		SET OutputRoot.JSON.Data.data.chassis_no = COALESCE(bodyReqRef.ns:VehicleInfo.ChassisNo, '');
+		SET OutputRoot.JSON.Data.data.machine_no = COALESCE(bodyReqRef.ns:VehicleInfo.EngineNo, '');
+		SET OutputRoot.JSON.Data.data.v_type = COALESCE(bodyReqRef.ns:VehicleInfo.Type, '');
+		SET OutputRoot.JSON.Data.data.brand_code = COALESCE(bodyReqRef.ns:VehicleInfo.BrandCode, '');
+		SET OutputRoot.JSON.Data.data.model_code = COALESCE(bodyReqRef.ns:VehicleInfo.ModelCode, '');
+		SET OutputRoot.JSON.Data.data.price = COALESCE(bodyReqRef.ns:VehicleInfo.Price, '');
+		SET OutputRoot.JSON.Data.data.usage = COALESCE(bodyReqRef.ns:VehicleInfo.UsePurpose, '');
+		SET OutputRoot.JSON.Data.data.v_foreign = COALESCE(bodyReqRef.ns:VehicleInfo.ForeignFlag,'');
+		SET OutputRoot.JSON.Data.data.prod_month_year = COALESCE(bodyReqRef.ns:VehicleInfo.ProdMonthYear,'');
+
+		--PolicyOptionList
+		DECLARE I INTEGER 1;
+		DECLARE code  CHARACTER '';
+		DECLARE subcode  CHARACTER '';
+		FOR policyOption AS  bodyReqRef.ns:PolicyOptionList.PolicyOption[] DO
+			SET code =  bodyReqRef.ns:PolicyOptionList.PolicyOption[I].Code;	
+			--G	
+			IF code = 'G' THEN
+				DECLARE J INTEGER 1;
+				FOR subOption AS  policyOption.SubOptionList.PolicySubOption[] DO
+					SET subcode = policyOption.SubOptionList.PolicySubOption[J].Code;
+					IF subcode = 'G1' THEN
+						SET OutputRoot.JSON.Data.data.g1_si = bodyReqRef.ns:PolicyOptionList.PolicyOption[I].SubOptionList.PolicySubOption[J].AmountInfo.com:Amount;
+						SET OutputRoot.JSON.Data.data.g1_premium = bodyReqRef.ns:PolicyOptionList.PolicyOption[I].SubOptionList.PolicySubOption[J].FeeInfo.acc:Premium;
+					ELSEIF subcode = 'G2' THEN
+						SET OutputRoot.JSON.Data.data.g2_si = bodyReqRef.ns:PolicyOptionList.PolicyOption[I].SubOptionList.PolicySubOption[J].AmountInfo.com:Amount;
+						SET OutputRoot.JSON.Data.data.g2_premium = bodyReqRef.ns:PolicyOptionList.PolicyOption[I].SubOptionList.PolicySubOption[J].FeeInfo.acc:Premium;
+					ELSEIF subcode = 'G3' THEN
+						SET OutputRoot.JSON.Data.data.g3_si = bodyReqRef.ns:PolicyOptionList.PolicyOption[I].SubOptionList.PolicySubOption[J].AmountInfo.com:Amount;
+						SET OutputRoot.JSON.Data.data.g3_premium = bodyReqRef.ns:PolicyOptionList.PolicyOption[I].SubOptionList.PolicySubOption[J].FeeInfo.acc:Premium;
+					END IF;
+					SET J = J + 1;
+				END FOR;
+				SET OutputRoot.JSON.Data.data.g_premium = bodyReqRef.ns:PolicyOptionList.PolicyOption[I].FeeInfo.acc:Premium;
+				SET OutputRoot.JSON.Data.data.g_vat = bodyReqRef.ns:PolicyOptionList.PolicyOption[I].FeeInfo.acc:VAT;
+				SET OutputRoot.JSON.Data.data.g_amount = bodyReqRef.ns:PolicyOptionList.PolicyOption[I].FeeInfo.acc:Amount;        
+        
+            --C
+        	ELSEIF code = 'IS_C' THEN
+				SET OutputRoot.JSON.Data.data.is_c = '1';
+				SET OutputRoot.JSON.Data.data.c_si = bodyReqRef.ns:PolicyOptionList.PolicyOption[I].AmountInfo.com:Amount;
+				SET OutputRoot.JSON.Data.data.seat_no = bodyReqRef.ns:PolicyOptionList.PolicyOption[I].SeatNo;
+				SET OutputRoot.JSON.Data.data.c_premium = bodyReqRef.ns:PolicyOptionList.PolicyOption[I].FeeInfo.acc:Premium;
+				SET OutputRoot.JSON.Data.data.c_vat = bodyReqRef.ns:PolicyOptionList.PolicyOption[I].FeeInfo.acc:VAT;
+				SET OutputRoot.JSON.Data.data.c_amount = bodyReqRef.ns:PolicyOptionList.PolicyOption[I].FeeInfo.acc:Amount;
+        
+            --D
+        	ELSEIF code = 'IS_D' THEN
+				SET OutputRoot.JSON.Data.data.is_d = '1';
+				SET OutputRoot.JSON.Data.data.d_type = bodyReqRef.ns:PolicyOptionList.PolicyOption[I].Type;
+				SET OutputRoot.JSON.Data.data.d_level = bodyReqRef.ns:PolicyOptionList.PolicyOption[I].Level;
+				SET OutputRoot.JSON.Data.data.cargo_w = bodyReqRef.ns:PolicyOptionList.PolicyOption[I].CargoW;
+				SET OutputRoot.JSON.Data.data.no_passenger = bodyReqRef.ns:PolicyOptionList.PolicyOption[I].PassengerNumber;
+				
+				DECLARE J INTEGER 1;
+				FOR subOption AS  bodyReqRef.ns:PolicyOptionList.PolicyOption[I].SubOptionList.PolicySubOption[] DO
+					DECLARE subOption1 REFERENCE TO bodyReqRef.ns:PolicyOptionList.PolicyOption[I].SubOptionList.PolicySubOption[J]; 
+					SET subcode =  subOption1.Code;
+					IF subcode = 'D_PERSONAL' THEN
+						SET OutputRoot.JSON.Data.data.d_personal_si = subOption1.AmountInfo.com:Amount;
+						SET OutputRoot.JSON.Data.data.d1_premium = subOption1.FeeInfo.acc:Premium;
+					ELSEIF subcode = 'D_GOOD' THEN
+						SET OutputRoot.JSON.Data.data.d_good_si = subOption1.AmountInfo.com:Amount;
+						SET OutputRoot.JSON.Data.data.d2_premium = subOption1.FeeInfo.acc:Premium;
+					ELSEIF subcode = 'D_PASSENGER' THEN
+						SET OutputRoot.JSON.Data.data.d_passenger_si = subOption1.AmountInfo.com:Amount;
+						SET OutputRoot.JSON.Data.data.d3_premium = subOption1.FeeInfo.acc:Premium;
+					END IF;
+					SET J = J + 1;
+				END FOR;
+				
+				SET OutputRoot.JSON.Data.data.d_premium = bodyReqRef.ns:PolicyOptionList.PolicyOption[I].FeeInfo.acc:Premium;
+				SET OutputRoot.JSON.Data.data.d_vat = bodyReqRef.ns:PolicyOptionList.PolicyOption[I].FeeInfo.acc:VAT;
+				SET OutputRoot.JSON.Data.data.d_amount = bodyReqRef.ns:PolicyOptionList.PolicyOption[I].FeeInfo.acc:Amount;
+				SET OutputRoot.JSON.Data.data.d_max_si = bodyReqRef.ns:PolicyOptionList.PolicyOption[I].AmountInfo.com:Amount;
+        
+            --E
+        	ELSEIF code = 'IS_E' THEN
+				SET OutputRoot.JSON.Data.data.is_e = '1';
+				SET OutputRoot.JSON.Data.data.e_type = bodyReqRef.ns:PolicyOptionList.PolicyOption[I].Type;
+--			    SET OutputRoot.JSON.Data.data.e_si = bodyReqRef.ns:PolicyOptionList.PolicyOption[I].AmountInfo.com:Amount;
+				DECLARE J INTEGER 1;
+				FOR subOption AS  bodyReqRef.ns:PolicyOptionList.PolicyOption[I].SubOptionList.PolicySubOption[] DO
+					DECLARE subOption1 REFERENCE TO bodyReqRef.ns:PolicyOptionList.PolicyOption[I].SubOptionList.PolicySubOption[J]; 
+					SET subcode =  subOption1.Code;
+					IF subcode = 'E_HH' THEN
+						SET OutputRoot.JSON.Data.data.e_si = subOption1.AmountInfo.com:Amount;
+						SET OutputRoot.JSON.Data.data.e_hh_premium = subOption1.FeeInfo.acc:Premium;
+					ELSEIF subcode = 'E_HHCC' THEN
+						SET OutputRoot.JSON.Data.data.e_hhcc_si = subOption1.AmountInfo.com:Amount;
+						SET OutputRoot.JSON.Data.data.e_hhcc_premium = subOption1.FeeInfo.acc:Premium;
+					END IF;
+					SET J = J + 1;
+				END FOR;
+				SET OutputRoot.JSON.Data.data.e_deduc = bodyReqRef.ns:PolicyOptionList.PolicyOption[I].LossInfo.Deduc;
+				SET OutputRoot.JSON.Data.data.e_min_deduc = bodyReqRef.ns:PolicyOptionList.PolicyOption[I].LossInfo.MinDeduc;
+				SET OutputRoot.JSON.Data.data.e_premium = bodyReqRef.ns:PolicyOptionList.PolicyOption[I].FeeInfo.acc:Premium;
+				SET OutputRoot.JSON.Data.data.e_vat = bodyReqRef.ns:PolicyOptionList.PolicyOption[I].FeeInfo.acc:VAT;
+				SET OutputRoot.JSON.Data.data.e_amount = bodyReqRef.ns:PolicyOptionList.PolicyOption[I].FeeInfo.acc:Amount;
+			
+			--F	
+        	ELSEIF code = 'IS_F' THEN
+				SET OutputRoot.JSON.Data.data.is_f = '1';
+				SET OutputRoot.JSON.Data.data.f_si = bodyReqRef.ns:PolicyOptionList.PolicyOption[I].AmountInfo.com:Amount;
+				SET OutputRoot.JSON.Data.data.f_person = bodyReqRef.ns:PolicyOptionList.PolicyOption[I].FPersonal;
+				SET OutputRoot.JSON.Data.data.f_premium = bodyReqRef.ns:PolicyOptionList.PolicyOption[I].FeeInfo.acc:Premium;
+				SET OutputRoot.JSON.Data.data.f_vat = bodyReqRef.ns:PolicyOptionList.PolicyOption[I].FeeInfo.acc:VAT;
+				SET OutputRoot.JSON.Data.data.f_amount = bodyReqRef.ns:PolicyOptionList.PolicyOption[I].FeeInfo.acc:Amount;
+			END IF;
+			SET  I = I + 1;
+			END FOR;
+			
+			--TaxCode & InvOrg
+			SET OutputRoot.JSON.Data.data.tax_code = COALESCE(bodyReqRef.ns:TaxCode, '');
+			SET OutputRoot.JSON.Data.data.inv_org_name = COALESCE(bodyReqRef.ns:InvOrgName, '');
+			SET OutputRoot.JSON.Data.data.inv_org_tax_code = COALESCE(bodyReqRef.ns:InvOrgTaxCode, '');
+			SET OutputRoot.JSON.Data.data.inv_org_address = COALESCE(bodyReqRef.ns:InvOrdAddress, '');
+			SET OutputRoot.JSON.Data.data.inv_org_rev_address = COALESCE(bodyReqRef.ns:InvOrdReAddress, '');
+			SET OutputRoot.JSON.Data.data.ben_address = COALESCE(bodyReqRef.ns:BenAddress, '');
+			SET OutputRoot.JSON.Data.data.ben_name = COALESCE(bodyReqRef.ns:BenName, '');
+			SET OutputRoot.JSON.Data.data.ref_no = COALESCE(bodyReqRef.ns:RefNo, '');
+			SET OutputRoot.JSON.Data.data.v_image = COALESCE(bodyReqRef.ns:VImange, '');
+			
+			--p List
+			DECLARE K INTEGER 1;
+			DECLARE changeCode  CHARACTER '';
+			FOR changeOption AS  bodyReqRef.ns:ChangeOptionList.ChangeOption[] DO
+				SET code =  bodyReqRef.ns:ChangeOptionList.ChangeOption[K].Code;
+				IF code = 'P' THEN
+					SET OutputRoot.JSON.Data.data.p_inc_dec = bodyReqRef.ns:ChangeOptionList.ChangeOption[K].IncDesc;
+					SET OutputRoot.JSON.Data.data.p_ratio = bodyReqRef.ns:ChangeOptionList.ChangeOption[K].Ratio;
+					SET OutputRoot.JSON.Data.data.p_amount = bodyReqRef.ns:ChangeOptionList.ChangeOption[K].Amount;
+				ELSEIF code = 'P_C' THEN
+					SET OutputRoot.JSON.Data.data.p_c_inc_dec = bodyReqRef.ns:ChangeOptionList.ChangeOption[K].IncDesc;
+					SET OutputRoot.JSON.Data.data.p_c_ratio = bodyReqRef.ns:ChangeOptionList.ChangeOption[K].Ratio;
+					SET OutputRoot.JSON.Data.data.p_c_amount = bodyReqRef.ns:ChangeOptionList.ChangeOption[K].Amount;
+				ELSEIF code = 'P_D' THEN
+					SET OutputRoot.JSON.Data.data.p_d_inc_dec = bodyReqRef.ns:ChangeOptionList.ChangeOption[K].IncDesc;
+					SET OutputRoot.JSON.Data.data.p_d_ratio = bodyReqRef.ns:ChangeOptionList.ChangeOption[K].Ratio;
+					SET OutputRoot.JSON.Data.data.p_d_amount = bodyReqRef.ns:ChangeOptionList.ChangeOption[K].Amount;
+				ELSEIF code = 'P_E' THEN
+					SET OutputRoot.JSON.Data.data.p_e_inc_dec = bodyReqRef.ns:ChangeOptionList.ChangeOption[K].IncDesc;
+					SET OutputRoot.JSON.Data.data.p_e_ratio = bodyReqRef.ns:ChangeOptionList.ChangeOption[K].Ratio;
+					SET OutputRoot.JSON.Data.data.p_e_amount = bodyReqRef.ns:ChangeOptionList.ChangeOption[K].Amount;
+				ELSEIF code = 'P_F' THEN
+					SET OutputRoot.JSON.Data.data.p_f_inc_dec = bodyReqRef.ns:ChangeOptionList.ChangeOption[K].IncDesc;
+					SET OutputRoot.JSON.Data.data.p_f_ratio = bodyReqRef.ns:ChangeOptionList.ChangeOption[K].Ratio;
+					SET OutputRoot.JSON.Data.data.p_f_amount = bodyReqRef.ns:ChangeOptionList.ChangeOption[K].Amount;
+				END IF;
+				SET K = K + 1;
+			END FOR;
+			
+			SET OutputRoot.JSON.Data.data.notes = COALESCE(bodyReqRef.ns:Notes, '');
+			SET OutputRoot.JSON.Data.data.product_id = COALESCE(bodyReqRef.ns:ProductId, '');
+			
+			SET OutputLocalEnvironment.Destination.HTTP.RequestURL = ProvideRequiredCarBancasUrl;
+			SET OutputLocalEnvironment.Destination.HTTP.Timeout = ProvideRequiredCarBancasTimeOut;
+				
+			DECLARE addInfo reference to Environment.Variables.SOAVariables.soa:SOAEnvelope.soa:SOAServiceHeader.soa:SOACommonDetail.commonheader:AdditionalInformation;
+			DECLARE addIndx INTEGER CARDINALITY(Environment.Variables.SOAVariables.soa:SOAEnvelope.soa:SOAServiceHeader.soa:SOACommonDetail.commonheader:AdditionalInformation.commonheader:NameValuePairs[]);
+			SET addInfo.commonheader:NameValuePairs[addIndx+1].commonheader:Name = 'TARGETID';
+			SET addInfo.commonheader:NameValuePairs[addIndx+1].commonheader:Value = 'BANCAS';
+			
+			SET addInfo.commonheader:NameValuePairs[addIndx+2].commonheader:Name = 'TARGETSERVICE';
+			SET addInfo.commonheader:NameValuePairs[addIndx+2].commonheader:Value = 'REQUIREDCAR_BANCAS';
+
+				SET Environment.Variables.ServiceCallout.LogType = 'JSON';
+				DELETE FIELD OutputRoot.XMLNSC.DATA;
+			PROPAGATE TO TERMINAL 'out1' FINALIZE NONE DELETE NONE;	
+		RETURN TRUE;
+		END IF;
+	END;
+
+	CREATE PROCEDURE CopyMessageHeaders() BEGIN
+		DECLARE I INTEGER 1;
+		DECLARE J INTEGER;
+		SET J = CARDINALITY(InputRoot.*[]);
+		WHILE I < J DO
+			SET OutputRoot.*[I] = InputRoot.*[I];
+			SET I = I + 1;
+		END WHILE;
+	END;
+
+	CREATE PROCEDURE CopyEntireMessage() BEGIN
+		SET OutputRoot = InputRoot;
+	END;
+END MODULE;

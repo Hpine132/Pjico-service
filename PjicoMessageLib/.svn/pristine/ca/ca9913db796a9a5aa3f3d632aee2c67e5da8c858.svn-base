@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8"?><wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" targetNamespace="http://tempuri.org/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:tns="http://tempuri.org/">
+  <wsdl:documentation>
+    <wsdl:appinfo source="WMQI_APPINFO">
+      <MRWSDLAppInfo imported="true">
+        <generatedXSD location="webservice_1_InlineSchema1.xsd"/>
+        <binding hasEncoding="false" imported="true" name="WebServiceSoap12" originalBindingStyle="document"/>
+        <binding hasEncoding="false" imported="true" name="WebServiceSoap" originalBindingStyle="document"/>
+      </MRWSDLAppInfo>
+    </wsdl:appinfo>
+  </wsdl:documentation>
+  <wsdl:types>
+    
+          <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:ibmSchExtn="http://www.ibm.com/schema/extensions">
+<xsd:include schemaLocation="webservice_1_InlineSchema1.xsd"/>
+    </xsd:schema>
+    </wsdl:types>
+  <wsdl:message name="PJICO_SMSBRANDNAMESoapIn">
+    <wsdl:part element="tns:PJICO_SMSBRANDNAME" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="PJICO_SMSBRANDNAMESoapOut">
+    <wsdl:part element="tns:PJICO_SMSBRANDNAMEResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="PJICO_GIAMDINHSoapIn">
+    <wsdl:part element="tns:PJICO_GIAMDINH" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="PJICO_GIAMDINHSoapOut">
+    <wsdl:part element="tns:PJICO_GIAMDINHResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="WECAN_GIAMDINHSoapIn">
+    <wsdl:part element="tns:WECAN_GIAMDINH" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="WECAN_GIAMDINHSoapOut">
+    <wsdl:part element="tns:WECAN_GIAMDINHResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="WECAN_IMAGESSoapIn">
+    <wsdl:part element="tns:WECAN_IMAGES" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="WECAN_IMAGESSoapOut">
+    <wsdl:part element="tns:WECAN_IMAGESResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="WECAN_SMSBRANDNAMESoapIn">
+    <wsdl:part element="tns:WECAN_SMSBRANDNAME" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="WECAN_SMSBRANDNAMESoapOut">
+    <wsdl:part element="tns:WECAN_SMSBRANDNAMEResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="FTS_CLAIMSSoapIn">
+    <wsdl:part element="tns:FTS_CLAIMS" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="FTS_CLAIMSSoapOut">
+    <wsdl:part element="tns:FTS_CLAIMSResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="FTS_IMAGESSoapIn">
+    <wsdl:part element="tns:FTS_IMAGES" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="FTS_IMAGESSoapOut">
+    <wsdl:part element="tns:FTS_IMAGESResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:portType name="WebServiceSoap">
+    <wsdl:operation name="PJICO_SMSBRANDNAME">
+      <wsdl:input message="tns:PJICO_SMSBRANDNAMESoapIn"/>
+      <wsdl:output message="tns:PJICO_SMSBRANDNAMESoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="PJICO_GIAMDINH">
+      <wsdl:input message="tns:PJICO_GIAMDINHSoapIn"/>
+      <wsdl:output message="tns:PJICO_GIAMDINHSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="WECAN_GIAMDINH">
+      <wsdl:input message="tns:WECAN_GIAMDINHSoapIn"/>
+      <wsdl:output message="tns:WECAN_GIAMDINHSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="WECAN_IMAGES">
+      <wsdl:input message="tns:WECAN_IMAGESSoapIn"/>
+      <wsdl:output message="tns:WECAN_IMAGESSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="WECAN_SMSBRANDNAME">
+      <wsdl:input message="tns:WECAN_SMSBRANDNAMESoapIn"/>
+      <wsdl:output message="tns:WECAN_SMSBRANDNAMESoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="FTS_CLAIMS">
+      <wsdl:input message="tns:FTS_CLAIMSSoapIn"/>
+      <wsdl:output message="tns:FTS_CLAIMSSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="FTS_IMAGES">
+      <wsdl:input message="tns:FTS_IMAGESSoapIn"/>
+      <wsdl:output message="tns:FTS_IMAGESSoapOut"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WebServiceSoap" type="tns:WebServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="PJICO_SMSBRANDNAME">
+      <soap:operation soapAction="http://tempuri.org/PJICO_SMSBRANDNAME" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PJICO_GIAMDINH">
+      <soap:operation soapAction="http://tempuri.org/PJICO_GIAMDINH" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WECAN_GIAMDINH">
+      <soap:operation soapAction="http://tempuri.org/WECAN_GIAMDINH" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WECAN_IMAGES">
+      <soap:operation soapAction="http://tempuri.org/WECAN_IMAGES" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WECAN_SMSBRANDNAME">
+      <soap:operation soapAction="http://tempuri.org/WECAN_SMSBRANDNAME" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FTS_CLAIMS">
+      <soap:operation soapAction="http://tempuri.org/FTS_CLAIMS" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FTS_IMAGES">
+      <soap:operation soapAction="http://tempuri.org/FTS_IMAGES" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="WebServiceSoap12" type="tns:WebServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="PJICO_SMSBRANDNAME">
+      <soap12:operation soapAction="http://tempuri.org/PJICO_SMSBRANDNAME" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PJICO_GIAMDINH">
+      <soap12:operation soapAction="http://tempuri.org/PJICO_GIAMDINH" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WECAN_GIAMDINH">
+      <soap12:operation soapAction="http://tempuri.org/WECAN_GIAMDINH" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WECAN_IMAGES">
+      <soap12:operation soapAction="http://tempuri.org/WECAN_IMAGES" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WECAN_SMSBRANDNAME">
+      <soap12:operation soapAction="http://tempuri.org/WECAN_SMSBRANDNAME" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FTS_CLAIMS">
+      <soap12:operation soapAction="http://tempuri.org/FTS_CLAIMS" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FTS_IMAGES">
+      <soap12:operation soapAction="http://tempuri.org/FTS_IMAGES" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WebService">
+    <wsdl:port binding="tns:WebServiceSoap" name="WebServiceSoap">
+      <soap:address location="http://10.63.55.24:9092/webservice.asmx"/>
+    </wsdl:port>
+    <wsdl:port binding="tns:WebServiceSoap12" name="WebServiceSoap12">
+      <soap12:address location="http://10.63.55.24:9092/webservice.asmx"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,6 @@
+CREATE FUNCTION checkUserLDAP( IN directyServer CHAR, IN baseDN CHAR, IN userNameAdmin CHAR, IN passAdmin CHAR, IN userName CHAR) RETURNS CHARACTER
+BEGIN
+ 	DECLARE result CHARACTER ;
+ 	CALL checkUserLDAPWithJava(directyServer, baseDN, userNameAdmin, passAdmin, userName) INTO result;
+	RETURN result;
+END;

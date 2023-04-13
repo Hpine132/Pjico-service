@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?><mappingRoot xmlns="http://www.ibm.com/2008/ccl/Mapping" domainID="com.ibm.msl.mapping.xml" domainIDExtension="mb" mainMap="true" targetNamespace="Version1.CalculateCarResponsibility.Mappings" version="8.0.5.0" xmlns:map="Version1.CalculateCarResponsibility.Mappings">
+    <input path="jar:file://!com/ibm/etools/mft/map/xsds/assembly/Environment.xsd" var="var1"/>
+    <input path="mbsharedlib://ESBMessageLib/service/vn/payment/paymentService.xsd" var="var2"/>
+    <input path="mbsharedlib://ESBMessageLib/schema/Environment/EnvironmentVariables.xsd" var="var"/>
+    <input path="mbsharedlib://ESBMessageLib/schema/Environment/EnvironmentVariables.xsd" var="var3"/>
+    <output path="jar:file://!com/ibm/etools/mft/map/xsds/assembly/Environment.xsd" var="var4"/>
+    <output path="mbsharedlib://ESBMessageLib/service/vn/payment/paymentService.xsd" var="var5"/>
+    <generation engine="xquery"/>
+    <mappingDeclaration name="CalculateCarResponsibility_Mapping_Res">
+        <input path="$var1/mb:env(Environment)" var="Environment">
+            <cast path="$Environment/Variables/any" qualifier="SOAVariables" ref="var" var="any"/>
+        </input>
+        <input namespace="http://www.pjico.com.vn/entity/vn/payment/paymentservice/1" path="$var2/mb:msg(CalculateCarResponsibilityRes,assembly,XMLNSC,Properties)" var="MessageAssembly"/>
+        <output path="$var4/mb:env(Environment)" var="Environment1">
+            <cast path="$Environment1/Variables/any" qualifier="SOAVariables" ref="var" var="any1"/>
+        </output>
+        <output namespace="http://www.pjico.com.vn/entity/vn/payment/paymentservice/1" path="$var5/mb:msg(CalculateCarResponsibilityRes,assembly,XMLNSC,Properties)" var="MessageAssembly1"/>
+        <passthrough>
+            <input path="$Environment/."/>
+            <output path="$Environment1/."/>
+            <updates/>
+        </passthrough>
+        <move>
+            <input path="$MessageAssembly/Properties"/>
+            <output path="$MessageAssembly1/Properties"/>
+            <override>
+                <assign value="{ESBMessageLib}">
+                    <output path="$MessageAssembly1/Properties/MessageSet"/>
+                </assign>
+            </override>
+        </move>
+        <move>
+            <input path="$MessageAssembly/CalculateCarResponsibilityRes/BodyRes/FunctionCode"/>
+            <output path="$MessageAssembly1/CalculateCarResponsibilityRes/BodyRes/FunctionCode"/>
+        </move>
+        <move>
+            <input path="$MessageAssembly/CalculateCarResponsibilityRes/BodyRes/SumMoneyWithoutVat"/>
+            <output path="$MessageAssembly1/CalculateCarResponsibilityRes/BodyRes/SumMoneyWithoutVat"/>
+        </move>
+        <move>
+            <input path="$MessageAssembly/CalculateCarResponsibilityRes/BodyRes/Sum_Vat"/>
+            <output path="$MessageAssembly1/CalculateCarResponsibilityRes/BodyRes/Sum_Vat"/>
+        </move>
+        <move>
+            <input path="$MessageAssembly/CalculateCarResponsibilityRes/BodyRes/SumMoneyVat"/>
+            <output path="$MessageAssembly1/CalculateCarResponsibilityRes/BodyRes/SumMoneyVat"/>
+        </move>
+        <local>
+            <input path="$Environment/Variables/SOAVariables/SOAEnvelope/SOAServiceHeader/SOACommonDetail"/>
+            <output path="$MessageAssembly1/CalculateCarResponsibilityRes/Header/Common"/>
+            <move automap="true">
+                <input path="ServiceVersion"/>
+                <output path="ServiceVersion"/>
+            </move>
+            <move automap="true">
+                <input path="MessageId"/>
+                <output path="MessageId"/>
+            </move>
+            <move automap="true">
+                <input path="TransactionId"/>
+                <output path="TransactionId"/>
+            </move>
+            <move automap="true">
+                <input path="MessageTimestamp"/>
+                <output path="MessageTimestamp"/>
+            </move>
+            <move automap="true">
+                <input path="AdditionalInformation/NameValuePairs/Name"/>
+                <output path="AdditionalInformation/NameValuePairs/Name"/>
+            </move>
+            <move automap="true">
+                <input path="AdditionalInformation/NameValuePairs/Value"/>
+                <output path="AdditionalInformation/NameValuePairs/Value"/>
+            </move>
+            <move automap="true">
+                <input path="AdditionalInformation/Other"/>
+                <output path="AdditionalInformation/Other"/>
+            </move>
+        </local>
+        <local>
+            <input path="$Environment/Variables/SOAVariables/SOAEnvelope/SOAServiceHeader/ClientDetail"/>
+            <output path="$MessageAssembly1/CalculateCarResponsibilityRes/Header/Client"/>
+            <move automap="true">
+                <input path="SourceAppID"/>
+                <output path="SourceAppID"/>
+            </move>
+            <move automap="true">
+                <input path="TargetAppIDs/TargetAppID"/>
+                <output path="TargetAppIDs/TargetAppID"/>
+            </move>
+            <move automap="true">
+                <input path="UserDetail/UserId"/>
+                <output path="UserDetail/UserId"/>
+            </move>
+            <move automap="true">
+                <input path="UserDetail/UserRole"/>
+                <output path="UserDetail/UserRole"/>
+            </move>
+            <move automap="true">
+                <input path="UserDetail/UserPassword"/>
+                <output path="UserDetail/UserPassword"/>
+            </move>
+        </local>
+        <local>
+            <input path="$MessageAssembly/CalculateCarResponsibilityRes/ResponseStatus"/>
+            <output path="$MessageAssembly1/CalculateCarResponsibilityRes/ResponseStatus"/>
+            <move automap="true">
+                <input path="Status"/>
+                <output path="Status"/>
+            </move>
+            <move automap="true">
+                <input path="GlobalErrorCode"/>
+                <output path="GlobalErrorCode"/>
+            </move>
+            <move automap="true">
+                <input path="GlobalErrorDescription"/>
+                <output path="GlobalErrorDescription"/>
+            </move>
+            <foreach>
+                <input path="ErrorInfo"/>
+                <output path="ErrorInfo"/>
+                <move automap="true">
+                    <input path="SourceAppID"/>
+                    <output path="SourceAppID"/>
+                </move>
+                <move automap="true">
+                    <input path="ErrorCode"/>
+                    <output path="ErrorCode"/>
+                </move>
+                <move automap="true">
+                    <input path="ErrorDesc"/>
+                    <output path="ErrorDesc"/>
+                </move>
+            </foreach>
+        </local>
+    </mappingDeclaration>
+</mappingRoot>

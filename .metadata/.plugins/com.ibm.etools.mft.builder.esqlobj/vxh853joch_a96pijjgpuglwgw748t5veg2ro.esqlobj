@@ -1,0 +1,10 @@
+CREATE FUNCTION InputValidate (IN i INTEGER,IN inputName CHARACTER,IN inputValue CHARACTER
+	,IN isNotNull BOOLEAN ,IN isNotEmpty BOOLEAN,IN maxLength INTEGER
+	,IN data REFERENCE)
+BEGIN 
+	SET data.Check[i].inputName = inputName;
+	SET data.Check[i].inputValue = inputValue;
+	SET data.Check[i].isNotNull = isNotNull;
+	SET data.Check[i].isNotEmpty = isNotEmpty;
+	SET data.Check[i].maxLength = maxLength;
+END;

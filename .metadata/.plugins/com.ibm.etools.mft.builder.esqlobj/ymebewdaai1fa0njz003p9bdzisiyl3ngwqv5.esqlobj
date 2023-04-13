@@ -1,0 +1,14 @@
+CREATE PROCEDURE soapInputTimeout(IN refLocalEvr REFERENCE, IN refInputSoap REFERENCE)
+BEGIN
+	DECLARE timeDefault INTEGER 80;
+	CALL COALESCE(Service.Utils.ESQLs.getUserDefinedConfig('FrontendConfig','Default.Timeout'), 80) INTO timeDefault;
+
+	DECLARE ServiceName CHARACTER refInputSoap.Context.service;
+	DECLARE OperationName CHARACTER refInputSoap.Context.operation;
+	DECLARE ServiceTimeout CHARACTER ServiceName|| '.'|| OperationName||'.Timeout';
+	DECLARE timeout INTEGER;
+	CALL COALESCE(Service.Utils.ESQLs.getUserDefinedConfig('FrontendConfig', ServiceTimeout), timeDefault) INTO timeout;
+
+	SET timeout = timeout - 180;
+	DECLARE bolTimout BOOLEAN ChangeIdentifierTimeout(refLocalEvr.Destination.SOAP.Reply.ReplyIdentifier, timeout);
+END;

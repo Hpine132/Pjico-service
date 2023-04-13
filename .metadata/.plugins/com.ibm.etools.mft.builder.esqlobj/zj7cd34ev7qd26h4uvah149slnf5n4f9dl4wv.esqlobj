@@ -1,0 +1,8 @@
+CREATE FUNCTION getTransIdOrgBilateralFT (IN fxxx CHAR)
+RETURNS CHAR
+BEGIN
+	DECLARE contend CHAR SUBSTRING(fxxx AFTER 'noi dung goc:');
+	DECLARE pos INT POSITION(',' IN contend);
+	DECLARE result CHAR SUBSTRING(contend FROM 1 FOR pos-1);
+	RETURN result;
+END;

@@ -1,0 +1,26 @@
+CREATE FUNCTION ParseXMLdateTime(IN dateTime CHARACTER) RETURNS TIMESTAMP
+BEGIN
+	DECLARE pos, lenDateTime INTEGER;
+	SET pos = POSITION('.' IN dateTime);
+	SET lenDateTime = LENGTH(dateTime);
+
+	IF pos > 0 THEN
+		IF (lenDateTime - pos) = 0 THEN
+			SET pos = pos - 1;
+		ELSEIF (lenDateTime - pos) > 1 AND (lenDateTime - pos) < 4 THEN
+			SET pos = lenDateTime;
+		ELSE
+			SET pos = pos + 3;
+			IF pos > 20 THEN
+				SET pos = 19;
+			END IF;
+		END IF;
+	ELSE
+		SET pos = 19;
+	END IF;
+	DECLARE iBDateTime CHARACTER;
+	SET iBDateTime = LEFT(dateTime,pos);
+
+	RETURN CAST(iBDateTime AS TIMESTAMP FORMAT 'I');
+	--RETURN CAST(dateTime AS TIMESTAMP FORMAT 'I');
+END;

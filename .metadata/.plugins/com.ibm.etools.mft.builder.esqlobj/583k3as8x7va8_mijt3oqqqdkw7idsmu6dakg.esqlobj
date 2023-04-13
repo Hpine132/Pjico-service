@@ -1,0 +1,4 @@
+CREATE PROCEDURE hashValueWithJava(IN password CHAR)
+RETURNS CHAR
+LANGUAGE JAVA
+EXTERNAL NAME "utils.soa.SOASecurity.hashValue";

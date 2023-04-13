@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?><mappingRoot xmlns="http://www.ibm.com/2008/ccl/Mapping" domainID="com.ibm.msl.mapping.xml" domainIDExtension="mb" mainMap="true" targetNamespace="Version1.CalculateCarResponsibility.Mappings" version="8.0.5.0" xmlns:map="Version1.CalculateCarResponsibility.Mappings">
+    <input path="mbsharedlib://ESBMessageLib/service/vn/payment/paymentService.xsd"/>
+    <output path="mbsharedlib://ESBMessageLib/service/vn/payment/paymentService.xsd"/>
+    <generation engine="xquery"/>
+    <mappingDeclaration name="FunctionCodeNotMap">
+        <input namespace="http://www.pjico.com.vn/entity/vn/payment/paymentservice/1" path="mb:msg(CalculateCarResponsibilityReq,assembly,XMLNSC,Properties)" var="MessageAssembly"/>
+        <output namespace="http://www.pjico.com.vn/entity/vn/payment/paymentservice/1" path="mb:msg(CalculateCarResponsibilityRes,assembly,XMLNSC,Properties)" var="MessageAssembly1"/>
+        <move>
+            <input path="$MessageAssembly/Properties"/>
+            <output path="$MessageAssembly1/Properties"/>
+            <override>
+                <assign value="{ESBMessageLib}">
+                    <output path="$MessageAssembly1/Properties/MessageSet"/>
+                </assign>
+            </override>
+        </move>
+        <local>
+            <input path="$MessageAssembly/CalculateCarResponsibilityReq/Header"/>
+            <output path="$MessageAssembly1/CalculateCarResponsibilityRes/Header"/>
+            <move>
+                <input path="Common"/>
+                <output path="Common"/>
+            </move>
+            <move>
+                <input path="Client"/>
+                <output path="Client"/>
+            </move>
+        </local>
+        <assign>
+            <output path="$MessageAssembly1/CalculateCarResponsibilityRes/ResponseStatus/Status"/>
+        </assign>
+        <assign>
+            <output path="$MessageAssembly1/CalculateCarResponsibilityRes/ResponseStatus/GlobalErrorCode"/>
+        </assign>
+        <assign>
+            <output path="$MessageAssembly1/CalculateCarResponsibilityRes/ResponseStatus/GlobalErrorDescription"/>
+        </assign>
+    </mappingDeclaration>
+</mappingRoot>

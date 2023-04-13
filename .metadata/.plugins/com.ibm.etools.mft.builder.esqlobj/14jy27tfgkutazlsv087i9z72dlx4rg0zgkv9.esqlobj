@@ -1,0 +1,9 @@
+CREATE PROCEDURE cutUntilMeetChar(INOUT inputString CHARACTER, IN meetChar CHARACTER) RETURNS CHARACTER
+BEGIN
+	DECLARE i INTEGER POSITION(meetChar IN inputString);
+	IF i > 0 THEN
+		DECLARE cutChar CHARACTER SUBSTRING(inputString FROM 1 FOR i - 1);
+		SET inputString = SUBSTRING(inputString FROM i + 1);
+		RETURN cutChar;
+	END IF;
+END;

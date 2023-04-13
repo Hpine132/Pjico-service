@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path=""/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="var" path="JCN_HOME/javacompute.jar"/>
+	<classpathentry kind="var" path="JCN_HOME/jplugin2.jar"/>
+	<classpathentry kind="var" path="COMMON_CLASSES_HOME/IntegrationAPI.jar"/>
+	<classpathentry kind="lib" path="lib/json-simple-2.3.0.jar"/>
+	<classpathentry kind="lib" path="lib/ojdbc6.jar"/>
+	<classpathentry kind="lib" path="lib/jpos.jar"/>
+	<classpathentry kind="lib" path="lib/google-auth-library-credentials-1.8.1.jar"/>
+	<classpathentry kind="lib" path="lib/google-auth-library-oauth2-http-1.8.1.jar"/>
+	<classpathentry kind="lib" path="lib/google-http-client-1.42.2.jar"/>
+	<classpathentry kind="lib" path="lib/google-http-client-gson-1.42.0.jar"/>
+	<classpathentry kind="lib" path="lib/grpc-context-1.47.0.jar"/>
+	<classpathentry kind="lib" path="lib/gson-2.9.0.jar"/>
+	<classpathentry kind="lib" path="lib/guava-31.1-jre.jar"/>
+	<classpathentry kind="lib" path="lib/opencensus-api-0.31.1.jar"/>
+	<classpathentry kind="lib" path="lib/opencensus-contrib-http-util-0.31.1.jar"/>
+	<classpathentry kind="output" path=""/>
+</classpath>

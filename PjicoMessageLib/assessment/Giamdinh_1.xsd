@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?><xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://tempuri.org/" xmlns:ibmSchExtn="http://www.ibm.com/schema/extensions" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:tns="http://tempuri.org/" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex">
+
+<!-- BEGIN Global group petaining to all wsdl:message definitions -->
+    <xsd:group name="IGiamdinh_CREATE_SURVER_SHORTURL_OutputMessageGroup">
+    <xsd:sequence>
+      <xsd:element name="CREATE_SURVER_SHORTURLResult" type="xsd:int"/>
+      <xsd:element name="CLM_SYS_ID" type="xsd:string"/>
+      <xsd:element name="SHORT_URL" type="xsd:string"/>
+      <xsd:element name="ERROR_MESSAGE" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:group>
+    <xsd:group name="IGiamdinh_CREATE_SURVER_SHORTURL_InputMessageGroup">
+    <xsd:sequence>
+      <xsd:element name="CONTACT_NAME" type="xsd:string"/>
+      <xsd:element name="CONTACT_PHONE" type="xsd:string"/>
+      <xsd:element name="REGN_NO" type="xsd:string"/>
+      <xsd:element name="USER_ID" type="xsd:string"/>
+      <xsd:element name="EMPLOYEES" type="xsd:string"/>
+      <xsd:element name="COMMENT" type="xsd:string"/>
+      <xsd:element name="ADDRESS" type="xsd:string"/>
+      <xsd:element name="CHASSIS_NO" type="xsd:string"/>
+      <xsd:element name="ENGINE_NO" type="xsd:string"/>
+      <xsd:element name="GARA" type="xsd:string"/>
+      <xsd:element name="OWNER_PHONE" type="xsd:string"/>
+      <xsd:element name="OWNER_NAME" type="xsd:string"/>
+      <xsd:element name="RAVAGE_DATE" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:group>
+<!-- END Global group -->
+
+
+<!-- BEGIN Message Definitions for the wsdl:operations  -->
+    <xsd:element ibmSchExtn:docRoot="true" name="CREATE_SURVER_SHORTURL" type="tns:CREATE_SURVER_SHORTURL_OperType"/>
+    <xsd:element ibmSchExtn:docRoot="true" name="CREATE_SURVER_SHORTURLResponse" type="tns:CREATE_SURVER_SHORTURLResponse_OperType"/>
+    <xsd:complexType name="CREATE_SURVER_SHORTURL_OperType">
+    <xsd:choice maxOccurs="1" minOccurs="1">
+      <xsd:group ref="tns:IGiamdinh_CREATE_SURVER_SHORTURL_InputMessageGroup"/>
+    </xsd:choice>
+  </xsd:complexType>
+    <xsd:complexType name="CREATE_SURVER_SHORTURLResponse_OperType">
+    <xsd:choice maxOccurs="1" minOccurs="1">
+      <xsd:group ref="tns:IGiamdinh_CREATE_SURVER_SHORTURL_OutputMessageGroup"/>
+    </xsd:choice>
+  </xsd:complexType>
+<!-- END Message Definitions -->
+
+
+</xsd:schema>

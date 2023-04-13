@@ -1,0 +1,289 @@
+BROKER SCHEMA Version1.ProvideRequiredCarInsurance.ESQLs
+
+DECLARE ns NAMESPACE 'http://www.pjico.com.vn/entity/vn/applicationinsurance/applicationinsuranceservice/1';
+DECLARE commonheader NAMESPACE 'http://www.pjico.com.vn/common/envelope/commonheader/1';
+DECLARE soa NAMESPACE 'http://www.pjico.com.vn/common/envelope/soaenvelope/1';
+DECLARE com NAMESPACE 'http://www.pjico.com.vn/entity/vn/com/1';
+
+DECLARE PremiaIPPort EXTERNAL CHARACTER '';
+DECLARE ProvideRequiredCarInsuranceUrl EXTERNAL CHARACTER '';
+DECLARE ProvideRequiredCarInsuranceTimeout EXTERNAL CHARACTER '';
+DECLARE Authorization EXTERNAL CHARACTER '';
+
+DECLARE MessageType EXTERNAL CHARACTER '';
+DECLARE ProcessCode EXTERNAL CHARACTER '';
+DECLARE Stan EXTERNAL CHARACTER '';
+DECLARE LocalDateTime EXTERNAL CHARACTER '';
+DECLARE DeliveryChannel EXTERNAL CHARACTER '';
+DECLARE UserID EXTERNAL CHARACTER '';
+DECLARE ConfigID EXTERNAL CHARACTER '';
+
+DECLARE CoverFlag EXTERNAL CHARACTER '';
+DECLARE CoditionFlag EXTERNAL CHARACTER '';
+DECLARE CommFlag EXTERNAL CHARACTER '';
+DECLARE ExcessFlag EXTERNAL CHARACTER '';
+DECLARE DiscountFlag EXTERNAL CHARACTER '';
+DECLARE ScheduleFlag EXTERNAL CHARACTER '';
+DECLARE AutoApprovalFlag EXTERNAL CHARACTER '';
+DECLARE SMIFlag EXTERNAL CHARACTER '';
+
+DECLARE CoverRiskCode EXTERNAL CHARACTER '';
+DECLARE ConditionCode EXTERNAL CHARACTER '';
+
+CREATE COMPUTE MODULE BuildRequest
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		-- CALL CopyMessageHeaders();
+		-- CALL CopyEntireMessage();
+		SET OutputRoot.Properties =InputRoot.Properties;
+		DECLARE bodyReqRef REFERENCE TO Environment.Variables.SOAVariables.soa:SOAEnvelope.soa:ServiceBody.*[1].*:BodyReq;
+		
+		
+		DECLARE polNo CHAR bodyReqRef.ns:PolicyInfo.PolicyNo;
+		DECLARE issueDate CHAR bodyReqRef.ns:PolicyInfo.IssueDt;
+		DECLARE fmDate CHAR bodyReqRef.ns:PolicyInfo.FromDt;
+		DECLARE toDate CHAR bodyReqRef.ns:PolicyInfo.ToDt;
+		DECLARE divnCode CHAR bodyReqRef.ns:PolicyInfo.DivnCode;
+		DECLARE deptCode CHAR bodyReqRef.ns:PolicyInfo.DeptCode;
+		DECLARE agentCode CHAR bodyReqRef.ns:PolicyInfo.AgentCode;
+		DECLARE custCode CHAR bodyReqRef.ns:PolicyInfo.CustCode;
+		DECLARE assuredCode CHAR bodyReqRef.ns:PolicyInfo.AssuredCode;
+		-- check req
+		DECLARE DataProvideRequiredCarInsurance REFERENCE TO OutputRoot.JSON.DataProvideRequiredCarInsurance;
+		
+		CALL Service.Utils.ESQLs.InputValidate(1, 'PolicyNo', polNo, true, true, 999, DataProvideRequiredCarInsurance);
+		CALL Service.Utils.ESQLs.InputValidate(2, 'IssueDt', issueDate, true,true, 999, DataProvideRequiredCarInsurance);
+		CALL Service.Utils.ESQLs.InputValidate(3, 'FromDt', fmDate, true, true, 999, DataProvideRequiredCarInsurance);
+		CALL Service.Utils.ESQLs.InputValidate(4, 'ToDt', toDate, true, true, 999, DataProvideRequiredCarInsurance);
+		CALL Service.Utils.ESQLs.InputValidate(5, 'DivnCode' , divnCode, true, true, 999, DataProvideRequiredCarInsurance);
+		CALL Service.Utils.ESQLs.InputValidate(6, 'DeptCode', deptCode, true, true, 999, DataProvideRequiredCarInsurance);
+		CALL Service.Utils.ESQLs.InputValidate(7, 'AgentCode', agentCode, true, true, 999, DataProvideRequiredCarInsurance);
+		CALL Service.Utils.ESQLs.InputValidate(8, 'CustCode', custCode, true, true, 999, DataProvideRequiredCarInsurance);
+		CALL Service.Utils.ESQLs.InputValidate(9, 'AssuredCode' , assuredCode, true, true, 999, DataProvideRequiredCarInsurance);
+		
+		DECLARE  ErrorDesc CHARACTER;
+		SET ErrorDesc = Service.Utils.ESQLs.validateRequest(DataProvideRequiredCarInsurance);
+		DELETE FIELD OutputRoot.JSON.ProvideRequiredCarInsurance; 
+		IF ErrorDesc <> 'OK' THEN
+			SET OutputRoot.XMLNSC.ns:ProvideRequiredCarInsuranceRes.commonheader:Header = InputRoot.XMLNSC.ns14:GetTokenRes.commonheader:Header;
+			SET OutputRoot.XMLNSC.ns:ProvideRequiredCarInsuranceRes.commonheader:ResponseStatus.commonheader:Status = '1';
+			SET OutputRoot.XMLNSC.ns:ProvideRequiredCarInsuranceRes.commonheader:ResponseStatus.commonheader:GlobalErrorCode = '002';
+			SET OutputRoot.XMLNSC.ns:ProvideRequiredCarInsuranceRes.commonheader:ResponseStatus.commonheader:GlobalErrorDescription = 'Invalid input data';
+			SET OutputRoot.XMLNSC.ns:ProvideRequiredCarInsuranceRes.commonheader:ResponseStatus.commonheader:ErrorInfo[1].commonheader:SourceAppID = 'ESB';
+			SET OutputRoot.XMLNSC.ns:ProvideRequiredCarInsuranceRes.commonheader:ResponseStatus.commonheader:ErrorInfo[1].commonheader:ErrorCode = '002';
+			SET OutputRoot.XMLNSC.ns:ProvideRequiredCarInsuranceRes.commonheader:ResponseStatus.commonheader:ErrorInfo[1].commonheader:ErrorDesc = ErrorDesc;
+
+			PROPAGATE TO TERMINAL 'out2' FINALIZE NONE DELETE NONE;
+			--Build Request, set all field to call Jolt service
+		ELSE 
+		
+		DECLARE TokenKey CHARACTER InputRoot.XMLNSC.ns14:GetTokenRes.ns14:BodyRes.ns14:AccessToken;
+		IF TokenKey IS NOT NULL AND TokenKey <> '' THEN
+			SET OutputRoot.HTTPRequestHeader."Content-Type"= 'application/xml';
+			SET OutputRoot.HTTPRequestHeader.Authorization = Authorization;
+			SET OutputRoot.HTTPRequestHeader.TokenKey = TokenKey;
+		
+			DECLARE arraySize5 INT;
+			-- DECLARE bodyReqRef REFERENCE TO InputRoot.XMLNSC.ns:ProvideRequiredCarInsuranceReq.ns:BodyReq;
+				SET OutputRoot.XMLNSC.XML.MESSAGETYPE = COALESCE(bodyReqRef.ns:MessageType,MessageType);
+				SET OutputRoot.XMLNSC.XML.PROCCODE = COALESCE(bodyReqRef.ns:ProcessCode,ProcessCode);
+				SET OutputRoot.XMLNSC.XML.STAN = COALESCE(bodyReqRef.ns:Stan,Stan);
+				SET OutputRoot.XMLNSC.XML.LOCALTXNDTTIME = COALESCE(bodyReqRef.ns:LocalDateTime,LocalDateTime);
+				SET OutputRoot.XMLNSC.XML.DELIVERYCHANNELCTRLID = COALESCE(bodyReqRef.ns:DeliveryChannel,DeliveryChannel);
+				SET OutputRoot.XMLNSC.XML.USER_ID = COALESCE(bodyReqRef.ns:UserID,UserID);
+				SET OutputRoot.XMLNSC.XML.CONFIG_ID = COALESCE(bodyReqRef.ns:ConfigID,ConfigID);
+				
+				-- AddQuote
+				SET OutputRoot.XMLNSC.XML.ADDQUOTE.COVER_DFLT_YN = COALESCE(bodyReqRef.ns:AddQuoteInfo.CoverFlag, CoverFlag);
+				SET OutputRoot.XMLNSC.XML.ADDQUOTE.CONDITION_DFLT_YN = COALESCE(bodyReqRef.ns:AddQuoteInfo.CoditionFlag, CoditionFlag);
+				SET OutputRoot.XMLNSC.XML.ADDQUOTE.COMM_DFTL_YN = COALESCE(bodyReqRef.ns:AddQuoteInfo.CommFlag, CommFlag);
+				SET OutputRoot.XMLNSC.XML.ADDQUOTE.EXCESS_DFLT_YN = COALESCE(bodyReqRef.ns:AddQuoteInfo.ExcessFlag, ExcessFlag);
+				SET OutputRoot.XMLNSC.XML.ADDQUOTE.DISCOUNT_DFLT_YN = COALESCE(bodyReqRef.ns:AddQuoteInfo.DiscountFlag, DiscountFlag);
+				SET OutputRoot.XMLNSC.XML.ADDQUOTE.SCHEDULE_DFLT_YN = COALESCE(bodyReqRef.ns:AddQuoteInfo.ScheduleFlag, ScheduleFlag);
+				SET OutputRoot.XMLNSC.XML.ADDQUOTE.AUTO_APPRV_YN = COALESCE(bodyReqRef.ns:AddQuoteInfo.AutoApprovalFlag, AutoApprovalFlag);
+				SET OutputRoot.XMLNSC.XML.ADDQUOTE.SMI_DFLT_YN = COALESCE(bodyReqRef.ns:AddQuoteInfo.SMIFlag, SMIFlag);
+				
+				-- Policy
+				SET OutputRoot.XMLNSC.XML.ADDQUOTE.PT_POLICY.POLICY.POL_NO = COALESCE(bodyReqRef.ns:PolicyInfo.PolicyNo, '');
+				SET OutputRoot.XMLNSC.XML.ADDQUOTE.PT_POLICY.POLICY.POL_ISSUE_DT = COALESCE(bodyReqRef.ns:PolicyInfo.IssueDt, '');
+				SET OutputRoot.XMLNSC.XML.ADDQUOTE.PT_POLICY.POLICY.POL_FM_DT = COALESCE(bodyReqRef.ns:PolicyInfo.FromDt, '');
+				SET OutputRoot.XMLNSC.XML.ADDQUOTE.PT_POLICY.POLICY.POL_TO_DT = COALESCE(bodyReqRef.ns:PolicyInfo.ToDt, '');
+				SET OutputRoot.XMLNSC.XML.ADDQUOTE.PT_POLICY.POLICY.POL_SC_CODE = COALESCE(bodyReqRef.ns:PolicyInfo.ScCode, '');
+				SET OutputRoot.XMLNSC.XML.ADDQUOTE.PT_POLICY.POLICY.POL_STATUS = COALESCE(bodyReqRef.ns:PolicyInfo.Status, '');
+				SET OutputRoot.XMLNSC.XML.ADDQUOTE.PT_POLICY.POLICY.POL_DIVN_CODE = COALESCE(bodyReqRef.ns:PolicyInfo.DivnCode, '');
+				SET OutputRoot.XMLNSC.XML.ADDQUOTE.PT_POLICY.POLICY.POL_DEPT_CODE = COALESCE(bodyReqRef.ns:PolicyInfo.DeptCode, '');
+				SET OutputRoot.XMLNSC.XML.ADDQUOTE.PT_POLICY.POLICY.POL_AGENT_CODE = COALESCE(bodyReqRef.ns:PolicyInfo.AgentCode, '');
+				SET OutputRoot.XMLNSC.XML.ADDQUOTE.PT_POLICY.POLICY.POL_CUST_CODE = COALESCE(bodyReqRef.ns:PolicyInfo.CustCode, '');
+				SET OutputRoot.XMLNSC.XML.ADDQUOTE.PT_POLICY.POLICY.POL_INSURANCE_PRGM = COALESCE(bodyReqRef.ns:PolicyInfo.InsurancePrgm, '');
+				SET OutputRoot.XMLNSC.XML.ADDQUOTE.PT_POLICY.POLICY.POL_CONTR_NO = COALESCE(bodyReqRef.ns:PolicyInfo.ContrNo, '');
+				SET OutputRoot.XMLNSC.XML.ADDQUOTE.PT_POLICY.POLICY.POL_SRC_BUS_CODE = COALESCE(bodyReqRef.ns:PolicyInfo.SrcBusCode, '');
+				SET OutputRoot.XMLNSC.XML.ADDQUOTE.PT_POLICY.POLICY.POL_CUST_PREM_CURR_CODE = COALESCE(bodyReqRef.ns:PolicyInfo.CustPremCurrCode, '');
+				SET OutputRoot.XMLNSC.XML.ADDQUOTE.PT_POLICY.POLICY.POL_PAYER_CODE = COALESCE(bodyReqRef.ns:PolicyInfo.PayerCode, '');
+				SET OutputRoot.XMLNSC.XML.ADDQUOTE.PT_POLICY.POLICY.POL_PAYER_NAME = COALESCE(bodyReqRef.ns:PolicyInfo.PayerName, '');
+				SET OutputRoot.XMLNSC.XML.ADDQUOTE.PT_POLICY.POLICY.POL_PAYER_ADDR1 = COALESCE(bodyReqRef.ns:PolicyInfo.PayerAddr1, '');
+				SET OutputRoot.XMLNSC.XML.ADDQUOTE.PT_POLICY.POLICY.POL_ASSURED_CODE = COALESCE(bodyReqRef.ns:PolicyInfo.AssuredCode, '');
+				SET OutputRoot.XMLNSC.XML.ADDQUOTE.PT_POLICY.POLICY.POL_ASSURED_NAME = COALESCE(bodyReqRef.ns:PolicyInfo.AssuredName, '');
+				SET OutputRoot.XMLNSC.XML.ADDQUOTE.PT_POLICY.POLICY.POL_ADDR1 = COALESCE(bodyReqRef.ns:PolicyInfo.Addr1, '');
+				
+				-- Broker
+				DECLARE I INTEGER 1;
+				FOR arraySize1 AS  bodyReqRef.ns:BrokerList.ns:BrokerInfo[] DO 				
+					SET OutputRoot.XMLNSC.XML.ADDQUOTE.PT_POLICY.PT_POL_BROKER[I].POL_BROKER_ROW.PB_COMM_CODE = COALESCE(bodyReqRef.ns:BrokerList.ns:BrokerInfo[I].BrokerCode, '');
+					SET OutputRoot.XMLNSC.XML.ADDQUOTE.PT_POLICY.PT_POL_BROKER[I].POL_BROKER_ROW.PB_COMM_PERC = COALESCE(bodyReqRef.ns:BrokerList.ns:BrokerInfo[I].Rate, '');
+					SET OutputRoot.XMLNSC.XML.ADDQUOTE.PT_POLICY.PT_POL_BROKER[I].POL_BROKER_ROW.PB_RISK_CLASS = COALESCE(bodyReqRef.ns:BrokerList.ns:BrokerInfo[I].RiskClass, '');
+					SET I = I + 1;				
+				END FOR;
+				
+				-- CoverRiskCode & ConditionCode
+				SET OutputRoot.XMLNSC.XML.ADDQUOTE.PT_POLICY.PT_COVER_RISK_SMI.RCSMI_ROW.CRS_SRNO = COALESCE(bodyReqRef.ns:CoverRiskCode, CoverRiskCode);
+				SET OutputRoot.XMLNSC.XML.ADDQUOTE.PT_POLICY.PT_CONDITION.COND_REC.COND_CODE = COALESCE(bodyReqRef.ns:ConditionCode, ConditionCode);
+				
+				--RiskInfo List
+				SET  I = 1;	
+				FOR arraySize2 AS  bodyReqRef.ns:RiskList.ns:RiskInfo[] DO
+					SET OutputRoot.XMLNSC.XML.ADDQUOTE.PT_POLICY.PT_RISK[I].RISK_ROW.RISK_SRNO = COALESCE(bodyReqRef.ns:RiskList.ns:RiskInfo[I].SerialNo, '');
+					SET OutputRoot.XMLNSC.XML.ADDQUOTE.PT_POLICY.PT_RISK[I].RISK_ROW.RISK_CLASS = COALESCE(bodyReqRef.ns:RiskList.ns:RiskInfo[I].RiskClass, '');
+					SET OutputRoot.XMLNSC.XML.ADDQUOTE.PT_POLICY.PT_RISK[I].RISK_ROW.RISK_ENTRY_DT = COALESCE(bodyReqRef.ns:RiskList.ns:RiskInfo[I].RiskEntryDt, '');
+					SET OutputRoot.XMLNSC.XML.ADDQUOTE.PT_POLICY.PT_RISK[I].RISK_ROW.RISK_EXIT_DT = COALESCE(bodyReqRef.ns:RiskList.ns:RiskInfo[I].RiskExitDt, '');
+					SET OutputRoot.XMLNSC.XML.ADDQUOTE.PT_POLICY.PT_RISK[I].RISK_ROW.RISK_FLEX_1 = COALESCE(bodyReqRef.ns:RiskList.ns:RiskInfo[I].RiskFlex1, '');
+					SET OutputRoot.XMLNSC.XML.ADDQUOTE.PT_POLICY.PT_RISK[I].RISK_ROW.RISK_FLEX_2 = COALESCE(bodyReqRef.ns:RiskList.ns:RiskInfo[I].RiskFlex2, '');
+					SET OutputRoot.XMLNSC.XML.ADDQUOTE.PT_POLICY.PT_RISK[I].RISK_ROW.RISK_FLEX_3 = COALESCE(bodyReqRef.ns:RiskList.ns:RiskInfo[I].RiskFlex3, '');
+					SET OutputRoot.XMLNSC.XML.ADDQUOTE.PT_POLICY.PT_RISK[I].RISK_ROW.RISK_FLEX_4 = COALESCE(bodyReqRef.ns:RiskList.ns:RiskInfo[I].RiskFlex4, '');
+					SET OutputRoot.XMLNSC.XML.ADDQUOTE.PT_POLICY.PT_RISK[I].RISK_ROW.RISK_FLEX_5 = COALESCE(bodyReqRef.ns:RiskList.ns:RiskInfo[I].RiskFlex5, '');
+					SET OutputRoot.XMLNSC.XML.ADDQUOTE.PT_POLICY.PT_RISK[I].RISK_ROW.RISK_FLEX_6 = COALESCE(bodyReqRef.ns:RiskList.ns:RiskInfo[I].RiskFlex6, '');
+					SET OutputRoot.XMLNSC.XML.ADDQUOTE.PT_POLICY.PT_RISK[I].RISK_ROW.RISK_FLEX_7 = COALESCE(bodyReqRef.ns:RiskList.ns:RiskInfo[I].RiskFlex7, '');
+					SET OutputRoot.XMLNSC.XML.ADDQUOTE.PT_POLICY.PT_RISK[I].RISK_ROW.RISK_FLEX_8 = COALESCE(bodyReqRef.ns:RiskList.ns:RiskInfo[I].RiskFlex8, '');
+					SET OutputRoot.XMLNSC.XML.ADDQUOTE.PT_POLICY.PT_RISK[I].RISK_ROW.RISK_FLEX_9 = COALESCE(bodyReqRef.ns:RiskList.ns:RiskInfo[I].RiskFlex9, '');
+					SET OutputRoot.XMLNSC.XML.ADDQUOTE.PT_POLICY.PT_RISK[I].RISK_ROW.RISK_FLEX_10 = COALESCE(bodyReqRef.ns:RiskList.ns:RiskInfo[I].RiskFlex10, '');
+					SET OutputRoot.XMLNSC.XML.ADDQUOTE.PT_POLICY.PT_RISK[I].RISK_ROW.RISK_FLEX_11 = bodyReqRef.ns:RiskList.ns:RiskInfo[I].RiskFlex11;
+					SET OutputRoot.XMLNSC.XML.ADDQUOTE.PT_POLICY.PT_RISK[I].RISK_ROW.RISK_FLEX_12 = bodyReqRef.ns:RiskList.ns:RiskInfo[I].RiskFlex12;
+					SET OutputRoot.XMLNSC.XML.ADDQUOTE.PT_POLICY.PT_RISK[I].RISK_ROW.RISK_FLEX_13 = bodyReqRef.ns:RiskList.ns:RiskInfo[I].RiskFlex13;
+					SET OutputRoot.XMLNSC.XML.ADDQUOTE.PT_POLICY.PT_RISK[I].RISK_ROW.RISK_FLEX_14 = bodyReqRef.ns:RiskList.ns:RiskInfo[I].RiskFlex14;
+					SET OutputRoot.XMLNSC.XML.ADDQUOTE.PT_POLICY.PT_RISK[I].RISK_ROW.RISK_FLEX_15 = bodyReqRef.ns:RiskList.ns:RiskInfo[I].RiskFlex15;
+					SET OutputRoot.XMLNSC.XML.ADDQUOTE.PT_POLICY.PT_RISK[I].RISK_ROW.RISK_FLEX_16 = bodyReqRef.ns:RiskList.ns:RiskInfo[I].RiskFlex16;
+					SET OutputRoot.XMLNSC.XML.ADDQUOTE.PT_POLICY.PT_RISK[I].RISK_ROW.RISK_FLEX_17 = bodyReqRef.ns:RiskList.ns:RiskInfo[I].RiskFlex17;
+					SET OutputRoot.XMLNSC.XML.ADDQUOTE.PT_POLICY.PT_RISK[I].RISK_ROW.RISK_FLEX_18 = bodyReqRef.ns:RiskList.ns:RiskInfo[I].RiskFlex18;
+					SET OutputRoot.XMLNSC.XML.ADDQUOTE.PT_POLICY.PT_RISK[I].RISK_ROW.RISK_FLEX_19 = bodyReqRef.ns:RiskList.ns:RiskInfo[I].RiskFlex19;
+					SET OutputRoot.XMLNSC.XML.ADDQUOTE.PT_POLICY.PT_RISK[I].RISK_ROW.RISK_FLEX_20 = bodyReqRef.ns:RiskList.ns:RiskInfo[I].RiskFlex20;
+					SET OutputRoot.XMLNSC.XML.ADDQUOTE.PT_POLICY.PT_RISK[I].RISK_ROW.RISK_LC_PREM = COALESCE(bodyReqRef.ns:RiskList.ns:RiskInfo[I].RiskLcPre, '');
+					SET OutputRoot.XMLNSC.XML.ADDQUOTE.PT_POLICY.PT_RISK[I].RISK_ROW.RISK_LC_SI = COALESCE(bodyReqRef.ns:RiskList.ns:RiskInfo[I].RiskLcSI, '');
+					SET OutputRoot.XMLNSC.XML.ADDQUOTE.PT_POLICY.PT_RISK[I].RISK_ROW.RISK_REF_NO = COALESCE(bodyReqRef.ns:RiskList.ns:RiskInfo[I].RiskRefNo, '');
+					SET OutputRoot.XMLNSC.XML.ADDQUOTE.PT_POLICY.PT_RISK[I].RISK_ROW.RISK_DED_YN = COALESCE(bodyReqRef.ns:RiskList.ns:RiskInfo[I].RiskDedYn, '');
+				
+					--RiskSMIInfo 
+					DECLARE J INTEGER 1;
+					FOR arraySize3 AS arraySize2.RiskSMIList.RiskSMIInfo[] DO
+						SET OutputRoot.XMLNSC.XML.ADDQUOTE.PT_POLICY.PT_RISK[I].RISK_ROW.PT_RISK_SMI[J].RISK_SMI_ROW.RSMI_RISK_SRNO = COALESCE(bodyReqRef.ns:RiskList.ns:RiskInfo[I].RiskSMIList.RiskSMIInfo[J].RiskSrNo, '');
+						SET OutputRoot.XMLNSC.XML.ADDQUOTE.PT_POLICY.PT_RISK[I].RISK_ROW.PT_RISK_SMI[J].RISK_SMI_ROW.RSMI_CODE = COALESCE(bodyReqRef.ns:RiskList.ns:RiskInfo[I].RiskSMIList.RiskSMIInfo[J].Code, '');
+						SET OutputRoot.XMLNSC.XML.ADDQUOTE.PT_POLICY.PT_RISK[I].RISK_ROW.PT_RISK_SMI[J].RISK_SMI_ROW.RSMI_FC_SI = COALESCE(bodyReqRef.ns:RiskList.ns:RiskInfo[I].RiskSMIList.RiskSMIInfo[J].FcSi, '');
+						SET OutputRoot.XMLNSC.XML.ADDQUOTE.PT_POLICY.PT_RISK[I].RISK_ROW.PT_RISK_SMI[J].RISK_SMI_ROW.RSMI_FC_PREM = COALESCE(bodyReqRef.ns:RiskList.ns:RiskInfo[I].RiskSMIList.RiskSMIInfo[J].FcPrem, '');
+						SET OutputRoot.XMLNSC.XML.ADDQUOTE.PT_POLICY.PT_RISK[I].RISK_ROW.PT_RISK_SMI[J].RISK_SMI_ROW.RSMI_ADDTO_SI_YN = COALESCE(bodyReqRef.ns:RiskList.ns:RiskInfo[I].RiskSMIList.RiskSMIInfo[J].AddToSiFlag, '');
+						SET OutputRoot.XMLNSC.XML.ADDQUOTE.PT_POLICY.PT_RISK[I].RISK_ROW.PT_RISK_SMI[J].RISK_SMI_ROW.RSMI_DED_YN = COALESCE(bodyReqRef.ns:RiskList.ns:RiskInfo[I].RiskSMIList.RiskSMIInfo[J].DedFlag, '');				
+						SET J = J + 1;
+					END FOR ;
+				
+					--DiscountInfo
+					SET OutputRoot.XMLNSC.XML.ADDQUOTE.PT_POLICY.PT_RISK[I].RISK_ROW.PT_RISK_DISCOUNT.PT_RISK_DISCOUNT_ROW.RD_RISK_SRNO = COALESCE(bodyReqRef.ns:RiskList.ns:RiskInfo[I].DiscountInfo.RiskSrcNo, '');
+					SET OutputRoot.XMLNSC.XML.ADDQUOTE.PT_POLICY.PT_RISK[I].RISK_ROW.PT_RISK_DISCOUNT.PT_RISK_DISCOUNT_ROW.RD_DISC_LOAD_FLAG = COALESCE(bodyReqRef.ns:RiskList.ns:RiskInfo[I].DiscountInfo.DiscLoadFlag, '');
+					SET OutputRoot.XMLNSC.XML.ADDQUOTE.PT_POLICY.PT_RISK[I].RISK_ROW.PT_RISK_DISCOUNT.PT_RISK_DISCOUNT_ROW.RD_CODE = COALESCE(bodyReqRef.ns:RiskList.ns:RiskInfo[I].DiscountInfo.Code, '');
+					SET OutputRoot.XMLNSC.XML.ADDQUOTE.PT_POLICY.PT_RISK[I].RISK_ROW.PT_RISK_DISCOUNT.PT_RISK_DISCOUNT_ROW.RD_CALC_ON = COALESCE(bodyReqRef.ns:RiskList.ns:RiskInfo[I].DiscountInfo.CalcOn, '');
+					SET OutputRoot.XMLNSC.XML.ADDQUOTE.PT_POLICY.PT_RISK[I].RISK_ROW.PT_RISK_DISCOUNT.PT_RISK_DISCOUNT_ROW.RD_PERC = COALESCE(bodyReqRef.ns:RiskList.ns:RiskInfo[I].DiscountInfo.Rate, '');
+					SET OutputRoot.XMLNSC.XML.ADDQUOTE.PT_POLICY.PT_RISK[I].RISK_ROW.PT_RISK_DISCOUNT.PT_RISK_DISCOUNT_ROW.RD_LEVEL_NO = COALESCE(bodyReqRef.ns:RiskList.ns:RiskInfo[I].DiscountInfo.LevelNo, '');
+					SET OutputRoot.XMLNSC.XML.ADDQUOTE.PT_POLICY.PT_RISK[I].RISK_ROW.PT_RISK_DISCOUNT.PT_RISK_DISCOUNT_ROW.RD_FC_DISC = COALESCE(bodyReqRef.ns:RiskList.ns:RiskInfo[I].DiscountInfo.FcDisc, '');
+					
+					
+					--LossInfo
+					SET J=1;
+					FOR arraySize4 AS arraySize2.LossList.LossInfo[] DO
+						SET OutputRoot.XMLNSC.XML.ADDQUOTE.PT_POLICY.PT_RISK[I].RISK_ROW.PT_DED_LOSS[J].PT_DED_LOSS_ROW.DL_RISK_SRNO = COALESCE(bodyReqRef.ns:RiskList.ns:RiskInfo[I].LossList.LossInfo[J].RiskSrNo, '');
+						SET OutputRoot.XMLNSC.XML.ADDQUOTE.PT_POLICY.PT_RISK[I].RISK_ROW.PT_DED_LOSS[J].PT_DED_LOSS_ROW.DL_CODE = COALESCE(bodyReqRef.ns:RiskList.ns:RiskInfo[I].LossList.LossInfo[J].Code, '');
+						SET OutputRoot.XMLNSC.XML.ADDQUOTE.PT_POLICY.PT_RISK[I].RISK_ROW.PT_DED_LOSS[J].PT_DED_LOSS_ROW.DL_PERC = COALESCE(bodyReqRef.ns:RiskList.ns:RiskInfo[I].LossList.LossInfo[J].Rate, '');
+						SET OutputRoot.XMLNSC.XML.ADDQUOTE.PT_POLICY.PT_RISK[I].RISK_ROW.PT_DED_LOSS[J].PT_DED_LOSS_ROW.DL_SMI_CODE = COALESCE(bodyReqRef.ns:RiskList.ns:RiskInfo[I].LossList.LossInfo[J].SMICode, '');
+						SET OutputRoot.XMLNSC.XML.ADDQUOTE.PT_POLICY.PT_RISK[I].RISK_ROW.PT_DED_LOSS[J].PT_DED_LOSS_ROW.DL_COVER_CODE = COALESCE(bodyReqRef.ns:RiskList.ns:RiskInfo[I].LossList.LossInfo[J].CoverCode, '');
+						SET OutputRoot.XMLNSC.XML.ADDQUOTE.PT_POLICY.PT_RISK[I].RISK_ROW.PT_DED_LOSS[J].PT_DED_LOSS_ROW.DL_FC_VAL = COALESCE(bodyReqRef.ns:RiskList.ns:RiskInfo[I].LossList.LossInfo[J].FcVal, '');
+						SET J = J + 1;
+					END FOR ;
+				
+					-- TaxInfo
+					SET OutputRoot.XMLNSC.XML.ADDQUOTE.PT_POLICY.PT_RISK[I].RISK_ROW.FT_TAX_HEADER.TAX.TAXH_RISK_SRNO = COALESCE(bodyReqRef.ns:RiskList.ns:RiskInfo[I].TaxInfo.RiskSrcNo, '');
+					SET OutputRoot.XMLNSC.XML.ADDQUOTE.PT_POLICY.PT_RISK[I].RISK_ROW.FT_TAX_HEADER.TAX.TAXH_TC_CODE = COALESCE(bodyReqRef.ns:RiskList.ns:RiskInfo[I].TaxInfo.TcCode, '');
+					SET OutputRoot.XMLNSC.XML.ADDQUOTE.PT_POLICY.PT_RISK[I].RISK_ROW.FT_TAX_HEADER.TAX.TAXH_LC_ACT_AMT = COALESCE(bodyReqRef.ns:RiskList.ns:RiskInfo[I].TaxInfo.LcActAmount, '');
+					SET OutputRoot.XMLNSC.XML.ADDQUOTE.PT_POLICY.PT_RISK[I].RISK_ROW.FT_TAX_HEADER.TAX.TAXH_LC_AMT = COALESCE(bodyReqRef.ns:RiskList.ns:RiskInfo[I].TaxInfo.LcAmount, '');
+					SET OutputRoot.XMLNSC.XML.ADDQUOTE.PT_POLICY.PT_RISK[I].RISK_ROW.FT_TAX_HEADER.TAX.TAXH_TOTAL_AMT = COALESCE(bodyReqRef.ns:RiskList.ns:RiskInfo[I].TaxInfo.TotalAmount, '');
+					
+					SET I = I + 1;				
+					END FOR; 
+				
+				--PcvrCode
+				SET OutputRoot.XMLNSC.XML.ADDQUOTE.PT_POLICY.PT_POL_COVER.COVER_REC.PCVR_CODE = COALESCE(bodyReqRef.ns:PcvrCode, '');
+				
+				--IntervalPeriodInfo
+				SET I=1;	
+				SET arraySize5 = CARDINALITY (bodyReqRef.ns:IntervalPeriodList.ns:IntervalPeriodInfo[]);
+				WHILE I <= arraySize5 DO		
+					SET OutputRoot.XMLNSC.XML.ADDQUOTE.PT_POLICY.PT_INST_HDR_POL[I].INST_HDR.PIHP_IH_INTERVAL_PERIOD_IN = COALESCE(bodyReqRef.ns:IntervalPeriodList.ns:IntervalPeriodInfo[I].PeriodIn, '');
+					SET OutputRoot.XMLNSC.XML.ADDQUOTE.PT_POLICY.PT_INST_HDR_POL[I].INST_HDR.PIHP_IH_INTERVAL_PERIOD = COALESCE(bodyReqRef.ns:IntervalPeriodList.ns:IntervalPeriodInfo[I].Period, '');
+					SET OutputRoot.XMLNSC.XML.ADDQUOTE.PT_POLICY.PT_INST_HDR_POL[I].INST_HDR.PIHP_IH_NO_OF_INST = COALESCE(bodyReqRef.ns:IntervalPeriodList.ns:IntervalPeriodInfo[I].NoOfInt, '');
+					SET OutputRoot.XMLNSC.XML.ADDQUOTE.PT_POLICY.PT_INST_HDR_POL[I].INST_HDR.PIHP_RISK_CLASS = COALESCE(bodyReqRef.ns:IntervalPeriodList.ns:IntervalPeriodInfo[I].RiskClass, '');
+					SET OutputRoot.XMLNSC.XML.ADDQUOTE.PT_POLICY.PT_INST_HDR_POL[I].INST_HDR.PIHP_PAYMENT_TERM = COALESCE(bodyReqRef.ns:IntervalPeriodList.ns:IntervalPeriodInfo[I].Term, '');
+					SET OutputRoot.XMLNSC.XML.ADDQUOTE.PT_POLICY.PT_INST_HDR_POL[I].INST_HDR.PIHP_PAYMENT_TERM_BL = COALESCE(bodyReqRef.ns:IntervalPeriodList.ns:IntervalPeriodInfo[I].TermBl, '');
+			
+				--InstallDetailInfo
+					SET OutputRoot.XMLNSC.XML.ADDQUOTE.PT_POLICY.PT_INST_DTLS[I].INSTALL_DETAILS.ID_DUE_DATE = COALESCE(bodyReqRef.ns:InstallDetailList.ns:InstallDetailInfo[I].Date, '');
+					SET OutputRoot.XMLNSC.XML.ADDQUOTE.PT_POLICY.PT_INST_DTLS[I].INSTALL_DETAILS.ID_INT_PERC = COALESCE(bodyReqRef.ns:InstallDetailList.ns:InstallDetailInfo[I].Rate, '');
+					SET OutputRoot.XMLNSC.XML.ADDQUOTE.PT_POLICY.PT_INST_DTLS[I].INSTALL_DETAILS.ID_PREM_FC_AMT = COALESCE(bodyReqRef.ns:InstallDetailList.ns:InstallDetailInfo[I].PremFcAmount, '');
+					SET OutputRoot.XMLNSC.XML.ADDQUOTE.PT_POLICY.PT_INST_DTLS[I].INSTALL_DETAILS.ID_RISK_CLASS = COALESCE(bodyReqRef.ns:InstallDetailList.ns:InstallDetailInfo[I].RiskClass, '');
+					SET I = I + 1;				
+				END WHILE;	
+					
+						
+				DECLARE addInfo reference to Environment.Variables.SOAVariables.soa:SOAEnvelope.soa:SOAServiceHeader.soa:SOACommonDetail.commonheader:AdditionalInformation;
+				DECLARE addIndx INTEGER CARDINALITY(Environment.Variables.SOAVariables.soa:SOAEnvelope.soa:SOAServiceHeader.soa:SOACommonDetail.commonheader:AdditionalInformation.commonheader:NameValuePairs[]);
+				SET addInfo.commonheader:NameValuePairs[addIndx+1].commonheader:Name = 'TARGETID';
+				SET addInfo.commonheader:NameValuePairs[addIndx+1].commonheader:Value = 'PREMIA';
+			
+				SET addInfo.commonheader:NameValuePairs[addIndx+2].commonheader:Name = 'TARGETSERVICE';
+				SET addInfo.commonheader:NameValuePairs[addIndx+2].commonheader:Value = 'PROVIDEREQUIREDCARINSURANCE';
+			
+				SET OutputLocalEnvironment.Destination.HTTP.RequestURL = PremiaIPPort||ProvideRequiredCarInsuranceUrl;
+				SET OutputLocalEnvironment.Destination.HTTP.Timeout = ProvideRequiredCarInsuranceTimeout;
+				SET Environment.Variables.ServiceCallout.LogType = 'SOAP';
+				DELETE FIELD OutputRoot.XMLNSC.DATA;
+			
+				PROPAGATE TO TERMINAL 'out1' FINALIZE NONE DELETE NONE;
+				RETURN TRUE;
+					
+		ELSE 
+			SET OutputRoot.XMLNSC.ns:ProvideRequiredCarInsuranceRes.commonheader:Header = InputRoot.XMLNSC.ns14:GetTokenRes.commonheader:Header;
+			SET OutputRoot.XMLNSC.ns:ProvideRequiredCarInsuranceRes.commonheader:ResponseStatus.commonheader:Status = '1';
+			SET OutputRoot.XMLNSC.ns:ProvideRequiredCarInsuranceRes.commonheader:ResponseStatus.commonheader:GlobalErrorCode = '004';
+			SET OutputRoot.XMLNSC.ns:ProvideRequiredCarInsuranceRes.commonheader:ResponseStatus.commonheader:GlobalErrorDescription = 'Error to backend';
+			
+			SET OutputRoot.XMLNSC.ns:ProvideRequiredCarInsuranceRes.commonheader:ResponseStatus.commonheader:ErrorInfo.commonheader:SourceAppID = 'PREMIA';
+			SET OutputRoot.XMLNSC.ns:ProvideRequiredCarInsuranceRes.commonheader:ResponseStatus.commonheader:ErrorInfo.commonheader:ErrorCode= 
+					COALESCE(InputRoot.XMLNSC.ns14:GetTokenRes.commonheader:ResponseStatus.commonheader:ErrorInfo.commonheader:ErrorCode,
+			 		InputRoot.XMLNSC.ns14:GetTokenRes.commonheader:ResponseStatus.commonheader:GlobalErrorCode);
+			SET OutputRoot.XMLNSC.ns:ProvideRequiredCarInsuranceRes.commonheader:ResponseStatus.commonheader:ErrorInfo.commonheader:ErrorDesc =
+			  		COALESCE(InputRoot.XMLNSC.ns14:GetTokenRes.commonheader:ResponseStatus.commonheader:ErrorInfo.commonheader:ErrorDesc,
+			   		InputRoot.XMLNSC.ns14:GetTokenRes.commonheader:ResponseStatus.commonheader:GlobalErrorDescription);
+			PROPAGATE TO TERMINAL 'out2' FINALIZE NONE DELETE NONE;
+		    END IF;
+		 END IF;
+			
+		RETURN FALSE;
+	END;
+
+	CREATE PROCEDURE CopyMessageHeaders() BEGIN
+		DECLARE I INTEGER 1;
+		DECLARE J INTEGER;
+		SET J = CARDINALITY(InputRoot.*[]);
+		WHILE I < J DO
+			SET OutputRoot.*[I] = InputRoot.*[I];
+			SET I = I + 1;
+		END WHILE;
+	END;
+
+	CREATE PROCEDURE CopyEntireMessage() BEGIN
+		SET OutputRoot = InputRoot;
+	END;
+END MODULE;

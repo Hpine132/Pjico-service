@@ -1,0 +1,4 @@
+CREATE FUNCTION castStringToDecimal(IN sourceValue CHAR) RETURNS DECIMAL
+BEGIN
+	RETURN CAST(sourceValue AS DECIMAL);
+END;

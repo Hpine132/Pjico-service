@@ -1,0 +1,4 @@
+CREATE PROCEDURE checkUserLDAPEncryptPassWithJava( IN directyServer CHAR, IN ldapKey CHAR, IN baseDN CHAR, IN userNameAdmin CHAR, IN passAdmin CHAR, IN userName CHAR)
+RETURNS CHARACTER
+LANGUAGE JAVA
+EXTERNAL NAME "utils.ldap.LDAP.checkUserLDAP";

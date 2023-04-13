@@ -1,0 +1,854 @@
+<?xml version="1.0" encoding="UTF-8"?><xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:ibmSchExtn="http://www.ibm.com/schema/extensions" xmlns:tns="http://tempuri.org/">
+  <xsd:import namespace="http://schemas.datacontract.org/2004/07/TariffService" schemaLocation="Insurance_1.xsd"/>
+  <xsd:import namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" schemaLocation="Insurance_1_2.xsd"/>
+  <xsd:element ibmSchExtn:docRoot="true" name="GET_VEH_TYPE">
+    <xsd:complexType>
+      <xsd:sequence/>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element ibmSchExtn:docRoot="true" name="GET_VEH_TYPEResponse">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element minOccurs="0" name="GET_VEH_TYPEResult" nillable="true" type="q1:ArrayOfCOMBO_DATA" xmlns:q1="http://schemas.datacontract.org/2004/07/TariffService"/>
+        <xsd:element minOccurs="0" name="returnCode" type="xsd:int"/>
+        <xsd:element minOccurs="0" name="errMessage" nillable="true" type="xsd:string"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element ibmSchExtn:docRoot="true" name="GET_VEH_TYPE_JSON">
+    <xsd:complexType/>
+  </xsd:element>
+  <xsd:element ibmSchExtn:docRoot="true" name="GET_VEH_TYPE_JSONResponse">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element maxOccurs="1" minOccurs="0" name="GET_VEH_TYPE_JSONResult" type="xsd:string"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element ibmSchExtn:docRoot="true" name="GET_LOSS_MISC">
+    <xsd:complexType>
+      <xsd:sequence/>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element ibmSchExtn:docRoot="true" name="GET_LOSS_MISCResponse">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element minOccurs="0" name="GET_LOSS_MISCResult" nillable="true" type="q2:ArrayOfCOMBO_DATA" xmlns:q2="http://schemas.datacontract.org/2004/07/TariffService"/>
+        <xsd:element minOccurs="0" name="returnCode" type="xsd:int"/>
+        <xsd:element minOccurs="0" name="errMessage" nillable="true" type="xsd:string"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element ibmSchExtn:docRoot="true" name="GET_SMI_TYPE">
+    <xsd:complexType>
+      <xsd:sequence/>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element ibmSchExtn:docRoot="true" name="GET_SMI_TYPEResponse">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element minOccurs="0" name="GET_SMI_TYPEResult" nillable="true" type="q3:ArrayOfCOMBO_DATA" xmlns:q3="http://schemas.datacontract.org/2004/07/TariffService"/>
+        <xsd:element minOccurs="0" name="returnCode" type="xsd:int"/>
+        <xsd:element minOccurs="0" name="errMessage" nillable="true" type="xsd:string"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element ibmSchExtn:docRoot="true" name="GET_VCXECG_CHARGE">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element minOccurs="0" name="VEH_TYPE" nillable="true" type="xsd:string"/>
+        <xsd:element minOccurs="0" name="VEH_AGE" nillable="true" type="xsd:string"/>
+        <xsd:element minOccurs="0" name="MONEY_INSUR" nillable="true" type="xsd:string"/>
+        <xsd:element minOccurs="0" name="KT" nillable="true" type="xsd:string"/>
+        <xsd:element minOccurs="0" name="DK_BS" nillable="true" type="xsd:string"/>
+        <xsd:element minOccurs="0" name="CHANGE_CHARGE" type="xsd:decimal"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element ibmSchExtn:docRoot="true" name="GET_VCXECG_CHARGEResponse">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element minOccurs="0" name="GET_VCXECG_CHARGEResult" nillable="true" type="q4:VCXECG_CHARGE" xmlns:q4="http://schemas.datacontract.org/2004/07/TariffService"/>
+        <xsd:element minOccurs="0" name="returnCode" type="xsd:int"/>
+        <xsd:element minOccurs="0" name="errMessage" nillable="true" type="xsd:string"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element ibmSchExtn:docRoot="true" name="GET_VCXECG_CHARGE_JSON">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element maxOccurs="1" minOccurs="0" name="VEH_TYPE" type="xsd:string"/>
+        <xsd:element maxOccurs="1" minOccurs="0" name="VEH_AGE" type="xsd:string"/>
+        <xsd:element maxOccurs="1" minOccurs="0" name="MONEY_INSUR" type="xsd:string"/>
+        <xsd:element maxOccurs="1" minOccurs="0" name="KT" type="xsd:string"/>
+        <xsd:element maxOccurs="1" minOccurs="0" name="DK_BS" type="xsd:string"/>
+        <xsd:element maxOccurs="1" minOccurs="0" name="CHANGE_CHARGE" type="xsd:string"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element ibmSchExtn:docRoot="true" name="GET_VCXECG_CHARGE_JSONResponse">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element maxOccurs="1" minOccurs="0" name="GET_VCXECG_CHARGE_JSONResult" type="xsd:string"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element ibmSchExtn:docRoot="true" name="GET_RISK">
+    <xsd:complexType>
+      <xsd:sequence/>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element ibmSchExtn:docRoot="true" name="GET_RISKResponse">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element minOccurs="0" name="GET_RISKResult" nillable="true" type="q5:ArrayOfCOMBO_DATA" xmlns:q5="http://schemas.datacontract.org/2004/07/TariffService"/>
+        <xsd:element minOccurs="0" name="returnCode" type="xsd:int"/>
+        <xsd:element minOccurs="0" name="errMessage" nillable="true" type="xsd:string"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element ibmSchExtn:docRoot="true" name="GET_VEH_TYPE_TP">
+    <xsd:complexType>
+      <xsd:sequence/>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element ibmSchExtn:docRoot="true" name="GET_VEH_TYPE_TPResponse">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element minOccurs="0" name="GET_VEH_TYPE_TPResult" nillable="true" type="q6:ArrayOfCOMBO_DATA" xmlns:q6="http://schemas.datacontract.org/2004/07/TariffService"/>
+        <xsd:element minOccurs="0" name="returnCode" type="xsd:int"/>
+        <xsd:element minOccurs="0" name="errMessage" nillable="true" type="xsd:string"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element ibmSchExtn:docRoot="true" name="GET_VEH_TYPE_TP_JSON">
+    <xsd:complexType/>
+  </xsd:element>
+  <xsd:element ibmSchExtn:docRoot="true" name="GET_VEH_TYPE_TP_JSONResponse">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element maxOccurs="1" minOccurs="0" name="GET_VEH_TYPE_TP_JSONResult" type="xsd:string"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element ibmSchExtn:docRoot="true" name="GET_VEH_GOOD">
+    <xsd:complexType>
+      <xsd:sequence/>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element ibmSchExtn:docRoot="true" name="GET_VEH_GOODResponse">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element minOccurs="0" name="GET_VEH_GOODResult" nillable="true" type="q7:ArrayOfCOMBO_DATA" xmlns:q7="http://schemas.datacontract.org/2004/07/TariffService"/>
+        <xsd:element minOccurs="0" name="returnCode" type="xsd:int"/>
+        <xsd:element minOccurs="0" name="errMessage" nillable="true" type="xsd:string"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element ibmSchExtn:docRoot="true" name="GET_SMI_BY_RISK">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element minOccurs="0" name="RISK" nillable="true" type="xsd:string"/>
+        <xsd:element minOccurs="0" name="VEH_TYPE" nillable="true" type="xsd:string"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element ibmSchExtn:docRoot="true" name="GET_SMI_BY_RISKResponse">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element minOccurs="0" name="GET_SMI_BY_RISKResult" nillable="true" type="q8:ArrayOfCOMBO_DATA" xmlns:q8="http://schemas.datacontract.org/2004/07/TariffService"/>
+        <xsd:element minOccurs="0" name="returnCode" type="xsd:int"/>
+        <xsd:element minOccurs="0" name="errMessage" nillable="true" type="xsd:string"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element ibmSchExtn:docRoot="true" name="GET_NG_BY_SMI">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element minOccurs="0" name="VEH_TYPE" nillable="true" type="xsd:string"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element ibmSchExtn:docRoot="true" name="GET_NG_BY_SMIResponse">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element minOccurs="0" name="GET_NG_BY_SMIResult" nillable="true" type="q9:ArrayOfCOMBO_DATA" xmlns:q9="http://schemas.datacontract.org/2004/07/TariffService"/>
+        <xsd:element minOccurs="0" name="returnCode" type="xsd:int"/>
+        <xsd:element minOccurs="0" name="errMessage" nillable="true" type="xsd:string"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element ibmSchExtn:docRoot="true" name="GET_POINT_TNDS">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element minOccurs="0" name="VEH_TYPE" nillable="true" type="xsd:string"/>
+        <xsd:element minOccurs="0" name="SEATS" nillable="true" type="xsd:string"/>
+        <xsd:element minOccurs="0" name="WEIGHT" nillable="true" type="xsd:string"/>
+        <xsd:element minOccurs="0" name="USE_PURPOSE" nillable="true" type="xsd:string"/>
+        <xsd:element minOccurs="0" name="TNDSBB" nillable="true" type="xsd:string"/>
+        <xsd:element minOccurs="0" name="TNDSTN" nillable="true" type="xsd:string"/>
+        <xsd:element minOccurs="0" name="TNDSHH" nillable="true" type="xsd:string"/>
+        <xsd:element minOccurs="0" name="TNNN" nillable="true" type="xsd:string"/>
+        <xsd:element minOccurs="0" name="TNLP" nillable="true" type="xsd:string"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element ibmSchExtn:docRoot="true" name="GET_POINT_TNDSResponse">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element minOccurs="0" name="GET_POINT_TNDSResult" nillable="true" type="q10:ArrayOfTNDS_CHARGE" xmlns:q10="http://schemas.datacontract.org/2004/07/TariffService"/>
+        <xsd:element minOccurs="0" name="returnCode" type="xsd:int"/>
+        <xsd:element minOccurs="0" name="errMessage" nillable="true" type="xsd:string"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element ibmSchExtn:docRoot="true" name="GET_POINT_TNDS_JSON">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element maxOccurs="1" minOccurs="0" name="VEH_TYPE" type="xsd:string"/>
+        <xsd:element maxOccurs="1" minOccurs="0" name="SEATS" type="xsd:string"/>
+        <xsd:element maxOccurs="1" minOccurs="0" name="WEIGHT" type="xsd:string"/>
+        <xsd:element maxOccurs="1" minOccurs="0" name="USE_PURPOSE" type="xsd:string"/>
+        <xsd:element maxOccurs="1" minOccurs="0" name="TNDSBB" type="xsd:string"/>
+        <xsd:element maxOccurs="1" minOccurs="0" name="TNDSTN" type="xsd:string"/>
+        <xsd:element maxOccurs="1" minOccurs="0" name="TNDSHH" type="xsd:string"/>
+        <xsd:element maxOccurs="1" minOccurs="0" name="TNNN" type="xsd:string"/>
+        <xsd:element maxOccurs="1" minOccurs="0" name="TNLP" type="xsd:string"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element ibmSchExtn:docRoot="true" name="GET_POINT_TNDS_JSONResponse">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element maxOccurs="1" minOccurs="0" name="GET_POINT_TNDS_JSONResult" type="xsd:string"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element ibmSchExtn:docRoot="true" name="CHECK_BLKLIST">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element minOccurs="0" name="REGN_NO" nillable="true" type="xsd:string"/>
+        <xsd:element minOccurs="0" name="CHASSIS_NO" nillable="true" type="xsd:string"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element ibmSchExtn:docRoot="true" name="CHECK_BLKLISTResponse">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element minOccurs="0" name="CHECK_BLKLISTResult" type="xsd:boolean"/>
+        <xsd:element minOccurs="0" name="returnCode" type="xsd:int"/>
+        <xsd:element minOccurs="0" name="errMessage" nillable="true" type="xsd:string"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element ibmSchExtn:docRoot="true" name="CHECK_LOGIN">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element minOccurs="0" name="USER_NAME" nillable="true" type="xsd:string"/>
+        <xsd:element minOccurs="0" name="PASSWORD" nillable="true" type="xsd:string"/>
+        <xsd:element minOccurs="0" name="CLIENT_IP" nillable="true" type="xsd:string"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element ibmSchExtn:docRoot="true" name="CHECK_LOGINResponse">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element minOccurs="0" name="CHECK_LOGINResult" nillable="true" type="q11:USER_LOGIN" xmlns:q11="http://schemas.datacontract.org/2004/07/TariffService"/>
+        <xsd:element minOccurs="0" name="currentIP" nillable="true" type="xsd:string"/>
+        <xsd:element minOccurs="0" name="returnCode" type="xsd:int"/>
+        <xsd:element minOccurs="0" name="errMessage" nillable="true" type="xsd:string"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element ibmSchExtn:docRoot="true" name="DEL_CURRENT_STATUS">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element minOccurs="0" name="USER_NAME" nillable="true" type="xsd:string"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element ibmSchExtn:docRoot="true" name="DEL_CURRENT_STATUSResponse">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element minOccurs="0" name="returnCode" type="xsd:int"/>
+        <xsd:element minOccurs="0" name="errMessage" nillable="true" type="xsd:string"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element ibmSchExtn:docRoot="true" name="GET_MENU_ROOT">
+    <xsd:complexType>
+      <xsd:sequence/>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element ibmSchExtn:docRoot="true" name="GET_MENU_ROOTResponse">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element minOccurs="0" name="GET_MENU_ROOTResult" nillable="true" type="q12:ArrayOfCOMBO_DATA" xmlns:q12="http://schemas.datacontract.org/2004/07/TariffService"/>
+        <xsd:element minOccurs="0" name="returnCode" type="xsd:int"/>
+        <xsd:element minOccurs="0" name="errMessage" nillable="true" type="xsd:string"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element ibmSchExtn:docRoot="true" name="GET_LIST_FUNCTION">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element minOccurs="0" name="FUNCTION_CODE" nillable="true" type="xsd:string"/>
+        <xsd:element minOccurs="0" name="PARENT_MENU" nillable="true" type="xsd:string"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element ibmSchExtn:docRoot="true" name="GET_LIST_FUNCTIONResponse">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element minOccurs="0" name="GET_LIST_FUNCTIONResult" nillable="true" type="q13:ArrayOfEINS_FUNCTION" xmlns:q13="http://schemas.datacontract.org/2004/07/TariffService"/>
+        <xsd:element minOccurs="0" name="returnCode" type="xsd:int"/>
+        <xsd:element minOccurs="0" name="errMessage" nillable="true" type="xsd:string"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element ibmSchExtn:docRoot="true" name="CHANGE_TABLE_FUNCTION">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element minOccurs="0" name="ACTION" nillable="true" type="xsd:string"/>
+        <xsd:element minOccurs="0" name="FUNCTION_CODE" nillable="true" type="xsd:string"/>
+        <xsd:element minOccurs="0" name="MENU_TITLE" nillable="true" type="xsd:string"/>
+        <xsd:element minOccurs="0" name="URL" nillable="true" type="xsd:string"/>
+        <xsd:element minOccurs="0" name="PARENT_MENU" nillable="true" type="xsd:string"/>
+        <xsd:element minOccurs="0" name="MENU_ORDER" nillable="true" type="xsd:string"/>
+        <xsd:element minOccurs="0" name="USER" nillable="true" type="xsd:string"/>
+        <xsd:element minOccurs="0" name="MENU_ICON" nillable="true" type="xsd:string"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element ibmSchExtn:docRoot="true" name="CHANGE_TABLE_FUNCTIONResponse">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element minOccurs="0" name="returnCode" type="xsd:int"/>
+        <xsd:element minOccurs="0" name="errMessage" nillable="true" type="xsd:string"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element ibmSchExtn:docRoot="true" name="GET_LIST_ROLE">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element minOccurs="0" name="ROLE_CODE" nillable="true" type="xsd:string"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element ibmSchExtn:docRoot="true" name="GET_LIST_ROLEResponse">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element minOccurs="0" name="GET_LIST_ROLEResult" nillable="true" type="q14:ArrayOfEINS_ROLE" xmlns:q14="http://schemas.datacontract.org/2004/07/TariffService"/>
+        <xsd:element minOccurs="0" name="returnCode" type="xsd:int"/>
+        <xsd:element minOccurs="0" name="errMessage" nillable="true" type="xsd:string"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element ibmSchExtn:docRoot="true" name="CHANGE_TABLE_ROLE">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element minOccurs="0" name="ACTION" nillable="true" type="xsd:string"/>
+        <xsd:element minOccurs="0" name="ROLE_CODE" nillable="true" type="xsd:string"/>
+        <xsd:element minOccurs="0" name="DESCRIPTION" nillable="true" type="xsd:string"/>
+        <xsd:element minOccurs="0" name="FUNCTION_CODE" nillable="true" type="xsd:string"/>
+        <xsd:element minOccurs="0" name="USER" nillable="true" type="xsd:string"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element ibmSchExtn:docRoot="true" name="CHANGE_TABLE_ROLEResponse">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element minOccurs="0" name="returnCode" type="xsd:int"/>
+        <xsd:element minOccurs="0" name="errMessage" nillable="true" type="xsd:string"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element ibmSchExtn:docRoot="true" name="GET_LIST_USER">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element minOccurs="0" name="USER_NAME" nillable="true" type="xsd:string"/>
+        <xsd:element minOccurs="0" name="RF_CODE" nillable="true" type="xsd:string"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element ibmSchExtn:docRoot="true" name="GET_LIST_USERResponse">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element minOccurs="0" name="GET_LIST_USERResult" nillable="true" type="q15:ArrayOfEINS_USER" xmlns:q15="http://schemas.datacontract.org/2004/07/TariffService"/>
+        <xsd:element minOccurs="0" name="returnCode" type="xsd:int"/>
+        <xsd:element minOccurs="0" name="errMessage" nillable="true" type="xsd:string"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element ibmSchExtn:docRoot="true" name="GET_LIST_DIVN">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element minOccurs="0" name="DIVN_CODE" nillable="true" type="xsd:string"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element ibmSchExtn:docRoot="true" name="GET_LIST_DIVNResponse">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element minOccurs="0" name="GET_LIST_DIVNResult" nillable="true" type="q16:ArrayOfCOMBO_DATA" xmlns:q16="http://schemas.datacontract.org/2004/07/TariffService"/>
+        <xsd:element minOccurs="0" name="returnCode" type="xsd:int"/>
+        <xsd:element minOccurs="0" name="errMessage" nillable="true" type="xsd:string"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element ibmSchExtn:docRoot="true" name="GET_LIST_BRANCH">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element minOccurs="0" name="BRANCH_CODE" nillable="true" type="xsd:string"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element ibmSchExtn:docRoot="true" name="GET_LIST_BRANCHResponse">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element minOccurs="0" name="GET_LIST_BRANCHResult" nillable="true" type="q17:ArrayOfCOMBO_DATA" xmlns:q17="http://schemas.datacontract.org/2004/07/TariffService"/>
+        <xsd:element minOccurs="0" name="returnCode" type="xsd:int"/>
+        <xsd:element minOccurs="0" name="errMessage" nillable="true" type="xsd:string"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element ibmSchExtn:docRoot="true" name="CHANGE_TABLE_USER">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element minOccurs="0" name="ACTION" nillable="true" type="xsd:string"/>
+        <xsd:element minOccurs="0" name="USER_NAME" nillable="true" type="xsd:string"/>
+        <xsd:element minOccurs="0" name="PASSWORD" nillable="true" type="xsd:string"/>
+        <xsd:element minOccurs="0" name="FULL_NAME" nillable="true" type="xsd:string"/>
+        <xsd:element minOccurs="0" name="START_DATE" nillable="true" type="xsd:string"/>
+        <xsd:element minOccurs="0" name="END_DATE" nillable="true" type="xsd:string"/>
+        <xsd:element minOccurs="0" name="BRANCH" nillable="true" type="xsd:string"/>
+        <xsd:element minOccurs="0" name="EMAIL" nillable="true" type="xsd:string"/>
+        <xsd:element minOccurs="0" name="USER" nillable="true" type="xsd:string"/>
+        <xsd:element minOccurs="0" name="ROLE_CODE" nillable="true" type="xsd:string"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element ibmSchExtn:docRoot="true" name="CHANGE_TABLE_USERResponse">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element minOccurs="0" name="returnCode" type="xsd:int"/>
+        <xsd:element minOccurs="0" name="errMessage" nillable="true" type="xsd:string"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element ibmSchExtn:docRoot="true" name="GET_PT_POLICY">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element minOccurs="0" name="PHONE_BSX" nillable="true" type="xsd:string"/>
+        <xsd:element minOccurs="0" name="POL_NO" nillable="true" type="xsd:string"/>
+        <xsd:element minOccurs="0" name="REF_ID" nillable="true" type="xsd:string"/>
+        <xsd:element minOccurs="0" name="ISSUE_DT" nillable="true" type="xsd:string"/>
+        <xsd:element minOccurs="0" name="FM_DT" nillable="true" type="xsd:string"/>
+        <xsd:element minOccurs="0" name="TO_DT" nillable="true" type="xsd:string"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element ibmSchExtn:docRoot="true" name="GET_PT_POLICYResponse">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element minOccurs="0" name="GET_PT_POLICYResult" nillable="true" type="q18:ArrayOfEINS_POLICY" xmlns:q18="http://schemas.datacontract.org/2004/07/TariffService"/>
+        <xsd:element minOccurs="0" name="returnCode" type="xsd:int"/>
+        <xsd:element minOccurs="0" name="errMessage" nillable="true" type="xsd:string"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element ibmSchExtn:docRoot="true" name="GET_DETAIL_POLICY">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element minOccurs="0" name="POL_NO" nillable="true" type="xsd:string"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element ibmSchExtn:docRoot="true" name="GET_DETAIL_POLICYResponse">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element minOccurs="0" name="GET_DETAIL_POLICYResult" nillable="true" type="q19:EINS_RESULT_DETAIL" xmlns:q19="http://schemas.datacontract.org/2004/07/TariffService"/>
+        <xsd:element minOccurs="0" name="returnCode" type="xsd:int"/>
+        <xsd:element minOccurs="0" name="errMess" nillable="true" type="xsd:string"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element ibmSchExtn:docRoot="true" name="GET_MENU_BY_USER_NAME">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element minOccurs="0" name="USER_NAME" nillable="true" type="xsd:string"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element ibmSchExtn:docRoot="true" name="GET_MENU_BY_USER_NAMEResponse">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element minOccurs="0" name="GET_MENU_BY_USER_NAMEResult" nillable="true" type="q20:ArrayOfMENU_USER" xmlns:q20="http://schemas.datacontract.org/2004/07/TariffService"/>
+        <xsd:element minOccurs="0" name="returnCode" type="xsd:int"/>
+        <xsd:element minOccurs="0" name="errMessage" nillable="true" type="xsd:string"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element ibmSchExtn:docRoot="true" name="GET_CURRENT_IPADDRESS">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element minOccurs="0" name="USER_NAME" nillable="true" type="xsd:string"/>
+        <xsd:element minOccurs="0" name="CLIENT_IP" nillable="true" type="xsd:string"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element ibmSchExtn:docRoot="true" name="GET_CURRENT_IPADDRESSResponse">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element minOccurs="0" name="GET_CURRENT_IPADDRESSResult" type="xsd:boolean"/>
+        <xsd:element minOccurs="0" name="returnCode" type="xsd:int"/>
+        <xsd:element minOccurs="0" name="errMessage" nillable="true" type="xsd:string"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element ibmSchExtn:docRoot="true" name="CHANGE_INS_SCHEDULE">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element minOccurs="0" name="SCHEDULE_DATA" nillable="true" type="xsd:string"/>
+        <xsd:element minOccurs="0" name="USER" nillable="true" type="xsd:string"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element ibmSchExtn:docRoot="true" name="CHANGE_INS_SCHEDULEResponse">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element minOccurs="0" name="returnCode" type="xsd:int"/>
+        <xsd:element minOccurs="0" name="errMessage" nillable="true" type="xsd:string"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element ibmSchExtn:docRoot="true" name="GET_SCHEDULE_BY_DAY">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element minOccurs="0" name="WORK_DAY" nillable="true" type="xsd:string"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element ibmSchExtn:docRoot="true" name="GET_SCHEDULE_BY_DAYResponse">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element minOccurs="0" name="GET_SCHEDULE_BY_DAYResult" nillable="true" type="q21:ArrayOfCOMBO_DATA" xmlns:q21="http://schemas.datacontract.org/2004/07/TariffService"/>
+        <xsd:element minOccurs="0" name="returnCode" type="xsd:int"/>
+        <xsd:element minOccurs="0" name="errMessage" nillable="true" type="xsd:string"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element ibmSchExtn:docRoot="true" name="GET_PARAMETERS">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element minOccurs="0" name="PARAM_CODE" nillable="true" type="xsd:string"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element ibmSchExtn:docRoot="true" name="GET_PARAMETERSResponse">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element minOccurs="0" name="GET_PARAMETERSResult" nillable="true" type="xsd:string"/>
+        <xsd:element minOccurs="0" name="returnCode" type="xsd:int"/>
+        <xsd:element minOccurs="0" name="errMessage" nillable="true" type="xsd:string"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element ibmSchExtn:docRoot="true" name="CHANGE_INS_JOB">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element minOccurs="0" name="POST_ID" nillable="true" type="xsd:string"/>
+        <xsd:element minOccurs="0" name="CUST_NAME" nillable="true" type="xsd:string"/>
+        <xsd:element minOccurs="0" name="CUST_PHONE" nillable="true" type="xsd:string"/>
+        <xsd:element minOccurs="0" name="CUST_LINK" nillable="true" type="xsd:string"/>
+        <xsd:element minOccurs="0" name="STATUS" nillable="true" type="xsd:string"/>
+        <xsd:element minOccurs="0" name="USER" nillable="true" type="xsd:string"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element ibmSchExtn:docRoot="true" name="CHANGE_INS_JOBResponse">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element minOccurs="0" name="returnCode" type="xsd:int"/>
+        <xsd:element minOccurs="0" name="errMessage" nillable="true" type="xsd:string"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element ibmSchExtn:docRoot="true" name="GET_LIST_EMPLOYEES_SYSDATE">
+    <xsd:complexType>
+      <xsd:sequence/>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element ibmSchExtn:docRoot="true" name="GET_LIST_EMPLOYEES_SYSDATEResponse">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element minOccurs="0" name="GET_LIST_EMPLOYEES_SYSDATEResult" nillable="true" type="q22:ArrayOfstring" xmlns:q22="http://schemas.microsoft.com/2003/10/Serialization/Arrays"/>
+        <xsd:element minOccurs="0" name="returnCode" type="xsd:int"/>
+        <xsd:element minOccurs="0" name="errMessage" nillable="true" type="xsd:string"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element ibmSchExtn:docRoot="true" name="GET_LIST_JOB_SYSDATE">
+    <xsd:complexType>
+      <xsd:sequence/>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element ibmSchExtn:docRoot="true" name="GET_LIST_JOB_SYSDATEResponse">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element minOccurs="0" name="GET_LIST_JOB_SYSDATEResult" nillable="true" type="q23:ArrayOfINS_ASSIGNMENT" xmlns:q23="http://schemas.datacontract.org/2004/07/TariffService"/>
+        <xsd:element minOccurs="0" name="returnCode" type="xsd:int"/>
+        <xsd:element minOccurs="0" name="errMessage" nillable="true" type="xsd:string"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element ibmSchExtn:docRoot="true" name="CHANGE_INS_ASSIGNMENT">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element minOccurs="0" name="POST_ID" nillable="true" type="xsd:string"/>
+        <xsd:element minOccurs="0" name="USER" nillable="true" type="xsd:string"/>
+        <xsd:element minOccurs="0" name="EMPLOYEES" nillable="true" type="xsd:string"/>
+        <xsd:element minOccurs="0" name="STATUS" nillable="true" type="xsd:string"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element ibmSchExtn:docRoot="true" name="CHANGE_INS_ASSIGNMENTResponse">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element minOccurs="0" name="returnCode" type="xsd:int"/>
+        <xsd:element minOccurs="0" name="errMessage" nillable="true" type="xsd:string"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element ibmSchExtn:docRoot="true" name="GET_ASSIGN_BY_USER">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element minOccurs="0" name="USER_NAME" nillable="true" type="xsd:string"/>
+        <xsd:element minOccurs="0" name="DATE_START" nillable="true" type="xsd:string"/>
+        <xsd:element minOccurs="0" name="DATE_END" nillable="true" type="xsd:string"/>
+        <xsd:element minOccurs="0" name="STATUS" nillable="true" type="xsd:string"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element ibmSchExtn:docRoot="true" name="GET_ASSIGN_BY_USERResponse">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element minOccurs="0" name="GET_ASSIGN_BY_USERResult" nillable="true" type="q24:ArrayOfINS_ASSIGNMENT" xmlns:q24="http://schemas.datacontract.org/2004/07/TariffService"/>
+        <xsd:element minOccurs="0" name="returnCode" type="xsd:int"/>
+        <xsd:element minOccurs="0" name="errMessage" nillable="true" type="xsd:string"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element ibmSchExtn:docRoot="true" name="CHANGE_PASSWORD">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element minOccurs="0" name="USER_NAME" nillable="true" type="xsd:string"/>
+        <xsd:element minOccurs="0" name="OLD_PASSWORD" nillable="true" type="xsd:string"/>
+        <xsd:element minOccurs="0" name="NEW_PASSWORD" nillable="true" type="xsd:string"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element ibmSchExtn:docRoot="true" name="CHANGE_PASSWORDResponse">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element minOccurs="0" name="returnCode" type="xsd:int"/>
+        <xsd:element minOccurs="0" name="errMessage" nillable="true" type="xsd:string"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element ibmSchExtn:docRoot="true" name="CHANGE_STATUS_ASSIGN">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element minOccurs="0" name="POST_ID" nillable="true" type="xsd:string"/>
+        <xsd:element minOccurs="0" name="STATUS" nillable="true" type="xsd:string"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element ibmSchExtn:docRoot="true" name="CHANGE_STATUS_ASSIGNResponse">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element minOccurs="0" name="returnCode" type="xsd:int"/>
+        <xsd:element minOccurs="0" name="errMessage" nillable="true" type="xsd:string"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element ibmSchExtn:docRoot="true" name="GET_LIST_CONFIG">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element minOccurs="0" name="CONFIG_NAME" nillable="true" type="xsd:string"/>
+        <xsd:element minOccurs="0" name="CONFIG_MODULE" nillable="true" type="xsd:string"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element ibmSchExtn:docRoot="true" name="GET_LIST_CONFIGResponse">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element minOccurs="0" name="GET_LIST_CONFIGResult" nillable="true" type="q25:ArrayOfCOMBO_DATA" xmlns:q25="http://schemas.datacontract.org/2004/07/TariffService"/>
+        <xsd:element minOccurs="0" name="returnCode" type="xsd:int"/>
+        <xsd:element minOccurs="0" name="errMessage" nillable="true" type="xsd:string"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element ibmSchExtn:docRoot="true" name="GET_SCHEDULE_AGAIN">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element minOccurs="0" name="CURRENT_DATE" nillable="true" type="xsd:string"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element ibmSchExtn:docRoot="true" name="GET_SCHEDULE_AGAINResponse">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element minOccurs="0" name="GET_SCHEDULE_AGAINResult" nillable="true" type="q26:ArrayOfCOMBO_DATA" xmlns:q26="http://schemas.datacontract.org/2004/07/TariffService"/>
+        <xsd:element minOccurs="0" name="returnCode" type="xsd:int"/>
+        <xsd:element minOccurs="0" name="errMessage" nillable="true" type="xsd:string"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element ibmSchExtn:docRoot="true" name="GET_JOB_LEADER">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element minOccurs="0" name="DATE_START" nillable="true" type="xsd:string"/>
+        <xsd:element minOccurs="0" name="DATE_END" nillable="true" type="xsd:string"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element ibmSchExtn:docRoot="true" name="GET_JOB_LEADERResponse">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element minOccurs="0" name="GET_JOB_LEADERResult" nillable="true" type="q27:ArrayOfINS_ASSIGNMENT" xmlns:q27="http://schemas.datacontract.org/2004/07/TariffService"/>
+        <xsd:element minOccurs="0" name="returnCode" type="xsd:int"/>
+        <xsd:element minOccurs="0" name="errMessage" nillable="true" type="xsd:string"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element ibmSchExtn:docRoot="true" name="GET_SURVEY_REPORT">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element minOccurs="0" name="FROM_DATE" nillable="true" type="xsd:string"/>
+        <xsd:element minOccurs="0" name="TO_DATE" nillable="true" type="xsd:string"/>
+        <xsd:element minOccurs="0" name="BKS" nillable="true" type="xsd:string"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element ibmSchExtn:docRoot="true" name="GET_SURVEY_REPORTResponse">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element minOccurs="0" name="GET_SURVEY_REPORTResult" nillable="true" type="q28:ArrayOfINS_SURVEY" xmlns:q28="http://schemas.datacontract.org/2004/07/TariffService"/>
+        <xsd:element minOccurs="0" name="returnCode" type="xsd:int"/>
+        <xsd:element minOccurs="0" name="errMessage" nillable="true" type="xsd:string"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element ibmSchExtn:docRoot="true" name="GET_LINK_GENERATE">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element minOccurs="0" name="SYS_RUN_DATE" nillable="true" type="xsd:string"/>
+        <xsd:element minOccurs="0" name="DIVN_CODE" nillable="true" type="xsd:string"/>
+        <xsd:element minOccurs="0" name="GEN_TYPE" nillable="true" type="xsd:string"/>
+        <xsd:element minOccurs="0" name="GEN_KEY" nillable="true" type="xsd:string"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element ibmSchExtn:docRoot="true" name="GET_LINK_GENERATEResponse">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element minOccurs="0" name="GET_LINK_GENERATEResult" nillable="true" type="q29:LINK_GENERATE" xmlns:q29="http://schemas.datacontract.org/2004/07/TariffService"/>
+        <xsd:element minOccurs="0" name="returnCode" type="xsd:int"/>
+        <xsd:element minOccurs="0" name="errMessage" nillable="true" type="xsd:string"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element ibmSchExtn:docRoot="true" name="GET_SC_CLASS">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element maxOccurs="1" minOccurs="0" name="SC_CODE" type="xsd:string"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element ibmSchExtn:docRoot="true" name="GET_SC_CLASSResponse">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element maxOccurs="1" minOccurs="0" name="GET_SC_CLASSResult" type="xsd:string"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element ibmSchExtn:docRoot="true" name="GET_SEARCH">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element minOccurs="0" name="INFOR_NO" nillable="true" type="xsd:string"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element ibmSchExtn:docRoot="true" name="GET_SEARCHResponse">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element minOccurs="0" name="GET_SEARCHResult" nillable="true" type="q30:INS_SEARCH" xmlns:q30="http://schemas.datacontract.org/2004/07/TariffService"/>
+        <xsd:element minOccurs="0" name="returnCode" type="xsd:int"/>
+        <xsd:element minOccurs="0" name="errMessage" nillable="true" type="xsd:string"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element ibmSchExtn:docRoot="true" name="GET_DATA_PDF">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element minOccurs="0" name="INFOR_NO" nillable="true" type="xsd:string"/>
+        <xsd:element minOccurs="0" name="ID" nillable="true" type="xsd:string"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element ibmSchExtn:docRoot="true" name="GET_DATA_PDFResponse">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element minOccurs="0" name="GET_DATA_PDFResult" nillable="true" type="q31:INS_SEARCH" xmlns:q31="http://schemas.datacontract.org/2004/07/TariffService"/>
+        <xsd:element minOccurs="0" name="returnCode" type="xsd:int"/>
+        <xsd:element minOccurs="0" name="errMessage" nillable="true" type="xsd:string"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element ibmSchExtn:docRoot="true" name="GET_POINT_UNG_THU">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element maxOccurs="1" minOccurs="0" name="SMI" type="xsd:string"/>
+        <xsd:element maxOccurs="1" minOccurs="0" name="AGE" type="xsd:string"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element ibmSchExtn:docRoot="true" name="GET_POINT_UNG_THUResponse">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element maxOccurs="1" minOccurs="0" name="GET_POINT_UNG_THUResult" type="xsd:string"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element ibmSchExtn:docRoot="true" name="GET_POINT_HIEM_NGHEO">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element maxOccurs="1" minOccurs="0" name="SMI" type="xsd:string"/>
+        <xsd:element maxOccurs="1" minOccurs="0" name="AGE" type="xsd:string"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element ibmSchExtn:docRoot="true" name="GET_POINT_HIEM_NGHEOResponse">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element maxOccurs="1" minOccurs="0" name="GET_POINT_HIEM_NGHEOResult" type="xsd:string"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element ibmSchExtn:docRoot="true" name="GET_RISK_SMI">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element maxOccurs="1" minOccurs="0" name="RISK_CODE" type="xsd:string"/>
+        <xsd:element maxOccurs="1" minOccurs="0" name="SMI_CODE" type="xsd:string"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element ibmSchExtn:docRoot="true" name="GET_RISK_SMIResponse">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element maxOccurs="1" minOccurs="0" name="GET_RISK_SMIResult" type="xsd:string"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+</xsd:schema>

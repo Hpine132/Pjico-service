@@ -1,0 +1,352 @@
+<?xml version="1.0" encoding="UTF-8"?><xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/TariffService" xmlns:tns="http://schemas.datacontract.org/2004/07/TariffService">
+  <xsd:complexType name="ArrayOfCOMBO_DATA">
+    <xsd:sequence>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="COMBO_DATA" nillable="true" type="tns:COMBO_DATA"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="ArrayOfCOMBO_DATA" nillable="true" type="tns:ArrayOfCOMBO_DATA"/>
+  <xsd:complexType name="COMBO_DATA">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="Code" nillable="true" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="Text" nillable="true" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="Value" nillable="true" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="COMBO_DATA" nillable="true" type="tns:COMBO_DATA"/>
+  <xsd:complexType name="VCXECG_CHARGE">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="BasicCharge" nillable="true" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="ChangeCharge" nillable="true" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="VATBasicCharge" nillable="true" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="VATChangeCharge" nillable="true" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="VCXECG_CHARGE" nillable="true" type="tns:VCXECG_CHARGE"/>
+  <xsd:complexType name="ArrayOfTNDS_CHARGE">
+    <xsd:sequence>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="TNDS_CHARGE" nillable="true" type="tns:TNDS_CHARGE"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="ArrayOfTNDS_CHARGE" nillable="true" type="tns:ArrayOfTNDS_CHARGE"/>
+  <xsd:complexType name="TNDS_CHARGE">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="INSURANCE_MONEY" nillable="true" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="MONEY_LIABILITY" nillable="true" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="MONEY_SMI" nillable="true" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="RISK" nillable="true" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="SMI" nillable="true" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="VAT_MONEY" nillable="true" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="TNDS_CHARGE" nillable="true" type="tns:TNDS_CHARGE"/>
+  <xsd:complexType name="USER_LOGIN">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="USR_BRANCH" nillable="true" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="USR_BRANCH_NAME" nillable="true" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="USR_FULL_NAME" nillable="true" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="USR_USER_NAME" nillable="true" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="USER_LOGIN" nillable="true" type="tns:USER_LOGIN"/>
+  <xsd:complexType name="ArrayOfEINS_FUNCTION">
+    <xsd:sequence>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="EINS_FUNCTION" nillable="true" type="tns:EINS_FUNCTION"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="ArrayOfEINS_FUNCTION" nillable="true" type="tns:ArrayOfEINS_FUNCTION"/>
+  <xsd:complexType name="EINS_FUNCTION">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="FUNCTION_CODE" nillable="true" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="MENU_ICON" nillable="true" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="MENU_ORDER" nillable="true" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="MENU_TITLE" nillable="true" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="PARENT_MENU" nillable="true" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="URL" nillable="true" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="EINS_FUNCTION" nillable="true" type="tns:EINS_FUNCTION"/>
+  <xsd:complexType name="ArrayOfEINS_ROLE">
+    <xsd:sequence>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="EINS_ROLE" nillable="true" type="tns:EINS_ROLE"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="ArrayOfEINS_ROLE" nillable="true" type="tns:ArrayOfEINS_ROLE"/>
+  <xsd:complexType name="EINS_ROLE">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="DESCRIPTION" nillable="true" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="FUNCTION_CODE" nillable="true" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="ROLE_CODE" nillable="true" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="EINS_ROLE" nillable="true" type="tns:EINS_ROLE"/>
+  <xsd:complexType name="ArrayOfEINS_USER">
+    <xsd:sequence>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="EINS_USER" nillable="true" type="tns:EINS_USER"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="ArrayOfEINS_USER" nillable="true" type="tns:ArrayOfEINS_USER"/>
+  <xsd:complexType name="EINS_USER">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="ROLE_CODE" nillable="true" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="ROLE_NAME" nillable="true" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="USR_BRANCH" nillable="true" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="USR_BRANCH_NAME" nillable="true" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="USR_EMAIL" nillable="true" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="USR_END_DATE" nillable="true" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="USR_FULL_NAME" nillable="true" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="USR_PASSWORD" nillable="true" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="USR_START_DATE" nillable="true" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="USR_USER_NAME" nillable="true" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="EINS_USER" nillable="true" type="tns:EINS_USER"/>
+  <xsd:complexType name="ArrayOfEINS_POLICY">
+    <xsd:sequence>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="EINS_POLICY" nillable="true" type="tns:EINS_POLICY"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="ArrayOfEINS_POLICY" nillable="true" type="tns:ArrayOfEINS_POLICY"/>
+  <xsd:complexType name="EINS_POLICY">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="POL_NO" nillable="true" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="POL_SC_CODE" nillable="true" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="EINS_POLICY" nillable="true" type="tns:EINS_POLICY"/>
+  <xsd:complexType name="EINS_RESULT_DETAIL">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="PH_POLICY" nillable="true" type="tns:ArrayOfEINS_DETAIL_PH_POLICY"/>
+      <xsd:element minOccurs="0" name="POL_DTLS" nillable="true" type="tns:ArrayOfEINS_DETAIL_POL_DTLS"/>
+      <xsd:element minOccurs="0" name="PT_CLAIM" nillable="true" type="tns:ArrayOfEINS_DETAIL_CLAIM"/>
+      <xsd:element minOccurs="0" name="PT_POLICY" nillable="true" type="tns:EINS_DETAIL_PT_POLICY"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="EINS_RESULT_DETAIL" nillable="true" type="tns:EINS_RESULT_DETAIL"/>
+  <xsd:complexType name="ArrayOfEINS_DETAIL_PH_POLICY">
+    <xsd:sequence>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="EINS_DETAIL_PH_POLICY" nillable="true" type="tns:EINS_DETAIL_PH_POLICY"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="ArrayOfEINS_DETAIL_PH_POLICY" nillable="true" type="tns:ArrayOfEINS_DETAIL_PH_POLICY"/>
+  <xsd:complexType name="EINS_DETAIL_PH_POLICY">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="POLH_N_APPRV_STATUS" nillable="true" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="POLH_N_END_DESC" nillable="true" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="POLH_N_END_DT" nillable="true" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="POLH_N_END_NO" nillable="true" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="POLH_N_END_TEXT" nillable="true" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="POLH_N_ES_CODE" nillable="true" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="EINS_DETAIL_PH_POLICY" nillable="true" type="tns:EINS_DETAIL_PH_POLICY"/>
+  <xsd:complexType name="ArrayOfEINS_DETAIL_POL_DTLS">
+    <xsd:sequence>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="EINS_DETAIL_POL_DTLS" nillable="true" type="tns:EINS_DETAIL_POL_DTLS"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="ArrayOfEINS_DETAIL_POL_DTLS" nillable="true" type="tns:ArrayOfEINS_DETAIL_POL_DTLS"/>
+  <xsd:complexType name="EINS_DETAIL_POL_DTLS">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="PCVR_CODE" nillable="true" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="PCVR_DESC" nillable="true" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="RISK_CLASS" nillable="true" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="RISK_DESC" nillable="true" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="RSMI_CODE" nillable="true" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="RSMI_DESC" nillable="true" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="EINS_DETAIL_POL_DTLS" nillable="true" type="tns:EINS_DETAIL_POL_DTLS"/>
+  <xsd:complexType name="ArrayOfEINS_DETAIL_CLAIM">
+    <xsd:sequence>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="EINS_DETAIL_CLAIM" nillable="true" type="tns:EINS_DETAIL_CLAIM"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="ArrayOfEINS_DETAIL_CLAIM" nillable="true" type="tns:ArrayOfEINS_DETAIL_CLAIM"/>
+  <xsd:complexType name="EINS_DETAIL_CLAIM">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="BL_DT" nillable="true" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="CCY_CLAIM_CODE" nillable="true" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="CLM_CLAIM_NO" nillable="true" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="CLM_DOC_FULL_RECD_DT" nillable="true" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="CLM_INTM_DT" nillable="true" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="CLM_LOSS_DT" nillable="true" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="CP_PAID_DT" nillable="true" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="CSY_APPT_DT" nillable="true" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="CSY_CUST_CODE" nillable="true" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="CSY_SURVEY_END_DT" nillable="true" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="SUM_CLAIM" nillable="true" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="EINS_DETAIL_CLAIM" nillable="true" type="tns:EINS_DETAIL_CLAIM"/>
+  <xsd:complexType name="EINS_DETAIL_PT_POLICY">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="CUST_NAME" nillable="true" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="DIVN_NAME" nillable="true" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="POL_APPRV_STATUS" nillable="true" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="POL_ASSURED_NAME" nillable="true" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="POL_FM_DT" nillable="true" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="POL_ISSUE_DT" nillable="true" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="POL_NO" nillable="true" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="POL_TO_DT" nillable="true" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="RISK_FC_SI" nillable="true" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="RISK_SI_CURR_CODE" nillable="true" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="SUM_FEE" nillable="true" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="EINS_DETAIL_PT_POLICY" nillable="true" type="tns:EINS_DETAIL_PT_POLICY"/>
+  <xsd:complexType name="ArrayOfMENU_USER">
+    <xsd:sequence>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="MENU_USER" nillable="true" type="tns:MENU_USER"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="ArrayOfMENU_USER" nillable="true" type="tns:ArrayOfMENU_USER"/>
+  <xsd:complexType name="MENU_USER">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="DESCRIPTION" nillable="true" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="FUNCTION_CODE" nillable="true" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="MENU_ICON" nillable="true" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="NODE_LEVEL" nillable="true" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="URL" nillable="true" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="MENU_USER" nillable="true" type="tns:MENU_USER"/>
+  <xsd:complexType name="ArrayOfINS_ASSIGNMENT">
+    <xsd:sequence>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="INS_ASSIGNMENT" nillable="true" type="tns:INS_ASSIGNMENT"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="ArrayOfINS_ASSIGNMENT" nillable="true" type="tns:ArrayOfINS_ASSIGNMENT"/>
+  <xsd:complexType name="INS_ASSIGNMENT">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="CURRENT_EMPLOYEES" nillable="true" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="CUST_LINK" nillable="true" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="CUST_NAME" nillable="true" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="CUST_PHONE" nillable="true" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="POST_DATE" nillable="true" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="POST_ID" nillable="true" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="STATUS" nillable="true" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="STATUS_NAME" nillable="true" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="INS_ASSIGNMENT" nillable="true" type="tns:INS_ASSIGNMENT"/>
+  <xsd:complexType name="ArrayOfINS_SURVEY">
+    <xsd:sequence>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="INS_SURVEY" nillable="true" type="tns:INS_SURVEY"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="ArrayOfINS_SURVEY" nillable="true" type="tns:ArrayOfINS_SURVEY"/>
+  <xsd:complexType name="INS_SURVEY">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="ASSESSOR_NAME" nillable="true" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="ASSESSOR_PHONE" nillable="true" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="CMT_QA1" nillable="true" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="CMT_QA10" nillable="true" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="CMT_QA11" nillable="true" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="CMT_QA12" nillable="true" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="CMT_QA13" nillable="true" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="CMT_QA14" nillable="true" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="CMT_QA15" nillable="true" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="CMT_QA16" nillable="true" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="CMT_QA17" nillable="true" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="CMT_QA18" nillable="true" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="CMT_QA19" nillable="true" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="CMT_QA2" nillable="true" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="CMT_QA20" nillable="true" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="CMT_QA3" nillable="true" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="CMT_QA4" nillable="true" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="CMT_QA5" nillable="true" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="CMT_QA6" nillable="true" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="CMT_QA7" nillable="true" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="CMT_QA8" nillable="true" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="CMT_QA9" nillable="true" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="CUST_LICENSE_PLATE" nillable="true" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="CUST_NAME" nillable="true" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="CUST_PHONE" nillable="true" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="DESCRIPTION_LOSS" nillable="true" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="ID" nillable="true" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="INSURANCE_UNIT" nillable="true" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="LOCATION_INSPECTION" nillable="true" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="MAKER_DT_STAMP" nillable="true" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="QA1" nillable="true" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="QA10" nillable="true" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="QA11" nillable="true" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="QA12" nillable="true" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="QA13" nillable="true" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="QA14" nillable="true" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="QA15" nillable="true" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="QA16" nillable="true" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="QA17" nillable="true" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="QA18" nillable="true" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="QA19" nillable="true" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="QA2" nillable="true" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="QA20" nillable="true" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="QA3" nillable="true" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="QA4" nillable="true" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="QA5" nillable="true" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="QA6" nillable="true" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="QA7" nillable="true" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="QA8" nillable="true" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="QA9" nillable="true" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="SURVEY_ID" nillable="true" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="TIME_INSPECTION" nillable="true" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="TIME_LOSS" nillable="true" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="INS_SURVEY" nillable="true" type="tns:INS_SURVEY"/>
+  <xsd:complexType name="LINK_GENERATE">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="GEN_LOCATION" nillable="true" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="LINK_GENERATE" nillable="true" type="tns:LINK_GENERATE"/>
+  <xsd:complexType name="INS_SEARCH">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="SEARCH_GRIDVIEW" nillable="true" type="tns:ArrayOfINS_SEARCH_GRIDVIEW"/>
+      <xsd:element minOccurs="0" name="SEARCH_RESULT" nillable="true" type="tns:ArrayOfINS_SEARCH_RESULT"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="INS_SEARCH" nillable="true" type="tns:INS_SEARCH"/>
+  <xsd:complexType name="ArrayOfINS_SEARCH_GRIDVIEW">
+    <xsd:sequence>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="INS_SEARCH_GRIDVIEW" nillable="true" type="tns:INS_SEARCH_GRIDVIEW"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="ArrayOfINS_SEARCH_GRIDVIEW" nillable="true" type="tns:ArrayOfINS_SEARCH_GRIDVIEW"/>
+  <xsd:complexType name="INS_SEARCH_GRIDVIEW">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="PE_OLD_PERSONAL_ID" nillable="true" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="POL_NO" nillable="true" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="INS_SEARCH_GRIDVIEW" nillable="true" type="tns:INS_SEARCH_GRIDVIEW"/>
+  <xsd:complexType name="ArrayOfINS_SEARCH_RESULT">
+    <xsd:sequence>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="INS_SEARCH_RESULT" nillable="true" type="tns:INS_SEARCH_RESULT"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="ArrayOfINS_SEARCH_RESULT" nillable="true" type="tns:ArrayOfINS_SEARCH_RESULT"/>
+  <xsd:complexType name="INS_SEARCH_RESULT">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="CUST_EMAIL_ID_PER" nillable="true" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="PE_DOB" nillable="true" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="PE_NAME" nillable="true" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="PE_OLD_PERSONAL_ID" nillable="true" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="PE_RELATION" nillable="true" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="PE_SYS_ID" nillable="true" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="POL_ADDR1" nillable="true" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="POL_ASSURED_NAME" nillable="true" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="POL_FM_DT" nillable="true" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="POL_INSURED_ID" nillable="true" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="POL_ISSUE_DT" nillable="true" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="POL_PHONE" nillable="true" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="POL_SYS_ID" nillable="true" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="POL_TERRITORIAL_LIMIT" nillable="true" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="POL_TO_DT" nillable="true" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="RISK_SI_CURR_CODE" nillable="true" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="RSMI_CODE" nillable="true" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="RSMI_DESC" nillable="true" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="RSMI_FC_SI" nillable="true" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="INS_SEARCH_RESULT" nillable="true" type="tns:INS_SEARCH_RESULT"/>
+</xsd:schema>

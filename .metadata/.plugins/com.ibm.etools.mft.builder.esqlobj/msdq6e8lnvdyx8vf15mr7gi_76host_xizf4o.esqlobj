@@ -1,0 +1,6 @@
+CREATE FUNCTION authenLDAPSEx( IN directyServer CHAR, IN userName CHAR, IN password CHAR) RETURNS CHARACTER
+BEGIN
+	DECLARE result CHARACTER ;
+	CALL authenLDAPSWithJavaEx(directyServer, userName, password) INTO result;
+	RETURN result;
+END;

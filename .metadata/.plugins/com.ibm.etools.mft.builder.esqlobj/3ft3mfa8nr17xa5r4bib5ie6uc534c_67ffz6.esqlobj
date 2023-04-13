@@ -1,0 +1,4 @@
+CREATE PROCEDURE select_user_service(IN input CHAR)
+LANGUAGE DATABASE
+DYNAMIC RESULT SETS 1
+EXTERNAL NAME ".pkg_common.getdata_from_user_service";

@@ -1,0 +1,6 @@
+CREATE FUNCTION stringJoinInvestBilateral (IN refNo CHAR, IN valueDate CHAR, IN currency CHAR
+, IN amount CHAR, IN fromBankNo CHAR, IN targetBankNo CHAR, IN remark CHAR)
+RETURNS CHAR
+BEGIN
+	RETURN refNo||','||valueDate||'#'||currency||'#'||amount||','||fromBankNo||','||targetBankNo||','||remark;
+END;

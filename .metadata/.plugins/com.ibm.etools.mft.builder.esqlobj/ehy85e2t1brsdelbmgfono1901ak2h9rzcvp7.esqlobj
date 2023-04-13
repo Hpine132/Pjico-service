@@ -1,0 +1,19 @@
+CREATE COMPUTE MODULE JavaProcess
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		SET OutputRoot = InputRoot;
+		SET Environment.Variables.ServiceCallout.Status = '0';
+		IF Environment.Variables.ServiceCallout.LogType = 'TCP' THEN
+			SET Environment.Variables.ServiceCallout.ResponseDetail.ResponseData = InputRoot.RESPONSE;
+		ELSEIF Environment.Variables.ServiceCallout.LogType = 'JSON' THEN
+			DELETE FIELD OutputRoot.JSON;
+			DECLARE dataAsBit BIT  CAST(InputRoot.RESPONSE.JsonResponse AS BIT CCSID 1208 ENCODING 546);
+			CREATE LASTCHILD OF OutputRoot DOMAIN 'JSON' PARSE(dataAsBit CCSID 1208 ENCODING 546 );
+			SET Environment.Variables.ServiceCallout.ResponseDetail.ResponseData = OutputRoot.JSON;
+		ELSE 
+			SET Environment.Variables.ServiceCallout.ResponseDetail.ResponseData = InputRoot.RESPONSE;
+		END IF;
+		RETURN TRUE;
+	END;
+	
+END MODULE;

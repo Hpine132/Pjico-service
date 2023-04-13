@@ -1,0 +1,22 @@
+CREATE FUNCTION validateInput(IN inputName CHARACTER, IN inputValue CHARACTER,
+	IN isNotNull boolean ,IN isNotEmpty boolean, IN maxLength INT) RETURNS CHARACTER
+BEGIN
+	IF inputName IS NULL OR LENGTH(inputName)=0 THEN
+		RETURN inputName||' can not null or is empty';
+	END IF;
+	IF isNotNull THEN
+		IF inputValue IS NULL THEN
+			RETURN inputValue ||' can not null';
+		END IF;
+	END IF;
+	IF isNotEmpty THEN
+		IF LENGTH(inputValue)= 0 THEN
+			RETURN inputValue ||' can not Empty';
+		END IF;
+	END IF;
+	IF LENGTH(inputValue) > maxLength THEN
+		RETURN inputValue ||' length can not > maxLength'   ;
+	ELSE 
+		RETURN 'OK';
+	END IF;
+END;

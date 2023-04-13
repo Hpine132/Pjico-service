@@ -1,0 +1,4 @@
+CREATE PROCEDURE select_vw_vw_user_service(IN input CHAR)
+LANGUAGE DATABASE
+DYNAMIC RESULT SETS 1
+EXTERNAL NAME ".pkg_user_service.getdata_from_vw_user_service";

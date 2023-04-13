@@ -1,0 +1,10 @@
+/*EATE FUNCTION Main() RETURNS BOOLE*/
+	BEGIN
+		DECLARE soapenv NAMESPACE 'http://schemas.xmlsoap.org/soap/envelope/';
+		SET OutputRoot.SOAP.Context.Namespace.(SOAP.NamespaceDecl)xmlns:soapenv = soapenv;
+		
+		SET OutputRoot.SOAP.Body.soapenv:Fault.faultcode = '68';
+		SET OutputRoot.SOAP.Body.soapenv:Fault.faultstring = 'SOA Timeout';
+		SET OutputRoot.SOAP.Body.soapenv:Fault.faultactor = 'ESB';
+		SET OutputRoot.SOAP.Body.soapenv:Fault.detail.Text = 'ESB webserviceTimeout';
+	END;	

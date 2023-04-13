@@ -1,0 +1,107 @@
+BROKER SCHEMA Version1.CalculateCarResponsibility.ESQLs
+
+DECLARE ns NAMESPACE 'http://www.pjico.com.vn/entity/vn/system/systemservice/1';
+DECLARE commonheader NAMESPACE 'http://www.pjico.com.vn/common/envelope/commonheader/1';
+DECLARE soa NAMESPACE 'http://www.pjico.com.vn/common/envelope/soaenvelope/1';
+
+DECLARE ns2 NAMESPACE 'http://www.pjico.com.vn/entity/vn/payment/paymentservice/1';
+DECLARE CalculateCarResponsibilityUrl EXTERNAL CHARACTER '';
+
+CREATE COMPUTE MODULE BuildRequest
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		SET OutputRoot.Properties = InputRoot.Properties;
+		DECLARE bodyReqRef REFERENCE TO InputRoot.XMLNSC.ns2:CalculateCarResponsibilityReq.ns:BodyReq;
+		
+		DELETE FIELD OutputRoot.HTTPResponseHeader."content-encoding";
+		
+	    CREATE FIELD OutputRoot.JSON.Data IDENTITY (JSON.Object)Data;
+
+		SET OutputRoot.JSON.Data.VEH_TYPE = InputRoot.XMLNSC.ns2:CalculateCarResponsibilityReq.ns2:BodyReq.ns2:VehicleInfo.VehicleType; 
+		SET OutputRoot.JSON.Data.SEATS = InputRoot.XMLNSC.ns2:CalculateCarResponsibilityReq.ns2:BodyReq.ns2:VehicleInfo.Seats; 
+		SET OutputRoot.JSON.Data.WEIGHT = InputRoot.XMLNSC.ns2:CalculateCarResponsibilityReq.ns2:BodyReq.ns2:VehicleInfo.Weight; 
+
+		SET OutputRoot.JSON.Data.USE_PURPOSE = InputRoot.XMLNSC.ns2:CalculateCarResponsibilityReq.ns2:BodyReq.ns2:VehicleInfo.UsePurpose; 
+		SET OutputRoot.JSON.Data.TNDSBB = InputRoot.XMLNSC.ns2:CalculateCarResponsibilityReq.ns2:BodyReq.ns2:TNDSBB; 
+		SET OutputRoot.JSON.Data.TNDSTN = InputRoot.XMLNSC.ns2:CalculateCarResponsibilityReq.ns2:BodyReq.ns2:TNDSTN; 
+		SET OutputRoot.JSON.Data.TNDSHH = InputRoot.XMLNSC.ns2:CalculateCarResponsibilityReq.ns2:BodyReq.ns2:TNDSHH; 
+		SET OutputRoot.JSON.Data.TNNN = InputRoot.XMLNSC.ns2:CalculateCarResponsibilityReq.ns2:BodyReq.ns2:TNNN; 
+		SET OutputRoot.JSON.Data.TNLP = InputRoot.XMLNSC.ns2:CalculateCarResponsibilityReq.ns2:BodyReq.ns2:TNLP; 
+
+
+		
+		DECLARE addInfo reference to Environment.Variables.SOAVariables.soa:SOAEnvelope.soa:SOAServiceHeader.soa:SOACommonDetail.commonheader:AdditionalInformation;
+		DECLARE addIndx INTEGER CARDINALITY(Environment.Variables.SOAVariables.soa:SOAEnvelope.soa:SOAServiceHeader.soa:SOACommonDetail.commonheader:AdditionalInformation.commonheader:NameValuePairs[]);
+		SET addInfo.commonheader:NameValuePairs[addIndx+1].commonheader:Name = 'TARGETID';
+		SET addInfo.commonheader:NameValuePairs[addIndx+1].commonheader:Value = 'PaymentService';
+		
+		SET addInfo.commonheader:NameValuePairs[addIndx+2].commonheader:Name = 'TARGETSERVICE';
+		SET addInfo.commonheader:NameValuePairs[addIndx+2].commonheader:Value = 'CalculateCarResponsibility';
+		
+		SET OutputLocalEnvironment.Destination.SOAP.Request.Transport.HTTP.WebServiceURL = CalculateCarResponsibilityUrl; 
+--		SET OutputLocalEnvironment.Destination.SOAP.Request.Transport.HTTP.Timeout = CreateDigitalSignTimeout;		
+		SET Environment.Variables.ServiceCallout.LogType = 'SOAP';
+		
+		PROPAGATE TO TERMINAL 'out1' FINALIZE NONE DELETE NONE;
+		RETURN TRUE;
+	END;
+
+	CREATE PROCEDURE CopyMessageHeaders() BEGIN
+		DECLARE I INTEGER 1;
+		DECLARE J INTEGER;
+		SET J = CARDINALITY(InputRoot.*[]);
+		WHILE I < J DO
+			SET OutputRoot.*[I] = InputRoot.*[I];
+			SET I = I + 1;
+		END WHILE;
+	END;
+
+	CREATE PROCEDURE CopyEntireMessage() BEGIN
+		SET OutputRoot = InputRoot;
+	END;
+END MODULE;
+
+
+CREATE COMPUTE MODULE BuildResponse
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		SET OutputRoot.Properties = InputRoot.Properties;
+		
+		SET OutputRoot.XMLNSC.ns2:CalculateCarResponsibilityRes.commonheader:Header = Environment.Variables.SOAVariables.*:SOAEnvelope.*:ServiceBody.*[1].*:Header;
+		DECLARE callOutStatus CHARACTER Environment.Variables.ServiceCallout.Status;
+		IF callOutStatus = '0' THEN
+		
+				SET OutputRoot.XMLNSC.ns2:CalculateCarResponsibilityRes.commonheader:ResponseStatus.commonheader:Status  = '0';
+				SET OutputRoot.XMLNSC.ns2:CalculateCarResponsibilityRes.commonheader:ResponseStatus.commonheader:GlobalErrorCode = '000';
+				SET OutputRoot.XMLNSC.ns2:CalculateCarResponsibilityRes.commonheader:ResponseStatus.commonheader:GlobalErrorDescription = 'Successful';
+				
+				SET OutputRoot.XMLNSC.ns2:CalculateCarResponsibilityRes.ns2:BodyRes.ns2:SumMoneyWithoutVat = InputRoot.JSON.Data.SUM_MONEY_WITHOUT_VAT;
+				SET OutputRoot.XMLNSC.ns2:CalculateCarResponsibilityRes.ns2:BodyRes.ns2:Sum_Vat = InputRoot.JSON.Data. SUM_VAT;
+				SET OutputRoot.XMLNSC.ns2:CalculateCarResponsibilityRes.ns2:BodyRes.ns2:SumMoneyVat = InputRoot.JSON.Data.SUM_MONEY_VAT;
+
+		ELSE
+			SET OutputRoot.XMLNSC.ns2:CalculateCarResponsibilityRes.commonheader:ResponseStatus.commonheader:Status = '1';
+			SET OutputRoot.XMLNSC.ns2:CalculateCarResponsibilityRes.commonheader:ResponseStatus.commonheader:GlobalErrorCode = '004';
+			SET OutputRoot.XMLNSC.ns2:CalculateCarResponsibilityRes.commonheader:ResponseStatus.commonheader:GlobalErrorDescription = 'Error to backend';
+			SET OutputRoot.XMLNSC.ns2:CalculateCarResponsibilityRes.commonheader:ResponseStatus.commonheader:ErrorInfo.commonheader:SourceAppID = 'PaymentService'; 
+--			SET OutputRoot.XMLNSC.ns2:CalculateCarResponsibilityRes.commonheader:ResponseStatus.commonheader:ErrorInfo.commonheader:ErrorCode = InputRoot.JSON.Data.error_number;
+--			SET OutputRoot.XMLNSC.ns2:CalculateCarResponsibilityRes.commonheader:ResponseStatus.commonheader:ErrorInfo.commonheader:ErrorDesc = InputRoot.JSON.Data.error_description;
+			
+		END IF;
+		RETURN TRUE;
+	END;
+
+	CREATE PROCEDURE CopyMessageHeaders() BEGIN
+		DECLARE I INTEGER 1;
+		DECLARE J INTEGER;
+		SET J = CARDINALITY(InputRoot.*[]);
+		WHILE I < J DO
+			SET OutputRoot.*[I] = InputRoot.*[I];
+			SET I = I + 1;
+		END WHILE;
+	END;
+
+	CREATE PROCEDURE CopyEntireMessage() BEGIN
+		SET OutputRoot = InputRoot;
+	END;
+END MODULE;

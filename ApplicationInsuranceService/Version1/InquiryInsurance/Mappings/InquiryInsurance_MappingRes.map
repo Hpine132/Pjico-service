@@ -1,0 +1,489 @@
+<?xml version="1.0" encoding="UTF-8"?><mappingRoot xmlns="http://www.ibm.com/2008/ccl/Mapping" domainID="com.ibm.msl.mapping.xml" domainIDExtension="mb" mainMap="true" targetNamespace="Version1.InquiryInsurance.Mappings" version="8.0.5.0" xmlns:map="Version1.InquiryInsurance.Mappings">
+    <input path="mbsharedlib://ESBMessageLib/service/vn/applicationinsurance/applicationinsuranceService.xsd"/>
+    <output path="mbsharedlib://ESBMessageLib/service/vn/applicationinsurance/applicationinsuranceService.xsd"/>
+    <namespaces>
+        <namespace kind="supplement" prefix="io7" uri="http://www.pjico.com.vn/common/envelope/serviceenvelope/1"/>
+        <namespace kind="supplement" prefix="io6" uri="http://www.pjico.com.vn/common/envelope/commonheader/1"/>
+        <namespace kind="supplement" prefix="io9" uri="http://www.pjico.com.vn/entity/vn/com/isurance/1"/>
+        <namespace kind="supplement" prefix="io8" uri="http://www.pjico.com.vn/entity/vn/com/account/1"/>
+        <namespace kind="supplement" prefix="io" uri="http://www.pjico.com.vn/entity/vn/com/1"/>
+        <namespace kind="supplement" prefix="io3" uri="http://www.pjico.com.vn/entity/vn/com/party/1"/>
+        <namespace kind="supplement" prefix="io2" uri="http://www.pjico.com.vn/entity/vn/applicationinsurance/applicationinsuranceservice/1"/>
+        <namespace kind="supplement" prefix="io5" uri="http://www.pjico.com.vn/common/envelope/soaenvelope/1"/>
+        <namespace kind="supplement" prefix="io4" uri="http://www.pjico.com.vn/entity/vn/tax/1"/>
+    </namespaces>
+    <generation engine="xquery"/>
+    <mappingDeclaration name="InquiryInsurance_MappingRes">
+        <input namespace="http://www.pjico.com.vn/entity/vn/applicationinsurance/applicationinsuranceservice/1" path="mb:msg(InquiryInsuranceRes,assembly,XMLNSC,Properties)" var="MessageAssembly"/>
+        <output namespace="http://www.pjico.com.vn/entity/vn/applicationinsurance/applicationinsuranceservice/1" path="mb:msg(InquiryInsuranceRes,assembly,XMLNSC,Properties)" var="MessageAssembly2"/>
+        <move>
+            <input path="$MessageAssembly/Properties"/>
+            <output path="$MessageAssembly2/Properties"/>
+            <override>
+                <assign value="{ESBMessageLib}">
+                    <output path="$MessageAssembly2/Properties/MessageSet"/>
+                </assign>
+            </override>
+        </move>
+        <local>
+            <input path="$MessageAssembly/InquiryInsuranceRes"/>
+            <output path="$MessageAssembly2/InquiryInsuranceRes"/>
+            <local>
+                <input path="Header"/>
+                <output path="Header"/>
+                <move>
+                    <input path="Common"/>
+                    <output path="Common"/>
+                </move>
+                <move>
+                    <input path="Client"/>
+                    <output path="Client"/>
+                </move>
+            </local>
+            <local>
+                <input path="ResponseStatus"/>
+                <output path="ResponseStatus"/>
+                <move>
+                    <input path="Status"/>
+                    <output path="Status"/>
+                </move>
+                <move>
+                    <input path="GlobalErrorCode"/>
+                    <output path="GlobalErrorCode"/>
+                </move>
+                <move>
+                    <input path="GlobalErrorDescription"/>
+                    <output path="GlobalErrorDescription"/>
+                </move>
+                <move>
+                    <input path="ErrorInfo"/>
+                    <output path="ErrorInfo"/>
+                </move>
+            </local>
+            <local>
+                <input path="BodyRes"/>
+                <output path="BodyRes"/>
+                <move>
+                    <input path="FunctionCode"/>
+                    <output path="FunctionCode"/>
+                </move>
+                <local>
+                    <input path="PolicyInfo"/>
+                    <output path="PolicyInfo"/>
+                    <move automap="true">
+                        <input path="PolicyNo"/>
+                        <output path="PolicyNo"/>
+                    </move>
+                    <move automap="true">
+                        <input path="PolicyType"/>
+                        <output path="PolicyType"/>
+                    </move>
+                    <move automap="true">
+                        <input path="PolicyNumber"/>
+                        <output path="PolicyNumber"/>
+                    </move>
+                    <move automap="true">
+                        <input path="PolicyName"/>
+                        <output path="PolicyName"/>
+                    </move>
+                    <move automap="true">
+                        <input path="PolicyMoney"/>
+                        <output path="PolicyMoney"/>
+                    </move>
+                    <move automap="true">
+                        <input path="PolicyFees"/>
+                        <output path="PolicyFees"/>
+                    </move>
+                    <move automap="true">
+                        <input path="PolicySupplier"/>
+                        <output path="PolicySupplier"/>
+                    </move>
+                    <move automap="true">
+                        <input path="AmendNo"/>
+                        <output path="AmendNo"/>
+                    </move>
+                    <move automap="true">
+                        <input path="DateOfChange"/>
+                        <output path="DateOfChange"/>
+                    </move>
+                    <move automap="true">
+                        <input path="Reason"/>
+                        <output path="Reason"/>
+                    </move>
+                    <move automap="true">
+                        <input path="InfoChange"/>
+                        <output path="InfoChange"/>
+                    </move>
+                    <move automap="true">
+                        <input path="Supplier"/>
+                        <output path="Supplier"/>
+                    </move>
+                    <move automap="true">
+                        <input path="BankCode"/>
+                        <output path="BankCode"/>
+                    </move>
+                    <move automap="true">
+                        <input path="BankBranch"/>
+                        <output path="BankBranch"/>
+                    </move>
+                    <move automap="true">
+                        <input path="CategoryCode"/>
+                        <output path="CategoryCode"/>
+                    </move>
+                    <move automap="true">
+                        <input path="LoanCode"/>
+                        <output path="LoanCode"/>
+                    </move>
+                    <move automap="true">
+                        <input path="IssueDt"/>
+                        <output path="IssueDt"/>
+                    </move>
+                    <move automap="true">
+                        <input path="FromDt"/>
+                        <output path="FromDt"/>
+                    </move>
+                    <move automap="true">
+                        <input path="ToDt"/>
+                        <output path="ToDt"/>
+                    </move>
+                    <move automap="true">
+                        <input path="EffectiveDate"/>
+                        <output path="EffectiveDate"/>
+                    </move>
+                    <move automap="true">
+                        <input path="ExpiredDate"/>
+                        <output path="ExpiredDate"/>
+                    </move>
+                    <move automap="true">
+                        <input path="ScCode"/>
+                        <output path="ScCode"/>
+                    </move>
+                    <move automap="true">
+                        <input path="Status"/>
+                        <output path="Status"/>
+                    </move>
+                    <move automap="true">
+                        <input path="DivnCode"/>
+                        <output path="DivnCode"/>
+                    </move>
+                    <move automap="true">
+                        <input path="DivnName"/>
+                        <output path="DivnName"/>
+                    </move>
+                    <move automap="true">
+                        <input path="DeptCode"/>
+                        <output path="DeptCode"/>
+                    </move>
+                    <move automap="true">
+                        <input path="DeptName"/>
+                        <output path="DeptName"/>
+                    </move>
+                    <move automap="true">
+                        <input path="AgentCode"/>
+                        <output path="AgentCode"/>
+                    </move>
+                    <move automap="true">
+                        <input path="CustCode"/>
+                        <output path="CustCode"/>
+                    </move>
+                    <move automap="true">
+                        <input path="InsurancePrgm"/>
+                        <output path="InsurancePrgm"/>
+                    </move>
+                    <move automap="true">
+                        <input path="InsuredPerson"/>
+                        <output path="InsuredPerson"/>
+                    </move>
+                    <move automap="true">
+                        <input path="ContrNo"/>
+                        <output path="ContrNo"/>
+                    </move>
+                    <move automap="true">
+                        <input path="Period"/>
+                        <output path="Period"/>
+                    </move>
+                    <move automap="true">
+                        <input path="ApprovalDt"/>
+                        <output path="ApprovalDt"/>
+                    </move>
+                    <move automap="true">
+                        <input path="Approver"/>
+                        <output path="Approver"/>
+                    </move>
+                    <move automap="true">
+                        <input path="EndDesc"/>
+                        <output path="EndDesc"/>
+                    </move>
+                    <move automap="true">
+                        <input path="SrcBusCode"/>
+                        <output path="SrcBusCode"/>
+                    </move>
+                    <move automap="true">
+                        <input path="CustPremCurrCode"/>
+                        <output path="CustPremCurrCode"/>
+                    </move>
+                    <move automap="true">
+                        <input path="WordingsCode"/>
+                        <output path="WordingsCode"/>
+                    </move>
+                    <move automap="true">
+                        <input path="TerritorialLimit"/>
+                        <output path="TerritorialLimit"/>
+                    </move>
+                    <move automap="true">
+                        <input path="PayerCode"/>
+                        <output path="PayerCode"/>
+                    </move>
+                    <move automap="true">
+                        <input path="PayerName"/>
+                        <output path="PayerName"/>
+                    </move>
+                    <move automap="true">
+                        <input path="PayerAddr1"/>
+                        <output path="PayerAddr1"/>
+                    </move>
+                    <move automap="true">
+                        <input path="AssuredCode"/>
+                        <output path="AssuredCode"/>
+                    </move>
+                    <move automap="true">
+                        <input path="AssuredName"/>
+                        <output path="AssuredName"/>
+                    </move>
+                    <move automap="true">
+                        <input path="Addr1"/>
+                        <output path="Addr1"/>
+                    </move>
+                    <move automap="true">
+                        <input path="OccCode"/>
+                        <output path="OccCode"/>
+                    </move>
+                </local>
+                <local>
+                    <input path="Party"/>
+                    <output path="Party"/>
+                    <move automap="true">
+                        <input path="PartyID"/>
+                        <output path="PartyID"/>
+                    </move>
+                    <move automap="true">
+                        <input path="PartyCode"/>
+                        <output path="PartyCode"/>
+                    </move>
+                    <move automap="true">
+                        <input path="PartyName"/>
+                        <output path="PartyName"/>
+                    </move>
+                    <move automap="true">
+                        <input path="PartyInfo"/>
+                        <output path="PartyInfo"/>
+                    </move>
+                    <move automap="true">
+                        <input path="PartyStatus"/>
+                        <output path="PartyStatus"/>
+                    </move>
+                    <move automap="true">
+                        <input path="PartyEnvr"/>
+                        <output path="PartyEnvr"/>
+                    </move>
+                    <move automap="true">
+                        <input path="UdfDetails"/>
+                        <output path="UdfDetails"/>
+                    </move>
+                    <move automap="true">
+                        <input path="OrgPartyInfo"/>
+                        <output path="OrgPartyInfo"/>
+                    </move>
+                    <move automap="true">
+                        <input path="PersonalPartyInfo"/>
+                        <output path="PersonalPartyInfo"/>
+                    </move>
+                    <move automap="true">
+                        <input path="BankInfo"/>
+                        <output path="BankInfo"/>
+                    </move>
+                    <move automap="true">
+                        <input path="CreateDt"/>
+                        <output path="CreateDt"/>
+                    </move>
+                    <move automap="true">
+                        <input path="CreateUID"/>
+                        <output path="CreateUID"/>
+                    </move>
+                    <move automap="true">
+                        <input path="EffectiveDt"/>
+                        <output path="EffectiveDt"/>
+                    </move>
+                    <move automap="true">
+                        <input path="ExpiredDt"/>
+                        <output path="ExpiredDt"/>
+                    </move>
+                    <move automap="true">
+                        <input path="ModifiedDt"/>
+                        <output path="ModifiedDt"/>
+                    </move>
+                    <move automap="true">
+                        <input path="ModifiedUID"/>
+                        <output path="ModifiedUID"/>
+                    </move>
+                    <move automap="true">
+                        <input path="RefId1"/>
+                        <output path="RefId1"/>
+                    </move>
+                    <move automap="true">
+                        <input path="CompRegnNo"/>
+                        <output path="CompRegnNo"/>
+                    </move>
+                    <move automap="true">
+                        <input path="Dob"/>
+                        <output path="Dob"/>
+                    </move>
+                    <move automap="true">
+                        <input path="ContactInfo"/>
+                        <output path="ContactInfo"/>
+                    </move>
+                    <move automap="true">
+                        <input path="SrcBus"/>
+                        <output path="SrcBus"/>
+                    </move>
+                </local>
+                <local>
+                    <input path="ProgramInfo"/>
+                    <output path="ProgramInfo"/>
+                    <move automap="true">
+                        <input path="ProgramCode"/>
+                        <output path="ProgramCode"/>
+                    </move>
+                    <move automap="true">
+                        <input path="ProgramName"/>
+                        <output path="ProgramName"/>
+                    </move>
+                </local>
+                <local>
+                    <input path="RiskList"/>
+                    <output path="RiskList"/>
+                    <move automap="true">
+                        <input path="SerialNo"/>
+                        <output path="SerialNo"/>
+                    </move>
+                    <move automap="true">
+                        <input path="RiskCode"/>
+                        <output path="RiskCode"/>
+                    </move>
+                    <move automap="true">
+                        <input path="RiskClass"/>
+                        <output path="RiskClass"/>
+                    </move>
+                    <move automap="true">
+                        <input path="RiskEntryDt"/>
+                        <output path="RiskEntryDt"/>
+                    </move>
+                    <move automap="true">
+                        <input path="RiskExitDt"/>
+                        <output path="RiskExitDt"/>
+                    </move>
+                    <move automap="true">
+                        <input path="RiskFlex1"/>
+                        <output path="RiskFlex1"/>
+                    </move>
+                    <move automap="true">
+                        <input path="RiskFlex2"/>
+                        <output path="RiskFlex2"/>
+                    </move>
+                    <move automap="true">
+                        <input path="RiskFlex3"/>
+                        <output path="RiskFlex3"/>
+                    </move>
+                    <move automap="true">
+                        <input path="RiskFlex4"/>
+                        <output path="RiskFlex4"/>
+                    </move>
+                    <move automap="true">
+                        <input path="RiskFlex5"/>
+                        <output path="RiskFlex5"/>
+                    </move>
+                    <move automap="true">
+                        <input path="RiskFlex6"/>
+                        <output path="RiskFlex6"/>
+                    </move>
+                    <move automap="true">
+                        <input path="RiskFlex7"/>
+                        <output path="RiskFlex7"/>
+                    </move>
+                    <move automap="true">
+                        <input path="RiskFlex8"/>
+                        <output path="RiskFlex8"/>
+                    </move>
+                    <move automap="true">
+                        <input path="RiskLcPre"/>
+                        <output path="RiskLcPre"/>
+                    </move>
+                    <move automap="true">
+                        <input path="RiskLcSI"/>
+                        <output path="RiskLcSI"/>
+                    </move>
+                    <move automap="true">
+                        <input path="RiskRefNo"/>
+                        <output path="RiskRefNo"/>
+                    </move>
+                    <move automap="true">
+                        <input path="RiskDedFlag"/>
+                        <output path="RiskDedFlag"/>
+                    </move>
+                    <move automap="true">
+                        <input path="RiskAccLocId"/>
+                        <output path="RiskAccLocId"/>
+                    </move>
+                    <move automap="true">
+                        <input path="RiskDedYn"/>
+                        <output path="RiskDedYn"/>
+                    </move>
+                    <move automap="true">
+                        <input path="VehicleInfo"/>
+                        <output path="VehicleInfo"/>
+                    </move>
+                    <move automap="true">
+                        <input path="ShipInfo"/>
+                        <output path="ShipInfo"/>
+                    </move>
+                    <move automap="true">
+                        <input path="EmployeeList"/>
+                        <output path="EmployeeList"/>
+                    </move>
+                    <move automap="true">
+                        <input path="RiskSMIList"/>
+                        <output path="RiskSMIList"/>
+                    </move>
+                    <move automap="true">
+                        <input path="DiscountInfo"/>
+                        <output path="DiscountInfo"/>
+                    </move>
+                    <move automap="true">
+                        <input path="LossList"/>
+                        <output path="LossList"/>
+                    </move>
+                    <move automap="true">
+                        <input path="TaxInfo"/>
+                        <output path="TaxInfo"/>
+                    </move>
+                </local>
+                <local>
+                    <input path="InsuranceList"/>
+                    <output path="InsuranceList"/>
+                    <move automap="true">
+                        <input path="InsuranceInfo"/>
+                        <output path="InsuranceInfo"/>
+                    </move>
+                </local>
+                <move>
+                    <input path="ReturnCode"/>
+                    <output path="ReturnCode"/>
+                </move>
+                <move>
+                    <input path="ErrMess"/>
+                    <output path="ErrMess"/>
+                </move>
+            </local>
+        </local>
+    </mappingDeclaration>
+</mappingRoot>

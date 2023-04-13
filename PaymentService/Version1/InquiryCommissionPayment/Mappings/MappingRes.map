@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?><mappingRoot xmlns="http://www.ibm.com/2008/ccl/Mapping" domainID="com.ibm.msl.mapping.xml" domainIDExtension="mb" mainMap="true" targetNamespace="Version1.InquiryCommissionPayment.Mappings" version="8.0.5.0" xmlns:map="Version1.InquiryCommissionPayment.Mappings">
+    <input path="jar:file://!com/ibm/etools/mft/map/xsds/assembly/Environment.xsd" var="var1"/>
+    <input path="mbsharedlib://ESBMessageLib/service/vn/payment/paymentService.xsd" var="var2"/>
+    <input path="mbsharedlib://ESBMessageLib/schema/Environment/EnvironmentVariables.xsd" var="var"/>
+    <input path="mbsharedlib://ESBMessageLib/schema/Environment/EnvironmentVariables.xsd" var="var3"/>
+    <output path="jar:file://!com/ibm/etools/mft/map/xsds/assembly/Environment.xsd" var="var4"/>
+    <output path="mbsharedlib://ESBMessageLib/service/vn/payment/paymentService.xsd" var="var5"/>
+    <generation engine="xquery"/>
+    <mappingDeclaration name="MappingRes">
+        <input path="$var1/mb:env(Environment)" var="Environment">
+            <cast path="$Environment/Variables/any" qualifier="SOAVariables" ref="var" var="any"/>
+        </input>
+        <input namespace="http://www.pjico.com.vn/entity/vn/payment/paymentservice/1" path="$var2/mb:msg(InquiryCommissionPaymentRes,assembly,XMLNSC,Properties)" var="MessageAssembly"/>
+        <output path="$var4/mb:env(Environment)" var="Environment1">
+            <cast path="$Environment1/Variables/any" qualifier="SOAVariables" ref="var" var="any1"/>
+        </output>
+        <output namespace="http://www.pjico.com.vn/entity/vn/payment/paymentservice/1" path="$var5/mb:msg(InquiryCommissionPaymentRes,assembly,XMLNSC,Properties)" var="MessageAssembly1"/>
+        <passthrough>
+            <input path="$Environment/."/>
+            <output path="$Environment1/."/>
+            <updates/>
+        </passthrough>
+        <move>
+            <input path="$MessageAssembly/Properties"/>
+            <output path="$MessageAssembly1/Properties"/>
+            <override>
+                <assign value="{ESBMessageLib}">
+                    <output path="$MessageAssembly1/Properties/MessageSet"/>
+                </assign>
+            </override>
+        </move>
+        <local>
+            <input path="$Environment/Variables/SOAVariables/SOAEnvelope/SOAServiceHeader/SOACommonDetail"/>
+            <output path="$MessageAssembly1/InquiryCommissionPaymentRes/Header/Common"/>
+            <move automap="true">
+                <input path="ServiceVersion"/>
+                <output path="ServiceVersion"/>
+            </move>
+            <move automap="true">
+                <input path="MessageId"/>
+                <output path="MessageId"/>
+            </move>
+            <move automap="true">
+                <input path="TransactionId"/>
+                <output path="TransactionId"/>
+            </move>
+            <move automap="true">
+                <input path="MessageTimestamp"/>
+                <output path="MessageTimestamp"/>
+            </move>
+            <move automap="true">
+                <input path="AdditionalInformation"/>
+                <output path="AdditionalInformation"/>
+            </move>
+        </local>
+        <local>
+            <input path="$Environment/Variables/SOAVariables/SOAEnvelope/SOAServiceHeader/ClientDetail"/>
+            <output path="$MessageAssembly1/InquiryCommissionPaymentRes/Header/Client"/>
+            <move automap="true">
+                <input path="SourceAppID"/>
+                <output path="SourceAppID"/>
+            </move>
+            <move automap="true">
+                <input path="TargetAppIDs"/>
+                <output path="TargetAppIDs"/>
+            </move>
+            <move automap="true">
+                <input path="UserDetail"/>
+                <output path="UserDetail"/>
+            </move>
+        </local>
+        <local>
+            <input path="$MessageAssembly/InquiryCommissionPaymentRes/ResponseStatus"/>
+            <output path="$MessageAssembly1/InquiryCommissionPaymentRes/ResponseStatus"/>
+            <move automap="true">
+                <input path="Status"/>
+                <output path="Status"/>
+            </move>
+            <move automap="true">
+                <input path="GlobalErrorCode"/>
+                <output path="GlobalErrorCode"/>
+            </move>
+            <move automap="true">
+                <input path="GlobalErrorDescription"/>
+                <output path="GlobalErrorDescription"/>
+            </move>
+            <move automap="true">
+                <input path="ErrorInfo"/>
+                <output path="ErrorInfo"/>
+            </move>
+        </local>
+        <local>
+            <input path="$MessageAssembly/InquiryCommissionPaymentRes/BodyRes"/>
+            <output path="$MessageAssembly1/InquiryCommissionPaymentRes/BodyRes"/>
+            <move automap="true">
+                <input path="FunctionCode"/>
+                <output path="FunctionCode"/>
+            </move>
+            <move automap="true">
+                <input path="Voucher"/>
+                <output path="Voucher"/>
+            </move>
+            <move automap="true">
+                <input path="VoucherDate"/>
+                <output path="VoucherDate"/>
+            </move>
+            <move automap="true">
+                <input path="PartyCode"/>
+                <output path="PartyCode"/>
+            </move>
+            <move automap="true">
+                <input path="UnitCode"/>
+                <output path="UnitCode"/>
+            </move>
+            <move automap="true">
+                <input path="MiningVehicle"/>
+                <output path="MiningVehicle"/>
+            </move>
+            <move automap="true">
+                <input path="AgencyCode"/>
+                <output path="AgencyCode"/>
+            </move>
+            <move automap="true">
+                <input path="Employee"/>
+                <output path="Employee"/>
+            </move>
+            <move automap="true">
+                <input path="PolicyNo"/>
+                <output path="PolicyNo"/>
+            </move>
+            <move automap="true">
+                <input path="ProductCode"/>
+                <output path="ProductCode"/>
+            </move>
+            <move automap="true">
+                <input path="CommissionAmount"/>
+                <output path="CommissionAmount"/>
+            </move>
+            <move automap="true">
+                <input path="FeeVat"/>
+                <output path="FeeVat"/>
+            </move>
+            <move automap="true">
+                <input path="Amount"/>
+                <output path="Amount"/>
+            </move>
+        </local>
+    </mappingDeclaration>
+</mappingRoot>

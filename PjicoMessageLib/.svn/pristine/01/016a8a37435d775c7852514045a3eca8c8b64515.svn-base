@@ -1,0 +1,996 @@
+<?xml version="1.0" encoding="UTF-8"?><wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="Insurance" targetNamespace="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns="http://tempuri.org/" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <wsdl:documentation>
+    <wsdl:appinfo source="WMQI_APPINFO">
+      <MRWSDLAppInfo imported="true">
+        <binding hasEncoding="false" imported="true" name="BasicHttpBinding_IInsurance" originalBindingStyle="document"/>
+      </MRWSDLAppInfo>
+    </wsdl:appinfo>
+  </wsdl:documentation>
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+<xsd:import namespace="http://tempuri.org/" schemaLocation="Insurance.xsd"/>
+<xsd:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" schemaLocation="Insurance_1_2_3.xsd"/>
+<xsd:import namespace="http://schemas.datacontract.org/2004/07/TariffService" schemaLocation="Insurance_1.xsd"/>
+<xsd:import namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" schemaLocation="Insurance_1_2.xsd"/>
+</xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IInsurance_GET_VEH_TYPE_InputMessage">
+    <wsdl:part element="tns:GET_VEH_TYPE" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="IInsurance_GET_VEH_TYPE_OutputMessage">
+    <wsdl:part element="tns:GET_VEH_TYPEResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="IInsurance_GET_VEH_TYPE_JSON_InputMessage">
+    <wsdl:part element="tns:GET_VEH_TYPE_JSON" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="IInsurance_GET_VEH_TYPE_JSON_OutputMessage">
+    <wsdl:part element="tns:GET_VEH_TYPE_JSONResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="IInsurance_GET_LOSS_MISC_InputMessage">
+    <wsdl:part element="tns:GET_LOSS_MISC" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="IInsurance_GET_LOSS_MISC_OutputMessage">
+    <wsdl:part element="tns:GET_LOSS_MISCResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="IInsurance_GET_SMI_TYPE_InputMessage">
+    <wsdl:part element="tns:GET_SMI_TYPE" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="IInsurance_GET_SMI_TYPE_OutputMessage">
+    <wsdl:part element="tns:GET_SMI_TYPEResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="IInsurance_GET_VCXECG_CHARGE_InputMessage">
+    <wsdl:part element="tns:GET_VCXECG_CHARGE" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="IInsurance_GET_VCXECG_CHARGE_OutputMessage">
+    <wsdl:part element="tns:GET_VCXECG_CHARGEResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="IInsurance_GET_VCXECG_CHARGE_JSON_InputMessage">
+    <wsdl:part element="tns:GET_VCXECG_CHARGE_JSON" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="IInsurance_GET_VCXECG_CHARGE_JSON_OutputMessage">
+    <wsdl:part element="tns:GET_VCXECG_CHARGE_JSONResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="IInsurance_GET_RISK_InputMessage">
+    <wsdl:part element="tns:GET_RISK" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="IInsurance_GET_RISK_OutputMessage">
+    <wsdl:part element="tns:GET_RISKResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="IInsurance_GET_VEH_TYPE_TP_InputMessage">
+    <wsdl:part element="tns:GET_VEH_TYPE_TP" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="IInsurance_GET_VEH_TYPE_TP_OutputMessage">
+    <wsdl:part element="tns:GET_VEH_TYPE_TPResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="IInsurance_GET_VEH_TYPE_TP_JSON_InputMessage">
+    <wsdl:part element="tns:GET_VEH_TYPE_TP_JSON" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="IInsurance_GET_VEH_TYPE_TP_JSON_OutputMessage">
+    <wsdl:part element="tns:GET_VEH_TYPE_TP_JSONResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="IInsurance_GET_VEH_GOOD_InputMessage">
+    <wsdl:part element="tns:GET_VEH_GOOD" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="IInsurance_GET_VEH_GOOD_OutputMessage">
+    <wsdl:part element="tns:GET_VEH_GOODResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="IInsurance_GET_SMI_BY_RISK_InputMessage">
+    <wsdl:part element="tns:GET_SMI_BY_RISK" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="IInsurance_GET_SMI_BY_RISK_OutputMessage">
+    <wsdl:part element="tns:GET_SMI_BY_RISKResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="IInsurance_GET_NG_BY_SMI_InputMessage">
+    <wsdl:part element="tns:GET_NG_BY_SMI" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="IInsurance_GET_NG_BY_SMI_OutputMessage">
+    <wsdl:part element="tns:GET_NG_BY_SMIResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="IInsurance_GET_POINT_TNDS_InputMessage">
+    <wsdl:part element="tns:GET_POINT_TNDS" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="IInsurance_GET_POINT_TNDS_OutputMessage">
+    <wsdl:part element="tns:GET_POINT_TNDSResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="IInsurance_GET_POINT_TNDS_JSON_InputMessage">
+    <wsdl:part element="tns:GET_POINT_TNDS_JSON" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="IInsurance_GET_POINT_TNDS_JSON_OutputMessage">
+    <wsdl:part element="tns:GET_POINT_TNDS_JSONResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="IInsurance_CHECK_BLKLIST_InputMessage">
+    <wsdl:part element="tns:CHECK_BLKLIST" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="IInsurance_CHECK_BLKLIST_OutputMessage">
+    <wsdl:part element="tns:CHECK_BLKLISTResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="IInsurance_CHECK_LOGIN_InputMessage">
+    <wsdl:part element="tns:CHECK_LOGIN" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="IInsurance_CHECK_LOGIN_OutputMessage">
+    <wsdl:part element="tns:CHECK_LOGINResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="IInsurance_DEL_CURRENT_STATUS_InputMessage">
+    <wsdl:part element="tns:DEL_CURRENT_STATUS" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="IInsurance_DEL_CURRENT_STATUS_OutputMessage">
+    <wsdl:part element="tns:DEL_CURRENT_STATUSResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="IInsurance_GET_MENU_ROOT_InputMessage">
+    <wsdl:part element="tns:GET_MENU_ROOT" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="IInsurance_GET_MENU_ROOT_OutputMessage">
+    <wsdl:part element="tns:GET_MENU_ROOTResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="IInsurance_GET_LIST_FUNCTION_InputMessage">
+    <wsdl:part element="tns:GET_LIST_FUNCTION" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="IInsurance_GET_LIST_FUNCTION_OutputMessage">
+    <wsdl:part element="tns:GET_LIST_FUNCTIONResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="IInsurance_CHANGE_TABLE_FUNCTION_InputMessage">
+    <wsdl:part element="tns:CHANGE_TABLE_FUNCTION" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="IInsurance_CHANGE_TABLE_FUNCTION_OutputMessage">
+    <wsdl:part element="tns:CHANGE_TABLE_FUNCTIONResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="IInsurance_GET_LIST_ROLE_InputMessage">
+    <wsdl:part element="tns:GET_LIST_ROLE" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="IInsurance_GET_LIST_ROLE_OutputMessage">
+    <wsdl:part element="tns:GET_LIST_ROLEResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="IInsurance_CHANGE_TABLE_ROLE_InputMessage">
+    <wsdl:part element="tns:CHANGE_TABLE_ROLE" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="IInsurance_CHANGE_TABLE_ROLE_OutputMessage">
+    <wsdl:part element="tns:CHANGE_TABLE_ROLEResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="IInsurance_GET_LIST_USER_InputMessage">
+    <wsdl:part element="tns:GET_LIST_USER" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="IInsurance_GET_LIST_USER_OutputMessage">
+    <wsdl:part element="tns:GET_LIST_USERResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="IInsurance_GET_LIST_DIVN_InputMessage">
+    <wsdl:part element="tns:GET_LIST_DIVN" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="IInsurance_GET_LIST_DIVN_OutputMessage">
+    <wsdl:part element="tns:GET_LIST_DIVNResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="IInsurance_GET_LIST_BRANCH_InputMessage">
+    <wsdl:part element="tns:GET_LIST_BRANCH" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="IInsurance_GET_LIST_BRANCH_OutputMessage">
+    <wsdl:part element="tns:GET_LIST_BRANCHResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="IInsurance_CHANGE_TABLE_USER_InputMessage">
+    <wsdl:part element="tns:CHANGE_TABLE_USER" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="IInsurance_CHANGE_TABLE_USER_OutputMessage">
+    <wsdl:part element="tns:CHANGE_TABLE_USERResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="IInsurance_GET_PT_POLICY_InputMessage">
+    <wsdl:part element="tns:GET_PT_POLICY" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="IInsurance_GET_PT_POLICY_OutputMessage">
+    <wsdl:part element="tns:GET_PT_POLICYResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="IInsurance_GET_DETAIL_POLICY_InputMessage">
+    <wsdl:part element="tns:GET_DETAIL_POLICY" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="IInsurance_GET_DETAIL_POLICY_OutputMessage">
+    <wsdl:part element="tns:GET_DETAIL_POLICYResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="IInsurance_GET_MENU_BY_USER_NAME_InputMessage">
+    <wsdl:part element="tns:GET_MENU_BY_USER_NAME" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="IInsurance_GET_MENU_BY_USER_NAME_OutputMessage">
+    <wsdl:part element="tns:GET_MENU_BY_USER_NAMEResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="IInsurance_GET_CURRENT_IPADDRESS_InputMessage">
+    <wsdl:part element="tns:GET_CURRENT_IPADDRESS" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="IInsurance_GET_CURRENT_IPADDRESS_OutputMessage">
+    <wsdl:part element="tns:GET_CURRENT_IPADDRESSResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="IInsurance_CHANGE_INS_SCHEDULE_InputMessage">
+    <wsdl:part element="tns:CHANGE_INS_SCHEDULE" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="IInsurance_CHANGE_INS_SCHEDULE_OutputMessage">
+    <wsdl:part element="tns:CHANGE_INS_SCHEDULEResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="IInsurance_GET_SCHEDULE_BY_DAY_InputMessage">
+    <wsdl:part element="tns:GET_SCHEDULE_BY_DAY" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="IInsurance_GET_SCHEDULE_BY_DAY_OutputMessage">
+    <wsdl:part element="tns:GET_SCHEDULE_BY_DAYResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="IInsurance_GET_PARAMETERS_InputMessage">
+    <wsdl:part element="tns:GET_PARAMETERS" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="IInsurance_GET_PARAMETERS_OutputMessage">
+    <wsdl:part element="tns:GET_PARAMETERSResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="IInsurance_CHANGE_INS_JOB_InputMessage">
+    <wsdl:part element="tns:CHANGE_INS_JOB" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="IInsurance_CHANGE_INS_JOB_OutputMessage">
+    <wsdl:part element="tns:CHANGE_INS_JOBResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="IInsurance_GET_LIST_EMPLOYEES_SYSDATE_InputMessage">
+    <wsdl:part element="tns:GET_LIST_EMPLOYEES_SYSDATE" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="IInsurance_GET_LIST_EMPLOYEES_SYSDATE_OutputMessage">
+    <wsdl:part element="tns:GET_LIST_EMPLOYEES_SYSDATEResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="IInsurance_GET_LIST_JOB_SYSDATE_InputMessage">
+    <wsdl:part element="tns:GET_LIST_JOB_SYSDATE" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="IInsurance_GET_LIST_JOB_SYSDATE_OutputMessage">
+    <wsdl:part element="tns:GET_LIST_JOB_SYSDATEResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="IInsurance_CHANGE_INS_ASSIGNMENT_InputMessage">
+    <wsdl:part element="tns:CHANGE_INS_ASSIGNMENT" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="IInsurance_CHANGE_INS_ASSIGNMENT_OutputMessage">
+    <wsdl:part element="tns:CHANGE_INS_ASSIGNMENTResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="IInsurance_GET_ASSIGN_BY_USER_InputMessage">
+    <wsdl:part element="tns:GET_ASSIGN_BY_USER" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="IInsurance_GET_ASSIGN_BY_USER_OutputMessage">
+    <wsdl:part element="tns:GET_ASSIGN_BY_USERResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="IInsurance_CHANGE_PASSWORD_InputMessage">
+    <wsdl:part element="tns:CHANGE_PASSWORD" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="IInsurance_CHANGE_PASSWORD_OutputMessage">
+    <wsdl:part element="tns:CHANGE_PASSWORDResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="IInsurance_CHANGE_STATUS_ASSIGN_InputMessage">
+    <wsdl:part element="tns:CHANGE_STATUS_ASSIGN" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="IInsurance_CHANGE_STATUS_ASSIGN_OutputMessage">
+    <wsdl:part element="tns:CHANGE_STATUS_ASSIGNResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="IInsurance_GET_LIST_CONFIG_InputMessage">
+    <wsdl:part element="tns:GET_LIST_CONFIG" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="IInsurance_GET_LIST_CONFIG_OutputMessage">
+    <wsdl:part element="tns:GET_LIST_CONFIGResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="IInsurance_GET_SCHEDULE_AGAIN_InputMessage">
+    <wsdl:part element="tns:GET_SCHEDULE_AGAIN" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="IInsurance_GET_SCHEDULE_AGAIN_OutputMessage">
+    <wsdl:part element="tns:GET_SCHEDULE_AGAINResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="IInsurance_GET_JOB_LEADER_InputMessage">
+    <wsdl:part element="tns:GET_JOB_LEADER" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="IInsurance_GET_JOB_LEADER_OutputMessage">
+    <wsdl:part element="tns:GET_JOB_LEADERResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="IInsurance_GET_SURVEY_REPORT_InputMessage">
+    <wsdl:part element="tns:GET_SURVEY_REPORT" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="IInsurance_GET_SURVEY_REPORT_OutputMessage">
+    <wsdl:part element="tns:GET_SURVEY_REPORTResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="IInsurance_GET_LINK_GENERATE_InputMessage">
+    <wsdl:part element="tns:GET_LINK_GENERATE" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="IInsurance_GET_LINK_GENERATE_OutputMessage">
+    <wsdl:part element="tns:GET_LINK_GENERATEResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="IInsurance_GET_SC_CLASS_InputMessage">
+    <wsdl:part element="tns:GET_SC_CLASS" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="IInsurance_GET_SC_CLASS_OutputMessage">
+    <wsdl:part element="tns:GET_SC_CLASSResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="IInsurance_GET_SEARCH_InputMessage">
+    <wsdl:part element="tns:GET_SEARCH" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="IInsurance_GET_SEARCH_OutputMessage">
+    <wsdl:part element="tns:GET_SEARCHResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="IInsurance_GET_DATA_PDF_InputMessage">
+    <wsdl:part element="tns:GET_DATA_PDF" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="IInsurance_GET_DATA_PDF_OutputMessage">
+    <wsdl:part element="tns:GET_DATA_PDFResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="IInsurance_GET_POINT_UNG_THU_InputMessage">
+    <wsdl:part element="tns:GET_POINT_UNG_THU" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="IInsurance_GET_POINT_UNG_THU_OutputMessage">
+    <wsdl:part element="tns:GET_POINT_UNG_THUResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="IInsurance_GET_POINT_HIEM_NGHEO_InputMessage">
+    <wsdl:part element="tns:GET_POINT_HIEM_NGHEO" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="IInsurance_GET_POINT_HIEM_NGHEO_OutputMessage">
+    <wsdl:part element="tns:GET_POINT_HIEM_NGHEOResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="IInsurance_GET_RISK_SMI_InputMessage">
+    <wsdl:part element="tns:GET_RISK_SMI" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="IInsurance_GET_RISK_SMI_OutputMessage">
+    <wsdl:part element="tns:GET_RISK_SMIResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:portType name="IInsurance">
+    <wsdl:operation name="GET_VEH_TYPE">
+      <wsdl:input message="tns:IInsurance_GET_VEH_TYPE_InputMessage" wsaw:Action="http://tempuri.org/IInsurance/GET_VEH_TYPE"/>
+      <wsdl:output message="tns:IInsurance_GET_VEH_TYPE_OutputMessage" wsaw:Action="http://tempuri.org/IInsurance/GET_VEH_TYPEResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="GET_VEH_TYPE_JSON">
+      <wsdl:input message="tns:IInsurance_GET_VEH_TYPE_JSON_InputMessage" wsaw:Action="http://tempuri.org/IInsurance/GET_VEH_TYPE_JSON"/>
+      <wsdl:output message="tns:IInsurance_GET_VEH_TYPE_JSON_OutputMessage" wsaw:Action="http://tempuri.org/IInsurance/GET_VEH_TYPE_JSONResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="GET_LOSS_MISC">
+      <wsdl:input message="tns:IInsurance_GET_LOSS_MISC_InputMessage" wsaw:Action="http://tempuri.org/IInsurance/GET_LOSS_MISC"/>
+      <wsdl:output message="tns:IInsurance_GET_LOSS_MISC_OutputMessage" wsaw:Action="http://tempuri.org/IInsurance/GET_LOSS_MISCResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="GET_SMI_TYPE">
+      <wsdl:input message="tns:IInsurance_GET_SMI_TYPE_InputMessage" wsaw:Action="http://tempuri.org/IInsurance/GET_SMI_TYPE"/>
+      <wsdl:output message="tns:IInsurance_GET_SMI_TYPE_OutputMessage" wsaw:Action="http://tempuri.org/IInsurance/GET_SMI_TYPEResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="GET_VCXECG_CHARGE">
+      <wsdl:input message="tns:IInsurance_GET_VCXECG_CHARGE_InputMessage" wsaw:Action="http://tempuri.org/IInsurance/GET_VCXECG_CHARGE"/>
+      <wsdl:output message="tns:IInsurance_GET_VCXECG_CHARGE_OutputMessage" wsaw:Action="http://tempuri.org/IInsurance/GET_VCXECG_CHARGEResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="GET_VCXECG_CHARGE_JSON">
+      <wsdl:input message="tns:IInsurance_GET_VCXECG_CHARGE_JSON_InputMessage" wsaw:Action="http://tempuri.org/IInsurance/GET_VCXECG_CHARGE_JSON"/>
+      <wsdl:output message="tns:IInsurance_GET_VCXECG_CHARGE_JSON_OutputMessage" wsaw:Action="http://tempuri.org/IInsurance/GET_VCXECG_CHARGE_JSONResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="GET_RISK">
+      <wsdl:input message="tns:IInsurance_GET_RISK_InputMessage" wsaw:Action="http://tempuri.org/IInsurance/GET_RISK"/>
+      <wsdl:output message="tns:IInsurance_GET_RISK_OutputMessage" wsaw:Action="http://tempuri.org/IInsurance/GET_RISKResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="GET_VEH_TYPE_TP">
+      <wsdl:input message="tns:IInsurance_GET_VEH_TYPE_TP_InputMessage" wsaw:Action="http://tempuri.org/IInsurance/GET_VEH_TYPE_TP"/>
+      <wsdl:output message="tns:IInsurance_GET_VEH_TYPE_TP_OutputMessage" wsaw:Action="http://tempuri.org/IInsurance/GET_VEH_TYPE_TPResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="GET_VEH_TYPE_TP_JSON">
+      <wsdl:input message="tns:IInsurance_GET_VEH_TYPE_TP_JSON_InputMessage" wsaw:Action="http://tempuri.org/IInsurance/GET_VEH_TYPE_TP_JSON"/>
+      <wsdl:output message="tns:IInsurance_GET_VEH_TYPE_TP_JSON_OutputMessage" wsaw:Action="http://tempuri.org/IInsurance/GET_VEH_TYPE_TP_JSONResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="GET_VEH_GOOD">
+      <wsdl:input message="tns:IInsurance_GET_VEH_GOOD_InputMessage" wsaw:Action="http://tempuri.org/IInsurance/GET_VEH_GOOD"/>
+      <wsdl:output message="tns:IInsurance_GET_VEH_GOOD_OutputMessage" wsaw:Action="http://tempuri.org/IInsurance/GET_VEH_GOODResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="GET_SMI_BY_RISK">
+      <wsdl:input message="tns:IInsurance_GET_SMI_BY_RISK_InputMessage" wsaw:Action="http://tempuri.org/IInsurance/GET_SMI_BY_RISK"/>
+      <wsdl:output message="tns:IInsurance_GET_SMI_BY_RISK_OutputMessage" wsaw:Action="http://tempuri.org/IInsurance/GET_SMI_BY_RISKResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="GET_NG_BY_SMI">
+      <wsdl:input message="tns:IInsurance_GET_NG_BY_SMI_InputMessage" wsaw:Action="http://tempuri.org/IInsurance/GET_NG_BY_SMI"/>
+      <wsdl:output message="tns:IInsurance_GET_NG_BY_SMI_OutputMessage" wsaw:Action="http://tempuri.org/IInsurance/GET_NG_BY_SMIResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="GET_POINT_TNDS">
+      <wsdl:input message="tns:IInsurance_GET_POINT_TNDS_InputMessage" wsaw:Action="http://tempuri.org/IInsurance/GET_POINT_TNDS"/>
+      <wsdl:output message="tns:IInsurance_GET_POINT_TNDS_OutputMessage" wsaw:Action="http://tempuri.org/IInsurance/GET_POINT_TNDSResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="GET_POINT_TNDS_JSON">
+      <wsdl:input message="tns:IInsurance_GET_POINT_TNDS_JSON_InputMessage" wsaw:Action="http://tempuri.org/IInsurance/GET_POINT_TNDS_JSON"/>
+      <wsdl:output message="tns:IInsurance_GET_POINT_TNDS_JSON_OutputMessage" wsaw:Action="http://tempuri.org/IInsurance/GET_POINT_TNDS_JSONResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="CHECK_BLKLIST">
+      <wsdl:input message="tns:IInsurance_CHECK_BLKLIST_InputMessage" wsaw:Action="http://tempuri.org/IInsurance/CHECK_BLKLIST"/>
+      <wsdl:output message="tns:IInsurance_CHECK_BLKLIST_OutputMessage" wsaw:Action="http://tempuri.org/IInsurance/CHECK_BLKLISTResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="CHECK_LOGIN">
+      <wsdl:input message="tns:IInsurance_CHECK_LOGIN_InputMessage" wsaw:Action="http://tempuri.org/IInsurance/CHECK_LOGIN"/>
+      <wsdl:output message="tns:IInsurance_CHECK_LOGIN_OutputMessage" wsaw:Action="http://tempuri.org/IInsurance/CHECK_LOGINResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="DEL_CURRENT_STATUS">
+      <wsdl:input message="tns:IInsurance_DEL_CURRENT_STATUS_InputMessage" wsaw:Action="http://tempuri.org/IInsurance/DEL_CURRENT_STATUS"/>
+      <wsdl:output message="tns:IInsurance_DEL_CURRENT_STATUS_OutputMessage" wsaw:Action="http://tempuri.org/IInsurance/DEL_CURRENT_STATUSResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="GET_MENU_ROOT">
+      <wsdl:input message="tns:IInsurance_GET_MENU_ROOT_InputMessage" wsaw:Action="http://tempuri.org/IInsurance/GET_MENU_ROOT"/>
+      <wsdl:output message="tns:IInsurance_GET_MENU_ROOT_OutputMessage" wsaw:Action="http://tempuri.org/IInsurance/GET_MENU_ROOTResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="GET_LIST_FUNCTION">
+      <wsdl:input message="tns:IInsurance_GET_LIST_FUNCTION_InputMessage" wsaw:Action="http://tempuri.org/IInsurance/GET_LIST_FUNCTION"/>
+      <wsdl:output message="tns:IInsurance_GET_LIST_FUNCTION_OutputMessage" wsaw:Action="http://tempuri.org/IInsurance/GET_LIST_FUNCTIONResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="CHANGE_TABLE_FUNCTION">
+      <wsdl:input message="tns:IInsurance_CHANGE_TABLE_FUNCTION_InputMessage" wsaw:Action="http://tempuri.org/IInsurance/CHANGE_TABLE_FUNCTION"/>
+      <wsdl:output message="tns:IInsurance_CHANGE_TABLE_FUNCTION_OutputMessage" wsaw:Action="http://tempuri.org/IInsurance/CHANGE_TABLE_FUNCTIONResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="GET_LIST_ROLE">
+      <wsdl:input message="tns:IInsurance_GET_LIST_ROLE_InputMessage" wsaw:Action="http://tempuri.org/IInsurance/GET_LIST_ROLE"/>
+      <wsdl:output message="tns:IInsurance_GET_LIST_ROLE_OutputMessage" wsaw:Action="http://tempuri.org/IInsurance/GET_LIST_ROLEResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="CHANGE_TABLE_ROLE">
+      <wsdl:input message="tns:IInsurance_CHANGE_TABLE_ROLE_InputMessage" wsaw:Action="http://tempuri.org/IInsurance/CHANGE_TABLE_ROLE"/>
+      <wsdl:output message="tns:IInsurance_CHANGE_TABLE_ROLE_OutputMessage" wsaw:Action="http://tempuri.org/IInsurance/CHANGE_TABLE_ROLEResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="GET_LIST_USER">
+      <wsdl:input message="tns:IInsurance_GET_LIST_USER_InputMessage" wsaw:Action="http://tempuri.org/IInsurance/GET_LIST_USER"/>
+      <wsdl:output message="tns:IInsurance_GET_LIST_USER_OutputMessage" wsaw:Action="http://tempuri.org/IInsurance/GET_LIST_USERResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="GET_LIST_DIVN">
+      <wsdl:input message="tns:IInsurance_GET_LIST_DIVN_InputMessage" wsaw:Action="http://tempuri.org/IInsurance/GET_LIST_DIVN"/>
+      <wsdl:output message="tns:IInsurance_GET_LIST_DIVN_OutputMessage" wsaw:Action="http://tempuri.org/IInsurance/GET_LIST_DIVNResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="GET_LIST_BRANCH">
+      <wsdl:input message="tns:IInsurance_GET_LIST_BRANCH_InputMessage" wsaw:Action="http://tempuri.org/IInsurance/GET_LIST_BRANCH"/>
+      <wsdl:output message="tns:IInsurance_GET_LIST_BRANCH_OutputMessage" wsaw:Action="http://tempuri.org/IInsurance/GET_LIST_BRANCHResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="CHANGE_TABLE_USER">
+      <wsdl:input message="tns:IInsurance_CHANGE_TABLE_USER_InputMessage" wsaw:Action="http://tempuri.org/IInsurance/CHANGE_TABLE_USER"/>
+      <wsdl:output message="tns:IInsurance_CHANGE_TABLE_USER_OutputMessage" wsaw:Action="http://tempuri.org/IInsurance/CHANGE_TABLE_USERResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="GET_PT_POLICY">
+      <wsdl:input message="tns:IInsurance_GET_PT_POLICY_InputMessage" wsaw:Action="http://tempuri.org/IInsurance/GET_PT_POLICY"/>
+      <wsdl:output message="tns:IInsurance_GET_PT_POLICY_OutputMessage" wsaw:Action="http://tempuri.org/IInsurance/GET_PT_POLICYResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="GET_DETAIL_POLICY">
+      <wsdl:input message="tns:IInsurance_GET_DETAIL_POLICY_InputMessage" wsaw:Action="http://tempuri.org/IInsurance/GET_DETAIL_POLICY"/>
+      <wsdl:output message="tns:IInsurance_GET_DETAIL_POLICY_OutputMessage" wsaw:Action="http://tempuri.org/IInsurance/GET_DETAIL_POLICYResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="GET_MENU_BY_USER_NAME">
+      <wsdl:input message="tns:IInsurance_GET_MENU_BY_USER_NAME_InputMessage" wsaw:Action="http://tempuri.org/IInsurance/GET_MENU_BY_USER_NAME"/>
+      <wsdl:output message="tns:IInsurance_GET_MENU_BY_USER_NAME_OutputMessage" wsaw:Action="http://tempuri.org/IInsurance/GET_MENU_BY_USER_NAMEResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="GET_CURRENT_IPADDRESS">
+      <wsdl:input message="tns:IInsurance_GET_CURRENT_IPADDRESS_InputMessage" wsaw:Action="http://tempuri.org/IInsurance/GET_CURRENT_IPADDRESS"/>
+      <wsdl:output message="tns:IInsurance_GET_CURRENT_IPADDRESS_OutputMessage" wsaw:Action="http://tempuri.org/IInsurance/GET_CURRENT_IPADDRESSResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="CHANGE_INS_SCHEDULE">
+      <wsdl:input message="tns:IInsurance_CHANGE_INS_SCHEDULE_InputMessage" wsaw:Action="http://tempuri.org/IInsurance/CHANGE_INS_SCHEDULE"/>
+      <wsdl:output message="tns:IInsurance_CHANGE_INS_SCHEDULE_OutputMessage" wsaw:Action="http://tempuri.org/IInsurance/CHANGE_INS_SCHEDULEResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="GET_SCHEDULE_BY_DAY">
+      <wsdl:input message="tns:IInsurance_GET_SCHEDULE_BY_DAY_InputMessage" wsaw:Action="http://tempuri.org/IInsurance/GET_SCHEDULE_BY_DAY"/>
+      <wsdl:output message="tns:IInsurance_GET_SCHEDULE_BY_DAY_OutputMessage" wsaw:Action="http://tempuri.org/IInsurance/GET_SCHEDULE_BY_DAYResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="GET_PARAMETERS">
+      <wsdl:input message="tns:IInsurance_GET_PARAMETERS_InputMessage" wsaw:Action="http://tempuri.org/IInsurance/GET_PARAMETERS"/>
+      <wsdl:output message="tns:IInsurance_GET_PARAMETERS_OutputMessage" wsaw:Action="http://tempuri.org/IInsurance/GET_PARAMETERSResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="CHANGE_INS_JOB">
+      <wsdl:input message="tns:IInsurance_CHANGE_INS_JOB_InputMessage" wsaw:Action="http://tempuri.org/IInsurance/CHANGE_INS_JOB"/>
+      <wsdl:output message="tns:IInsurance_CHANGE_INS_JOB_OutputMessage" wsaw:Action="http://tempuri.org/IInsurance/CHANGE_INS_JOBResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="GET_LIST_EMPLOYEES_SYSDATE">
+      <wsdl:input message="tns:IInsurance_GET_LIST_EMPLOYEES_SYSDATE_InputMessage" wsaw:Action="http://tempuri.org/IInsurance/GET_LIST_EMPLOYEES_SYSDATE"/>
+      <wsdl:output message="tns:IInsurance_GET_LIST_EMPLOYEES_SYSDATE_OutputMessage" wsaw:Action="http://tempuri.org/IInsurance/GET_LIST_EMPLOYEES_SYSDATEResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="GET_LIST_JOB_SYSDATE">
+      <wsdl:input message="tns:IInsurance_GET_LIST_JOB_SYSDATE_InputMessage" wsaw:Action="http://tempuri.org/IInsurance/GET_LIST_JOB_SYSDATE"/>
+      <wsdl:output message="tns:IInsurance_GET_LIST_JOB_SYSDATE_OutputMessage" wsaw:Action="http://tempuri.org/IInsurance/GET_LIST_JOB_SYSDATEResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="CHANGE_INS_ASSIGNMENT">
+      <wsdl:input message="tns:IInsurance_CHANGE_INS_ASSIGNMENT_InputMessage" wsaw:Action="http://tempuri.org/IInsurance/CHANGE_INS_ASSIGNMENT"/>
+      <wsdl:output message="tns:IInsurance_CHANGE_INS_ASSIGNMENT_OutputMessage" wsaw:Action="http://tempuri.org/IInsurance/CHANGE_INS_ASSIGNMENTResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="GET_ASSIGN_BY_USER">
+      <wsdl:input message="tns:IInsurance_GET_ASSIGN_BY_USER_InputMessage" wsaw:Action="http://tempuri.org/IInsurance/GET_ASSIGN_BY_USER"/>
+      <wsdl:output message="tns:IInsurance_GET_ASSIGN_BY_USER_OutputMessage" wsaw:Action="http://tempuri.org/IInsurance/GET_ASSIGN_BY_USERResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="CHANGE_PASSWORD">
+      <wsdl:input message="tns:IInsurance_CHANGE_PASSWORD_InputMessage" wsaw:Action="http://tempuri.org/IInsurance/CHANGE_PASSWORD"/>
+      <wsdl:output message="tns:IInsurance_CHANGE_PASSWORD_OutputMessage" wsaw:Action="http://tempuri.org/IInsurance/CHANGE_PASSWORDResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="CHANGE_STATUS_ASSIGN">
+      <wsdl:input message="tns:IInsurance_CHANGE_STATUS_ASSIGN_InputMessage" wsaw:Action="http://tempuri.org/IInsurance/CHANGE_STATUS_ASSIGN"/>
+      <wsdl:output message="tns:IInsurance_CHANGE_STATUS_ASSIGN_OutputMessage" wsaw:Action="http://tempuri.org/IInsurance/CHANGE_STATUS_ASSIGNResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="GET_LIST_CONFIG">
+      <wsdl:input message="tns:IInsurance_GET_LIST_CONFIG_InputMessage" wsaw:Action="http://tempuri.org/IInsurance/GET_LIST_CONFIG"/>
+      <wsdl:output message="tns:IInsurance_GET_LIST_CONFIG_OutputMessage" wsaw:Action="http://tempuri.org/IInsurance/GET_LIST_CONFIGResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="GET_SCHEDULE_AGAIN">
+      <wsdl:input message="tns:IInsurance_GET_SCHEDULE_AGAIN_InputMessage" wsaw:Action="http://tempuri.org/IInsurance/GET_SCHEDULE_AGAIN"/>
+      <wsdl:output message="tns:IInsurance_GET_SCHEDULE_AGAIN_OutputMessage" wsaw:Action="http://tempuri.org/IInsurance/GET_SCHEDULE_AGAINResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="GET_JOB_LEADER">
+      <wsdl:input message="tns:IInsurance_GET_JOB_LEADER_InputMessage" wsaw:Action="http://tempuri.org/IInsurance/GET_JOB_LEADER"/>
+      <wsdl:output message="tns:IInsurance_GET_JOB_LEADER_OutputMessage" wsaw:Action="http://tempuri.org/IInsurance/GET_JOB_LEADERResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="GET_SURVEY_REPORT">
+      <wsdl:input message="tns:IInsurance_GET_SURVEY_REPORT_InputMessage" wsaw:Action="http://tempuri.org/IInsurance/GET_SURVEY_REPORT"/>
+      <wsdl:output message="tns:IInsurance_GET_SURVEY_REPORT_OutputMessage" wsaw:Action="http://tempuri.org/IInsurance/GET_SURVEY_REPORTResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="GET_LINK_GENERATE">
+      <wsdl:input message="tns:IInsurance_GET_LINK_GENERATE_InputMessage" wsaw:Action="http://tempuri.org/IInsurance/GET_LINK_GENERATE"/>
+      <wsdl:output message="tns:IInsurance_GET_LINK_GENERATE_OutputMessage" wsaw:Action="http://tempuri.org/IInsurance/GET_LINK_GENERATEResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="GET_SC_CLASS">
+      <wsdl:input message="tns:IInsurance_GET_SC_CLASS_InputMessage" wsaw:Action="http://tempuri.org/IInsurance/GET_SC_CLASS"/>
+      <wsdl:output message="tns:IInsurance_GET_SC_CLASS_OutputMessage" wsaw:Action="http://tempuri.org/IInsurance/GET_SC_CLASSResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="GET_SEARCH">
+      <wsdl:input message="tns:IInsurance_GET_SEARCH_InputMessage" wsaw:Action="http://tempuri.org/IInsurance/GET_SEARCH"/>
+      <wsdl:output message="tns:IInsurance_GET_SEARCH_OutputMessage" wsaw:Action="http://tempuri.org/IInsurance/GET_SEARCHResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="GET_DATA_PDF">
+      <wsdl:input message="tns:IInsurance_GET_DATA_PDF_InputMessage" wsaw:Action="http://tempuri.org/IInsurance/GET_DATA_PDF"/>
+      <wsdl:output message="tns:IInsurance_GET_DATA_PDF_OutputMessage" wsaw:Action="http://tempuri.org/IInsurance/GET_DATA_PDFResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="GET_POINT_UNG_THU">
+      <wsdl:input message="tns:IInsurance_GET_POINT_UNG_THU_InputMessage" wsaw:Action="http://tempuri.org/IInsurance/GET_POINT_UNG_THU"/>
+      <wsdl:output message="tns:IInsurance_GET_POINT_UNG_THU_OutputMessage" wsaw:Action="http://tempuri.org/IInsurance/GET_POINT_UNG_THUResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="GET_POINT_HIEM_NGHEO">
+      <wsdl:input message="tns:IInsurance_GET_POINT_HIEM_NGHEO_InputMessage" wsaw:Action="http://tempuri.org/IInsurance/GET_POINT_HIEM_NGHEO"/>
+      <wsdl:output message="tns:IInsurance_GET_POINT_HIEM_NGHEO_OutputMessage" wsaw:Action="http://tempuri.org/IInsurance/GET_POINT_HIEM_NGHEOResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="GET_RISK_SMI">
+      <wsdl:input message="tns:IInsurance_GET_RISK_SMI_InputMessage" wsaw:Action="http://tempuri.org/IInsurance/GET_RISK_SMI"/>
+      <wsdl:output message="tns:IInsurance_GET_RISK_SMI_OutputMessage" wsaw:Action="http://tempuri.org/IInsurance/GET_RISK_SMIResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IInsurance" type="tns:IInsurance">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="GET_VEH_TYPE">
+      <soap:operation soapAction="http://tempuri.org/IInsurance/GET_VEH_TYPE" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GET_VEH_TYPE_JSON">
+      <soap:operation soapAction="http://tempuri.org/IInsurance/GET_VEH_TYPE_JSON" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GET_LOSS_MISC">
+      <soap:operation soapAction="http://tempuri.org/IInsurance/GET_LOSS_MISC" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GET_SMI_TYPE">
+      <soap:operation soapAction="http://tempuri.org/IInsurance/GET_SMI_TYPE" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GET_VCXECG_CHARGE">
+      <soap:operation soapAction="http://tempuri.org/IInsurance/GET_VCXECG_CHARGE" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GET_VCXECG_CHARGE_JSON">
+      <soap:operation soapAction="http://tempuri.org/IInsurance/GET_VCXECG_CHARGE_JSON" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GET_RISK">
+      <soap:operation soapAction="http://tempuri.org/IInsurance/GET_RISK" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GET_VEH_TYPE_TP">
+      <soap:operation soapAction="http://tempuri.org/IInsurance/GET_VEH_TYPE_TP" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GET_VEH_TYPE_TP_JSON">
+      <soap:operation soapAction="http://tempuri.org/IInsurance/GET_VEH_TYPE_TP_JSON" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GET_VEH_GOOD">
+      <soap:operation soapAction="http://tempuri.org/IInsurance/GET_VEH_GOOD" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GET_SMI_BY_RISK">
+      <soap:operation soapAction="http://tempuri.org/IInsurance/GET_SMI_BY_RISK" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GET_NG_BY_SMI">
+      <soap:operation soapAction="http://tempuri.org/IInsurance/GET_NG_BY_SMI" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GET_POINT_TNDS">
+      <soap:operation soapAction="http://tempuri.org/IInsurance/GET_POINT_TNDS" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GET_POINT_TNDS_JSON">
+      <soap:operation soapAction="http://tempuri.org/IInsurance/GET_POINT_TNDS_JSON" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CHECK_BLKLIST">
+      <soap:operation soapAction="http://tempuri.org/IInsurance/CHECK_BLKLIST" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CHECK_LOGIN">
+      <soap:operation soapAction="http://tempuri.org/IInsurance/CHECK_LOGIN" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DEL_CURRENT_STATUS">
+      <soap:operation soapAction="http://tempuri.org/IInsurance/DEL_CURRENT_STATUS" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GET_MENU_ROOT">
+      <soap:operation soapAction="http://tempuri.org/IInsurance/GET_MENU_ROOT" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GET_LIST_FUNCTION">
+      <soap:operation soapAction="http://tempuri.org/IInsurance/GET_LIST_FUNCTION" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CHANGE_TABLE_FUNCTION">
+      <soap:operation soapAction="http://tempuri.org/IInsurance/CHANGE_TABLE_FUNCTION" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GET_LIST_ROLE">
+      <soap:operation soapAction="http://tempuri.org/IInsurance/GET_LIST_ROLE" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CHANGE_TABLE_ROLE">
+      <soap:operation soapAction="http://tempuri.org/IInsurance/CHANGE_TABLE_ROLE" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GET_LIST_USER">
+      <soap:operation soapAction="http://tempuri.org/IInsurance/GET_LIST_USER" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GET_LIST_DIVN">
+      <soap:operation soapAction="http://tempuri.org/IInsurance/GET_LIST_DIVN" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GET_LIST_BRANCH">
+      <soap:operation soapAction="http://tempuri.org/IInsurance/GET_LIST_BRANCH" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CHANGE_TABLE_USER">
+      <soap:operation soapAction="http://tempuri.org/IInsurance/CHANGE_TABLE_USER" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GET_PT_POLICY">
+      <soap:operation soapAction="http://tempuri.org/IInsurance/GET_PT_POLICY" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GET_DETAIL_POLICY">
+      <soap:operation soapAction="http://tempuri.org/IInsurance/GET_DETAIL_POLICY" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GET_MENU_BY_USER_NAME">
+      <soap:operation soapAction="http://tempuri.org/IInsurance/GET_MENU_BY_USER_NAME" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GET_CURRENT_IPADDRESS">
+      <soap:operation soapAction="http://tempuri.org/IInsurance/GET_CURRENT_IPADDRESS" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CHANGE_INS_SCHEDULE">
+      <soap:operation soapAction="http://tempuri.org/IInsurance/CHANGE_INS_SCHEDULE" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GET_SCHEDULE_BY_DAY">
+      <soap:operation soapAction="http://tempuri.org/IInsurance/GET_SCHEDULE_BY_DAY" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GET_PARAMETERS">
+      <soap:operation soapAction="http://tempuri.org/IInsurance/GET_PARAMETERS" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CHANGE_INS_JOB">
+      <soap:operation soapAction="http://tempuri.org/IInsurance/CHANGE_INS_JOB" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GET_LIST_EMPLOYEES_SYSDATE">
+      <soap:operation soapAction="http://tempuri.org/IInsurance/GET_LIST_EMPLOYEES_SYSDATE" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GET_LIST_JOB_SYSDATE">
+      <soap:operation soapAction="http://tempuri.org/IInsurance/GET_LIST_JOB_SYSDATE" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CHANGE_INS_ASSIGNMENT">
+      <soap:operation soapAction="http://tempuri.org/IInsurance/CHANGE_INS_ASSIGNMENT" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GET_ASSIGN_BY_USER">
+      <soap:operation soapAction="http://tempuri.org/IInsurance/GET_ASSIGN_BY_USER" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CHANGE_PASSWORD">
+      <soap:operation soapAction="http://tempuri.org/IInsurance/CHANGE_PASSWORD" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CHANGE_STATUS_ASSIGN">
+      <soap:operation soapAction="http://tempuri.org/IInsurance/CHANGE_STATUS_ASSIGN" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GET_LIST_CONFIG">
+      <soap:operation soapAction="http://tempuri.org/IInsurance/GET_LIST_CONFIG" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GET_SCHEDULE_AGAIN">
+      <soap:operation soapAction="http://tempuri.org/IInsurance/GET_SCHEDULE_AGAIN" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GET_JOB_LEADER">
+      <soap:operation soapAction="http://tempuri.org/IInsurance/GET_JOB_LEADER" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GET_SURVEY_REPORT">
+      <soap:operation soapAction="http://tempuri.org/IInsurance/GET_SURVEY_REPORT" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GET_LINK_GENERATE">
+      <soap:operation soapAction="http://tempuri.org/IInsurance/GET_LINK_GENERATE" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GET_SC_CLASS">
+      <soap:operation soapAction="http://tempuri.org/IInsurance/GET_SC_CLASS" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GET_SEARCH">
+      <soap:operation soapAction="http://tempuri.org/IInsurance/GET_SEARCH" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GET_DATA_PDF">
+      <soap:operation soapAction="http://tempuri.org/IInsurance/GET_DATA_PDF" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GET_POINT_UNG_THU">
+      <soap:operation soapAction="http://tempuri.org/IInsurance/GET_POINT_UNG_THU" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GET_POINT_HIEM_NGHEO">
+      <soap:operation soapAction="http://tempuri.org/IInsurance/GET_POINT_HIEM_NGHEO" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GET_RISK_SMI">
+      <soap:operation soapAction="http://tempuri.org/IInsurance/GET_RISK_SMI" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Insurance">
+    <wsdl:port binding="tns:BasicHttpBinding_IInsurance" name="BasicHttpBinding_IInsurance">
+      <soap:address location="http://10.63.55.24:1011/Insurance.svc"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,57 @@
+BROKER SCHEMA Version1.CalculateCarMaterial.ESQLs
+DECLARE ns NAMESPACE 'http://www.pjico.com.vn/entity/vn/payment/paymentservice/1';
+DECLARE commonheader NAMESPACE 'http://www.pjico.com.vn/common/envelope/commonheader/1';
+DECLARE soa NAMESPACE 'http://www.pjico.com.vn/common/envelope/soaenvelope/1';
+
+
+DECLARE CreatePaymentUrl EXTERNAL CHARACTER '';
+DECLARE CreatePaymentTimeout EXTERNAL CHARACTER '';
+CREATE COMPUTE MODULE BuildRequest
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		-- CALL CopyMessageHeaders();
+		-- CALL CopyEntireMessage();
+		SET OutputRoot.Properties = InputRoot.Properties;
+		DECLARE bodyReqRef REFERENCE TO InputRoot.XMLNSC.ns:CalculateCarMaterialReq.ns:BodyReq;
+		DELETE FIELD OutputRoot.HTTPResponseHeader."content-encoding";
+		
+		
+		-- build req
+		SET OutputRoot.XMLNSC = InputRoot.XMLNSC.ns:CalculateCarMaterialReq.ns:BodyReq.ns:VehicleInfo.VehicleType;
+		SET OutputRoot.XMLNSC = InputRoot.XMLNSC.ns:CalculateCarMaterialReq.ns:BodyReq.ns:VehicleInfo.VehicleAge;
+		SET OutputRoot.XMLNSC = InputRoot.XMLNSC.ns:CalculateCarMaterialReq.ns:BodyReq.ns:MoneyInsurance;
+		SET OutputRoot.XMLNSC = InputRoot.XMLNSC.ns:CalculateCarMaterialReq.ns:BodyReq.ns:Deduct;
+		SET OutputRoot.XMLNSC = InputRoot.XMLNSC.ns:CalculateCarMaterialReq.ns:BodyReq.ns:DKBS;
+		SET OutputRoot.XMLNSC = InputRoot.XMLNSC.ns:CalculateCarMaterialReq.ns:BodyReq.ns:ChangeCharge;
+		
+		DECLARE addInfo reference to Environment.Variables.SOAVariables.soa:SOAEnvelope.soa:SOAServiceHeader.soa:SOACommonDetail.commonheader:AdditionalInformation;
+		DECLARE addIndx INTEGER CARDINALITY(Environment.Variables.SOAVariables.soa:SOAEnvelope.soa:SOAServiceHeader.soa:SOACommonDetail.commonheader:AdditionalInformation.commonheader:NameValuePairs[]);
+		SET addInfo.commonheader:NameValuePairs[addIndx+1].commonheader:Name = 'TARGETID';
+		SET addInfo.commonheader:NameValuePairs[addIndx+1].commonheader:Value = 'PAYMENT';
+		
+		SET addInfo.commonheader:NameValuePairs[addIndx+2].commonheader:Name = 'TARGETSERVICE';
+		SET addInfo.commonheader:NameValuePairs[addIndx+2].commonheader:Value = 'CalculateCarMaterial';
+		
+		SET OutputLocalEnvironment.Destination.SOAP.Request.Transport.HTTP.WebServiceURL = CreatePaymentUrl; 
+		SET OutputLocalEnvironment.Destination.SOAP.Request.Transport.HTTP.Timeout = CreatePaymentTimeout;		
+		SET Environment.Variables.ServiceCallout.LogType = 'SOAP';
+		
+		PROPAGATE TO TERMINAL 'out1' FINALIZE NONE DELETE NONE;
+
+		RETURN TRUE;
+	END;
+
+	CREATE PROCEDURE CopyMessageHeaders() BEGIN
+		DECLARE I INTEGER 1;
+		DECLARE J INTEGER;
+		SET J = CARDINALITY(InputRoot.*[]);
+		WHILE I < J DO
+			SET OutputRoot.*[I] = InputRoot.*[I];
+			SET I = I + 1;
+		END WHILE;
+	END;
+
+	CREATE PROCEDURE CopyEntireMessage() BEGIN
+		SET OutputRoot = InputRoot;
+	END;
+END MODULE;

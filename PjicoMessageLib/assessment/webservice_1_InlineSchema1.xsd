@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?><xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:ibmSchExtn="http://www.ibm.com/schema/extensions" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:tns="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+      <xsd:element ibmSchExtn:docRoot="true" name="PJICO_SMSBRANDNAME">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="1" minOccurs="0" name="partnerId" type="xsd:string"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="phoneNum" type="xsd:string"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="messageType" type="xsd:string"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="messageText" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element ibmSchExtn:docRoot="true" name="PJICO_SMSBRANDNAMEResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="1" minOccurs="0" name="PJICO_SMSBRANDNAMEResult" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element ibmSchExtn:docRoot="true" name="PJICO_GIAMDINH">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="1" minOccurs="0" name="userId" type="xsd:string"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="userPasswd" type="xsd:string"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="clmContactName" type="xsd:string"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="clmContactNum" type="xsd:string"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="clmAddress" type="xsd:string"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="clmRegnNo" type="xsd:string"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="clmChassisNo" type="xsd:string"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="clmEngineNo" type="xsd:string"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="clmContactDesc" type="xsd:string"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="clmUpdUid" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element ibmSchExtn:docRoot="true" name="PJICO_GIAMDINHResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="1" minOccurs="0" name="PJICO_GIAMDINHResult" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element ibmSchExtn:docRoot="true" name="WECAN_GIAMDINH">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="1" minOccurs="0" name="partnerId" type="xsd:string"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="contactNum" type="xsd:string"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="orderId" type="xsd:string"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="msgRemarks" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element ibmSchExtn:docRoot="true" name="WECAN_GIAMDINHResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="1" minOccurs="0" name="WECAN_GIAMDINHResult" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element ibmSchExtn:docRoot="true" name="WECAN_IMAGES">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="1" minOccurs="0" name="partnerId" type="xsd:string"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="orderId" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element ibmSchExtn:docRoot="true" name="WECAN_IMAGESResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="1" minOccurs="0" name="WECAN_IMAGESResult" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element ibmSchExtn:docRoot="true" name="WECAN_SMSBRANDNAME">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="1" minOccurs="0" name="partnerId" type="xsd:string"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="contactNum" type="xsd:string"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="msgRemarks" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element ibmSchExtn:docRoot="true" name="WECAN_SMSBRANDNAMEResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="1" minOccurs="0" name="WECAN_SMSBRANDNAMEResult" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element ibmSchExtn:docRoot="true" name="FTS_CLAIMS">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="1" minOccurs="0" name="clmRegno" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element ibmSchExtn:docRoot="true" name="FTS_CLAIMSResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="1" minOccurs="0" name="FTS_CLAIMSResult" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element ibmSchExtn:docRoot="true" name="FTS_IMAGES">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="1" minOccurs="0" name="clmClmNo" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element ibmSchExtn:docRoot="true" name="FTS_IMAGESResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="1" minOccurs="0" name="FTS_IMAGESResult" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>

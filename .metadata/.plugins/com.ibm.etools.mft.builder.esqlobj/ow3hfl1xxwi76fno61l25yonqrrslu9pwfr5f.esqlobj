@@ -1,0 +1,30 @@
+CREATE PROCEDURE buildResponse(IN Status CHAR, IN backEndErrorCode CHAR, IN backEndErrorDesc CHAR, IN targetId CHAR, IN refResponseStatus REFERENCE)
+BEGIN
+	DECLARE common NAMESPACE 'http://www.pjico.com.vn/common/envelope/commonheader/1';
+	DECLARE globalErrorCode, globalErrorDesc CHAR;
+
+	CREATE FIELD refResponseStatus.ERRORCODEMAPPING;
+	DECLARE errCodeMapping REFERENCE TO refResponseStatus.ERRORCODEMAPPING;
+	--Get more error info by backendErrorCode
+	CALL Cache.GlobalCache.ESQLs.getCacheValue('ERRORCODEMAPPING',targetId||backEndErrorCode,errCodeMapping);
+
+	SET globalErrorCode = errCodeMapping.IIBERRORCODE;
+	SET globalErrorDesc = errCodeMapping.CUSTOMERRDESCEN;
+	IF globalErrorDesc IS NULL THEN
+		CREATE FIELD refResponseStatus.SOAERRORCODE;
+		DECLARE SOAERRORCODE REFERENCE TO refResponseStatus.SOAERRORCODE;
+		CALL Cache.GlobalCache.ESQLs.getCacheValue('SOAERRORCOCE', globalErrorCode, SOAERRORCODE);
+		SET globalErrorDesc = SOAERRORCODE.ERRDESCEN;
+		DELETE FIELD refResponseStatus.SOAERRORCODE;
+	END IF;
+
+	CREATE FIELD refResponseStatus.common:ResponseStatus;
+	DECLARE responseStatusRef REFERENCE TO refResponseStatus.common:ResponseStatus;
+	SET responseStatusRef.common:Status = Status;
+	SET responseStatusRef.common:GlobalErrorCode = globalErrorCode;
+	SET responseStatusRef.common:GlobalErrorDescription = globalErrorDesc;
+	SET responseStatusRef.common:ErrorInfo.common:ErrorCode = backEndErrorCode;
+	SET responseStatusRef.common:ErrorInfo.common:ErrorDesc = backEndErrorDesc;
+
+	DELETE FIELD refResponseStatus.ERRORCODEMAPPING;
+END;

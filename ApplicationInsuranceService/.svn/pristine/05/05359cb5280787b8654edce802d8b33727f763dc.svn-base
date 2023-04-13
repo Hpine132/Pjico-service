@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?><mappingRoot xmlns="http://www.ibm.com/2008/ccl/Mapping" domainID="com.ibm.msl.mapping.xml" domainIDExtension="mb" mainMap="true" targetNamespace="Version1.InquiryInsurance.Mappings" version="8.0.5.0" xmlns:map="Version1.InquiryInsurance.Mappings">
+    <input path="mbsharedlib://ESBMessageLib/service/vn/applicationinsurance/applicationinsuranceService.xsd"/>
+    <output path="mbsharedlib://ESBMessageLib/service/vn/applicationinsurance/applicationinsuranceService.xsd"/>
+    <namespaces>
+        <namespace kind="supplement" prefix="io7" uri="http://www.pjico.com.vn/common/envelope/serviceenvelope/1"/>
+        <namespace kind="supplement" prefix="io6" uri="http://www.pjico.com.vn/common/envelope/commonheader/1"/>
+        <namespace kind="supplement" prefix="io9" uri="http://www.pjico.com.vn/entity/vn/com/isurance/1"/>
+        <namespace kind="supplement" prefix="io8" uri="http://www.pjico.com.vn/entity/vn/com/account/1"/>
+        <namespace kind="supplement" prefix="io" uri="http://www.pjico.com.vn/entity/vn/com/1"/>
+        <namespace kind="supplement" prefix="io3" uri="http://www.pjico.com.vn/entity/vn/com/party/1"/>
+        <namespace kind="supplement" prefix="io2" uri="http://www.pjico.com.vn/entity/vn/applicationinsurance/applicationinsuranceservice/1"/>
+        <namespace kind="supplement" prefix="io5" uri="http://www.pjico.com.vn/common/envelope/soaenvelope/1"/>
+        <namespace kind="supplement" prefix="io4" uri="http://www.pjico.com.vn/entity/vn/tax/1"/>
+    </namespaces>
+    <generation engine="xquery"/>
+    <mappingDeclaration name="InquiryInsurance_MappingRes">
+        <input namespace="http://www.pjico.com.vn/entity/vn/applicationinsurance/applicationinsuranceservice/1" path="mb:msg(InquiryInsuranceRes,assembly,XMLNSC,Properties)" var="MessageAssembly"/>
+        <output namespace="http://www.pjico.com.vn/entity/vn/applicationinsurance/applicationinsuranceservice/1" path="mb:msg(InquiryInsuranceRes,assembly,XMLNSC,Properties)" var="MessageAssembly2"/>
+        <move>
+            <input path="$MessageAssembly/Properties"/>
+            <output path="$MessageAssembly2/Properties"/>
+            <override>
+                <assign value="{ESBMessageLib}">
+                    <output path="$MessageAssembly2/Properties/MessageSet"/>
+                </assign>
+            </override>
+        </move>
+        <local>
+            <input path="$MessageAssembly/InquiryInsuranceRes"/>
+            <output path="$MessageAssembly2/InquiryInsuranceRes"/>
+            <local>
+                <input path="Header"/>
+                <output path="Header"/>
+                <move>
+                    <input path="Common"/>
+                    <output path="Common"/>
+                </move>
+                <move>
+                    <input path="Client"/>
+                    <output path="Client"/>
+                </move>
+            </local>
+            <local>
+                <input path="ResponseStatus"/>
+                <output path="ResponseStatus"/>
+                <move>
+                    <input path="Status"/>
+                    <output path="Status"/>
+                </move>
+                <move>
+                    <input path="GlobalErrorCode"/>
+                    <output path="GlobalErrorCode"/>
+                </move>
+                <move>
+                    <input path="GlobalErrorDescription"/>
+                    <output path="GlobalErrorDescription"/>
+                </move>
+                <move>
+                    <input path="ErrorInfo"/>
+                    <output path="ErrorInfo"/>
+                </move>
+            </local>
+            <local>
+                <input path="BodyRes"/>
+                <output path="BodyRes"/>
+                <move>
+                    <input path="FunctionCode"/>
+                    <output path="FunctionCode"/>
+                </move>
+                <move>
+                    <input path="PolicyInfo"/>
+                    <output path="PolicyInfo"/>
+                </move>
+                <move>
+                    <input path="Party"/>
+                    <output path="Party"/>
+                </move>
+                <move>
+                    <input path="ProgramInfo"/>
+                    <output path="ProgramInfo"/>
+                </move>
+                <move>
+                    <input path="RiskList"/>
+                    <output path="RiskList"/>
+                </move>
+                <move>
+                    <input path="InsuranceList"/>
+                    <output path="InsuranceList"/>
+                </move>
+            </local>
+        </local>
+    </mappingDeclaration>
+</mappingRoot>

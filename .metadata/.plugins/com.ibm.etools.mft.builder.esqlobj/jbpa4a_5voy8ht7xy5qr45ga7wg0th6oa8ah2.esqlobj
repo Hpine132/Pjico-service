@@ -1,0 +1,6 @@
+CREATE FUNCTION getUDFConfig(IN Service CHAR, IN Key CHAR) RETURNS CHARACTER
+BEGIN
+	DECLARE Property2 CHARACTER;
+	SET Property2 = getPolicyProperty(Service, Key);
+	RETURN Property2;
+END;

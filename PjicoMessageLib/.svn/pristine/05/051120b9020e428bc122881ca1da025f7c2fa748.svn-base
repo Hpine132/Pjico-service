@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?><xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:ibmSchExtn="http://www.ibm.com/schema/extensions" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:tns="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+      <xsd:element ibmSchExtn:docRoot="true" name="RSADecrypt">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="1" minOccurs="0" name="strText" type="xsd:string"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="partnerId" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element ibmSchExtn:docRoot="true" name="RSADecryptResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="1" minOccurs="0" name="RSADecryptResult" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element ibmSchExtn:docRoot="true" name="createPolQRCode">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="1" minOccurs="0" name="QrContent" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element ibmSchExtn:docRoot="true" name="createPolQRCodeResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="1" minOccurs="0" name="createPolQRCodeResult" type="xsd:string"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="errorCode" type="xsd:string"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="errorMsg" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element ibmSchExtn:docRoot="true" name="createPolQRCodeTransparent">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="1" minOccurs="0" name="QrContent" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element ibmSchExtn:docRoot="true" name="createPolQRCodeTransparentResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="1" minOccurs="0" name="createPolQRCodeTransparentResult" type="xsd:string"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="errorCode" type="xsd:string"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="errorMsg" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element ibmSchExtn:docRoot="true" name="TestcreatePolQRCode">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="1" minOccurs="0" name="QrContent" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element ibmSchExtn:docRoot="true" name="TestcreatePolQRCodeResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="1" minOccurs="0" name="TestcreatePolQRCodeResult" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>

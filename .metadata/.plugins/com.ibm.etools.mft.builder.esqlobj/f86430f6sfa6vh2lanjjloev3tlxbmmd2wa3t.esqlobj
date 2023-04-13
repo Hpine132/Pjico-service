@@ -1,0 +1,6 @@
+CREATE FUNCTION authenLDAP( IN directyServer CHAR, IN userName CHAR, IN password CHAR) RETURNS INT
+BEGIN
+	DECLARE result INT ;
+	CALL authenLDAPWithJava(directyServer, userName, password) INTO result;
+	RETURN result;
+END;

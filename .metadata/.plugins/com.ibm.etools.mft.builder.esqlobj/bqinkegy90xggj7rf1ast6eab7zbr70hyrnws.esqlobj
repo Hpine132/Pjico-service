@@ -1,0 +1,14 @@
+CREATE PROCEDURE tokenize(IN inputString CHARACTER, IN delimiter CHARACTER, INOUT outputContainer REFERENCE)
+BEGIN
+	DECLARE i INTEGER POSITION(delimiter IN inputString);
+
+	WHILE i > 0 DO
+		CREATE LASTCHILD OF outputContainer TYPE NameValue NAME 'ITEM' VALUE SUBSTRING(inputString FROM 0 FOR i);
+		SET inputString = OVERLAY(inputString PLACING '' FROM 1 FOR i);
+		SET i = POSITION(delimiter IN inputString);
+
+	END WHILE;
+
+	CREATE LASTCHILD OF outputContainer TYPE NameValue NAME 'ITEM' VALUE RIGHT(inputString, LENGTH(inputString));
+
+END;

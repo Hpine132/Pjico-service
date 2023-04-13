@@ -1,0 +1,95 @@
+
+
+Importing file: D:\FPT_FIS\Pjico_2022\PjicoMessageLib\payment\hotrows_1.wsdl
+
+The WSDL import will proceed with bindings HotroWsSoap, HotroWsSoap12.
+Creating wsdl schema document for file:///D:/FPT_FIS/Pjico_2022/PjicoMessageLib/payment/hotrows_1.wsdl.
+Parsing wsdl binding {http://tempuri.org/}HotroWsSoap12.
+Parsing wsdl binding input CHECK_BLKLIST.
+Parsing wsdl binding output CHECK_BLKLIST.
+Parsing wsdl binding input GET_VEH_TYPE.
+Parsing wsdl binding output GET_VEH_TYPE.
+Parsing wsdl binding input GET_LOSS_MISC.
+Parsing wsdl binding output GET_LOSS_MISC.
+Parsing wsdl binding input GET_SMI_TYPE.
+Parsing wsdl binding output GET_SMI_TYPE.
+Parsing wsdl binding input GET_VCXECG_CHARGE.
+Parsing wsdl binding output GET_VCXECG_CHARGE.
+Parsing wsdl binding input GET_VCXECG_CHARGE_JSON.
+Parsing wsdl binding output GET_VCXECG_CHARGE_JSON.
+Parsing wsdl binding input GET_VEH_TYPE_TP.
+Parsing wsdl binding output GET_VEH_TYPE_TP.
+Parsing wsdl binding input GET_VEH_TYPE_TP_JSON.
+Parsing wsdl binding output GET_VEH_TYPE_TP_JSON.
+Parsing wsdl binding input GET_SMI_BY_RISK.
+Parsing wsdl binding output GET_SMI_BY_RISK.
+Parsing wsdl binding input GET_VEH_GOOD.
+Parsing wsdl binding output GET_VEH_GOOD.
+Parsing wsdl binding input GET_RISK.
+Parsing wsdl binding output GET_RISK.
+Parsing wsdl binding input GET_POINT_TNDS.
+Parsing wsdl binding output GET_POINT_TNDS.
+Parsing wsdl binding input GET_POINT_TNDS_JSON.
+Parsing wsdl binding output GET_POINT_TNDS_JSON.
+Parsing wsdl binding input GET_NG_BY_SMI.
+Parsing wsdl binding output GET_NG_BY_SMI.
+Parsing wsdl binding input GET_DATA_CONNGUOI_KETHOP.
+Parsing wsdl binding output GET_DATA_CONNGUOI_KETHOP.
+Parsing wsdl binding {http://tempuri.org/}HotroWsSoap.
+Parsing wsdl binding input CHECK_BLKLIST.
+Parsing wsdl binding output CHECK_BLKLIST.
+Parsing wsdl binding input GET_VEH_TYPE.
+Parsing wsdl binding output GET_VEH_TYPE.
+Parsing wsdl binding input GET_LOSS_MISC.
+Parsing wsdl binding output GET_LOSS_MISC.
+Parsing wsdl binding input GET_SMI_TYPE.
+Parsing wsdl binding output GET_SMI_TYPE.
+Parsing wsdl binding input GET_VCXECG_CHARGE.
+Parsing wsdl binding output GET_VCXECG_CHARGE.
+Parsing wsdl binding input GET_VCXECG_CHARGE_JSON.
+Parsing wsdl binding output GET_VCXECG_CHARGE_JSON.
+Parsing wsdl binding input GET_VEH_TYPE_TP.
+Parsing wsdl binding output GET_VEH_TYPE_TP.
+Parsing wsdl binding input GET_VEH_TYPE_TP_JSON.
+Parsing wsdl binding output GET_VEH_TYPE_TP_JSON.
+Parsing wsdl binding input GET_SMI_BY_RISK.
+Parsing wsdl binding output GET_SMI_BY_RISK.
+Parsing wsdl binding input GET_VEH_GOOD.
+Parsing wsdl binding output GET_VEH_GOOD.
+Parsing wsdl binding input GET_RISK.
+Parsing wsdl binding output GET_RISK.
+Parsing wsdl binding input GET_POINT_TNDS.
+Parsing wsdl binding output GET_POINT_TNDS.
+Parsing wsdl binding input GET_POINT_TNDS_JSON.
+Parsing wsdl binding output GET_POINT_TNDS_JSON.
+Parsing wsdl binding input GET_NG_BY_SMI.
+Parsing wsdl binding output GET_NG_BY_SMI.
+Parsing wsdl binding input GET_DATA_CONNGUOI_KETHOP.
+Parsing wsdl binding output GET_DATA_CONNGUOI_KETHOP.
+Processing doc style for operation CHECK_BLKLIST.
+Processing doc style for operation GET_VEH_TYPE.
+Processing doc style for operation GET_LOSS_MISC.
+Processing doc style for operation GET_SMI_TYPE.
+Processing doc style for operation GET_VCXECG_CHARGE.
+Processing doc style for operation GET_VCXECG_CHARGE_JSON.
+Processing doc style for operation GET_VEH_TYPE_TP.
+Processing doc style for operation GET_VEH_TYPE_TP_JSON.
+Processing doc style for operation GET_SMI_BY_RISK.
+Processing doc style for operation GET_VEH_GOOD.
+Processing doc style for operation GET_RISK.
+Processing doc style for operation GET_POINT_TNDS.
+Processing doc style for operation GET_POINT_TNDS_JSON.
+Processing doc style for operation GET_NG_BY_SMI.
+Processing doc style for operation GET_DATA_CONNGUOI_KETHOP.
+Populating WSDL schema payment/hotrows_1.xsd.
+Creating file payment/hotrows_1.xsd in the workspace.
+Creating file payment/hotrows_1_InlineSchema1.xsd in the workspace.
+Copying source WSDL hotrows_1.wsdl to hotrows_1.wsdl.
+
+Elapsed time processing this message definition file: 6.937 seconds
+Number of warnings for this message definition file: 0
+
+
+Number of files processed: 1
+
+

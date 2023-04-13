@@ -1,0 +1,25 @@
+
+
+Importing file: E:\work\FPT\Project\Pjco\SVN\50. DEV\01.ESB\01.DEV\PjicoMessageLib\digitalsign\SignProcess.wsdl
+
+The WSDL import will proceed with bindings SignProcessSoap, SignProcessSoap12.
+Creating wsdl schema document for file:///E:/work/FPT/Project/Pjco/SVN/50. DEV/01.ESB/01.DEV/PjicoMessageLib/digitalsign/SignProcess.wsdl.
+Parsing wsdl binding {http://tempuri.org/}SignProcessSoap12.
+Parsing wsdl binding input DigitalSign.
+Parsing wsdl binding output DigitalSign.
+Parsing wsdl binding {http://tempuri.org/}SignProcessSoap.
+Parsing wsdl binding input DigitalSign.
+Parsing wsdl binding output DigitalSign.
+Processing doc style for operation DigitalSign.
+Populating WSDL schema digitalsign/SignProcess.xsd.
+Creating file digitalsign/SignProcess.xsd in the workspace.
+Creating file digitalsign/SignProcess_InlineSchema1.xsd in the workspace.
+Copying source WSDL SignProcess.wsdl to SignProcess.wsdl.
+
+Elapsed time processing this message definition file: 0.674 seconds
+Number of warnings for this message definition file: 0
+
+
+Number of files processed: 1
+
+

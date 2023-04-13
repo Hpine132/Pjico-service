@@ -1,0 +1,88 @@
+BROKER SCHEMA Version1.InquiryInsuranceHealthCare.ESQLs
+
+
+
+CREATE COMPUTE MODULE BuildResponseHealthCare
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		-- CALL CopyMessageHeaders();
+		-- CALL CopyEntireMessage();
+		DECLARE functionCode CHAR Environment.Variables.SOAVariables.soa:SOAEnvelope.soa:ServiceBody.*[1].*:BodyReq.*:FunctionCode;
+		SET OutputRoot.Properties=InputRoot.Properties;				
+		SET OutputRoot.XMLNSC.ns:InquiryInsuranceHealthcareRes.commonheader:Header = Environment.Variables.SOAVariables.*:SOAEnvelope.*:ServiceBody.*[1].*:Header;
+		
+		SET OutputRoot.XMLNSC.ns:InquiryInsuranceHealthcareRes.commonheader:ResponseStatus.commonheader:Status = '0';
+		SET OutputRoot.XMLNSC.ns:InquiryInsuranceHealthcareRes.commonheader:ResponseStatus.commonheader:GlobalErrorCode = '000';
+		SET OutputRoot.XMLNSC.ns:InquiryInsuranceHealthcareRes.commonheader:ResponseStatus.commonheader:GlobalErrorDescription = 'Successful';
+		
+		SET OutputRoot.XMLNSC.ns:InquiryInsuranceHealthcareRes.ns:BodyRes.ns:AccountCredit = 'PJICO01';
+		SET OutputRoot.XMLNSC.ns:InquiryInsuranceHealthcareRes.ns:BodyRes.ns:AccountDebit = 'PJICO02';
+		SET OutputRoot.XMLNSC.ns:InquiryInsuranceHealthcareRes.ns:BodyRes.ns:Amount = 'VND';
+		SET OutputRoot.XMLNSC.ns:InquiryInsuranceHealthcareRes.ns:BodyRes.ns:AmountOriginal = '10000';
+		SET OutputRoot.XMLNSC.ns:InquiryInsuranceHealthcareRes.ns:BodyRes.ns:AmountSummary = '11000';
+		SET OutputRoot.XMLNSC.ns:InquiryInsuranceHealthcareRes.ns:BodyRes.ns:ApprovalDate = '13/07/2022';
+		SET OutputRoot.XMLNSC.ns:InquiryInsuranceHealthcareRes.ns:BodyRes.ns:CertDate = '13/07/2022';
+		SET OutputRoot.XMLNSC.ns:InquiryInsuranceHealthcareRes.ns:BodyRes.ns:ContractFeeDebt = 'Y';
+		SET OutputRoot.XMLNSC.ns:InquiryInsuranceHealthcareRes.ns:BodyRes.ns:CreatedDt = '13/07/2022';
+		SET OutputRoot.XMLNSC.ns:InquiryInsuranceHealthcareRes.ns:BodyRes.ns:CreditSupport = 'Y';
+		SET OutputRoot.XMLNSC.ns:InquiryInsuranceHealthcareRes.ns:BodyRes.ns:DepartmentCode = 'ABC';
+		SET OutputRoot.XMLNSC.ns:InquiryInsuranceHealthcareRes.ns:BodyRes.ns:Description = 'Empty';
+		SET OutputRoot.XMLNSC.ns:InquiryInsuranceHealthcareRes.ns:BodyRes.ns:EffectiveDt = '13/07/2022';
+		SET OutputRoot.XMLNSC.ns:InquiryInsuranceHealthcareRes.ns:BodyRes.ns:ExpiredDt = '13/08/2022';
+		SET OutputRoot.XMLNSC.ns:InquiryInsuranceHealthcareRes.ns:BodyRes.ns:Fee = '0';
+		SET OutputRoot.XMLNSC.ns:InquiryInsuranceHealthcareRes.ns:BodyRes.ns:FirstDate = '13/07/2022';
+		SET OutputRoot.XMLNSC.ns:InquiryInsuranceHealthcareRes.ns:BodyRes.ns:KeySLHealthCare = '001';
+		SET OutputRoot.XMLNSC.ns:InquiryInsuranceHealthcareRes.ns:BodyRes.ns:LastDate = '13/08/2022';
+		SET OutputRoot.XMLNSC.ns:InquiryInsuranceHealthcareRes.ns:BodyRes.ns:MiningOfficer = 'KT01';
+		SET OutputRoot.XMLNSC.ns:InquiryInsuranceHealthcareRes.ns:BodyRes.ns:NewParty = 'Y';
+		SET OutputRoot.XMLNSC.ns:InquiryInsuranceHealthcareRes.ns:BodyRes.ns:Note = 'Empty';
+		SET OutputRoot.XMLNSC.ns:InquiryInsuranceHealthcareRes.ns:BodyRes.ns:NumberVoucher = 'A1234';
+		SET OutputRoot.XMLNSC.ns:InquiryInsuranceHealthcareRes.ns:BodyRes.ns:PartnerAppNumber = '111';
+		SET OutputRoot.XMLNSC.ns:InquiryInsuranceHealthcareRes.ns:BodyRes.ns:PartyCode = '01234567';
+		SET OutputRoot.XMLNSC.ns:InquiryInsuranceHealthcareRes.ns:BodyRes.ns:PayDate = '13/07/2022';
+		SET OutputRoot.XMLNSC.ns:InquiryInsuranceHealthcareRes.ns:BodyRes.ns:PayType = 'Cash';
+		SET OutputRoot.XMLNSC.ns:InquiryInsuranceHealthcareRes.ns:BodyRes.ns:PolicyInsuranceType = 'DBH';
+		SET OutputRoot.XMLNSC.ns:InquiryInsuranceHealthcareRes.ns:BodyRes.ns:PolicyType = 'Healthcare';
+		SET OutputRoot.XMLNSC.ns:InquiryInsuranceHealthcareRes.ns:BodyRes.ns:PolicyNo = 'P-22/AAA/BBB/0000/000000';
+		SET OutputRoot.XMLNSC.ns:InquiryInsuranceHealthcareRes.ns:BodyRes.ns:ProductCode = '0000';
+		SET OutputRoot.XMLNSC.ns:InquiryInsuranceHealthcareRes.ns:BodyRes.ns:Program = 'Healthcare';
+		SET OutputRoot.XMLNSC.ns:InquiryInsuranceHealthcareRes.ns:BodyRes.ns:RateHT = '100';
+		SET OutputRoot.XMLNSC.ns:InquiryInsuranceHealthcareRes.ns:BodyRes.ns:RateTT = '100';
+		SET OutputRoot.XMLNSC.ns:InquiryInsuranceHealthcareRes.ns:BodyRes.ns:RateComm = '0';
+		SET OutputRoot.XMLNSC.ns:InquiryInsuranceHealthcareRes.ns:BodyRes.ns:RateCommQD = '0';
+		SET OutputRoot.XMLNSC.ns:InquiryInsuranceHealthcareRes.ns:BodyRes.ns:ReferUnit = 'PJICO';
+		SET OutputRoot.XMLNSC.ns:InquiryInsuranceHealthcareRes.ns:BodyRes.ns:SDAC = 'Y';
+		SET OutputRoot.XMLNSC.ns:InquiryInsuranceHealthcareRes.ns:BodyRes.ns:SerialNo = 'SR2022';
+		SET OutputRoot.XMLNSC.ns:InquiryInsuranceHealthcareRes.ns:BodyRes.ns:Sign = 'Ky so';
+		SET OutputRoot.XMLNSC.ns:InquiryInsuranceHealthcareRes.ns:BodyRes.ns:SignalAc = 'AC';
+		SET OutputRoot.XMLNSC.ns:InquiryInsuranceHealthcareRes.ns:BodyRes.ns:SingleInvoide = '1';
+		SET OutputRoot.XMLNSC.ns:InquiryInsuranceHealthcareRes.ns:BodyRes.ns:SingleInvoided = 'Y';
+		SET OutputRoot.XMLNSC.ns:InquiryInsuranceHealthcareRes.ns:BodyRes.ns:StaffCode = '001';
+		SET OutputRoot.XMLNSC.ns:InquiryInsuranceHealthcareRes.ns:BodyRes.ns:Status = 'Đã duyệt';
+		SET OutputRoot.XMLNSC.ns:InquiryInsuranceHealthcareRes.ns:BodyRes.ns:Term = '1';
+		SET OutputRoot.XMLNSC.ns:InquiryInsuranceHealthcareRes.ns:BodyRes.ns:Unit = 'Tổng công ty';
+		SET OutputRoot.XMLNSC.ns:InquiryInsuranceHealthcareRes.ns:BodyRes.ns:UnitCode ='TCT';
+		SET OutputRoot.XMLNSC.ns:InquiryInsuranceHealthcareRes.ns:BodyRes.ns:VAT = '0';
+		SET OutputRoot.XMLNSC.ns:InquiryInsuranceHealthcareRes.ns:BodyRes.ns:VatCode = 'Không thuế';
+		SET OutputRoot.XMLNSC.ns:InquiryInsuranceHealthcareRes.ns:BodyRes.ns:NlvlCode = 'NLVL';
+		SET OutputRoot.XMLNSC.ns:InquiryInsuranceHealthcareRes.ns:BodyRes.ns:LevelLialibility = '0';
+		
+		
+		
+		RETURN TRUE;
+	END;
+
+	CREATE PROCEDURE CopyMessageHeaders() BEGIN
+		DECLARE I INTEGER 1;
+		DECLARE J INTEGER;
+		SET J = CARDINALITY(InputRoot.*[]);
+		WHILE I < J DO
+			SET OutputRoot.*[I] = InputRoot.*[I];
+			SET I = I + 1;
+		END WHILE;
+	END;
+
+	CREATE PROCEDURE CopyEntireMessage() BEGIN
+		SET OutputRoot = InputRoot;
+	END;
+END MODULE;

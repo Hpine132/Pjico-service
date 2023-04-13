@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?><mappingRoot xmlns="http://www.ibm.com/2008/ccl/Mapping" domainID="com.ibm.msl.mapping.xml" domainIDExtension="mb" mainMap="true" targetNamespace="Version1.ProvideRequiredCarInsuranceBANCAS.Mappings" version="8.0.5.0" xmlns:map="Version1.ProvideRequiredCarInsuranceBANCAS.Mappings">
+    <input path="mbsharedlib://ESBMessageLib/service/vn/applicationinsurance/applicationinsuranceService.xsd"/>
+    <output path="mbsharedlib://ESBMessageLib/service/vn/applicationinsurance/applicationinsuranceService.xsd"/>
+    <namespaces>
+        <namespace kind="supplement" prefix="io7" uri="http://www.pjico.com.vn/entity/vn/com/account/1"/>
+        <namespace kind="supplement" prefix="io6" uri="http://www.pjico.com.vn/common/envelope/soaenvelope/1"/>
+        <namespace kind="supplement" prefix="io8" uri="http://www.pjico.com.vn/entity/vn/com/isurance/1"/>
+        <namespace kind="supplement" prefix="io" uri="http://www.pjico.com.vn/entity/vn/com/1"/>
+        <namespace kind="supplement" prefix="io3" uri="http://www.pjico.com.vn/entity/vn/com/party/1"/>
+        <namespace kind="supplement" prefix="io2" uri="http://www.pjico.com.vn/entity/vn/applicationinsurance/applicationinsuranceservice/1"/>
+        <namespace kind="supplement" prefix="io5" uri="http://www.pjico.com.vn/common/envelope/serviceenvelope/1"/>
+        <namespace kind="supplement" prefix="io4" uri="http://www.pjico.com.vn/common/envelope/commonheader/1"/>
+    </namespaces>
+    <generation engine="xquery"/>
+    <mappingDeclaration name="FunctionCodeNotMap">
+        <input namespace="http://www.pjico.com.vn/entity/vn/applicationinsurance/applicationinsuranceservice/1" path="mb:msg(ProvideRequiredCarInsuranceReq,assembly,XMLNSC,Properties)" var="MessageAssembly"/>
+        <output namespace="http://www.pjico.com.vn/entity/vn/applicationinsurance/applicationinsuranceservice/1" path="mb:msg(ProvideRequiredCarInsuranceRes,assembly,XMLNSC,Properties)" var="MessageAssembly2"/>
+        <move>
+            <input path="$MessageAssembly/Properties"/>
+            <output path="$MessageAssembly2/Properties"/>
+            <override>
+                <assign value="{ESBMessageLib}">
+                    <output path="$MessageAssembly2/Properties/MessageSet"/>
+                </assign>
+            </override>
+        </move>
+        <local>
+            <input path="$MessageAssembly/ProvideRequiredCarInsuranceReq/Header"/>
+            <output path="$MessageAssembly2/ProvideRequiredCarInsuranceRes/Header"/>
+            <move>
+                <input path="Common"/>
+                <output path="Common"/>
+            </move>
+            <move>
+                <input path="Client"/>
+                <output path="Client"/>
+            </move>
+        </local>
+        <assign value="1">
+            <output path="$MessageAssembly2/ProvideRequiredCarInsuranceRes/ResponseStatus/Status"/>
+        </assign>
+        <assign value="009">
+            <output path="$MessageAssembly2/ProvideRequiredCarInsuranceRes/ResponseStatus/GlobalErrorCode"/>
+        </assign>
+        <assign value="Function Code Not Map">
+            <output path="$MessageAssembly2/ProvideRequiredCarInsuranceRes/ResponseStatus/GlobalErrorDescription"/>
+        </assign>
+    </mappingDeclaration>
+</mappingRoot>

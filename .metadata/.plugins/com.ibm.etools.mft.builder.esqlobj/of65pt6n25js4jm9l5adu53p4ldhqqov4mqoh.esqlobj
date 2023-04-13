@@ -1,0 +1,16 @@
+CREATE PROCEDURE buildResponseStatus(IN Status CHAR, IN globalErrorCode CHAR, IN globalErrorDesc CHAR, IN backEndErrorCode CHAR, IN backEndErrorDesc CHAR, IN refResponseStatus REFERENCE)
+BEGIN
+	DECLARE common NAMESPACE 'http://www.pjico.com.vn/common/envelope/commonheader/1';
+	IF globalErrorDesc IS NULL THEN
+		CREATE FIELD refResponseStatus.SOAERRORCODE;
+		DECLARE SOAERRORCODE REFERENCE TO refResponseStatus.SOAERRORCODE;
+		CALL Cache.GlobalCache.ESQLs.getCacheValue('SOAERRORCOCE', globalErrorCode, SOAERRORCODE);
+		SET globalErrorDesc = SOAERRORCODE.ERRDESCEN;
+		DELETE FIELD refResponseStatus.SOAERRORCODE;
+	END IF;
+	SET refResponseStatus.common:Status = Status;
+	SET refResponseStatus.common:GlobalErrorCode = globalErrorCode;
+	SET refResponseStatus.common:GlobalErrorDescription = globalErrorDesc;
+	SET refResponseStatus.common:ErrorInfo.common:ErrorCode = backEndErrorCode;
+	SET refResponseStatus.common:ErrorInfo.common:ErrorDesc = backEndErrorDesc;
+END;

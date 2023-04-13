@@ -1,0 +1,51 @@
+CREATE FUNCTION validateRequest(IN data REFERENCE) RETURNS CHARACTER
+BEGIN
+
+DECLARE i INTEGER 1;
+FOR source AS data.Check[] DO
+	IF data.Check[i].inputName IS NULL OR LENGTH(data.Check[i].inputName)=0 THEN
+		RETURN data.Check[i].inputName||' can not null or is empty';
+	END IF;
+	IF data.Check[i].isNotNull THEN
+		IF data.Check[i].inputValue IS NULL THEN
+			RETURN data.Check[i].inputName ||' can not null';
+		END IF;
+	END IF;
+	IF data.Check[i].isNotEmpty THEN
+		IF LENGTH(data.Check[i].inputValue)= 0 THEN
+			RETURN data.Check[i].inputName ||' can not Empty';
+		END IF;
+	END IF;
+	IF data.Check[i].isNotAppear THEN
+		IF data.Check[i].inputValue IS NULL THEN
+			RETURN data.Check[i].inputName ||' is not Appear';
+		END IF;
+	END IF;
+	IF data.Check[i].inputValue IS NOT NULL AND LENGTH(data.Check[i].inputValue) > data.Check[i].maxLength THEN
+		RETURN data.Check[i].inputName ||' length can not > '||CAST(data.Check[i].maxLength AS CHARACTER);
+	END IF;
+	IF data.Check[i].TypeValidateContent = 1 THEN 
+		IF CONTAINS(data.Check[i].ValidateDetail,'#'||data.Check[i].inputValue||'#') <> true THEN
+			RETURN  data.Check[i].inputName ||' content is not in '||data.Check[i].ValidateDetail;  
+		END IF;	
+	END IF;
+	IF data.Check[i].TypeValidateContent = 2 THEN
+		DECLARE validateContent BOOLEAN;
+		CALL Service.Utils.ESQLs.validateInputRegex(data.Check[i].inputValue, data.Check[i].ValidateDetail) INTO validateContent;
+		IF validateContent = FALSE THEN
+			RETURN  data.Check[i].inputName ||' content is invalid.'; 
+		END IF;
+	END IF;
+    IF data.Check[i].TypeValidateContent = 3 THEN
+		DECLARE validateContent BOOLEAN;
+		CALL Service.Utils.ESQLs.validateInputRegex(data.Check[i].inputValue, data.Check[i].ValidateDetail) INTO validateContent;
+		IF LENGTH(data.Check[i].inputValue) > 0 AND validateContent = FALSE THEN
+			RETURN  data.Check[i].inputName ||' content is invalid.'; 
+		END IF;
+    END IF;
+
+	SET i = i + 1;
+END FOR;
+DELETE FIELD data;
+return 'OK';
+END;

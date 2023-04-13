@@ -1,0 +1,10 @@
+CREATE FUNCTION InputValidateEx3 (IN i INTEGER,IN inputName CHARACTER,IN inputValue CHARACTER 
+	, IN isNotAppear BOOLEAN, IN maxLength INTEGER, IN TypeValidateContent INTEGER, IN ValidateDetail CHARACTER,IN data REFERENCE)
+BEGIN 
+	SET data.Check[i].inputName = inputName;
+	SET data.Check[i].inputValue = inputValue;
+	SET data.Check[i].isNotAppear = isNotAppear;
+	SET data.Check[i].maxLength = maxLength;
+	SET data.Check[i].TypeValidateContent = TypeValidateContent;
+	SET data.Check[i].ValidateDetail = ValidateDetail;
+END;

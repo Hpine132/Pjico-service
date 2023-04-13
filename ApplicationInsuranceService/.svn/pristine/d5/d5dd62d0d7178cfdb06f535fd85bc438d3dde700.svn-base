@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?><mappingRoot xmlns="http://www.ibm.com/2008/ccl/Mapping" domainID="com.ibm.msl.mapping.xml" domainIDExtension="mb" mainMap="true" targetNamespace="Version1.ProvideCarMaterialInsurance.Mappings" version="8.0.5.0" xmlns:map="Version1.ProvideCarMaterialInsurance.Mappings">
+    <input path="mbsharedlib://ESBMessageLib/service/vn/applicationinsurance/applicationinsuranceService.xsd"/>
+    <output path="mbsharedlib://ESBMessageLib/service/vn/applicationinsurance/applicationinsuranceService.xsd"/>
+    <namespaces>
+        <namespace kind="supplement" prefix="io7" uri="http://www.pjico.com.vn/entity/vn/com/account/1"/>
+        <namespace kind="supplement" prefix="io6" uri="http://www.pjico.com.vn/common/envelope/soaenvelope/1"/>
+        <namespace kind="supplement" prefix="io8" uri="http://www.pjico.com.vn/entity/vn/com/isurance/1"/>
+        <namespace kind="supplement" prefix="io" uri="http://www.pjico.com.vn/entity/vn/com/1"/>
+        <namespace kind="supplement" prefix="io3" uri="http://www.pjico.com.vn/entity/vn/com/party/1"/>
+        <namespace kind="supplement" prefix="io2" uri="http://www.pjico.com.vn/entity/vn/applicationinsurance/applicationinsuranceservice/1"/>
+        <namespace kind="supplement" prefix="io5" uri="http://www.pjico.com.vn/common/envelope/serviceenvelope/1"/>
+        <namespace kind="supplement" prefix="io4" uri="http://www.pjico.com.vn/common/envelope/commonheader/1"/>
+        <namespace kind="supplement" prefix="io9" uri="http://www.pjico.com.vn/entity/vn/tax/1"/>
+    </namespaces>
+    <generation engine="xquery"/>
+    <mappingDeclaration name="MappingRes">
+        <input namespace="http://www.pjico.com.vn/entity/vn/applicationinsurance/applicationinsuranceservice/1" path="mb:msg(ProvideCarMaterialInsuranceRes,assembly,XMLNSC,Properties)" var="MessageAssembly"/>
+        <output namespace="http://www.pjico.com.vn/entity/vn/applicationinsurance/applicationinsuranceservice/1" path="mb:msg(ProvideCarMaterialInsuranceRes,assembly,XMLNSC,Properties)" var="MessageAssembly1"/>
+        <move>
+            <input path="$MessageAssembly/Properties"/>
+            <output path="$MessageAssembly1/Properties"/>
+            <override>
+                <assign value="{ESBMessageLib}">
+                    <output path="$MessageAssembly1/Properties/MessageSet"/>
+                </assign>
+            </override>
+        </move>
+        <local>
+            <input path="$MessageAssembly/ProvideCarMaterialInsuranceRes/Header"/>
+            <output path="$MessageAssembly1/ProvideCarMaterialInsuranceRes/Header"/>
+            <move automap="true">
+                <input path="Common"/>
+                <output path="Common"/>
+            </move>
+            <move automap="true">
+                <input path="Client"/>
+                <output path="Client"/>
+            </move>
+        </local>
+        <local>
+            <input path="$MessageAssembly/ProvideCarMaterialInsuranceRes/ResponseStatus"/>
+            <output path="$MessageAssembly1/ProvideCarMaterialInsuranceRes/ResponseStatus"/>
+            <move automap="true">
+                <input path="Status"/>
+                <output path="Status"/>
+            </move>
+            <move automap="true">
+                <input path="GlobalErrorCode"/>
+                <output path="GlobalErrorCode"/>
+            </move>
+            <move automap="true">
+                <input path="GlobalErrorDescription"/>
+                <output path="GlobalErrorDescription"/>
+            </move>
+            <move automap="true">
+                <input path="ErrorInfo"/>
+                <output path="ErrorInfo"/>
+            </move>
+        </local>
+        <local>
+            <input path="$MessageAssembly/ProvideCarMaterialInsuranceRes/BodyRes"/>
+            <output path="$MessageAssembly1/ProvideCarMaterialInsuranceRes/BodyRes"/>
+            <move automap="true">
+                <input path="FunctionCode"/>
+                <output path="FunctionCode"/>
+            </move>
+            <move automap="true">
+                <input path="MessageType"/>
+                <output path="MessageType"/>
+            </move>
+            <move automap="true">
+                <input path="ConfigID"/>
+                <output path="ConfigID"/>
+            </move>
+            <move automap="true">
+                <input path="Stan"/>
+                <output path="Stan"/>
+            </move>
+            <move automap="true">
+                <input path="LocalDateTime"/>
+                <output path="LocalDateTime"/>
+            </move>
+            <move automap="true">
+                <input path="DeliveryChannel"/>
+                <output path="DeliveryChannel"/>
+            </move>
+            <move automap="true">
+                <input path="ActCode"/>
+                <output path="ActCode"/>
+            </move>
+            <move automap="true">
+                <input path="ActDesc"/>
+                <output path="ActDesc"/>
+            </move>
+            <move automap="true">
+                <input path="ErrDesc"/>
+                <output path="ErrDesc"/>
+            </move>
+            <move>
+                <input path="ProcCode"/>
+                <output path="ProcCode"/>
+            </move>
+        </local>
+    </mappingDeclaration>
+</mappingRoot>

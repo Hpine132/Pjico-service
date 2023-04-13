@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8"?><xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:ibmSchExtn="http://www.ibm.com/schema/extensions" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:tns="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+      <xsd:element ibmSchExtn:docRoot="true" name="CHECK_BLKLIST">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="1" minOccurs="0" name="REGN_NO" type="xsd:string"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="CHASSIS_NO" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element ibmSchExtn:docRoot="true" name="CHECK_BLKLISTResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="1" minOccurs="0" name="CHECK_BLKLISTResult" type="tns:ResultBoolModel"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:complexType name="ResultBoolModel">
+        <xsd:sequence>
+          <xsd:element maxOccurs="1" minOccurs="1" name="returnCode" type="xsd:int"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="errMess" type="xsd:string"/>
+          <xsd:element maxOccurs="1" minOccurs="1" name="data" type="xsd:boolean"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element ibmSchExtn:docRoot="true" name="GET_VEH_TYPE">
+        <xsd:complexType/>
+      </xsd:element>
+      <xsd:element ibmSchExtn:docRoot="true" name="GET_VEH_TYPEResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="1" minOccurs="0" name="GET_VEH_TYPEResult" type="tns:ResultModel"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:complexType name="ResultModel">
+        <xsd:sequence>
+          <xsd:element maxOccurs="1" minOccurs="1" name="returnCode" type="xsd:int"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="errMess" type="xsd:string"/>
+          <xsd:element maxOccurs="1" minOccurs="0" name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:any maxOccurs="unbounded" minOccurs="0" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax"/>
+                <xsd:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax"/>
+              </xsd:sequence>
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element ibmSchExtn:docRoot="true" name="GET_LOSS_MISC">
+        <xsd:complexType/>
+      </xsd:element>
+      <xsd:element ibmSchExtn:docRoot="true" name="GET_LOSS_MISCResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="1" minOccurs="0" name="GET_LOSS_MISCResult" type="tns:ResultModel"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element ibmSchExtn:docRoot="true" name="GET_SMI_TYPE">
+        <xsd:complexType/>
+      </xsd:element>
+      <xsd:element ibmSchExtn:docRoot="true" name="GET_SMI_TYPEResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="1" minOccurs="0" name="GET_SMI_TYPEResult" type="tns:ResultModel"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element ibmSchExtn:docRoot="true" name="GET_VCXECG_CHARGE">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="1" minOccurs="0" name="VEH_TYPE" type="xsd:string"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="VEH_AGE" type="xsd:string"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="MONEY_INSUR" type="xsd:string"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="KT" type="xsd:string"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="DK_BS" type="xsd:string"/>
+            <xsd:element maxOccurs="1" minOccurs="1" name="CHANGE_CHARGE" type="xsd:decimal"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="PIN_VALUE" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element ibmSchExtn:docRoot="true" name="GET_VCXECG_CHARGEResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="1" minOccurs="0" name="GET_VCXECG_CHARGEResult" type="tns:ResultModel"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element ibmSchExtn:docRoot="true" name="GET_VCXECG_CHARGE_JSON">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="1" minOccurs="0" name="VEH_TYPE" type="xsd:string"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="VEH_AGE" type="xsd:string"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="MONEY_INSUR" type="xsd:string"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="KT" type="xsd:string"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="DK_BS" type="xsd:string"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="CHANGE_CHARGE" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element ibmSchExtn:docRoot="true" name="GET_VCXECG_CHARGE_JSONResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="1" minOccurs="0" name="GET_VCXECG_CHARGE_JSONResult" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element ibmSchExtn:docRoot="true" name="GET_VEH_TYPE_TP">
+        <xsd:complexType/>
+      </xsd:element>
+      <xsd:element ibmSchExtn:docRoot="true" name="GET_VEH_TYPE_TPResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="1" minOccurs="0" name="GET_VEH_TYPE_TPResult" type="tns:ResultModel"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element ibmSchExtn:docRoot="true" name="GET_VEH_TYPE_TP_JSON">
+        <xsd:complexType/>
+      </xsd:element>
+      <xsd:element ibmSchExtn:docRoot="true" name="GET_VEH_TYPE_TP_JSONResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="1" minOccurs="0" name="GET_VEH_TYPE_TP_JSONResult" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element ibmSchExtn:docRoot="true" name="GET_SMI_BY_RISK">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="1" minOccurs="0" name="RISK" type="xsd:string"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="VEH_TYPE" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element ibmSchExtn:docRoot="true" name="GET_SMI_BY_RISKResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="1" minOccurs="0" name="GET_SMI_BY_RISKResult" type="tns:ResultModel"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element ibmSchExtn:docRoot="true" name="GET_VEH_GOOD">
+        <xsd:complexType/>
+      </xsd:element>
+      <xsd:element ibmSchExtn:docRoot="true" name="GET_VEH_GOODResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="1" minOccurs="0" name="GET_VEH_GOODResult" type="tns:ResultModel"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element ibmSchExtn:docRoot="true" name="GET_RISK">
+        <xsd:complexType/>
+      </xsd:element>
+      <xsd:element ibmSchExtn:docRoot="true" name="GET_RISKResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="1" minOccurs="0" name="GET_RISKResult" type="tns:ResultModel"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element ibmSchExtn:docRoot="true" name="GET_POINT_TNDS">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="1" minOccurs="0" name="VEH_TYPE" type="xsd:string"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="SEATS" type="xsd:string"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="WEIGHT" type="xsd:string"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="USE_PURPOSE" type="xsd:string"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="TNDSBB" type="xsd:string"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="TNDSTN" type="xsd:string"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="TNDSHH" type="xsd:string"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="TNNN" type="xsd:string"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="TNLP" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element ibmSchExtn:docRoot="true" name="GET_POINT_TNDSResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="1" minOccurs="0" name="GET_POINT_TNDSResult" type="tns:ResultModel"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element ibmSchExtn:docRoot="true" name="GET_POINT_TNDS_JSON">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="1" minOccurs="0" name="VEH_TYPE" type="xsd:string"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="SEATS" type="xsd:string"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="WEIGHT" type="xsd:string"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="USE_PURPOSE" type="xsd:string"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="TNDSBB" type="xsd:string"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="TNDSTN" type="xsd:string"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="TNDSHH" type="xsd:string"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="TNNN" type="xsd:string"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="TNLP" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element ibmSchExtn:docRoot="true" name="GET_POINT_TNDS_JSONResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="1" minOccurs="0" name="GET_POINT_TNDS_JSONResult" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element ibmSchExtn:docRoot="true" name="GET_NG_BY_SMI">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="1" minOccurs="0" name="VEH_TYPE" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element ibmSchExtn:docRoot="true" name="GET_NG_BY_SMIResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="1" minOccurs="0" name="GET_NG_BY_SMIResult" type="tns:ResultModel"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element ibmSchExtn:docRoot="true" name="GET_DATA_CONNGUOI_KETHOP">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="1" minOccurs="0" name="INFOR_NO" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element ibmSchExtn:docRoot="true" name="GET_DATA_CONNGUOI_KETHOPResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="1" minOccurs="0" name="GET_DATA_CONNGUOI_KETHOPResult" type="tns:ResultModel"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>

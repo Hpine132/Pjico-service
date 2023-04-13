@@ -1,0 +1,49 @@
+/*EATE FUNCTION Main() RETURNS BOOLE*/
+	BEGIN
+		-- CALL CopyMessageHeaders();
+		-- CALL CopyEntireMessage();
+		DECLARE functionCode CHAR Environment.Variables.SOAVariables.soa:SOAEnvelope.soa:ServiceBody.*[1].*:BodyReq.*:FunctionCode;
+		SET OutputRoot.Properties=InputRoot.Properties;				
+		SET OutputRoot.XMLNSC.ns:InquiryBillRes.commonheader:Header = Environment.Variables.SOAVariables.*:SOAEnvelope.*:ServiceBody.*[1].*:Header;
+		
+		SET OutputRoot.XMLNSC.ns:InquiryBillRes.commonheader:ResponseStatus.commonheader:Status = '0';
+		SET OutputRoot.XMLNSC.ns:InquiryBillRes.commonheader:ResponseStatus.commonheader:GlobalErrorCode = '000';
+		SET OutputRoot.XMLNSC.ns:InquiryBillRes.commonheader:ResponseStatus.commonheader:GlobalErrorDescription = 'Successful';
+		
+		SET OutputRoot.XMLNSC.ns:InquiryBillRes.ns:BodyRes.ns:Address = '229 Tây Sơn';
+		SET OutputRoot.XMLNSC.ns:InquiryBillRes.ns:BodyRes.ns:Agency = 'ĐL1';
+		SET OutputRoot.XMLNSC.ns:InquiryBillRes.ns:BodyRes.ns:Amount = '3000';
+		SET OutputRoot.XMLNSC.ns:InquiryBillRes.ns:BodyRes.ns:BillDate = '12072022';
+		SET OutputRoot.XMLNSC.ns:InquiryBillRes.ns:BodyRes.ns:BillNo = '01';
+		SET OutputRoot.XMLNSC.ns:InquiryBillRes.ns:BodyRes.ns:DepartmentCode = 'TCT';
+		SET OutputRoot.XMLNSC.ns:InquiryBillRes.ns:BodyRes.ns:MiningStaff = 'KT1';
+		SET OutputRoot.XMLNSC.ns:InquiryBillRes.ns:BodyRes.ns:PartyCode = '01234567';
+		SET OutputRoot.XMLNSC.ns:InquiryBillRes.ns:BodyRes.ns:PartyName = 'Nguyễn Văn A';
+		SET OutputRoot.XMLNSC.ns:InquiryBillRes.ns:BodyRes.ns:PolicyNo = 'P-22/AAA/BB1/0000/123456';
+		SET OutputRoot.XMLNSC.ns:InquiryBillRes.ns:BodyRes.ns:ProductCode = '0000';
+		SET OutputRoot.XMLNSC.ns:InquiryBillRes.ns:BodyRes.ns:ProductName = 'Sản phẩm';
+		SET OutputRoot.XMLNSC.ns:InquiryBillRes.ns:BodyRes.ns:Sales = '1000';
+		SET OutputRoot.XMLNSC.ns:InquiryBillRes.ns:BodyRes.ns:Seri = 'SR2022';
+		SET OutputRoot.XMLNSC.ns:InquiryBillRes.ns:BodyRes.ns:StaffCode = '001';
+		SET OutputRoot.XMLNSC.ns:InquiryBillRes.ns:BodyRes.ns:Symbol = '01';
+		SET OutputRoot.XMLNSC.ns:InquiryBillRes.ns:BodyRes.ns:Tax = '4000';
+		SET OutputRoot.XMLNSC.ns:InquiryBillRes.ns:BodyRes.ns:TaxAmount = '2000';
+		SET OutputRoot.XMLNSC.ns:InquiryBillRes.ns:BodyRes.ns:TaxCode = '9876543210';
+		SET OutputRoot.XMLNSC.ns:InquiryBillRes.ns:BodyRes.ns:TaxTypeCode = '01';
+		
+		RETURN TRUE;
+	END;
+
+	CREATE PROCEDURE CopyMessageHeaders() BEGIN
+		DECLARE I INTEGER 1;
+		DECLARE J INTEGER;
+		SET J = CARDINALITY(InputRoot.*[]);
+		WHILE I < J DO
+			SET OutputRoot.*[I] = InputRoot.*[I];
+			SET I = I + 1;
+		END WHILE;
+	END;
+
+	CREATE PROCEDURE CopyEntireMessage() BEGIN
+		SET OutputRoot = InputRoot;
+	END;

@@ -1,0 +1,15 @@
+CREATE FUNCTION GetAdditionalInfo(
+IN AddInf REFERENCE, IN indx CHARACTER) RETURNS CHARACTER
+BEGIN
+	DECLARE result CHARACTER;
+	DECLARE I INTEGER 1;
+	DECLARE J INTEGER CARDINALITY(AddInf.[]);
+
+	WHILE I <= J DO
+		IF AddInf.*:NameValuePairs[I].*:Name = TRIM(indx) THEN
+			SET result = AddInf.*:NameValuePairs[I].*:Value;
+		END IF;
+		SET I = I + 1;
+	END WHILE;
+	RETURN result;
+END;

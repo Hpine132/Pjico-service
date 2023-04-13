@@ -1,0 +1,4 @@
+CREATE FUNCTION castFloatToDecimal(IN sourceValue FLOAT) RETURNS DECIMAL
+BEGIN
+	RETURN CAST(sourceValue AS DECIMAL);
+END;

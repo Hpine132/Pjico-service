@@ -1,0 +1,96 @@
+BROKER SCHEMA Version1.InquiryInsurance.ESQLs
+DECLARE ns NAMESPACE 'http://www.pjico.com.vn/entity/vn/applicationinsurance/applicationinsuranceservice/1';
+DECLARE commonheader NAMESPACE 'http://www.pjico.com.vn/common/envelope/commonheader/1';
+DECLARE ns184 NAMESPACE 'http://www.pjico.com.vn/entity/vn/com/party/1';
+DECLARE soa NAMESPACE 'http://www.pjico.com.vn/common/envelope/soaenvelope/1';
+
+CREATE COMPUTE MODULE BuildRes
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		DECLARE I INT 1;
+		DECLARE arraySize INT;
+		DECLARE functionCode CHAR Environment.Variables.SOAVariables.soa:SOAEnvelope.soa:ServiceBody.*[1].*:BodyReq.*:FunctionCode;
+		SET OutputRoot.Properties=InputRoot.Properties;				
+		SET OutputRoot.XMLNSC.ns:InquiryInsuranceRes.commonheader:Header = Environment.Variables.SOAVariables.*:SOAEnvelope.*:ServiceBody.*[1].*:Header;
+		IF Environment.Variables.ServiceCallout.Status = '0' THEN
+			DECLARE status CHARACTER InputRoot.JSON.Data.returnCode;
+			DECLARE errMess CHARACTER InputRoot.JSON.Data.errMess;
+			IF status = '0' THEN
+				SET OutputRoot.XMLNSC.ns:InquiryInsuranceRes.commonheader:ResponseStatus.commonheader:Status= '0';
+				SET OutputRoot.XMLNSC.ns:InquiryInsuranceRes.commonheader:ResponseStatus.commonheader:GlobalErrorCode = '000';
+				SET OutputRoot.XMLNSC.ns:InquiryInsuranceRes.commonheader:ResponseStatus.commonheader:GlobalErrorDescription = 'Sucessful';
+				
+				SET OutputRoot.XMLNSC.ns:InquiryInsuranceRes.ns:BodyRes.ns:PolicyInfo.DivnCode = InputRoot.JSON.Data.data.POL_DIVN_CODE;
+				SET OutputRoot.XMLNSC.ns:InquiryInsuranceRes.ns:BodyRes.ns:PolicyInfo.DivnName = InputRoot.JSON.Data.data.POL_DIVN_NAME;
+				SET OutputRoot.XMLNSC.ns:InquiryInsuranceRes.ns:BodyRes.ns:PolicyInfo.DeptCode = InputRoot.JSON.Data.data.POL_DEPT_CODE;				
+				SET OutputRoot.XMLNSC.ns:InquiryInsuranceRes.ns:BodyRes.ns:PolicyInfo.DeptName = InputRoot.JSON.Data.data.POL_DEPT_NAME;
+				SET OutputRoot.XMLNSC.ns:InquiryInsuranceRes.ns:BodyRes.ns:Party.ns184:PartyCode = InputRoot.JSON.Data.data.POL_CUST_CODE;
+				SET OutputRoot.XMLNSC.ns:InquiryInsuranceRes.ns:BodyRes.ns:PolicyInfo.AssuredName = InputRoot.JSON.Data.data.POL_ASSURED_NAME;
+				SET OutputRoot.XMLNSC.ns:InquiryInsuranceRes.ns:BodyRes.ns:Party.ns184:PartyInfo.ns184:PartyType = InputRoot.JSON.Data.data.CUST_TYPE;
+				SET OutputRoot.XMLNSC.ns:InquiryInsuranceRes.ns:BodyRes.ns:Party.ns184:RefId1 = InputRoot.JSON.Data.data.CUST_REF_ID1;
+				SET OutputRoot.XMLNSC.ns:InquiryInsuranceRes.ns:BodyRes.ns:PolicyInfo.ScCode = InputRoot.JSON.Data.data.POL_SC_CODE;
+				SET OutputRoot.XMLNSC.ns:InquiryInsuranceRes.ns:BodyRes.ns:PolicyInfo.PolicyNo = InputRoot.JSON.Data.data.POL_NO;
+				SET OutputRoot.XMLNSC.ns:InquiryInsuranceRes.ns:BodyRes.ns:PolicyInfo.AmendNo = InputRoot.JSON.Data.data.POL_END_NO;
+				SET OutputRoot.XMLNSC.ns:InquiryInsuranceRes.ns:BodyRes.ns:PolicyInfo.ContrNo = InputRoot.JSON.Data.data.POL_CONTR_NO;
+				SET OutputRoot.XMLNSC.ns:InquiryInsuranceRes.ns:BodyRes.ns:PolicyInfo.Period = InputRoot.JSON.Data.data.POL_PERIOD;
+				SET OutputRoot.XMLNSC.ns:InquiryInsuranceRes.ns:BodyRes.ns:PolicyInfo.InsurancePrgm = InputRoot.JSON.Data.data.POL_INSURANCE_PRGM;
+				SET OutputRoot.XMLNSC.ns:InquiryInsuranceRes.ns:BodyRes.ns:PolicyInfo.IssueDt = InputRoot.JSON.Data.data.POL_ISSUE_DT;
+				SET OutputRoot.XMLNSC.ns:InquiryInsuranceRes.ns:BodyRes.ns:PolicyInfo.ApprovalDt = InputRoot.JSON.Data.data.POL_APPRV_DATE;
+				SET OutputRoot.XMLNSC.ns:InquiryInsuranceRes.ns:BodyRes.ns:PolicyInfo.Approver = InputRoot.JSON.Data.data.POL_APPRV_UID;
+				SET OutputRoot.XMLNSC.ns:InquiryInsuranceRes.ns:BodyRes.ns:PolicyInfo.EndDesc = InputRoot.JSON.Data.data.POL_END_DESC;
+				SET OutputRoot.XMLNSC.ns:InquiryInsuranceRes.ns:BodyRes.ns:RiskList.RiskLcSI = InputRoot.JSON.Data.data.RISK_LC_SI;
+				SET OutputRoot.XMLNSC.ns:InquiryInsuranceRes.ns:BodyRes.ns:RiskList.RiskLcPre = InputRoot.JSON.Data.data.RISK_LC_PREM;
+				SET arraySize = CARDINALITY (InputRoot.JSON.Data.data.MAIN_INFOR.Item[]);
+				IF status = '0' AND arraySize <> '0' THEN
+					WHILE I <= arraySize DO
+						--- vehicle
+						SET OutputRoot.XMLNSC.ns:InquiryInsuranceRes.ns:BodyRes.ns:InsuranceList.ns:InsuranceInfo[I].ns:VehicleInfo.Type = InputRoot.JSON.Data.data.MAIN_INFOR.Item[I].VEH_TYPE;
+						SET OutputRoot.XMLNSC.ns:InquiryInsuranceRes.ns:BodyRes.ns:InsuranceList.ns:InsuranceInfo[I].ns:VehicleInfo.LicensePlate = InputRoot.JSON.Data.data.MAIN_INFOR.Item[I].VEH_REGN_NO;
+						SET OutputRoot.XMLNSC.ns:InquiryInsuranceRes.ns:BodyRes.ns:InsuranceList.ns:InsuranceInfo[I].ns:VehicleInfo.ChassisNo = InputRoot.JSON.Data.data.MAIN_INFOR.Item[I].VEH_CHASSIS_NO;
+						SET OutputRoot.XMLNSC.ns:InquiryInsuranceRes.ns:BodyRes.ns:InsuranceList.ns:InsuranceInfo[I].ns:VehicleInfo.EngineNo = InputRoot.JSON.Data.data.MAIN_INFOR.Item[I].VEH_ENGINE_NO;
+						---ship--
+						SET OutputRoot.XMLNSC.ns:InquiryInsuranceRes.ns:BodyRes.ns:InsuranceList.ns:InsuranceInfo[I].ns:ShipInfo.Transportation = InputRoot.JSON.Data.data.MAIN_INFOR.Item[I].SHIP_TRANSPORTATION;
+						SET OutputRoot.XMLNSC.ns:InquiryInsuranceRes.ns:BodyRes.ns:InsuranceList.ns:InsuranceInfo[I].ns:ShipInfo.Notes = InputRoot.JSON.Data.data.MAIN_INFOR.Item[I].SHIP_NOTES;
+
+						SET I = I + 1;
+					END WHILE;
+				ELSEIF arraySize = '0' THEN 
+					SET OutputRoot.XMLNSC.ns:InquiryInsuranceRes.commonheader:ResponseStatus.commonheader:Status = '0';
+					SET OutputRoot.XMLNSC.ns:InquiryInsuranceRes.commonheader:ResponseStatus.commonheader:GlobalErrorCode = '015';
+					SET OutputRoot.XMLNSC.ns:InquiryInsuranceRes.commonheader:ResponseStatus.commonheader:GlobalErrorDescription = 'No data found of Insurance List';
+				END IF;
+			ELSE
+				SET OutputRoot.XMLNSC.ns:InquiryInsuranceRes.commonheader:ResponseStatus.commonheader:Status = '1';
+				SET OutputRoot.XMLNSC.ns:InquiryInsuranceRes.commonheader:ResponseStatus.commonheader:GlobalErrorCode = '004';
+				SET OutputRoot.XMLNSC.ns:InquiryInsuranceRes.commonheader:ResponseStatus.commonheader:GlobalErrorDescription = 'Error in Backend';
+					
+				SET OutputRoot.XMLNSC.ns:InquiryInsuranceRes.commonheader:ResponseStatus.commonheader:ErrorInfo.commonheader:SourceAppID = 'PREMIA';
+				SET OutputRoot.XMLNSC.ns:InquiryInsuranceRes.commonheader:ResponseStatus.commonheader:ErrorInfo.commonheader:ErrorCode = status;
+				SET OutputRoot.XMLNSC.ns:InquiryInsuranceRes.commonheader:ResponseStatus.commonheader:ErrorInfo.commonheader:ErrorDesc = errMess;
+			END IF;
+		ELSE
+			SET OutputRoot.XMLNSC.ns:InquiryInsuranceRes.commonheader:ResponseStatus.commonheader:Status = '1';
+			SET OutputRoot.XMLNSC.ns:InquiryInsuranceRes.commonheader:ResponseStatus.commonheader:GlobalErrorCode = '004';
+			SET OutputRoot.XMLNSC.ns:InquiryInsuranceRes.commonheader:ResponseStatus.commonheader:GlobalErrorDescription = 'Error in Backend';
+			
+			SET OutputRoot.XMLNSC.ns:InquiryInsuranceRes.commonheader:ResponseStatus.commonheader:ErrorInfo.commonheader:SourceAppID = 'PREMIA';
+			SET OutputRoot.XMLNSC.ns:InquiryInsuranceRes.commonheader:ResponseStatus.commonheader:ErrorInfo.commonheader:ErrorCode = Environment.Variables.ServiceCallout.Status;
+			SET OutputRoot.XMLNSC.ns:InquiryInsuranceRes.commonheader:ResponseStatus.commonheader:ErrorInfo.commonheader:ErrorDesc = Environment.Variables.ServiceCallout.ResponseDetail.ErrorDesc;
+		END IF;
+			
+		RETURN TRUE;
+	END;
+	CREATE PROCEDURE CopyMessageHeaders() BEGIN
+		DECLARE I INTEGER 1;
+		DECLARE J INTEGER;
+		SET J = CARDINALITY(InputRoot.*[]);
+		WHILE I < J DO
+			SET OutputRoot.*[I] = InputRoot.*[I];
+			SET I = I + 1;
+		END WHILE;
+	END;
+
+	CREATE PROCEDURE CopyEntireMessage() BEGIN
+		SET OutputRoot = InputRoot;
+	END;
+END MODULE;

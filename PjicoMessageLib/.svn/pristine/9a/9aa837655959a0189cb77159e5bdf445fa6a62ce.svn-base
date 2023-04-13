@@ -1,0 +1,40 @@
+
+
+Importing file: D:\FPT_FIS\Pjico_2022\PjicoMessageLib\qrcode\QRCodeWS_1.wsdl
+
+The WSDL import will proceed with bindings WebServiceSoap, WebServiceSoap12.
+Creating wsdl schema document for file:///D:/FPT_FIS/Pjico_2022/PjicoMessageLib/qrcode/QRCodeWS_1.wsdl.
+Parsing wsdl binding {http://tempuri.org/}WebServiceSoap12.
+Parsing wsdl binding input RSADecrypt.
+Parsing wsdl binding output RSADecrypt.
+Parsing wsdl binding input createPolQRCode.
+Parsing wsdl binding output createPolQRCode.
+Parsing wsdl binding input createPolQRCodeTransparent.
+Parsing wsdl binding output createPolQRCodeTransparent.
+Parsing wsdl binding input TestcreatePolQRCode.
+Parsing wsdl binding output TestcreatePolQRCode.
+Parsing wsdl binding {http://tempuri.org/}WebServiceSoap.
+Parsing wsdl binding input RSADecrypt.
+Parsing wsdl binding output RSADecrypt.
+Parsing wsdl binding input createPolQRCode.
+Parsing wsdl binding output createPolQRCode.
+Parsing wsdl binding input createPolQRCodeTransparent.
+Parsing wsdl binding output createPolQRCodeTransparent.
+Parsing wsdl binding input TestcreatePolQRCode.
+Parsing wsdl binding output TestcreatePolQRCode.
+Processing doc style for operation RSADecrypt.
+Processing doc style for operation createPolQRCode.
+Processing doc style for operation createPolQRCodeTransparent.
+Processing doc style for operation TestcreatePolQRCode.
+Populating WSDL schema qrcode/QRCodeWS_1.xsd.
+Creating file qrcode/QRCodeWS_1.xsd in the workspace.
+Creating file qrcode/QRCodeWS_1_InlineSchema1.xsd in the workspace.
+Copying source WSDL QRCodeWS_1.wsdl to QRCodeWS_1.wsdl.
+
+Elapsed time processing this message definition file: 2.564 seconds
+Number of warnings for this message definition file: 0
+
+
+Number of files processed: 1
+
+

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?><wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" targetNamespace="http://tempuri.org/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:tns="http://tempuri.org/">
+  <wsdl:documentation>
+    <wsdl:appinfo source="WMQI_APPINFO">
+      <MRWSDLAppInfo imported="true">
+        <generatedXSD location="SignProcess_1_InlineSchema1.xsd"/>
+        <binding hasEncoding="false" imported="true" name="SignProcessSoap" originalBindingStyle="document"/>
+        <binding hasEncoding="false" imported="true" name="SignProcessSoap12" originalBindingStyle="document"/>
+      </MRWSDLAppInfo>
+    </wsdl:appinfo>
+  </wsdl:documentation>
+  <wsdl:types>
+    
+          <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:ibmSchExtn="http://www.ibm.com/schema/extensions">
+<xsd:include schemaLocation="SignProcess_1_InlineSchema1.xsd"/>
+    </xsd:schema>
+    </wsdl:types>
+  <wsdl:message name="DigitalSignSoapIn">
+    <wsdl:part element="tns:DigitalSign" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="DigitalSignSoapOut">
+    <wsdl:part element="tns:DigitalSignResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:portType name="SignProcessSoap">
+    <wsdl:operation name="DigitalSign">
+      <wsdl:input message="tns:DigitalSignSoapIn"/>
+      <wsdl:output message="tns:DigitalSignSoapOut"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="SignProcessSoap" type="tns:SignProcessSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="DigitalSign">
+      <soap:operation soapAction="http://tempuri.org/DigitalSign" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="SignProcessSoap12" type="tns:SignProcessSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="DigitalSign">
+      <soap12:operation soapAction="http://tempuri.org/DigitalSign" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="SignProcess">
+    <wsdl:port binding="tns:SignProcessSoap" name="SignProcessSoap">
+      <soap:address location="http://10.63.55.24:1234/SignProcess.asmx"/>
+    </wsdl:port>
+    <wsdl:port binding="tns:SignProcessSoap12" name="SignProcessSoap12">
+      <soap12:address location="http://10.63.55.24:1234/SignProcess.asmx"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

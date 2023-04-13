@@ -1,0 +1,4 @@
+CREATE PROCEDURE authenLDAPSWithJavaEx( IN directyServer CHAR, IN userName CHAR, IN password CHAR)
+RETURNS CHARACTER
+LANGUAGE JAVA
+EXTERNAL NAME "utils.ldap.LDAP.authenLDAPSEx";

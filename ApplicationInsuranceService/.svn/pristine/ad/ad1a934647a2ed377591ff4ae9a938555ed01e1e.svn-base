@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?><mappingRoot xmlns="http://www.ibm.com/2008/ccl/Mapping" domainID="com.ibm.msl.mapping.xml" domainIDExtension="mb" mainMap="true" targetNamespace="Version1.ProvideCarMaterialInsurance.Mappings" version="8.0.5.0" xmlns:map="Version1.ProvideCarMaterialInsurance.Mappings">
+    <input path="jar:file://!com/ibm/etools/mft/map/xsds/assembly/Environment.xsd" var="var1"/>
+    <input path="mbsharedlib://ESBMessageLib/service/vn/applicationinsurance/applicationinsuranceService.xsd" var="var2"/>
+    <input path="mbsharedlib://ESBMessageLib/schema/Environment/EnvironmentVariables.xsd" var="var"/>
+    <input path="mbsharedlib://ESBMessageLib/schema/Environment/EnvironmentVariables.xsd" var="var3"/>
+    <output path="jar:file://!com/ibm/etools/mft/map/xsds/assembly/Environment.xsd" var="var4"/>
+    <output path="mbsharedlib://ESBMessageLib/service/vn/applicationinsurance/applicationinsuranceService.xsd" var="var5"/>
+    <namespaces>
+        <namespace kind="supplement" prefix="io7" uri="http://www.pjico.com.vn/common/envelope/soaenvelope/1"/>
+        <namespace kind="supplement" prefix="io6" uri="http://www.pjico.com.vn/common/envelope/serviceenvelope/1"/>
+        <namespace kind="supplement" prefix="io9" uri="http://www.pjico.com.vn/entity/vn/com/isurance/1"/>
+        <namespace kind="supplement" prefix="io8" uri="http://www.pjico.com.vn/entity/vn/com/account/1"/>
+        <namespace kind="supplement" prefix="io" uri="http://www.pjico.com.vn/entity/vn/com/1"/>
+        <namespace kind="supplement" prefix="io3" uri="http://www.pjico.com.vn/entity/vn/com/party/1"/>
+        <namespace kind="supplement" prefix="io2" uri="http://www.pjico.com.vn/entity/vn/applicationinsurance/applicationinsuranceservice/1"/>
+        <namespace kind="supplement" prefix="io5" uri="http://www.pjico.com.vn/common/envelope/commonheader/1"/>
+        <namespace kind="supplement" prefix="io4" uri="http://www.pjico.com.vn/entity/vn/tax/1"/>
+    </namespaces>
+    <generation engine="xquery"/>
+    <mappingDeclaration name="MappingError">
+        <input path="$var1/mb:env(Environment)" var="Environment">
+            <cast path="$Environment/Variables/any" qualifier="SOAVariables" ref="var" var="any"/>
+        </input>
+        <input namespace="http://www.pjico.com.vn/entity/vn/applicationinsurance/applicationinsuranceservice/1" path="$var2/mb:msg(ProvideCarMaterialInsuranceRes,assembly,XMLNSC,Properties)" var="ComIbmMessageAssembly_ProvideCarMaterialInsuranceRes"/>
+        <output path="$var4/mb:env(Environment)" var="Environment1">
+            <cast path="$Environment1/Variables/any" qualifier="SOAVariables" ref="var" var="any1"/>
+        </output>
+        <output namespace="http://www.pjico.com.vn/entity/vn/applicationinsurance/applicationinsuranceservice/1" path="$var5/mb:msg(ProvideCarMaterialInsuranceRes,assembly,XMLNSC,Properties)" var="ComIbmMessageAssembly_ProvideCarMaterialInsuranceRes1"/>
+        <passthrough>
+            <input path="$Environment/."/>
+            <output path="$Environment1/."/>
+            <updates/>
+        </passthrough>
+        <move>
+            <input path="$ComIbmMessageAssembly_ProvideCarMaterialInsuranceRes/Properties"/>
+            <output path="$ComIbmMessageAssembly_ProvideCarMaterialInsuranceRes1/Properties"/>
+            <override>
+                <assign value="{ESBMessageLib}">
+                    <output path="$ComIbmMessageAssembly_ProvideCarMaterialInsuranceRes1/Properties/MessageSet"/>
+                </assign>
+            </override>
+        </move>
+        <local>
+            <input path="$Environment/Variables/SOAVariables/SOAEnvelope/SOAServiceHeader/SOACommonDetail"/>
+            <output path="$ComIbmMessageAssembly_ProvideCarMaterialInsuranceRes1/ProvideCarMaterialInsuranceRes/Header/Common"/>
+            <move automap="true">
+                <input path="ServiceVersion"/>
+                <output path="ServiceVersion"/>
+            </move>
+            <move automap="true">
+                <input path="MessageId"/>
+                <output path="MessageId"/>
+            </move>
+            <move automap="true">
+                <input path="TransactionId"/>
+                <output path="TransactionId"/>
+            </move>
+            <move automap="true">
+                <input path="MessageTimestamp"/>
+                <output path="MessageTimestamp"/>
+            </move>
+            <move automap="true">
+                <input path="AdditionalInformation"/>
+                <output path="AdditionalInformation"/>
+            </move>
+        </local>
+        <local>
+            <input path="$Environment/Variables/SOAVariables/SOAEnvelope/SOAServiceHeader/ClientDetail"/>
+            <output path="$ComIbmMessageAssembly_ProvideCarMaterialInsuranceRes1/ProvideCarMaterialInsuranceRes/Header/Client"/>
+            <move automap="true">
+                <input path="SourceAppID"/>
+                <output path="SourceAppID"/>
+            </move>
+            <move automap="true">
+                <input path="TargetAppIDs"/>
+                <output path="TargetAppIDs"/>
+            </move>
+            <move automap="true">
+                <input path="UserDetail"/>
+                <output path="UserDetail"/>
+            </move>
+        </local>
+        <local>
+            <input path="$ComIbmMessageAssembly_ProvideCarMaterialInsuranceRes/ProvideCarMaterialInsuranceRes/ResponseStatus"/>
+            <output path="$ComIbmMessageAssembly_ProvideCarMaterialInsuranceRes1/ProvideCarMaterialInsuranceRes/ResponseStatus"/>
+            <move automap="true">
+                <input path="Status"/>
+                <output path="Status"/>
+            </move>
+            <move automap="true">
+                <input path="GlobalErrorCode"/>
+                <output path="GlobalErrorCode"/>
+            </move>
+            <move automap="true">
+                <input path="GlobalErrorDescription"/>
+                <output path="GlobalErrorDescription"/>
+            </move>
+            <move automap="true">
+                <input path="ErrorInfo"/>
+                <output path="ErrorInfo"/>
+            </move>
+        </local>
+        <local>
+            <input path="$ComIbmMessageAssembly_ProvideCarMaterialInsuranceRes/ProvideCarMaterialInsuranceRes/BodyRes"/>
+            <output path="$ComIbmMessageAssembly_ProvideCarMaterialInsuranceRes1/ProvideCarMaterialInsuranceRes/BodyRes"/>
+            <move automap="true">
+                <input path="FunctionCode"/>
+                <output path="FunctionCode"/>
+            </move>
+            <move automap="true">
+                <input path="MessageType"/>
+                <output path="MessageType"/>
+            </move>
+            <move automap="true">
+                <input path="ConfigID"/>
+                <output path="ConfigID"/>
+            </move>
+            <move automap="true">
+                <input path="ProcCode"/>
+                <output path="ProcCode"/>
+            </move>
+            <move automap="true">
+                <input path="Stan"/>
+                <output path="Stan"/>
+            </move>
+            <move automap="true">
+                <input path="LocalDateTime"/>
+                <output path="LocalDateTime"/>
+            </move>
+            <move automap="true">
+                <input path="DeliveryChannel"/>
+                <output path="DeliveryChannel"/>
+            </move>
+            <move automap="true">
+                <input path="ActCode"/>
+                <output path="ActCode"/>
+            </move>
+            <move automap="true">
+                <input path="ActDesc"/>
+                <output path="ActDesc"/>
+            </move>
+            <move automap="true">
+                <input path="ErrDesc"/>
+                <output path="ErrDesc"/>
+            </move>
+        </local>
+    </mappingDeclaration>
+</mappingRoot>

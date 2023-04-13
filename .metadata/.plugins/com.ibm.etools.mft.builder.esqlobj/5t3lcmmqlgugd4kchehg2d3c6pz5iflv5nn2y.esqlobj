@@ -1,0 +1,6 @@
+CREATE FUNCTION checkUserLDAPEncryptPass( IN directyServer CHAR, IN ldapKey CHAR, IN baseDN CHAR, IN userNameAdmin CHAR, IN passAdmin CHAR, IN userName CHAR) RETURNS CHARACTER
+BEGIN
+ 	DECLARE result CHARACTER ;
+ 	CALL checkUserLDAPEncryptPassWithJava(directyServer, ldapKey, baseDN, userNameAdmin, passAdmin, userName) INTO result;
+	RETURN result;
+END;

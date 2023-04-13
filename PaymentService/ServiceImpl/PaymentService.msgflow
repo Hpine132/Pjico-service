@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ComIbmSOAPInput.msgnode="ComIbmSOAPInput.msgnode" xmlns:ComIbmSOAPReply.msgnode="ComIbmSOAPReply.msgnode" xmlns:Service_Common_Subflows_SOAHandleException.subflow="Service/Common/Subflows/SOAHandleException.subflow" xmlns:Service_Common_Subflows_SOAHandleRequest.subflow="Service/Common/Subflows/SOAHandleRequest.subflow" xmlns:Service_Common_Subflows_SOAHandleResponse.subflow="Service/Common/Subflows/SOAHandleResponse.subflow"
+    xmlns:Version1_CalculateCarMaterial_Subflows_CalculateCarMaterial.subflow="Version1/CalculateCarMaterial/Subflows/CalculateCarMaterial.subflow" xmlns:Version1_CalculateCarResponsibility_Subflows_CalculateCarResponsibility.subflow="Version1/CalculateCarResponsibility/Subflows/CalculateCarResponsibility.subflow" xmlns:Version1_InquiryBill_Subflows_InquiryBill.subflow="Version1/InquiryBill/Subflows/InquiryBill.subflow" xmlns:Version1_InquiryCommissionPayment_Subflows_InquiryCommissionPayment.subflow="Version1/InquiryCommissionPayment/Subflows/InquiryCommissionPayment.subflow"
+    xmlns:Version1_InquiryPaymentFee_Subflows_InquiryPaymentFee.subflow="Version1/InquiryPaymentFee/Subflows/InquiryPaymentFee.subflow" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:eflow="http://www.ibm.com/wbi/2005/eflow" xmlns:utility="http://www.ibm.com/wbi/2005/eflow_utility" nsURI="ServiceImpl/PaymentService.msgflow" nsPrefix="ServiceImpl_PaymentService.msgflow">
+  <eClassifiers xmi:type="eflow:FCMComposite" name="FCMComposite_1" nodeLayoutStyle="RECTANGLE">
+    <eSuperTypes href="http://www.ibm.com/wbi/2005/eflow#//FCMBlock"/>
+    <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.CreatePaymentUrl" name="CreatePaymentUrl" defaultValueLiteral="https://uat-pjico-info-svc.pjico.com.vn/hotrows.asmx">
+      <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.CreatePaymentTimeout" name="CreatePaymentTimeout" defaultValueLiteral="60">
+      <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eStructuralFeatures>
+    <translation xmi:type="utility:TranslatableString" key="PaymentService" bundleName="ServiceImpl/PaymentService" pluginId="PaymentService"/>
+    <colorGraphic16 xmi:type="utility:GIFFileGraphic" resourceName="platform:/plugin/PaymentService/icons/full/obj16/PaymentService.gif"/>
+    <colorGraphic32 xmi:type="utility:GIFFileGraphic" resourceName="platform:/plugin/PaymentService/icons/full/obj30/PaymentService.gif"/>
+    <composition>
+      <nodes xmi:type="ComIbmSOAPInput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_1" location="41,201" wsdlFileName="wsdls/PaymentService.wsdl" selectedPortType="PaymentService" selectedBinding="PaymentServiceSOAP" selectedPort="PaymentServiceSOAP" targetNamespace="http://www.pjico.com.vn/entity/vn/app/paymentsvcs/1" useHTTPTransport="true" urlSelector="/service/vn/payment/1" maxClientWaitTime="75" allowQueryWSDL="true" messageSetProperty="{ESBMessageLib}">
+        <translation xmi:type="utility:ConstantString" string="SOAP Input"/>
+      </nodes>
+      <nodes xmi:type="ComIbmSOAPReply.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_2" location="959,217">
+        <translation xmi:type="utility:ConstantString" string="SOAP Reply"/>
+      </nodes>
+      <nodes xmi:type="Service_Common_Subflows_SOAHandleException.subflow:FCMComposite_1" xmi:id="FCMComposite_1_3" location="271,243">
+        <translation xmi:type="utility:ConstantString" string="SOAHandleException"/>
+      </nodes>
+      <nodes xmi:type="Service_Common_Subflows_SOAHandleRequest.subflow:FCMComposite_1" xmi:id="FCMComposite_1_4" location="267,130">
+        <translation xmi:type="utility:ConstantString" string="SOAHandleRequest"/>
+      </nodes>
+      <nodes xmi:type="Service_Common_Subflows_SOAHandleResponse.subflow:FCMComposite_1" xmi:id="FCMComposite_1_5" location="754,218">
+        <translation xmi:type="utility:ConstantString" string="SOAHandleResponse"/>
+      </nodes>
+      <nodes xmi:type="Version1_CalculateCarMaterial_Subflows_CalculateCarMaterial.subflow:FCMComposite_1" xmi:id="FCMComposite_1_6" location="537,79">
+        <translation xmi:type="utility:ConstantString" string="CalculateCarMaterial"/>
+      </nodes>
+      <nodes xmi:type="Version1_CalculateCarResponsibility_Subflows_CalculateCarResponsibility.subflow:FCMComposite_1" xmi:id="FCMComposite_1_7" location="545,325">
+        <translation xmi:type="utility:ConstantString" string="CalculateCarResponsibility"/>
+      </nodes>
+      <nodes xmi:type="Version1_InquiryBill_Subflows_InquiryBill.subflow:FCMComposite_1" xmi:id="FCMComposite_1_8" location="527,219">
+        <translation xmi:type="utility:ConstantString" string="InquiryBill"/>
+      </nodes>
+      <nodes xmi:type="Version1_InquiryCommissionPayment_Subflows_InquiryCommissionPayment.subflow:FCMComposite_1" xmi:id="FCMComposite_1_9" location="595,453">
+        <translation xmi:type="utility:ConstantString" string="InquiryCommissionPayment"/>
+      </nodes>
+      <nodes xmi:type="Version1_InquiryPaymentFee_Subflows_InquiryPaymentFee.subflow:FCMComposite_1" xmi:id="FCMComposite_1_10" location="595,2">
+        <translation xmi:type="utility:ConstantString" string="InquiryPaymentFee"/>
+      </nodes>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_1" targetNode="FCMComposite_1_4" sourceNode="FCMComposite_1_1" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.Input1"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_2" targetNode="FCMComposite_1_3" sourceNode="FCMComposite_1_1" sourceTerminalName="OutTerminal.failure" targetTerminalName="InTerminal.Catch"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_3" targetNode="FCMComposite_1_3" sourceNode="FCMComposite_1_1" sourceTerminalName="OutTerminal.timeout" targetTerminalName="InTerminal.HTTP%20Timeout"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_4" targetNode="FCMComposite_1_3" sourceNode="FCMComposite_1_1" sourceTerminalName="OutTerminal.catch" targetTerminalName="InTerminal.Failure"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_5" targetNode="FCMComposite_1_2" sourceNode="FCMComposite_1_5" sourceTerminalName="OutTerminal.Output" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_9" targetNode="FCMComposite_1_5" sourceNode="FCMComposite_1_6" sourceTerminalName="OutTerminal.Output" targetTerminalName="InTerminal.Input"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_6" targetNode="FCMComposite_1_5" sourceNode="FCMComposite_1_7" sourceTerminalName="OutTerminal.Output" targetTerminalName="InTerminal.Input"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_7" targetNode="FCMComposite_1_5" sourceNode="FCMComposite_1_8" sourceTerminalName="OutTerminal.Output" targetTerminalName="InTerminal.Input"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_8" targetNode="FCMComposite_1_5" sourceNode="FCMComposite_1_10" sourceTerminalName="OutTerminal.Output" targetTerminalName="InTerminal.Input"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_10" targetNode="FCMComposite_1_5" sourceNode="FCMComposite_1_9" sourceTerminalName="OutTerminal.Output" targetTerminalName="InTerminal.Input"/>
+    </composition>
+    <propertyOrganizer>
+      <propertyDescriptor groupName="Group.Basic" configurable="true" userDefined="true" describedAttribute="Property.CreatePaymentUrl">
+        <propertyName xmi:type="utility:TranslatableString" key="Property.CreatePaymentUrl" bundleName="ServiceImpl/PaymentService" pluginId="PaymentService"/>
+        <propertyDescriptor groupName="Group.Basic" configurable="true" userDefined="true" describedAttribute="Property.CreatePaymentTimeout">
+          <propertyName xmi:type="utility:TranslatableString" key="Property.CreatePaymentTimeout" bundleName="ServiceImpl/PaymentService" pluginId="PaymentService"/>
+        </propertyDescriptor>
+      </propertyDescriptor>
+    </propertyOrganizer>
+    <stickyBoard/>
+  </eClassifiers>
+</ecore:EPackage>

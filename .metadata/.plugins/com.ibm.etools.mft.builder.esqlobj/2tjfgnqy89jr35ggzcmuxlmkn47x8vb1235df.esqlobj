@@ -1,0 +1,3 @@
+CREATE PROCEDURE getCacheValue(IN mapName CHARACTER, IN key CHARACTER, INOUT ou REFERENCE)
+LANGUAGE JAVA
+EXTERNAL NAME "utils.soa.GlobalCache.getValue";

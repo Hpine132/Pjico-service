@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?><wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" targetNamespace="http://tempuri.org/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:tns="http://tempuri.org/">
+  <wsdl:documentation>
+    <wsdl:appinfo source="WMQI_APPINFO">
+      <MRWSDLAppInfo imported="true">
+        <generatedXSD location="QRCodeWS_1_InlineSchema1.xsd"/>
+        <binding hasEncoding="false" imported="true" name="WebServiceSoap12" originalBindingStyle="document"/>
+        <binding hasEncoding="false" imported="true" name="WebServiceSoap" originalBindingStyle="document"/>
+      </MRWSDLAppInfo>
+    </wsdl:appinfo>
+  </wsdl:documentation>
+  <wsdl:types>
+    
+          <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:ibmSchExtn="http://www.ibm.com/schema/extensions">
+<xsd:include schemaLocation="QRCodeWS_1_InlineSchema1.xsd"/>
+    </xsd:schema>
+    </wsdl:types>
+  <wsdl:message name="RSADecryptSoapIn">
+    <wsdl:part element="tns:RSADecrypt" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="RSADecryptSoapOut">
+    <wsdl:part element="tns:RSADecryptResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="createPolQRCodeSoapIn">
+    <wsdl:part element="tns:createPolQRCode" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="createPolQRCodeSoapOut">
+    <wsdl:part element="tns:createPolQRCodeResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="createPolQRCodeTransparentSoapIn">
+    <wsdl:part element="tns:createPolQRCodeTransparent" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="createPolQRCodeTransparentSoapOut">
+    <wsdl:part element="tns:createPolQRCodeTransparentResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="TestcreatePolQRCodeSoapIn">
+    <wsdl:part element="tns:TestcreatePolQRCode" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="TestcreatePolQRCodeSoapOut">
+    <wsdl:part element="tns:TestcreatePolQRCodeResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:portType name="WebServiceSoap">
+    <wsdl:operation name="RSADecrypt">
+      <wsdl:input message="tns:RSADecryptSoapIn"/>
+      <wsdl:output message="tns:RSADecryptSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="createPolQRCode">
+      <wsdl:input message="tns:createPolQRCodeSoapIn"/>
+      <wsdl:output message="tns:createPolQRCodeSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="createPolQRCodeTransparent">
+      <wsdl:input message="tns:createPolQRCodeTransparentSoapIn"/>
+      <wsdl:output message="tns:createPolQRCodeTransparentSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="TestcreatePolQRCode">
+      <wsdl:input message="tns:TestcreatePolQRCodeSoapIn"/>
+      <wsdl:output message="tns:TestcreatePolQRCodeSoapOut"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WebServiceSoap" type="tns:WebServiceSoap">
+
+  	<soap:binding style="document"
+  		transport="http://schemas.xmlsoap.org/soap/http" />
+  	<wsdl:operation name="RSADecrypt">
+
+  		<soap:operation soapAction="http://tempuri.org/RSADecrypt" />
+  		<wsdl:input>
+
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  	<wsdl:operation name="createPolQRCode">
+
+  		<soap:operation
+  			soapAction="http://tempuri.org/createPolQRCode" />
+  		<wsdl:input>
+
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  	<wsdl:operation name="createPolQRCodeTransparent">
+
+  		<soap:operation
+  			soapAction="http://tempuri.org/createPolQRCodeTransparent" />
+  		<wsdl:input>
+
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  	<wsdl:operation name="TestcreatePolQRCode">
+
+  		<soap:operation
+  			soapAction="http://tempuri.org/TestcreatePolQRCode" />
+  		<wsdl:input>
+
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="WebServiceSoap12" type="tns:WebServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="RSADecrypt">
+      <soap12:operation soapAction="http://tempuri.org/RSADecrypt" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createPolQRCode">
+      <soap12:operation soapAction="http://tempuri.org/createPolQRCode" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createPolQRCodeTransparent">
+      <soap12:operation soapAction="http://tempuri.org/createPolQRCodeTransparent" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TestcreatePolQRCode">
+      <soap12:operation soapAction="http://tempuri.org/TestcreatePolQRCode" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WebService">
+    <wsdl:port binding="tns:WebServiceSoap" name="WebServiceSoap">
+      <soap:address location="http://10.63.55.24:7777/QRCodeWS.asmx"/>
+    </wsdl:port>
+    <wsdl:port binding="tns:WebServiceSoap12" name="WebServiceSoap12">
+      <soap12:address location="http://10.63.55.24:7777/QRCodeWS.asmx"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

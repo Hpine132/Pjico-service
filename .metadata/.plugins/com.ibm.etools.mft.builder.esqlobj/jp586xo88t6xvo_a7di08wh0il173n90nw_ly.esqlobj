@@ -1,0 +1,14 @@
+CREATE PROCEDURE movePreviousSiblingWhere(INOUT ref REFERENCE, IN childName CHAR, IN childField CHAR, IN childValue CHAR) RETURNS BOOLEAN
+BEGIN
+	DECLARE hasMatch BOOLEAN FALSE; -- hasMatch is "LASTMOVE(ref)"
+	DECLARE ref2 REFERENCE TO ref;
+	MOVE ref2 PREVIOUSSIBLING NAME childName;
+	WHILE LASTMOVE(ref2) AND NOT hasMatch DO
+		IF ref2.{childField} = childValue THEN
+			MOVE ref TO ref2;
+			SET hasMatch = TRUE;
+		END IF;
+		MOVE ref2 PREVIOUSSIBLING REPEAT TYPE NAME;
+	END WHILE;
+	RETURN hasMatch;
+END;

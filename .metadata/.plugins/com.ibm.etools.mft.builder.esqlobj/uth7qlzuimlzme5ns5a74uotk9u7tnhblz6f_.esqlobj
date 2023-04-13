@@ -1,0 +1,4 @@
+CREATE PROCEDURE mapSOAException(IN globalCode INTEGER, IN errCode CHARACTER NULLABLE, IN errDesc CHARACTER NULLABLE) RETURNS INTEGER
+	BEGIN
+		CALL throwSOAException(globalCode, errCode, errDesc);
+	END;

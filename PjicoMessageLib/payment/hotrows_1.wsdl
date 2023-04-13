@@ -1,0 +1,507 @@
+<?xml version="1.0" encoding="UTF-8"?><wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" targetNamespace="http://tempuri.org/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:tns="http://tempuri.org/">
+  <wsdl:documentation>
+    <wsdl:appinfo source="WMQI_APPINFO">
+      <MRWSDLAppInfo imported="true">
+        <generatedXSD location="hotrows_1_InlineSchema1.xsd"/>
+        <binding hasEncoding="false" imported="true" name="HotroWsSoap12" originalBindingStyle="document"/>
+        <binding hasEncoding="false" imported="true" name="HotroWsSoap" originalBindingStyle="document"/>
+      </MRWSDLAppInfo>
+    </wsdl:appinfo>
+  </wsdl:documentation>
+  <wsdl:types>
+    
+          <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:ibmSchExtn="http://www.ibm.com/schema/extensions">
+<xsd:include schemaLocation="hotrows_1_InlineSchema1.xsd"/>
+    </xsd:schema>
+    </wsdl:types>
+  <wsdl:message name="CHECK_BLKLISTSoapIn">
+    <wsdl:part element="tns:CHECK_BLKLIST" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="CHECK_BLKLISTSoapOut">
+    <wsdl:part element="tns:CHECK_BLKLISTResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="GET_VEH_TYPESoapIn">
+    <wsdl:part element="tns:GET_VEH_TYPE" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="GET_VEH_TYPESoapOut">
+    <wsdl:part element="tns:GET_VEH_TYPEResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="GET_LOSS_MISCSoapIn">
+    <wsdl:part element="tns:GET_LOSS_MISC" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="GET_LOSS_MISCSoapOut">
+    <wsdl:part element="tns:GET_LOSS_MISCResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="GET_SMI_TYPESoapIn">
+    <wsdl:part element="tns:GET_SMI_TYPE" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="GET_SMI_TYPESoapOut">
+    <wsdl:part element="tns:GET_SMI_TYPEResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="GET_VCXECG_CHARGESoapIn">
+    <wsdl:part element="tns:GET_VCXECG_CHARGE" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="GET_VCXECG_CHARGESoapOut">
+    <wsdl:part element="tns:GET_VCXECG_CHARGEResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="GET_VCXECG_CHARGE_JSONSoapIn">
+    <wsdl:part element="tns:GET_VCXECG_CHARGE_JSON" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="GET_VCXECG_CHARGE_JSONSoapOut">
+    <wsdl:part element="tns:GET_VCXECG_CHARGE_JSONResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="GET_VEH_TYPE_TPSoapIn">
+    <wsdl:part element="tns:GET_VEH_TYPE_TP" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="GET_VEH_TYPE_TPSoapOut">
+    <wsdl:part element="tns:GET_VEH_TYPE_TPResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="GET_VEH_TYPE_TP_JSONSoapIn">
+    <wsdl:part element="tns:GET_VEH_TYPE_TP_JSON" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="GET_VEH_TYPE_TP_JSONSoapOut">
+    <wsdl:part element="tns:GET_VEH_TYPE_TP_JSONResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="GET_SMI_BY_RISKSoapIn">
+    <wsdl:part element="tns:GET_SMI_BY_RISK" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="GET_SMI_BY_RISKSoapOut">
+    <wsdl:part element="tns:GET_SMI_BY_RISKResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="GET_VEH_GOODSoapIn">
+    <wsdl:part element="tns:GET_VEH_GOOD" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="GET_VEH_GOODSoapOut">
+    <wsdl:part element="tns:GET_VEH_GOODResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="GET_RISKSoapIn">
+    <wsdl:part element="tns:GET_RISK" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="GET_RISKSoapOut">
+    <wsdl:part element="tns:GET_RISKResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="GET_POINT_TNDSSoapIn">
+    <wsdl:part element="tns:GET_POINT_TNDS" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="GET_POINT_TNDSSoapOut">
+    <wsdl:part element="tns:GET_POINT_TNDSResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="GET_POINT_TNDS_JSONSoapIn">
+    <wsdl:part element="tns:GET_POINT_TNDS_JSON" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="GET_POINT_TNDS_JSONSoapOut">
+    <wsdl:part element="tns:GET_POINT_TNDS_JSONResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="GET_NG_BY_SMISoapIn">
+    <wsdl:part element="tns:GET_NG_BY_SMI" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="GET_NG_BY_SMISoapOut">
+    <wsdl:part element="tns:GET_NG_BY_SMIResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="GET_DATA_CONNGUOI_KETHOPSoapIn">
+    <wsdl:part element="tns:GET_DATA_CONNGUOI_KETHOP" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="GET_DATA_CONNGUOI_KETHOPSoapOut">
+    <wsdl:part element="tns:GET_DATA_CONNGUOI_KETHOPResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:portType name="HotroWsSoap">
+    <wsdl:operation name="CHECK_BLKLIST">
+      <wsdl:input message="tns:CHECK_BLKLISTSoapIn"/>
+      <wsdl:output message="tns:CHECK_BLKLISTSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GET_VEH_TYPE">
+      <wsdl:input message="tns:GET_VEH_TYPESoapIn"/>
+      <wsdl:output message="tns:GET_VEH_TYPESoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GET_LOSS_MISC">
+      <wsdl:input message="tns:GET_LOSS_MISCSoapIn"/>
+      <wsdl:output message="tns:GET_LOSS_MISCSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GET_SMI_TYPE">
+      <wsdl:input message="tns:GET_SMI_TYPESoapIn"/>
+      <wsdl:output message="tns:GET_SMI_TYPESoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GET_VCXECG_CHARGE">
+      <wsdl:input message="tns:GET_VCXECG_CHARGESoapIn"/>
+      <wsdl:output message="tns:GET_VCXECG_CHARGESoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GET_VCXECG_CHARGE_JSON">
+      <wsdl:input message="tns:GET_VCXECG_CHARGE_JSONSoapIn"/>
+      <wsdl:output message="tns:GET_VCXECG_CHARGE_JSONSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GET_VEH_TYPE_TP">
+      <wsdl:input message="tns:GET_VEH_TYPE_TPSoapIn"/>
+      <wsdl:output message="tns:GET_VEH_TYPE_TPSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GET_VEH_TYPE_TP_JSON">
+      <wsdl:input message="tns:GET_VEH_TYPE_TP_JSONSoapIn"/>
+      <wsdl:output message="tns:GET_VEH_TYPE_TP_JSONSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GET_SMI_BY_RISK">
+      <wsdl:input message="tns:GET_SMI_BY_RISKSoapIn"/>
+      <wsdl:output message="tns:GET_SMI_BY_RISKSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GET_VEH_GOOD">
+      <wsdl:input message="tns:GET_VEH_GOODSoapIn"/>
+      <wsdl:output message="tns:GET_VEH_GOODSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GET_RISK">
+      <wsdl:input message="tns:GET_RISKSoapIn"/>
+      <wsdl:output message="tns:GET_RISKSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GET_POINT_TNDS">
+      <wsdl:input message="tns:GET_POINT_TNDSSoapIn"/>
+      <wsdl:output message="tns:GET_POINT_TNDSSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GET_POINT_TNDS_JSON">
+      <wsdl:input message="tns:GET_POINT_TNDS_JSONSoapIn"/>
+      <wsdl:output message="tns:GET_POINT_TNDS_JSONSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GET_NG_BY_SMI">
+      <wsdl:input message="tns:GET_NG_BY_SMISoapIn"/>
+      <wsdl:output message="tns:GET_NG_BY_SMISoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GET_DATA_CONNGUOI_KETHOP">
+      <wsdl:input message="tns:GET_DATA_CONNGUOI_KETHOPSoapIn"/>
+      <wsdl:output message="tns:GET_DATA_CONNGUOI_KETHOPSoapOut"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="HotroWsSoap" type="tns:HotroWsSoap">
+
+  	<soap:binding style="document"
+  		transport="http://schemas.xmlsoap.org/soap/http" />
+  	<wsdl:operation name="CHECK_BLKLIST">
+
+  		<soap:operation soapAction="http://tempuri.org/CHECK_BLKLIST" />
+  		<wsdl:input>
+
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  	<wsdl:operation name="GET_VEH_TYPE">
+
+  		<soap:operation soapAction="http://tempuri.org/GET_VEH_TYPE" />
+  		<wsdl:input>
+
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  	<wsdl:operation name="GET_LOSS_MISC">
+
+  		<soap:operation soapAction="http://tempuri.org/GET_LOSS_MISC" />
+  		<wsdl:input>
+
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  	<wsdl:operation name="GET_SMI_TYPE">
+
+  		<soap:operation soapAction="http://tempuri.org/GET_SMI_TYPE" />
+  		<wsdl:input>
+
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  	<wsdl:operation name="GET_VCXECG_CHARGE">
+
+  		<soap:operation
+  			soapAction="http://tempuri.org/GET_VCXECG_CHARGE" />
+  		<wsdl:input>
+
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  	<wsdl:operation name="GET_VCXECG_CHARGE_JSON">
+
+  		<soap:operation
+  			soapAction="http://tempuri.org/GET_VCXECG_CHARGE_JSON" />
+  		<wsdl:input>
+
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  	<wsdl:operation name="GET_VEH_TYPE_TP">
+
+  		<soap:operation
+  			soapAction="http://tempuri.org/GET_VEH_TYPE_TP" />
+  		<wsdl:input>
+
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  	<wsdl:operation name="GET_VEH_TYPE_TP_JSON">
+
+  		<soap:operation
+  			soapAction="http://tempuri.org/GET_VEH_TYPE_TP_JSON" />
+  		<wsdl:input>
+
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  	<wsdl:operation name="GET_SMI_BY_RISK">
+
+  		<soap:operation
+  			soapAction="http://tempuri.org/GET_SMI_BY_RISK" />
+  		<wsdl:input>
+
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  	<wsdl:operation name="GET_VEH_GOOD">
+
+  		<soap:operation soapAction="http://tempuri.org/GET_VEH_GOOD" />
+  		<wsdl:input>
+
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  	<wsdl:operation name="GET_RISK">
+
+  		<soap:operation soapAction="http://tempuri.org/GET_RISK" />
+  		<wsdl:input>
+
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  	<wsdl:operation name="GET_POINT_TNDS">
+
+  		<soap:operation
+  			soapAction="http://tempuri.org/GET_POINT_TNDS" />
+  		<wsdl:input>
+
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  	<wsdl:operation name="GET_POINT_TNDS_JSON">
+
+  		<soap:operation
+  			soapAction="http://tempuri.org/GET_POINT_TNDS_JSON" />
+  		<wsdl:input>
+
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  	<wsdl:operation name="GET_NG_BY_SMI">
+
+  		<soap:operation soapAction="http://tempuri.org/GET_NG_BY_SMI" />
+  		<wsdl:input>
+
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  	<wsdl:operation name="GET_DATA_CONNGUOI_KETHOP">
+
+  		<soap:operation
+  			soapAction="http://tempuri.org/GET_DATA_CONNGUOI_KETHOP" />
+  		<wsdl:input>
+
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="HotroWsSoap12" type="tns:HotroWsSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="CHECK_BLKLIST">
+      <soap12:operation soapAction="http://tempuri.org/CHECK_BLKLIST" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GET_VEH_TYPE">
+      <soap12:operation soapAction="http://tempuri.org/GET_VEH_TYPE" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GET_LOSS_MISC">
+      <soap12:operation soapAction="http://tempuri.org/GET_LOSS_MISC" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GET_SMI_TYPE">
+      <soap12:operation soapAction="http://tempuri.org/GET_SMI_TYPE" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GET_VCXECG_CHARGE">
+      <soap12:operation soapAction="http://tempuri.org/GET_VCXECG_CHARGE" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GET_VCXECG_CHARGE_JSON">
+      <soap12:operation soapAction="http://tempuri.org/GET_VCXECG_CHARGE_JSON" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GET_VEH_TYPE_TP">
+      <soap12:operation soapAction="http://tempuri.org/GET_VEH_TYPE_TP" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GET_VEH_TYPE_TP_JSON">
+      <soap12:operation soapAction="http://tempuri.org/GET_VEH_TYPE_TP_JSON" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GET_SMI_BY_RISK">
+      <soap12:operation soapAction="http://tempuri.org/GET_SMI_BY_RISK" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GET_VEH_GOOD">
+      <soap12:operation soapAction="http://tempuri.org/GET_VEH_GOOD" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GET_RISK">
+      <soap12:operation soapAction="http://tempuri.org/GET_RISK" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GET_POINT_TNDS">
+      <soap12:operation soapAction="http://tempuri.org/GET_POINT_TNDS" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GET_POINT_TNDS_JSON">
+      <soap12:operation soapAction="http://tempuri.org/GET_POINT_TNDS_JSON" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GET_NG_BY_SMI">
+      <soap12:operation soapAction="http://tempuri.org/GET_NG_BY_SMI" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GET_DATA_CONNGUOI_KETHOP">
+      <soap12:operation soapAction="http://tempuri.org/GET_DATA_CONNGUOI_KETHOP" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="HotroWs">
+    <wsdl:port binding="tns:HotroWsSoap" name="HotroWsSoap">
+      <soap:address location="https://uat-pjico-info-svc.pjico.com.vn/hotrows.asmx"/>
+    </wsdl:port>
+    <wsdl:port binding="tns:HotroWsSoap12" name="HotroWsSoap12">
+      <soap12:address location="https://uat-pjico-info-svc.pjico.com.vn/hotrows.asmx"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

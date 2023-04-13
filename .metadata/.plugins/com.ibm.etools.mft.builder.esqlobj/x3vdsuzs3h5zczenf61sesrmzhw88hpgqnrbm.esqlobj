@@ -1,0 +1,15 @@
+CREATE PROCEDURE buildJoltBackendRequestLog(IN env REFERENCE, IN SystemName CHAR, IN ServiceName CHAR)
+BEGIN
+	DECLARE soa NAMESPACE 'http://www.pjico.com.vn/common/envelope/soaenvelope/1';
+	DECLARE common NAMESPACE 'http://www.pjico.com.vn/common/envelope/commonheader/1';
+	DECLARE addIndx INTEGER CARDINALITY(env.Variables.SOAVariables.soa:SOAEnvelope.soa:SOAServiceHeader.soa:SOACommonDetail.common:AdditionalInformation.common:NameValuePairs[]);
+	SET env.Variables.SOAVariables.soa:SOAEnvelope.soa:SOAServiceHeader.soa:SOACommonDetail.common:AdditionalInformation.common:NameValuePairs[addIndx+1].common:Name = 'TARGETID';
+	SET env.Variables.SOAVariables.soa:SOAEnvelope.soa:SOAServiceHeader.soa:SOACommonDetail.common:AdditionalInformation.common:NameValuePairs[addIndx+1].common:Value = SystemName;
+
+	SET env.Variables.SOAVariables.soa:SOAEnvelope.soa:SOAServiceHeader.soa:SOACommonDetail.common:AdditionalInformation.common:NameValuePairs[addIndx+2].common:Name = 'TARGETSERVICE';
+	SET env.Variables.SOAVariables.soa:SOAEnvelope.soa:SOAServiceHeader.soa:SOACommonDetail.common:AdditionalInformation.common:NameValuePairs[addIndx+2].common:Value = ServiceName;
+	CREATE FIRSTCHILD OF env.Variables.ServiceCallout.Status;
+	SET env.Variables.ServiceCallout.LogType = 'JOLT';
+	CREATE LASTCHILD OF env.Variables.ServiceCallout.ResponseDetail.ErrorDesc;
+	CREATE LASTCHILD OF env.Variables.ServiceCallout.ResponseDetail.ResponseData.JoltResponse;
+END;

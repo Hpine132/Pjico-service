@@ -1,0 +1,4 @@
+CREATE PROCEDURE maskData(IN RegexString CHAR, IN StringMask CHAR)
+RETURNS CHARACTER
+LANGUAGE JAVA
+EXTERNAL NAME "utils.soa.SOASecurity.maskData";

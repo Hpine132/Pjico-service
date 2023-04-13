@@ -1,0 +1,4 @@
+CREATE PROCEDURE checkUserLDAPSWithJava( IN directyServer CHAR, IN baseDN CHAR, IN userNameAdmin CHAR, IN passAdmin CHAR, IN userName CHAR)
+RETURNS INTEGER
+LANGUAGE JAVA
+EXTERNAL NAME "utils.ldap.LDAP.checkUserLDAPS";

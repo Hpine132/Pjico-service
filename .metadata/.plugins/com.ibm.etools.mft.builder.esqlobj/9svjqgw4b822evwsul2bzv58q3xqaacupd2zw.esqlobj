@@ -1,0 +1,74 @@
+CREATE COMPUTE MODULE BuildRequest
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		-- CALL CopyMessageHeaders();
+		-- CALL CopyEntireMessage();
+		SET OutputRoot.Properties = InputRoot.Properties;
+		DECLARE bodyReqRef REFERENCE TO InputRoot.XMLNSC.ns:CalculateCarMaterialReq.ns:BodyReq;
+		DELETE FIELD OutputRoot.HTTPResponseHeader."content-encoding";
+		
+		DECLARE DataCalculateCarMaterial REFERENCE TO OutputRoot.JSON.DataCalculateCarMaterial;
+		CALL Service.Utils.ESQLs.InputValidate(1, 'VEH_TYPE', bodyReqRef.ns:VehicleInfo.Type, true, true, 999, DataCalculateCarMaterial);
+		CALL Service.Utils.ESQLs.InputValidate(2, 'VEH_AGE', bodyReqRef.ns:VehicleInfo.Age, true, true, 999,  DataCalculateCarMaterial);
+		CALL Service.Utils.ESQLs.InputValidate(3, 'MONEY_INSUR', bodyReqRef.ns:Amount.ns2:Amount, true, true, 999, DataCalculateCarMaterial);
+		CALL Service.Utils.ESQLs.InputValidate(4, 'Deduction', bodyReqRef.ns:Deduction, true, true, 999, DataCalculateCarMaterial);
+		CALL Service.Utils.ESQLs.InputValidate(5, 'AdditionalTerms', bodyReqRef.ns:AdditionalTerms, true, true, 999, DataCalculateCarMaterial);
+		--CALL Service.Utils.ESQLs.InputValidate(6, 'CHANGE_CHARGE', bodyReqRef.ns:ChangeCharge, true, true, 999, DataCalculateCarMaterial);
+
+		DECLARE  ErrorDesc CHARACTER;
+		SET ErrorDesc = Service.Utils.ESQLs.validateRequest(DataCalculateCarMaterial);
+		DELETE FIELD OutputRoot.JSON.DataCalculateCarMaterial ; 
+		IF ErrorDesc <> 'OK' THEN
+			SET OutputRoot.XMLNSC.ns:CalculateCarMaterialRes.commonheader:Header = InputRoot.XMLNSC.ns:CalculateCarMaterialReq.commonheader:Header;
+			SET OutputRoot.XMLNSC.ns:CalculateCarMaterialRes.commonheader:ResponseStatus.commonheader:Status = '1';
+			SET OutputRoot.XMLNSC.ns:CalculateCarMaterialRes.commonheader:ResponseStatus.commonheader:GlobalErrorCode = '002';
+			SET OutputRoot.XMLNSC.ns:CalculateCarMaterialRes.commonheader:ResponseStatus.commonheader:GlobalErrorDescription = 'Invalid input data';
+			SET OutputRoot.XMLNSC.ns:CalculateCarMaterialRes.commonheader:ResponseStatus.commonheader:ErrorInfo[1].commonheader:SourceAppID = 'ESB';
+			SET OutputRoot.XMLNSC.ns:CalculateCarMaterialRes.commonheader:ResponseStatus.commonheader:ErrorInfo[1].commonheader:ErrorCode = '002';
+			SET OutputRoot.XMLNSC.ns:CalculateCarMaterialRes.commonheader:ResponseStatus.commonheader:ErrorInfo[1].commonheader:ErrorDesc = ErrorDesc;
+
+			PROPAGATE TO TERMINAL 'out2' FINALIZE NONE DELETE NONE;
+		--Build Request, set all field to call Jolt service
+		ELSE 
+		-- build req
+			SET OutputRoot.XMLNSC.ns14:GET_VCXECG_CHARGE_JSON.ns14:VEH_TYPE = bodyReqRef.ns:VehicleInfo.Type;
+			SET OutputRoot.XMLNSC.ns14:GET_VCXECG_CHARGE_JSON.ns14:VEH_AGE = bodyReqRef.ns:VehicleInfo.Age;
+			SET OutputRoot.XMLNSC.ns14:GET_VCXECG_CHARGE_JSON.ns14:MONEY_INSUR = bodyReqRef.ns:Amount.ns2:Amount;
+			SET OutputRoot.XMLNSC.ns14:GET_VCXECG_CHARGE_JSON.ns14:KT = bodyReqRef.ns:Deduction;
+			SET OutputRoot.XMLNSC.ns14:GET_VCXECG_CHARGE_JSON.ns14:DK_BS = bodyReqRef.ns:AdditionalTerms;
+			SET OutputRoot.XMLNSC.ns14:GET_VCXECG_CHARGE_JSON.ns14:CHANGE_CHARGE = bodyReqRef.ns:ChangeCharge;
+			
+			DECLARE addInfo reference to Environment.Variables.SOAVariables.soa:SOAEnvelope.soa:SOAServiceHeader.soa:SOACommonDetail.commonheader:AdditionalInformation;
+			DECLARE addIndx INTEGER CARDINALITY(Environment.Variables.SOAVariables.soa:SOAEnvelope.soa:SOAServiceHeader.soa:SOACommonDetail.commonheader:AdditionalInformation.commonheader:NameValuePairs[]);
+			SET addInfo.commonheader:NameValuePairs[addIndx+1].commonheader:Name = 'TARGETID';
+			SET addInfo.commonheader:NameValuePairs[addIndx+1].commonheader:Value = 'PAYMENT';
+			
+			SET addInfo.commonheader:NameValuePairs[addIndx+2].commonheader:Name = 'TARGETSERVICE';
+			SET addInfo.commonheader:NameValuePairs[addIndx+2].commonheader:Value = 'CalculateCarMaterial';
+			
+			SET OutputLocalEnvironment.Destination.SOAP.Request.Transport.HTTP.WebServiceURL = CreatePaymentUrl; 
+			SET OutputLocalEnvironment.Destination.SOAP.Request.Transport.HTTP.Timeout = CreatePaymentTimeout;		
+			SET Environment.Variables.ServiceCallout.LogType = 'SOAP';
+	--		DELETE FIELD OutputRoot.XMLNSC.DATA;
+	--		DELETE FIELD OutputRoot.JSON;
+			
+			PROPAGATE TO TERMINAL 'out1' FINALIZE NONE DELETE NONE;
+			RETURN TRUE;
+		END IF;
+		RETURN FALSE;
+	END;
+
+	CREATE PROCEDURE CopyMessageHeaders() BEGIN
+		DECLARE I INTEGER 1;
+		DECLARE J INTEGER;
+		SET J = CARDINALITY(InputRoot.*[]);
+		WHILE I < J DO
+			SET OutputRoot.*[I] = InputRoot.*[I];
+			SET I = I + 1;
+		END WHILE;
+	END;
+
+	CREATE PROCEDURE CopyEntireMessage() BEGIN
+		SET OutputRoot = InputRoot;
+	END;
+END MODULE;

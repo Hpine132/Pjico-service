@@ -1,0 +1,72 @@
+BROKER SCHEMA Version1.InquiryPaymentFee.ESQLs
+
+DECLARE ns NAMESPACE 'http://www.pjico.com.vn/entity/vn/payment/paymentservice/1';
+DECLARE commonheader NAMESPACE 'http://www.pjico.com.vn/common/envelope/commonheader/1';
+DECLARE soa NAMESPACE 'http://www.pjico.com.vn/common/envelope/soaenvelope/1';
+DECLARE com NAMESPACE 'http://www.pjico.com.vn/entity/vn/com/1';
+
+DECLARE InquiryPaymentFeeUrl EXTERNAL CHARACTER '';
+DECLARE InquiryPaymentFeeTimeout EXTERNAL CHARACTER '';
+
+CREATE COMPUTE MODULE BuildRequest
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		-- CALL CopyMessageHeaders();
+		-- CALL CopyEntireMessage();
+		SET OutputRoot.Properties = InputRoot.Properties;
+		DECLARE bodyReqRef REFERENCE TO InputRoot.XMLNSC.ns:InquiryPaymentFeeReq.ns:BodyReq;
+		
+		DECLARE policyNo CHAR bodyReqRef.ns:PolicyNo;
+		
+		DECLARE DataInquiryPaymentFee REFERENCE TO OutputRoot.JSON.DataInquiryPaymentFee;
+		
+		CALL Service.Utils.ESQLs.InputValidate(1, 'PolicyNo', policyNo, true, true, 999, DataInquiryPaymentFee);
+		
+		DECLARE  ErrorDesc CHARACTER;
+		SET ErrorDesc = Service.Utils.ESQLs.validateRequest(DataInquiryPaymentFee);
+		DELETE FIELD OutputRoot.JSON.DataInquiryPaymentFee; 
+		IF ErrorDesc <> 'OK' THEN
+			SET OutputRoot.XMLNSC.ns:InquiryPaymentFeeRes.commonheader:Header = InputRoot.XMLNSC.ns:InquiryPaymentFeeRes.commonheader:Header;
+			SET OutputRoot.XMLNSC.ns:InquiryPaymentFeeRes.commonheader:ResponseStatus.commonheader:Status = '1';
+			SET OutputRoot.XMLNSC.ns:InquiryPaymentFeeRes.commonheader:ResponseStatus.commonheader:GlobalErrorCode = '004';
+			SET OutputRoot.XMLNSC.ns:InquiryPaymentFeeRes.commonheader:ResponseStatus.commonheader:GlobalErrorDescription = 'Error In Backend';
+			SET OutputRoot.XMLNSC.ns:InquiryPaymentFeeRes.commonheader:ResponseStatus.commonheader:ErrorInfo[1].commonheader:SourceAppID = 'FTS';
+			SET OutputRoot.XMLNSC.ns:InquiryPaymentFeeRes.commonheader:ResponseStatus.commonheader:ErrorInfo[1].commonheader:ErrorCode = '99';
+			SET OutputRoot.XMLNSC.ns:InquiryPaymentFeeRes.commonheader:ResponseStatus.commonheader:ErrorInfo[1].commonheader:ErrorDesc = 'Unknow Error';
+
+			PROPAGATE TO TERMINAL 'out2' FINALIZE NONE DELETE NONE;
+		ELSE
+			DECLARE addInfo reference to Environment.Variables.SOAVariables.soa:SOAEnvelope.soa:SOAServiceHeader.soa:SOACommonDetail.commonheader:AdditionalInformation;
+			DECLARE addIndx INTEGER CARDINALITY(Environment.Variables.SOAVariables.soa:SOAEnvelope.soa:SOAServiceHeader.soa:SOACommonDetail.commonheader:AdditionalInformation.commonheader:NameValuePairs[]);
+			SET addInfo.commonheader:NameValuePairs[addIndx+1].commonheader:Name = 'TARGETID';
+			SET addInfo.commonheader:NameValuePairs[addIndx+1].commonheader:Value = 'INQUIRYPAYMENTFEE';
+			
+			SET addInfo.commonheader:NameValuePairs[addIndx+2].commonheader:Name = 'TARGETSERVICE';
+			SET addInfo.commonheader:NameValuePairs[addIndx+2].commonheader:Value ='PAYMENTSERVICE';
+			SET Environment.Variables.ServiceCallout.LogType = 'JSON';
+		
+			-- setup request 
+			SET OutputRoot.HTTPRequestHeader."Content-Type" = 'application/json';
+			SET OutputRoot.JSON.Data.InsurancePolicyNumber = bodyReqRef.ns:PolicyNo;
+			
+			SET OutputLocalEnvironment.Destination.HTTP.RequestURL = InquiryPaymentFeeUrl; 
+			SET OutputLocalEnvironment.Destination.HTTP.Timeout = InquiryPaymentFeeTimeout;
+			PROPAGATE TO TERMINAL 'out1' FINALIZE NONE DELETE NONE;	
+		END IF;
+		RETURN TRUE;
+	END;
+
+	CREATE PROCEDURE CopyMessageHeaders() BEGIN
+		DECLARE I INTEGER 1;
+		DECLARE J INTEGER;
+		SET J = CARDINALITY(InputRoot.*[]);
+		WHILE I < J DO
+			SET OutputRoot.*[I] = InputRoot.*[I];
+			SET I = I + 1;
+		END WHILE;
+	END;
+
+	CREATE PROCEDURE CopyEntireMessage() BEGIN
+		SET OutputRoot = InputRoot;
+	END;
+END MODULE;

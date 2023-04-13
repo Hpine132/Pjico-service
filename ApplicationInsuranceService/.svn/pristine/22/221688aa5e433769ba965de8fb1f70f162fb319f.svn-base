@@ -1,0 +1,41 @@
+BROKER SCHEMA Version1.ProvideRequiredCarInsurance.ESQLs
+
+DECLARE ns14 NAMESPACE 'http://www.pjico.com.vn/entity/vn/authentication/authenticationservice/1';
+
+DECLARE Token EXTERNAL CHARACTER '';
+DECLARE UserName EXTERNAL CHARACTER '';
+DECLARE GetTokenUrl EXTERNAL CHARACTER '';
+DECLARE GetTokenTimeout EXTERNAL CHARACTER '';
+
+CREATE COMPUTE MODULE BuildReqGetToken
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		SET OutputRoot.Properties =InputRoot.Properties;
+		SET OutputRoot.XMLNSC.ns14:GetTokenReq.commonheader:Header = InputRoot.XMLNSC.ns:ProvideRequiredCarInsuranceReq.commonheader:Header;
+		SET OutputRoot.XMLNSC.ns14:GetTokenReq.ns14:BodyReq.ns14:FunctionCode = 'AUTH-GETTOKEN-WS-PREMIA';
+		SET OutputRoot.XMLNSC.ns14:GetTokenReq.ns14:BodyReq.ns14:Token = Token;
+		SET OutputRoot.XMLNSC.ns14:GetTokenReq.ns14:BodyReq.ns14:Username = UserName;
+	
+		SET OutputLocalEnvironment.Destination.SOAP.Request.Transport.HTTP.WebServiceURL = GetTokenUrl; 
+		SET OutputLocalEnvironment.Destination.SOAP.Request.Transport.HTTP.Timeout = GetTokenTimeout;	
+		--Set up BodyReq
+		-- CALL CopyMessageHeaders();
+		-- CALL CopyEntireMessage();
+		RETURN TRUE;
+	END;
+
+	CREATE PROCEDURE CopyMessageHeaders() BEGIN
+		DECLARE I INTEGER 1;
+		DECLARE J INTEGER;
+		SET J = CARDINALITY(InputRoot.*[]);
+		WHILE I < J DO
+			SET OutputRoot.*[I] = InputRoot.*[I];
+			SET I = I + 1;
+		END WHILE;
+	END;
+
+	CREATE PROCEDURE CopyEntireMessage() BEGIN
+		SET OutputRoot = InputRoot;
+	END;
+END MODULE;
+

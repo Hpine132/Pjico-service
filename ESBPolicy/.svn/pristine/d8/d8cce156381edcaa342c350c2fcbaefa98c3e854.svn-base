@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<policies>
+  <policy policyType="UserDefined" policyName="JoltConfig" policyTemplate="UserDefined">
+    <ServerAddress>//10.0.91.182:15000</ServerAddress>
+    <TimeOut>30</TimeOut>
+    <RecvtimeOut>60</RecvtimeOut>
+    <UserName></UserName>
+    <UserRole></UserRole>
+    <UserPassword></UserPassword>
+    <AppPassword></AppPassword>
+    <ProxyService>bs_fwchccw00002</ProxyService>
+    <SessionNo>5257c9a146d06e04a052db4598d8e008</SessionNo>
+    <NumberSession>1</NumberSession>
+    <MaxConnectionPool>100</MaxConnectionPool>
+  </policy>
+</policies>

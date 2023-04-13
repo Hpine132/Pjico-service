@@ -1,0 +1,367 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ComIbmSOAPInput.msgnode="ComIbmSOAPInput.msgnode" xmlns:ComIbmSOAPReply.msgnode="ComIbmSOAPReply.msgnode" xmlns:Service_Common_Subflows_SOAHandleException.subflow="Service/Common/Subflows/SOAHandleException.subflow" xmlns:Service_Common_Subflows_SOAHandleRequest.subflow="Service/Common/Subflows/SOAHandleRequest.subflow" xmlns:Service_Common_Subflows_SOAHandleResponse.subflow="Service/Common/Subflows/SOAHandleResponse.subflow"
+    xmlns:Version1_InquiryInsurance_Subflows_InquiryInsurance.subflow="Version1/InquiryInsurance/Subflows/InquiryInsurance.subflow" xmlns:Version1_ProvideCarMaterialInsurance_Subflows_ProvideCarMaterialInsurance.subflow="Version1/ProvideCarMaterialInsurance/Subflows/ProvideCarMaterialInsurance.subflow" xmlns:Version1_ProvideInsuranceBancas_Subflows_ProvideInsuranceBancas.subflow="Version1/ProvideInsuranceBancas/Subflows/ProvideInsuranceBancas.subflow" xmlns:Version1_ProvideLifeInsurance_Subflows_ProvideLifeInsurance.subflow="Version1/ProvideLifeInsurance/Subflows/ProvideLifeInsurance.subflow"
+    xmlns:Version1_ProvidePrivateCompanyInsurance_Subflows_ProvidePrivateCompanyInsurance.subflow="Version1/ProvidePrivateCompanyInsurance/Subflows/ProvidePrivateCompanyInsurance.subflow" xmlns:Version1_ProvideRequiredCarInsurance_Subflows_ProvideRequiredCarInsurance.subflow="Version1/ProvideRequiredCarInsurance/Subflows/ProvideRequiredCarInsurance.subflow" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:eflow="http://www.ibm.com/wbi/2005/eflow" xmlns:utility="http://www.ibm.com/wbi/2005/eflow_utility"
+    nsURI="ServiceImpl/ApplicationInsuranceService.msgflow" nsPrefix="ServiceImpl_ApplicationInsuranceService.msgflow">
+  <eClassifiers xmi:type="eflow:FCMComposite" name="FCMComposite_1" nodeLayoutStyle="RECTANGLE">
+    <eSuperTypes href="http://www.ibm.com/wbi/2005/eflow#//FCMBlock"/>
+    <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.ProvideLifeInsuranceUrl" name="ProvideLifeInsuranceUrl" defaultValueLiteral="/PremiaWS/policy6302">
+      <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.ProvideLifeInsuranceTimeout" name="ProvideLifeInsuranceTimeout" defaultValueLiteral="60">
+      <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.Authorization" name="Authorization" defaultValueLiteral="PJICO052019">
+      <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.GetTokenUrl" name="GetTokenUrl" defaultValueLiteral="http://localhost:7800/service/vn/authenticationservice/1?wsdl">
+      <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.GetTokenTimeout" name="GetTokenTimeout" defaultValueLiteral="120">
+      <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.Token" name="Token" defaultValueLiteral="PREMIAPJICOLIMI">
+      <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.UserName" name="UserName" defaultValueLiteral="LIMIUSER">
+      <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.ProvideCarMaterialInsuranceUrl" name="ProvideCarMaterialInsuranceUrl" defaultValueLiteral="/PremiaWS/policy5106">
+      <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.ProvideCarMaterialInsuranceTimeout" name="ProvideCarMaterialInsuranceTimeout" defaultValueLiteral="120">
+      <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.ProvidePrivateCompanyInsuranceUrl" name="ProvidePrivateCompanyInsuranceUrl" defaultValueLiteral="/PremiaWS/policy3104">
+      <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.ProvidePrivateCompanyInsuranceTimeout" name="ProvidePrivateCompanyInsuranceTimeout" defaultValueLiteral="120">
+      <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.ProvideRequiredCarInsuranceUrl" name="ProvideRequiredCarInsuranceUrl" defaultValueLiteral="/PremiaWS/policy5101">
+      <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.ProvideRequiredCarInsuranceTimeout" name="ProvideRequiredCarInsuranceTimeout" defaultValueLiteral="120">
+      <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.ProvideCarMaterialBancasInsuranceUrl" name="ProvideCarMaterialBancasInsuranceUrl" defaultValueLiteral="http://uat-bancas.pjico.com.vn/service/resources/service/vehicle">
+      <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.ProvideCarMaterialBancasInsuranceTimeout" name="ProvideCarMaterialBancasInsuranceTimeout" defaultValueLiteral="60">
+      <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.ProvideRequiredMotoBancasInsuranceUrl" name="ProvideRequiredMotoBancasInsuranceUrl" defaultValueLiteral="http://bancas-uat.pjico.com.vn/service/resources/service/vehicle-tndsbb-xemay">
+      <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.ProvideRequiredMotoBancasInsuranceTimeout" name="ProvideRequiredMotoBancasInsuranceTimeout" defaultValueLiteral="120">
+      <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.ProvideRequiredCarBancasUrl" name="ProvideRequiredCarBancasUrl" defaultValueLiteral="http://uat-bancas.pjico.com.vn/service/resources/service/vehicle-tndsbb-oto">
+      <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.ProvideRequiredCarBancasTimeOut" name="ProvideRequiredCarBancasTimeOut" defaultValueLiteral="60">
+      <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.PremiaIPPort" name="PremiaIPPort" defaultValueLiteral="http://10.63.55.17:8080">
+      <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.MessageType" name="MessageType" defaultValueLiteral="0">
+      <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.ProcessCode" name="ProcessCode" defaultValueLiteral="CRTQTORPOL">
+      <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.Stan" name="Stan" defaultValueLiteral="1234567890TSI">
+      <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.LocalDateTime" name="LocalDateTime" defaultValueLiteral="28052019154010">
+      <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.DeliveryChannel" name="DeliveryChannel" defaultValueLiteral="LIMI">
+      <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.UserID" name="UserID" defaultValueLiteral="3IUSER">
+      <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.ConfigID" name="ConfigID" defaultValueLiteral="SD/1231/TRAJ01/002">
+      <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.CoverFlag" name="CoverFlag" defaultValueLiteral="N">
+      <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.CoditionFlag" name="CoditionFlag" defaultValueLiteral="N">
+      <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.CommFlag" name="CommFlag" defaultValueLiteral="N">
+      <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.ExcessFlag" name="ExcessFlag" defaultValueLiteral="N">
+      <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.DiscountFlag" name="DiscountFlag" defaultValueLiteral="N">
+      <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.ScheduleFlag" name="ScheduleFlag" defaultValueLiteral="N">
+      <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.AutoApprovalFlag" name="AutoApprovalFlag" defaultValueLiteral="Y">
+      <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.SMIFlag" name="SMIFlag" defaultValueLiteral="N">
+      <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.CertReqFlag" name="CertReqFlag" defaultValueLiteral="N">
+      <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.EngType" name="EngType" defaultValueLiteral="L">
+      <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.MarValFlg" name="MarValFlg" defaultValueLiteral="N">
+      <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.CodFlag" name="CodFlag" defaultValueLiteral="N">
+      <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.DrvFlag" name="DrvFlag" defaultValueLiteral="N">
+      <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.Door" name="Door" defaultValueLiteral="4">
+      <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.UsePurpose" name="UsePurpose" defaultValueLiteral="P">
+      <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.Age" name="Age" defaultValueLiteral="0">
+      <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.ProcCode" name="ProcCode" defaultValueLiteral="CRTPOL6302">
+      <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.ConditionCode6302" name="ConditionCode6302" defaultValueLiteral="DKLT02">
+      <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.CoverRiskCode" name="CoverRiskCode" defaultValueLiteral="1">
+      <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.InquiryInsuranceUrl" name="InquiryInsuranceUrl" defaultValueLiteral="http://10.63.55.26:2020/api/policy/get">
+      <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.InquiryInsuranceTimeout" name="InquiryInsuranceTimeout" defaultValueLiteral="120">
+      <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.UserNameQryCust" name="UserNameQryCust" defaultValueLiteral="admin">
+      <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.PasswordQryCust" name="PasswordQryCust" defaultValueLiteral="admin">
+      <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.GrantTypeQry" name="GrantTypeQry" defaultValueLiteral="password">
+      <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eStructuralFeatures>
+    <translation xmi:type="utility:TranslatableString" key="ApplicationInsuranceService" bundleName="ServiceImpl/ApplicationInsuranceService" pluginId="ApplicationInsuranceService"/>
+    <colorGraphic16 xmi:type="utility:GIFFileGraphic" resourceName="platform:/plugin/ApplicationInsuranceService/icons/full/obj16/ApplicationInsuranceService.gif"/>
+    <colorGraphic32 xmi:type="utility:GIFFileGraphic" resourceName="platform:/plugin/ApplicationInsuranceService/icons/full/obj30/ApplicationInsuranceService.gif"/>
+    <composition>
+      <nodes xmi:type="ComIbmSOAPInput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_1" location="19,213" wsdlFileName="wsdls/ApplicationInsuranceService.wsdl" selectedPortType="ApplicationInsuranceService" selectedBinding="ApplicationInsuranceServiceSOAP" selectedPort="ApplicationInsuranceServiceSOAP" targetNamespace="http://www.pjico.com.vn/entity/vn/app/applicationsvcs/1" useHTTPTransport="true" urlSelector="/service/vn/applicationinsurance/1" maxClientWaitTime="75" allowQueryWSDL="true" messageSetProperty="{ESBMessageLib}">
+        <translation xmi:type="utility:ConstantString" string="SOAP Input"/>
+      </nodes>
+      <nodes xmi:type="ComIbmSOAPReply.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_2" location="1039,214">
+        <translation xmi:type="utility:ConstantString" string="SOAP Reply"/>
+      </nodes>
+      <nodes xmi:type="Service_Common_Subflows_SOAHandleException.subflow:FCMComposite_1" xmi:id="FCMComposite_1_3" location="229,240">
+        <translation xmi:type="utility:ConstantString" string="SOAHandleException"/>
+      </nodes>
+      <nodes xmi:type="Service_Common_Subflows_SOAHandleRequest.subflow:FCMComposite_1" xmi:id="FCMComposite_1_4" location="230,157">
+        <translation xmi:type="utility:ConstantString" string="SOAHandleRequest"/>
+      </nodes>
+      <nodes xmi:type="Service_Common_Subflows_SOAHandleResponse.subflow:FCMComposite_1" xmi:id="FCMComposite_1_5" location="837,213">
+        <translation xmi:type="utility:ConstantString" string="SOAHandleResponse"/>
+      </nodes>
+      <nodes xmi:type="Version1_ProvideLifeInsurance_Subflows_ProvideLifeInsurance.subflow:FCMComposite_1" xmi:id="FCMComposite_1_11" location="494,71">
+        <translation xmi:type="utility:ConstantString" string="ProvideLifeInsurance"/>
+      </nodes>
+      <nodes xmi:type="Version1_ProvideCarMaterialInsurance_Subflows_ProvideCarMaterialInsurance.subflow:FCMComposite_1" xmi:id="FCMComposite_1_6" location="495,159">
+        <translation xmi:type="utility:ConstantString" string="ProvideCarMaterialInsurance"/>
+      </nodes>
+      <nodes xmi:type="Version1_ProvidePrivateCompanyInsurance_Subflows_ProvidePrivateCompanyInsurance.subflow:FCMComposite_1" xmi:id="FCMComposite_1_7" location="495,245">
+        <translation xmi:type="utility:ConstantString" string="ProvidePrivateCompanyInsurance"/>
+      </nodes>
+      <nodes xmi:type="Version1_ProvideRequiredCarInsurance_Subflows_ProvideRequiredCarInsurance.subflow:FCMComposite_1" xmi:id="FCMComposite_1_8" location="499,338">
+        <translation xmi:type="utility:ConstantString" string="ProvideRequiredCarInsurance"/>
+      </nodes>
+      <nodes xmi:type="Version1_ProvideInsuranceBancas_Subflows_ProvideInsuranceBancas.subflow:FCMComposite_1" xmi:id="FCMComposite_1_9" location="499,446">
+        <translation xmi:type="utility:ConstantString" string="ProvideInsuranceBancas"/>
+      </nodes>
+      <nodes xmi:type="Version1_InquiryInsurance_Subflows_InquiryInsurance.subflow:FCMComposite_1" xmi:id="FCMComposite_1_10" location="491,532">
+        <translation xmi:type="utility:ConstantString" string="InquiryInsurance"/>
+      </nodes>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_1" targetNode="FCMComposite_1_4" sourceNode="FCMComposite_1_1" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.Input1"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_2" targetNode="FCMComposite_1_3" sourceNode="FCMComposite_1_1" sourceTerminalName="OutTerminal.failure" targetTerminalName="InTerminal.Catch"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_3" targetNode="FCMComposite_1_3" sourceNode="FCMComposite_1_1" sourceTerminalName="OutTerminal.timeout" targetTerminalName="InTerminal.HTTP%20Timeout"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_4" targetNode="FCMComposite_1_3" sourceNode="FCMComposite_1_1" sourceTerminalName="OutTerminal.catch" targetTerminalName="InTerminal.Failure"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_5" targetNode="FCMComposite_1_2" sourceNode="FCMComposite_1_5" sourceTerminalName="OutTerminal.Output" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_15" targetNode="FCMComposite_1_5" sourceNode="FCMComposite_1_11" sourceTerminalName="OutTerminal.Output" targetTerminalName="InTerminal.Input"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_6" targetNode="FCMComposite_1_5" sourceNode="FCMComposite_1_6" sourceTerminalName="OutTerminal.Output" targetTerminalName="InTerminal.Input"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_7" targetNode="FCMComposite_1_5" sourceNode="FCMComposite_1_7" sourceTerminalName="OutTerminal.Output" targetTerminalName="InTerminal.Input"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_8" targetNode="FCMComposite_1_5" sourceNode="FCMComposite_1_8" sourceTerminalName="OutTerminal.Output" targetTerminalName="InTerminal.Input"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_9" targetNode="FCMComposite_1_5" sourceNode="FCMComposite_1_9" sourceTerminalName="OutTerminal.Output" targetTerminalName="InTerminal.Input"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_10" targetNode="FCMComposite_1_5" sourceNode="FCMComposite_1_10" sourceTerminalName="OutTerminal.Output" targetTerminalName="InTerminal.Input"/>
+    </composition>
+    <propertyOrganizer>
+      <propertyDescriptor groupName="Group.Basic" configurable="true" userDefined="true" describedAttribute="Property.ProvideLifeInsuranceUrl">
+        <propertyName xmi:type="utility:TranslatableString" key="Property.ProvideLifeInsuranceUrl" bundleName="ServiceImpl/ApplicationInsuranceService" pluginId="ApplicationInsuranceService"/>
+        <propertyDescriptor groupName="Group.Basic" configurable="true" userDefined="true" describedAttribute="Property.ProvideLifeInsuranceTimeout">
+          <propertyName xmi:type="utility:TranslatableString" key="Property.ProvideLifeInsuranceTimeout" bundleName="ServiceImpl/ApplicationInsuranceService" pluginId="ApplicationInsuranceService"/>
+          <propertyDescriptor groupName="Group.Basic" configurable="true" userDefined="true" describedAttribute="Property.Authorization">
+            <propertyName xmi:type="utility:TranslatableString" key="Property.Authorization" bundleName="ServiceImpl/ApplicationInsuranceService" pluginId="ApplicationInsuranceService"/>
+            <propertyDescriptor groupName="Group.Basic" configurable="true" userDefined="true" describedAttribute="Property.GetTokenUrl">
+              <propertyName xmi:type="utility:TranslatableString" key="Property.GetTokenUrl" bundleName="ServiceImpl/ApplicationInsuranceService" pluginId="ApplicationInsuranceService"/>
+              <propertyDescriptor groupName="Group.Basic" configurable="true" userDefined="true" describedAttribute="Property.GetTokenTimeout">
+                <propertyName xmi:type="utility:TranslatableString" key="Property.GetTokenTimeout" bundleName="ServiceImpl/ApplicationInsuranceService" pluginId="ApplicationInsuranceService"/>
+                <propertyDescriptor groupName="Group.Basic" configurable="true" userDefined="true" describedAttribute="Property.Token">
+                  <propertyName xmi:type="utility:TranslatableString" key="Property.Token" bundleName="ServiceImpl/ApplicationInsuranceService" pluginId="ApplicationInsuranceService"/>
+                  <propertyDescriptor groupName="Group.Basic" configurable="true" userDefined="true" describedAttribute="Property.UserName">
+                    <propertyName xmi:type="utility:TranslatableString" key="Property.UserName" bundleName="ServiceImpl/ApplicationInsuranceService" pluginId="ApplicationInsuranceService"/>
+                    <propertyDescriptor groupName="Group.Basic" configurable="true" userDefined="true" describedAttribute="Property.ProvideCarMaterialInsuranceUrl">
+                      <propertyName xmi:type="utility:TranslatableString" key="Property.ProvideCarMaterialInsuranceUrl" bundleName="ServiceImpl/ApplicationInsuranceService" pluginId="ApplicationInsuranceService"/>
+                      <propertyDescriptor groupName="Group.Basic" configurable="true" userDefined="true" describedAttribute="Property.ProvideCarMaterialInsuranceTimeout">
+                        <propertyName xmi:type="utility:TranslatableString" key="Property.ProvideCarMaterialInsuranceTimeout" bundleName="ServiceImpl/ApplicationInsuranceService" pluginId="ApplicationInsuranceService"/>
+                        <propertyDescriptor groupName="Group.Basic" configurable="true" userDefined="true" describedAttribute="Property.ProvidePrivateCompanyInsuranceUrl">
+                          <propertyName xmi:type="utility:TranslatableString" key="Property.ProvidePrivateCompanyInsuranceUrl" bundleName="ServiceImpl/ApplicationInsuranceService" pluginId="ApplicationInsuranceService"/>
+                          <propertyDescriptor groupName="Group.Basic" configurable="true" userDefined="true" describedAttribute="Property.ProvidePrivateCompanyInsuranceTimeout">
+                            <propertyName xmi:type="utility:TranslatableString" key="Property.ProvidePrivateCompanyInsuranceTimeout" bundleName="ServiceImpl/ApplicationInsuranceService" pluginId="ApplicationInsuranceService"/>
+                            <propertyDescriptor groupName="Group.Basic" configurable="true" userDefined="true" describedAttribute="Property.ProvideRequiredCarInsuranceUrl">
+                              <propertyName xmi:type="utility:TranslatableString" key="Property.ProvideRequiredCarInsuranceUrl" bundleName="ServiceImpl/ApplicationInsuranceService" pluginId="ApplicationInsuranceService"/>
+                              <propertyDescriptor groupName="Group.Basic" configurable="true" userDefined="true" describedAttribute="Property.ProvideRequiredCarInsuranceTimeout">
+                                <propertyName xmi:type="utility:TranslatableString" key="Property.ProvideRequiredCarInsuranceTimeout" bundleName="ServiceImpl/ApplicationInsuranceService" pluginId="ApplicationInsuranceService"/>
+                                <propertyDescriptor groupName="Group.Basic" configurable="true" userDefined="true" describedAttribute="Property.ProvideCarMaterialBancasInsuranceUrl">
+                                  <propertyName xmi:type="utility:TranslatableString" key="Property.ProvideCarMaterialBancasInsuranceUrl" bundleName="ServiceImpl/ApplicationInsuranceService" pluginId="ApplicationInsuranceService"/>
+                                  <propertyDescriptor groupName="Group.Basic" configurable="true" userDefined="true" describedAttribute="Property.ProvideCarMaterialBancasInsuranceTimeout">
+                                    <propertyName xmi:type="utility:TranslatableString" key="Property.ProvideCarMaterialBancasInsuranceTimeout" bundleName="ServiceImpl/ApplicationInsuranceService" pluginId="ApplicationInsuranceService"/>
+                                    <propertyDescriptor groupName="Group.Basic" configurable="true" userDefined="true" describedAttribute="Property.ProvideRequiredMotoBancasInsuranceUrl">
+                                      <propertyName xmi:type="utility:TranslatableString" key="Property.ProvideRequiredMotoBancasInsuranceUrl" bundleName="ServiceImpl/ApplicationInsuranceService" pluginId="ApplicationInsuranceService"/>
+                                      <propertyDescriptor groupName="Group.Basic" configurable="true" userDefined="true" describedAttribute="Property.ProvideRequiredMotoBancasInsuranceTimeout">
+                                        <propertyName xmi:type="utility:TranslatableString" key="Property.ProvideRequiredMotoBancasInsuranceTimeout" bundleName="ServiceImpl/ApplicationInsuranceService" pluginId="ApplicationInsuranceService"/>
+                                        <propertyDescriptor groupName="Group.Basic" configurable="true" userDefined="true" describedAttribute="Property.ProvideRequiredCarBancasUrl">
+                                          <propertyName xmi:type="utility:TranslatableString" key="Property.ProvideRequiredCarBancasUrl" bundleName="ServiceImpl/ApplicationInsuranceService" pluginId="ApplicationInsuranceService"/>
+                                          <propertyDescriptor groupName="Group.Basic" configurable="true" userDefined="true" describedAttribute="Property.ProvideRequiredCarBancasTimeOut">
+                                            <propertyName xmi:type="utility:TranslatableString" key="Property.ProvideRequiredCarBancasTimeOut" bundleName="ServiceImpl/ApplicationInsuranceService" pluginId="ApplicationInsuranceService"/>
+                                            <propertyDescriptor groupName="Group.Basic" configurable="true" userDefined="true" describedAttribute="Property.PremiaIPPort">
+                                              <propertyName xmi:type="utility:TranslatableString" key="Property.PremiaIPPort" bundleName="ServiceImpl/ApplicationInsuranceService" pluginId="ApplicationInsuranceService"/>
+                                              <propertyDescriptor groupName="Group.Group1" configurable="true" userDefined="true" describedAttribute="Property.MessageType">
+                                                <propertyName xmi:type="utility:TranslatableString" key="Property.MessageType" bundleName="ServiceImpl/ApplicationInsuranceService" pluginId="ApplicationInsuranceService"/>
+                                                <propertyDescriptor groupName="Group.Group1" configurable="true" userDefined="true" describedAttribute="Property.ProcessCode">
+                                                  <propertyName xmi:type="utility:TranslatableString" key="Property.ProcessCode" bundleName="ServiceImpl/ApplicationInsuranceService" pluginId="ApplicationInsuranceService"/>
+                                                  <propertyDescriptor groupName="Group.Group1" configurable="true" userDefined="true" describedAttribute="Property.Stan">
+                                                    <propertyName xmi:type="utility:TranslatableString" key="Property.Stan" bundleName="ServiceImpl/ApplicationInsuranceService" pluginId="ApplicationInsuranceService"/>
+                                                    <propertyDescriptor groupName="Group.Group1" configurable="true" userDefined="true" describedAttribute="Property.LocalDateTime">
+                                                      <propertyName xmi:type="utility:TranslatableString" key="Property.LocalDateTime" bundleName="ServiceImpl/ApplicationInsuranceService" pluginId="ApplicationInsuranceService"/>
+                                                      <propertyDescriptor groupName="Group.Group1" configurable="true" userDefined="true" describedAttribute="Property.DeliveryChannel">
+                                                        <propertyName xmi:type="utility:TranslatableString" key="Property.DeliveryChannel" bundleName="ServiceImpl/ApplicationInsuranceService" pluginId="ApplicationInsuranceService"/>
+                                                        <propertyDescriptor groupName="Group.Group1" configurable="true" userDefined="true" describedAttribute="Property.UserID">
+                                                          <propertyName xmi:type="utility:TranslatableString" key="Property.UserID" bundleName="ServiceImpl/ApplicationInsuranceService" pluginId="ApplicationInsuranceService"/>
+                                                          <propertyDescriptor groupName="Group.Group1" configurable="true" userDefined="true" describedAttribute="Property.ConfigID">
+                                                            <propertyName xmi:type="utility:TranslatableString" key="Property.ConfigID" bundleName="ServiceImpl/ApplicationInsuranceService" pluginId="ApplicationInsuranceService"/>
+                                                            <propertyDescriptor groupName="Group.ADDQUOTE" configurable="true" userDefined="true" describedAttribute="Property.CoverFlag">
+                                                              <propertyName xmi:type="utility:TranslatableString" key="Property.CoverFlag" bundleName="ServiceImpl/ApplicationInsuranceService" pluginId="ApplicationInsuranceService"/>
+                                                              <propertyDescriptor groupName="Group.ADDQUOTE" configurable="true" userDefined="true" describedAttribute="Property.CoditionFlag">
+                                                                <propertyName xmi:type="utility:TranslatableString" key="Property.CoditionFlag" bundleName="ServiceImpl/ApplicationInsuranceService" pluginId="ApplicationInsuranceService"/>
+                                                                <propertyDescriptor groupName="Group.ADDQUOTE" configurable="true" userDefined="true" describedAttribute="Property.CommFlag">
+                                                                  <propertyName xmi:type="utility:TranslatableString" key="Property.CommFlag" bundleName="ServiceImpl/ApplicationInsuranceService" pluginId="ApplicationInsuranceService"/>
+                                                                  <propertyDescriptor groupName="Group.ADDQUOTE" configurable="true" userDefined="true" describedAttribute="Property.ExcessFlag">
+                                                                    <propertyName xmi:type="utility:TranslatableString" key="Property.ExcessFlag" bundleName="ServiceImpl/ApplicationInsuranceService" pluginId="ApplicationInsuranceService"/>
+                                                                    <propertyDescriptor groupName="Group.ADDQUOTE" configurable="true" userDefined="true" describedAttribute="Property.DiscountFlag">
+                                                                      <propertyName xmi:type="utility:TranslatableString" key="Property.DiscountFlag" bundleName="ServiceImpl/ApplicationInsuranceService" pluginId="ApplicationInsuranceService"/>
+                                                                      <propertyDescriptor groupName="Group.ADDQUOTE" configurable="true" userDefined="true" describedAttribute="Property.ScheduleFlag">
+                                                                        <propertyName xmi:type="utility:TranslatableString" key="Property.ScheduleFlag" bundleName="ServiceImpl/ApplicationInsuranceService" pluginId="ApplicationInsuranceService"/>
+                                                                        <propertyDescriptor groupName="Group.ADDQUOTE" configurable="true" userDefined="true" describedAttribute="Property.AutoApprovalFlag">
+                                                                          <propertyName xmi:type="utility:TranslatableString" key="Property.AutoApprovalFlag" bundleName="ServiceImpl/ApplicationInsuranceService" pluginId="ApplicationInsuranceService"/>
+                                                                          <propertyDescriptor groupName="Group.ADDQUOTE" configurable="true" userDefined="true" describedAttribute="Property.SMIFlag">
+                                                                            <propertyName xmi:type="utility:TranslatableString" key="Property.SMIFlag" bundleName="ServiceImpl/ApplicationInsuranceService" pluginId="ApplicationInsuranceService"/>
+                                                                            <propertyDescriptor groupName="Group.VEHICLE" configurable="true" userDefined="true" describedAttribute="Property.CertReqFlag">
+                                                                              <propertyName xmi:type="utility:TranslatableString" key="Property.CertReqFlag" bundleName="ServiceImpl/ApplicationInsuranceService" pluginId="ApplicationInsuranceService"/>
+                                                                              <propertyDescriptor groupName="Group.VEHICLE" configurable="true" userDefined="true" describedAttribute="Property.EngType">
+                                                                                <propertyName xmi:type="utility:TranslatableString" key="Property.EngType" bundleName="ServiceImpl/ApplicationInsuranceService" pluginId="ApplicationInsuranceService"/>
+                                                                                <propertyDescriptor groupName="Group.VEHICLE" configurable="true" userDefined="true" describedAttribute="Property.MarValFlg">
+                                                                                  <propertyName xmi:type="utility:TranslatableString" key="Property.MarValFlg" bundleName="ServiceImpl/ApplicationInsuranceService" pluginId="ApplicationInsuranceService"/>
+                                                                                  <propertyDescriptor groupName="Group.VEHICLE" configurable="true" userDefined="true" describedAttribute="Property.CodFlag">
+                                                                                    <propertyName xmi:type="utility:TranslatableString" key="Property.CodFlag" bundleName="ServiceImpl/ApplicationInsuranceService" pluginId="ApplicationInsuranceService"/>
+                                                                                    <propertyDescriptor groupName="Group.VEHICLE" configurable="true" userDefined="true" describedAttribute="Property.DrvFlag">
+                                                                                      <propertyName xmi:type="utility:TranslatableString" key="Property.DrvFlag" bundleName="ServiceImpl/ApplicationInsuranceService" pluginId="ApplicationInsuranceService"/>
+                                                                                      <propertyDescriptor groupName="Group.VEHICLE" configurable="true" userDefined="true" describedAttribute="Property.Door">
+                                                                                        <propertyName xmi:type="utility:TranslatableString" key="Property.Door" bundleName="ServiceImpl/ApplicationInsuranceService" pluginId="ApplicationInsuranceService"/>
+                                                                                        <propertyDescriptor groupName="Group.VEHICLE" configurable="true" userDefined="true" describedAttribute="Property.UsePurpose">
+                                                                                          <propertyName xmi:type="utility:TranslatableString" key="Property.UsePurpose" bundleName="ServiceImpl/ApplicationInsuranceService" pluginId="ApplicationInsuranceService"/>
+                                                                                          <propertyDescriptor groupName="Group.VEHICLE" configurable="true" userDefined="true" describedAttribute="Property.Age">
+                                                                                            <propertyName xmi:type="utility:TranslatableString" key="Property.Age" bundleName="ServiceImpl/ApplicationInsuranceService" pluginId="ApplicationInsuranceService"/>
+                                                                                            <propertyDescriptor groupName="Group.Group1" configurable="true" userDefined="true" describedAttribute="Property.ProcCode">
+                                                                                              <propertyName xmi:type="utility:TranslatableString" key="Property.ProcCode" bundleName="ServiceImpl/ApplicationInsuranceService" pluginId="ApplicationInsuranceService"/>
+                                                                                              <propertyDescriptor groupName="Group.CONDITONCODE_COVERRISKCODE" configurable="true" userDefined="true" describedAttribute="Property.ConditionCode6302">
+                                                                                                <propertyName xmi:type="utility:TranslatableString" key="Property.ConditionCode6302" bundleName="ServiceImpl/ApplicationInsuranceService" pluginId="ApplicationInsuranceService"/>
+                                                                                                <propertyDescriptor groupName="Group.CONDITONCODE_COVERRISKCODE" configurable="true" userDefined="true" describedAttribute="Property.CoverRiskCode">
+                                                                                                  <propertyName xmi:type="utility:TranslatableString" key="Property.CoverRiskCode" bundleName="ServiceImpl/ApplicationInsuranceService" pluginId="ApplicationInsuranceService"/>
+                                                                                                  <propertyDescriptor groupName="Group.Basic" configurable="true" userDefined="true" describedAttribute="Property.InquiryInsuranceUrl">
+                                                                                                    <propertyName xmi:type="utility:TranslatableString" key="Property.InquiryInsuranceUrl" bundleName="ServiceImpl/ApplicationInsuranceService" pluginId="ApplicationInsuranceService"/>
+                                                                                                    <propertyDescriptor groupName="Group.Basic" configurable="true" userDefined="true" describedAttribute="Property.InquiryInsuranceTimeout">
+                                                                                                      <propertyName xmi:type="utility:TranslatableString" key="Property.InquiryInsuranceTimeout" bundleName="ServiceImpl/ApplicationInsuranceService" pluginId="ApplicationInsuranceService"/>
+                                                                                                      <propertyDescriptor groupName="Group.Basic" configurable="true" userDefined="true" describedAttribute="Property.UserNameQryCust">
+                                                                                                        <propertyName xmi:type="utility:TranslatableString" key="Property.UserNameQryCust" bundleName="ServiceImpl/ApplicationInsuranceService" pluginId="ApplicationInsuranceService"/>
+                                                                                                        <propertyDescriptor groupName="Group.Basic" configurable="true" userDefined="true" describedAttribute="Property.PasswordQryCust">
+                                                                                                          <propertyName xmi:type="utility:TranslatableString" key="Property.PasswordQryCust" bundleName="ServiceImpl/ApplicationInsuranceService" pluginId="ApplicationInsuranceService"/>
+                                                                                                          <propertyDescriptor groupName="Group.Basic" configurable="true" userDefined="true" describedAttribute="Property.GrantTypeQry">
+                                                                                                            <propertyName xmi:type="utility:TranslatableString" key="Property.GrantTypeQry" bundleName="ServiceImpl/ApplicationInsuranceService" pluginId="ApplicationInsuranceService"/>
+                                                                                                          </propertyDescriptor>
+                                                                                                        </propertyDescriptor>
+                                                                                                      </propertyDescriptor>
+                                                                                                    </propertyDescriptor>
+                                                                                                  </propertyDescriptor>
+                                                                                                </propertyDescriptor>
+                                                                                              </propertyDescriptor>
+                                                                                            </propertyDescriptor>
+                                                                                          </propertyDescriptor>
+                                                                                        </propertyDescriptor>
+                                                                                      </propertyDescriptor>
+                                                                                    </propertyDescriptor>
+                                                                                  </propertyDescriptor>
+                                                                                </propertyDescriptor>
+                                                                              </propertyDescriptor>
+                                                                            </propertyDescriptor>
+                                                                          </propertyDescriptor>
+                                                                        </propertyDescriptor>
+                                                                      </propertyDescriptor>
+                                                                    </propertyDescriptor>
+                                                                  </propertyDescriptor>
+                                                                </propertyDescriptor>
+                                                              </propertyDescriptor>
+                                                            </propertyDescriptor>
+                                                          </propertyDescriptor>
+                                                        </propertyDescriptor>
+                                                      </propertyDescriptor>
+                                                    </propertyDescriptor>
+                                                  </propertyDescriptor>
+                                                </propertyDescriptor>
+                                              </propertyDescriptor>
+                                            </propertyDescriptor>
+                                          </propertyDescriptor>
+                                        </propertyDescriptor>
+                                      </propertyDescriptor>
+                                    </propertyDescriptor>
+                                  </propertyDescriptor>
+                                </propertyDescriptor>
+                              </propertyDescriptor>
+                            </propertyDescriptor>
+                          </propertyDescriptor>
+                        </propertyDescriptor>
+                      </propertyDescriptor>
+                    </propertyDescriptor>
+                  </propertyDescriptor>
+                </propertyDescriptor>
+              </propertyDescriptor>
+            </propertyDescriptor>
+          </propertyDescriptor>
+        </propertyDescriptor>
+      </propertyDescriptor>
+    </propertyOrganizer>
+    <stickyBoard/>
+  </eClassifiers>
+</ecore:EPackage>

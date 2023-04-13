@@ -1,0 +1,11 @@
+/*EATE FUNCTION Main() RETURNS BOOLE*/
+	BEGIN
+		-- CALL CopyMessageHeaders();
+		-- CALL CopyEntireMessage();
+		SET Environment.Variables.ServiceCallout.Status = '3150';	
+		SET Environment.Variables.ServiceCallout.ResponseDetail.ErrorDesc = 'Timeout when get message from queue ' 
+		|| InputLocalEnvironment.WrittenDestination.MQ.DestinationData.queueName;
+		SET Environment.Variables.ServiceCallout.LogType = 'QUEUE';
+		RETURN TRUE;
+	END;
+

@@ -1,0 +1,98 @@
+BROKER SCHEMA Version1.CalculateCarResponsibility.ESQLs
+
+CREATE COMPUTE MODULE BuildResponse
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		-- CALL CopyMessageHeaders();
+		-- CALL CopyEntireMessage();
+		DECLARE I INT 1;
+		DECLARE J INT 1;
+		DECLARE arraySize INT;
+		DECLARE arrayChargeSize INT;
+				
+		DECLARE functionCode CHAR Environment.Variables.SOAVariables.soa:SOAEnvelope.soa:ServiceBody.*[1].*:BodyReq.*:FunctionCode;
+		SET OutputRoot.Properties=InputRoot.Properties;
+		SET OutputRoot.XMLNSC.ns:CalculateCarResponsibilityRes.commonheader:Header = Environment.Variables.SOAVariables.*:SOAEnvelope.*:ServiceBody.*[1].*:Header;
+			
+		IF Environment.Variables.ServiceCallout.Status = '0' THEN
+			DECLARE result CHARACTER InputRoot.XMLNSC.ns14:GET_POINT_TNDS_JSONResponse.ns14:GET_POINT_TNDS_JSONResult;
+			DECLARE status CHARACTER '0';
+								
+			IF result <> '[]' and result IS NOT NULL and result <> '' THEN
+				DECLARE dataAsBit BIT  CAST(result AS BIT CCSID 1208);
+				CREATE LASTCHILD OF OutputRoot DOMAIN 'JSON' PARSE(dataAsBit CCSID 1208);	
+			
+				SET OutputRoot.XMLNSC.ns:CalculateCarResponsibilityRes.commonheader:ResponseStatus.commonheader:Status = '0';
+				SET OutputRoot.XMLNSC.ns:CalculateCarResponsibilityRes.commonheader:ResponseStatus.commonheader:GlobalErrorCode = '000';
+				SET OutputRoot.XMLNSC.ns:CalculateCarResponsibilityRes.commonheader:ResponseStatus.commonheader:GlobalErrorDescription = 'Successful';
+				
+				DECLARE pattern CHARACTER '';
+				DECLARE sumMoneyWithoutVat CHARACTER ;
+				DECLARE SumVat CHARACTER ;
+				DECLARE SumMoneyVat CHARACTER ;
+				
+				SET sumMoneyWithoutVat = CAST (OutputRoot.JSON.Data.SUM_MONEY_WITHOUT_VAT AS CHAR FORMAT pattern);
+				SET SumVat = CAST (OutputRoot.JSON.Data.SUM_VAT AS CHAR FORMAT pattern);
+				SET SumMoneyVat = CAST (OutputRoot.JSON.Data.SUM_MONEY_VAT AS CHAR FORMAT pattern);
+				 
+				SET OutputRoot.XMLNSC.ns:CalculateCarResponsibilityRes.ns:BodyRes.ns:Fee.acct:Premium = sumMoneyWithoutVat;
+				SET OutputRoot.XMLNSC.ns:CalculateCarResponsibilityRes.ns:BodyRes.ns:Fee.acct:VAT = SumVat;
+				SET OutputRoot.XMLNSC.ns:CalculateCarResponsibilityRes.ns:BodyRes.ns:Fee.acct:Amount = SumMoneyVat;
+				SET arraySize = CARDINALITY (OutputRoot.JSON.Data.RESULT_TNDS.Item[]);
+				WHILE I <= arraySize DO
+					SET OutputRoot.XMLNSC.ns:CalculateCarResponsibilityRes.ns:BodyRes.ns:ResultCivilLiabilityList.ns:ResultCivilLiability[I].ns:Risk = OutputRoot.JSON.Data.RESULT_TNDS.Item[I].RISK;
+					SET OutputRoot.XMLNSC.ns:CalculateCarResponsibilityRes.ns:BodyRes.ns:ResultCivilLiabilityList.ns:ResultCivilLiability[I].ns:Title = OutputRoot.JSON.Data.RESULT_TNDS.Item[I].TITLE;
+					DECLARE J INT 1;
+					SET arrayChargeSize = CARDINALITY (OutputRoot.JSON.Data.RESULT_TNDS.Item[I].CHARGE_DATA.Item[]);
+					WHILE J <= arrayChargeSize DO
+						SET OutputRoot.XMLNSC.ns:CalculateCarResponsibilityRes.ns:BodyRes.ns:ResultCivilLiabilityList.ns:ResultCivilLiability[I].ns:ChargeDataList.ns:ChargeData[J].ns:SmiCode = OutputRoot.JSON.Data.RESULT_TNDS.Item[I].CHARGE_DATA.Item[J].SMI_CODE;
+						SET OutputRoot.XMLNSC.ns:CalculateCarResponsibilityRes.ns:BodyRes.ns:ResultCivilLiabilityList.ns:ResultCivilLiability[I].ns:ChargeDataList.ns:ChargeData[J].ns:LiabilityMoney = OutputRoot.JSON.Data.RESULT_TNDS.Item[I].CHARGE_DATA.Item[J].LIABILITY_MONEY;
+						SET OutputRoot.XMLNSC.ns:CalculateCarResponsibilityRes.ns:BodyRes.ns:ResultCivilLiabilityList.ns:ResultCivilLiability[I].ns:ChargeDataList.ns:ChargeData[J].ns:SmiMoney = OutputRoot.JSON.Data.RESULT_TNDS.Item[I].CHARGE_DATA.Item[J].SMI_MONEY;
+						SET OutputRoot.XMLNSC.ns:CalculateCarResponsibilityRes.ns:BodyRes.ns:ResultCivilLiabilityList.ns:ResultCivilLiability[I].ns:ChargeDataList.ns:ChargeData[J].ns:InsuranceMoney = OutputRoot.JSON.Data.RESULT_TNDS.Item[I].CHARGE_DATA.Item[J].INSURANCE_MONEY;
+						SET OutputRoot.XMLNSC.ns:CalculateCarResponsibilityRes.ns:BodyRes.ns:ResultCivilLiabilityList.ns:ResultCivilLiability[I].ns:ChargeDataList.ns:ChargeData[J].ns:Vat = OutputRoot.JSON.Data.RESULT_TNDS.Item[I].CHARGE_DATA.Item[J].VAT_MONEY;
+						SET J = J + 1;
+					END WHILE;
+					SET I = I + 1;
+				END WHILE;
+				DELETE FIELD OutputRoot.JSON;
+			ELSEIF result = '[]' OR result IS NULL OR result = '' THEN
+				SET OutputRoot.XMLNSC.ns:CalculateCarResponsibilityRes.commonheader:ResponseStatus.commonheader:Status = '0';
+				SET OutputRoot.XMLNSC.ns:CalculateCarResponsibilityRes.commonheader:ResponseStatus.commonheader:GlobalErrorCode = '015';
+				SET OutputRoot.XMLNSC.ns:CalculateCarResponsibilityRes.commonheader:ResponseStatus.commonheader:GlobalErrorDescription = 'No data found';
+			/*ELSE
+				SET OutputRoot.XMLNSC.ns:CalculateCarResponsibilityRes.commonheader:ResponseStatus.commonheader:Status = '1';
+				SET OutputRoot.XMLNSC.ns:CalculateCarResponsibilityRes.commonheader:ResponseStatus.commonheader:GlobalErrorCode = '004';
+				SET OutputRoot.XMLNSC.ns:CalculateCarResponsibilityRes.commonheader:ResponseStatus.commonheader:GlobalErrorDescription = 'Error in Backend';
+				
+				SET OutputRoot.XMLNSC.ns:CalculateCarResponsibilityRes.commonheader:ResponseStatus.commonheader:ErrorInfo.commonheader:SourceAppID = 'PREMIA';
+				SET OutputRoot.XMLNSC.ns:CalculateCarResponsibilityRes.commonheader:ResponseStatus.commonheader:ErrorInfo.commonheader:ErrorCode = Environment.Variables.ServiceCallout.Status;
+				SET OutputRoot.XMLNSC.ns:CalculateCarResponsibilityRes.commonheader:ResponseStatus.commonheader:ErrorInfo.commonheader:ErrorDesc = Environment.Variables.ServiceCallout.ResponseDetail.ErrorDesc;
+			*/
+			END IF;
+		ELSE
+			SET OutputRoot.XMLNSC.ns:CalculateCarResponsibilityRes.commonheader:ResponseStatus.commonheader:Status = '1';
+			SET OutputRoot.XMLNSC.ns:CalculateCarResponsibilityRes.commonheader:ResponseStatus.commonheader:GlobalErrorCode = '004';
+			SET OutputRoot.XMLNSC.ns:CalculateCarResponsibilityRes.commonheader:ResponseStatus.commonheader:GlobalErrorDescription = 'Error in Backend';
+			
+			SET OutputRoot.XMLNSC.ns:CalculateCarResponsibilityRes.commonheader:ResponseStatus.commonheader:ErrorInfo.commonheader:SourceAppID = 'PREMIA';
+			SET OutputRoot.XMLNSC.ns:CalculateCarResponsibilityRes.commonheader:ResponseStatus.commonheader:ErrorInfo.commonheader:ErrorCode = Environment.Variables.ServiceCallout.Status;
+			SET OutputRoot.XMLNSC.ns:CalculateCarResponsibilityRes.commonheader:ResponseStatus.commonheader:ErrorInfo.commonheader:ErrorDesc = Environment.Variables.ServiceCallout.ResponseDetail.ErrorDesc;
+		END IF;
+		
+		RETURN TRUE;
+	END;
+
+	CREATE PROCEDURE CopyMessageHeaders() BEGIN
+		DECLARE I INTEGER 1;
+		DECLARE J INTEGER;
+		SET J = CARDINALITY(InputRoot.*[]);
+		WHILE I < J DO
+			SET OutputRoot.*[I] = InputRoot.*[I];
+			SET I = I + 1;
+		END WHILE;
+	END;
+
+	CREATE PROCEDURE CopyEntireMessage() BEGIN
+		SET OutputRoot = InputRoot;
+	END;
+END MODULE;

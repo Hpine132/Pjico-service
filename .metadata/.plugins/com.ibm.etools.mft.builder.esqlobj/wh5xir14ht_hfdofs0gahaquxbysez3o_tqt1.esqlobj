@@ -1,0 +1,9 @@
+CREATE PROCEDURE moveToFinalException(INOUT rootEx REFERENCE)
+	BEGIN
+		IF ENDSWITH(FIELDNAME(rootEx),'Exception') THEN
+			WHILE (rootEx.Number is not null) DO
+				move rootEx lastchild;
+			END WHILE;
+			MOVE rootEx PARENT;
+		END IF;
+	END;

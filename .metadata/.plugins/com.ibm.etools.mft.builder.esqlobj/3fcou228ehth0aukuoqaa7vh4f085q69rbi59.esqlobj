@@ -1,0 +1,6 @@
+/*EATE FUNCTION Main() RETURNS BOOLE*/
+	BEGIN
+		DECLARE rootEx REFERENCE TO InputExceptionList.*[1];
+		CALL throwGeneralException(rootEx);
+		RETURN TRUE;
+	END;

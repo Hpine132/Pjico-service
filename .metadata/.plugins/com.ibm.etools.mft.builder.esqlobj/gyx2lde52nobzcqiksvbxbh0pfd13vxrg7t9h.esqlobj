@@ -1,0 +1,6 @@
+CREATE FUNCTION authenLDAPEncryptPassEx( IN directyServer CHAR, IN ldapKey CHAR, IN userName CHAR, IN password CHAR) RETURNS CHARACTER
+BEGIN
+	DECLARE result CHARACTER ;
+	CALL authenLDAPEncryptPassWithJavaEx(directyServer, ldapKey, userName, password) INTO result;
+	RETURN result;
+END;

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?><mappingRoot xmlns="http://www.ibm.com/2008/ccl/Mapping" domainID="com.ibm.msl.mapping.xml" domainIDExtension="mb" mainMap="true" targetNamespace="Version1.CalculateCarResponsibility.Mappings" version="8.0.5.0" xmlns:map="Version1.CalculateCarResponsibility.Mappings">
+    <input path="mbsharedlib://ESBMessageLib/service/vn/payment/paymentService.xsd"/>
+    <output path="mbsharedlib://ESBMessageLib/service/vn/payment/paymentService.xsd"/>
+    <namespaces>
+        <namespace kind="supplement" prefix="io7" uri="http://www.pjico.com.vn/entity/vn/com/account/1"/>
+        <namespace kind="supplement" prefix="io6" uri="http://www.pjico.com.vn/entity/vn/payment/paymentservice/1"/>
+        <namespace kind="supplement" prefix="io8" uri="http://www.pjico.com.vn/entity/vn/com/isurance/1"/>
+        <namespace kind="supplement" prefix="io" uri="http://www.pjico.com.vn/entity/vn/com/1"/>
+        <namespace kind="supplement" prefix="io3" uri="http://www.pjico.com.vn/common/envelope/commonheader/1"/>
+        <namespace kind="supplement" prefix="io2" uri="http://www.pjico.com.vn/entity/vn/com/party/1"/>
+        <namespace kind="supplement" prefix="io5" uri="http://www.pjico.com.vn/common/envelope/soaenvelope/1"/>
+        <namespace kind="supplement" prefix="io4" uri="http://www.pjico.com.vn/common/envelope/serviceenvelope/1"/>
+    </namespaces>
+    <generation engine="xquery"/>
+    <mappingDeclaration name="FunctionCodeNotMap">
+        <input namespace="http://www.pjico.com.vn/entity/vn/payment/paymentservice/1" path="mb:msg(CalculateCarMaterialReq,assembly,XMLNSC,Properties)" var="ComIbmMessageAssembly_CalculateCarMaterialReq"/>
+        <output namespace="http://www.pjico.com.vn/entity/vn/payment/paymentservice/1" path="mb:msg(CalculateCarMaterialRes,assembly,XMLNSC,Properties)" var="ComIbmMessageAssembly_CalculateCarMaterialRes"/>
+        <move>
+            <input path="$ComIbmMessageAssembly_CalculateCarMaterialReq/Properties"/>
+            <output path="$ComIbmMessageAssembly_CalculateCarMaterialRes/Properties"/>
+            <override>
+                <assign value="{ESBMessageLib}">
+                    <output path="$ComIbmMessageAssembly_CalculateCarMaterialRes/Properties/MessageSet"/>
+                </assign>
+            </override>
+        </move>
+        <move>
+            <input path="$ComIbmMessageAssembly_CalculateCarMaterialReq/CalculateCarMaterialReq/Header"/>
+            <output path="$ComIbmMessageAssembly_CalculateCarMaterialRes/CalculateCarMaterialRes/Header"/>
+        </move>
+        <assign value="1">
+            <output path="$ComIbmMessageAssembly_CalculateCarMaterialRes/CalculateCarMaterialRes/ResponseStatus/Status"/>
+        </assign>
+        <assign value="009">
+            <output path="$ComIbmMessageAssembly_CalculateCarMaterialRes/CalculateCarMaterialRes/ResponseStatus/GlobalErrorCode"/>
+        </assign>
+        <assign value="FunctionCode not map">
+            <output path="$ComIbmMessageAssembly_CalculateCarMaterialRes/CalculateCarMaterialRes/ResponseStatus/GlobalErrorDescription"/>
+        </assign>
+    </mappingDeclaration>
+</mappingRoot>
